@@ -53,7 +53,21 @@ CREATE TABLE `Livreur` (
 -- --------------------------------------------------------
 
 DROP TABLE IF EXISTS `Detail`;
-CREATE TABLE `Detail`;
+CREATE TABLE `Detail`(
+    `Num_OF` INT NOT NULL AUTO_INCREMENT,
+    `NomProd` VARCHAR(30) NOT NULL,
+    `IngBase1` TINYINT(1) NOT NULL,
+    `IngBase2` TINYINT(1) NOT NULL,
+    `IngBase3` TINYINT(1) NOT NULL,
+    `IngBase4` TINYINT(1) NOT NULL,
+    `IngBase5` TINYINT(1) NOT NULL,
+    `IngOpt1` TINYINT(1) NOT NULL,
+    `IngOpt2` TINYINT(1) NOT NULL,
+    `IngOpt3` TINYINT(1) NOT NULL,
+    `IngOpt4` TINYINT(1) NOT NULL,
+    `IngOpt5` TINYINT(1) NOT NULL,
+    `IngOpt6` TINYINT(1) NOT NULL,
+)
 
 -- --------------------------------------------------------
 
@@ -102,4 +116,23 @@ CREATE TABLE `Ingredient` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
+
+CREATE TABLE `Fournisseur` (
+    `NomFourn` VARCHAR(50) NOT NULL,
+    `Addresse` VARCHAR(30) NOT NULL,
+    `CP_Fourn` VARCHAR(10) NOT NULL,
+    `Ville` VARCHAR(30) NOT NULL,
+    `Telephone` VARCHAR(15) NOT NULL,
+    `DateArchiv` TINYINT(1) NOT NULL,
+    PRIMARY KEY (`NomFourn`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `Responsable` (
+    `IdRes` INT NOT NULL,
+    `Nom` VARCHAR(30) NOT NULL,
+    `Prenom` VARCHAR(10) NOT NULL,
+    `Telephone` VARCHAR(15) NOT NULL,
+    PRIMARY KEY (`IdRes`)
+)
 
