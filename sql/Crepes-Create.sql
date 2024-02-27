@@ -67,6 +67,10 @@ CREATE TABLE `Detail`(
     `IngOpt4` TINYINT(1) NOT NULL,
     `IngOpt5` TINYINT(1) NOT NULL,
     `IngOpt6` TINYINT(1) NOT NULL,
+    `DateArchiv` DATE NOT NULL,
+    `IdProd` INT NOT NULL,
+    PRIMARY KEY (`Num_OF`),
+    FOREIGN KEY (`IdProd`) REFERENCES `Produit`(`IdProd`)
 )
 
 -- --------------------------------------------------------
