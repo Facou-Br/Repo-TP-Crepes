@@ -1,0 +1,22 @@
+{
+  "sales": [
+    {
+      "date": "2022-10-01",
+      "flavor": "Nutella",
+      "quantity": 10,
+      "price": 5.99
+    },
+    {
+      "date": "2022-10-02",
+      "flavor": "Strawberry",
+      "quantity": 8,
+      "price": 4.99
+    },
+    {
+      "date": "2022-10-03",
+      "flavor": "Banana",
+      "quantity": 12,
+      "price": 6.99
+    }
+  ]
+}
