@@ -12,6 +12,3 @@ Voici où trouver vos fichiers:
     Les styles CSS doivent être gardées de la façon suivante:
         L'on aura le style.css de base et GLOBAL que doit agir sur le maximum de pages
         Puis on aura des sous-styles pour des cas spéciaux que doivent être gardées à un minimum.
-
-TOTO
-TOTO2
