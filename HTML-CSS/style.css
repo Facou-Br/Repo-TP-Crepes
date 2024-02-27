@@ -34,12 +34,12 @@ body{
 }
 
 nav {
-    background-image: url("https://creperie-josephine.fr/wp-content/uploads/2023/07/background-box.jpg")
+    background-image: url("https://panel.freehosting.com:2222/CMD_FILE_MANAGER?path=/domains/crepes.codes/public_html/Img/darkWood.jpg")
 }
 
 footer, header {
     color: white;
-    background-image: url("https://creperie-josephine.fr/wp-content/uploads/2023/07/background.jpg");
+    background-image: url("https://panel.freehosting.com:2222/CMD_FILE_MANAGER?path=/domains/crepes.codes/public_html/Img/wood.jpg");
 }
 
 nav a, nav a:active { 
