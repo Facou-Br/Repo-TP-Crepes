@@ -1,0 +1,23 @@
+body{
+    background-color: #EEEEEE;
+    color: black;
+    font-family: Arial, sans-serif; /* A modifier à la fin */
+}
+
+nav {
+    background-image: url("https://creperie-josephine.fr/wp-content/uploads/2023/07/background-box.jpg")
+}
+
+footer, header {
+    color: white;
+    background-image: url("https://creperie-josephine.fr/wp-content/uploads/2023/07/background.jpg");
+}
+
+nav a, nav a:active { 
+    color: black;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline; 
+}
