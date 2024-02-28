@@ -25,10 +25,28 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 /*--- FIN RESET ---*/
-
-
-
-
-
-@charset "UTF-8";
 /*CSS Document*/
+
+body{
+    background-color: #EEEEEE;
+    color: black;
+    font-family: Arial, sans-serif; /* A modifier à la fin */
+}
+
+nav {
+    background-image: url("https://panel.freehosting.com:2222/CMD_FILE_MANAGER?path=/domains/crepes.codes/public_html/Img/darkWood.jpg")
+}
+
+footer, header {
+    color: white;
+    background-image: url("https://panel.freehosting.com:2222/CMD_FILE_MANAGER?path=/domains/crepes.codes/public_html/Img/wood.jpg");
+}
+
+nav a, nav a:active { 
+    color: black;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline; 
+}
