@@ -11,44 +11,17 @@
                 <h1>Interface de stockage</h1>
                 <nav>
                   <table>
-                    <th><a href="" id=""></a></th>
+                    <a href="fournisseurs.html">Fournisseurs</a>
                   </table>
                 </nav>
             </header>
             <div id="rechercher">
-                <div class="recherche">
-                <select id="cat">
-                    <option></option>
-                    <option value="alimentaire">Alimentaire</option>
-                    <option value="hygiene">Hygiène</option>
-                    <option value="ustensiles">Ustensiles</option>
-                    <option value="divers">Divers</option>
-                </select>
-                </div>
-                <div class="recherche">
-                <select id="emplacement">
-                    <option></option>
-                    <option value="rayon1">Rayon 1</option>
-                    <option value="rayon2">Rayon 2</option>
-                    <option value="rayon3">Rayon 3</option>
-                    <option value="frigo">Frigidaire</option>
-                    <option value="congelateur">Congélateur</option>
-                </select>
-                </div>
-                <div class="recherche">
-                <input id="reference"></input>
-                </div>
-                <div class="recherche">
-                <input id="nom"></input>
-                </div>
-                <div class="recherche">
-                <select name="etat" id="etat" required>
-                    <option></option>
-                    <option value="stock">Article en stock</option>
-                    <option value="epuise">Article épuisé</option>
-                 </select>
-                </div>
-                 <button id="rechercher">Rechercher</button>
+                <div class="recherche"><input id="id" placeholder="ID"></input></div>
+                <div class="recherche"><input id="nom" placeholder="Nom"></input></div>
+                <div class="recherche"><input id="unite" placeholder="Nombre d'unité"></input></div>
+                <div class="recherche"><input id="stockMin" placeholder="Stock minimum"></input></div>
+                <div class="recherche"><input id="stockMax" placeholder="Stock maximum"></input></div>
+                <button id="rechercher">Rechercher</button>
             </div>
             <div id="resultat">
                 <table>
@@ -74,7 +47,7 @@
             </div>
             
             <div id="bas">
-                <div id="date_inv"><p>Inventaire en date du </p><input></input></div>
+                <div id="date_inv"><p>Inventaire en date du </p><input placeholder="Date"></input></div>
                 <a href="rapport.php"><button id="rapport" class="bouton">Rapport</button></a>
                 <a href="ajouter.php"><button id="ajouter" class="bouton">Ajouter</button></a>
                 <a href="modifier.php"></a><button id="modifier" class="bouton">Modifier</button>
