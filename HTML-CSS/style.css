@@ -152,8 +152,19 @@ footer {
 }
 
 /** Livreur_noe **/
-.cardLivreur {
-    border-style: dotted solid;
+
+.tableLivreur {
+    border: 1px solid black;
+    width: 100%; 
+}
+
+.trLivreur {
+    border: 1px solid black;
+}
+
+.tdLivreur {
+    border: 1px solid black;
+    padding: 8px;
 }
 
 
