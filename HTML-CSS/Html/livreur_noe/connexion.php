@@ -1,5 +1,5 @@
 <?php
-    $host = https://panel.freehosting.com/phpMyAdmin/;
+    $host = "localhost";
     $port = "3306";
     $user = "crepesco_test";
     $pwd = "Cnam2024_crepes";
