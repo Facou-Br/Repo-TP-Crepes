@@ -17,7 +17,6 @@ let crepes = [
     { idCrepe: 3, nom: "Crepe au sucre", ingredient1: "Farine", ingredient2: "Oeuf", ingredient3: "Lait", ingredient4: "Sucre" }
 ];
 
-
 document.addEventListener('DOMContentLoaded', function() {
     afficherCommandes();
 });
