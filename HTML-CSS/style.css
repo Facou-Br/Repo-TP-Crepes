@@ -151,6 +151,11 @@ footer {
     clear: both;
 }
 
+/** Livreur_noe **/
+.cardLivreur {
+    border-style: dotted solid;
+}
+
 
 /********** M E D I A  Q U E R Y **********/
 @media (max-width: 768px) {
