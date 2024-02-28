@@ -8,7 +8,7 @@ let commandes = [
     { id: 7, nom: "Crepe à la confiture", temps: "14:00", statut: "En attente" },
     { id: 8, nom: "Crepe au Nutella", temps: "13:00", statut: "En attente" },
     { id: 9, nom: "Crepe au sucre", temps: "10:00", statut: "En attente" },
-    { id: 10, nom: "Crepe à la confiture", temps: "22:00", statut: "En attente" },
+    { id: 10, nom: "Crepe à la confiture", temps: "22:00", statut: "En attente" }
 ];
 
 
