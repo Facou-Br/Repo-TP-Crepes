@@ -4,4 +4,4 @@ Password: 4s2P7R2nmm
 
 Php MYADMIN : https://panel.freehosting.com/phpMyAdmin/
 Username: crepesco_test
-Password: Cnam2024_crepe
+Password: Cnam2024_crepes
