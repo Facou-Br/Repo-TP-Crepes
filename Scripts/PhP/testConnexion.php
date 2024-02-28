@@ -8,7 +8,7 @@
         <?php
         require_once '../../BaseDeDonnees/connexionBdB.php';
         try {
-            echo 'mysql:host=' . $host . ';dbname='. $bdd, $user, $pwd . '<br />';;
+            echo 'mysql:host=' . $host . ';dbname='. $bdd, $user, $pwd . '<br />';
             $connex = new PDO('mysql:host=' . $host . ';dbname='
                     . $bdd, $user, $pwd,
                     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -17,9 +17,6 @@
             echo 'N° : ' . $e->getCode() . '<br />';;
             die();
         }
-
         ?>
-        <br/>
-        <button onclick="document.location = './PDO3-formTP.php'">Retour</button>
     </body>
 </html>
