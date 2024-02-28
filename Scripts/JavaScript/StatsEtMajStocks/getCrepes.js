@@ -1,2 +1,2 @@
-//var obj = JSON.parse("./jsons/statsCrepes.json");
-console.log("test");
+var obj = JSON.parse(/jsons/crepes.json);
+console.log(obj);
