@@ -34,7 +34,7 @@ body{
 }
 
 nav {
-    background-image: url('img/darkwood.jpg');
+    background-image: url('Images/jpeg/darkwood.jpg');
 }
 
 #wrapper {
@@ -45,7 +45,7 @@ nav {
 
 footer, header {
     color: white;
-    background-image: url('img/wood.jpg');
+    background-image: url('Images/jpeg/wood.jpg');
 }
 
 nav a, nav a:active {
