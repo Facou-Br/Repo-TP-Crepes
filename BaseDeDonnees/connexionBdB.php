@@ -1,5 +1,5 @@
 <?php
 $host = "https://panel.freehosting.com/phpMyAdmin/";
-$user = "crepesco_test";
-$pwd = "Cnam2024_crepe";
+$user = "crepesco";
+$pwd = "4s2P7R2nmm";
 $bdd = "crepesco_test";
