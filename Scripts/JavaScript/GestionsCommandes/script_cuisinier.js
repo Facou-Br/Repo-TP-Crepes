@@ -11,7 +11,6 @@ let commandes = [
     { id: 10, nom: "Crepe à la confiture", temps: "22:00", statut: "En attente" }
 ];
 
-
 let crepes = [
     { idCrepe: 1, nom: "Crepe au Nutella", ingredient1: "Farine", ingredient2: "Oeuf", ingredient3: "Lait", ingredient4: "Nutella" },
     { idCrepe: 2, nom: "Crepe à la confiture", ingredient1: "Farine", ingredient2: "Oeuf", ingredient3: "Lait", ingredient4: "Confiture" },
