@@ -6,22 +6,34 @@
     <title>Livreur</title>
     <link rel="stylesheet" href="../../style.css">
 </head>
-
+<?php 
+require_once '/connexion.php';
+?>
 <body>
     <header>
         <h1>La Crêperie</h1>
         <nav>
             <table>
-                <th><a href="..\index.html">Accueil</a></th>
-                <th><a href=".\Html\gestions_stocks.html">Gestion des stocks</a></th>
-                <th><a href="#">Menu</a></th>
+                <th><a href="..\..\index.html">Accueil</a></th>
                 <th><a href="#">Réservation</a></th>
                 <th><a href="#">Contact</a></th>
             </table>
         </nav>
     </header>
 
-
+    <card>
+        <tr id="cardLivreur">
+            <td id="cardLivreur">
+                Client 1
+            </td>
+            <td id="cardLivreur">
+                <a href="tel:+123456789">Appeler</a>
+            </td>
+            <td id="cardLivreur">
+                <a href="">Récupérer</a>
+            </td>
+        </tr>
+    </card>
     
     <footer>
         <p>&copy; 2022 La Crêperie. Tous droits réservés.</p>
