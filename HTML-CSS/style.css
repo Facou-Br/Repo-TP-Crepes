@@ -151,6 +151,22 @@ footer {
     clear: both;
 }
 
+/** Livreur_noe **/
+
+.tableLivreur {
+    border: 1px solid black;
+    width: 100%; 
+}
+
+.trLivreur {
+    border: 1px solid black;
+}
+
+.tdLivreur {
+    border: 1px solid black;
+    padding: 8px;
+}
+
 
 /********** M E D I A  Q U E R Y **********/
 @media (max-width: 768px) {
