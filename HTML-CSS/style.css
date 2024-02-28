@@ -34,12 +34,12 @@ body{
 }
 
 nav {
-    background-image: url("https://panel.freehosting.com:2222/CMD_FILE_MANAGER?path=/domains/crepes.codes/public_html/Img/darkWood.jpg")
+    background-image: url('img/darkwood.jpg');
 }
 
 footer, header {
     color: white;
-    background-image: url("https://panel.freehosting.com:2222/CMD_FILE_MANAGER?path=/domains/crepes.codes/public_html/Img/wood.jpg");
+    background-image: url('img/wood.jpg');
 }
 
 nav a, nav a:active { 
