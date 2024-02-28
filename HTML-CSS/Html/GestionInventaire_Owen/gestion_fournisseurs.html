@@ -3,19 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <title>Gestion des fournisseurs</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../../Css/style_gerant.css">
     </head>
     <body>
+        <div id="wrapper">
         <header>
-            <h1>La Crêperie</h1>
+            <h1>Gestion des Fournisseurs</h1>
             <nav>
-                <table>
-                    <td><a href="gestions_stocks.html">Gestion des stocks</a></td>
-                </table>
+                <a href="gestions_stocks.html">Gestion des stocks</a>
             </nav>
         </header>
-        <main>
-            <section id="gestion_fournisseurs">
+            <div id="rechercher">
+                <div class="recherche"><input id="nom" placeholder="Nom"></input></div>
+                <button id="rechercher">Rechercher</button>
+            </div>
+            <div id="resultat">
                 <h2>Gestion des fournisseurs</h2>
                 <table>
                     <tr>
@@ -31,7 +33,17 @@
                         <td>leclerc@leclerc.fr</td>
                     </tr>
                 </table>
-            </section>
-        </main>
+            </div>
+        </div>
+        <div id="bas">
+            <a href="#"><button id="rapport" class="bouton">Rapport</button></a>
+            <a href="#"><button id="ajouter" class="bouton">Ajouter</button></a>
+            <a href="#"></a><button id="modifier" class="bouton">Modifier</button>
+            <a href="#"></a><button id="supprimer" class="bouton">Supprimer</button>
+        </div>
+        <footer>
+            <p>Interface de stockage</p>
+        </footer>
+    </div>
     </body>
 </html>
