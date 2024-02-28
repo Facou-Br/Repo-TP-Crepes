@@ -37,16 +37,35 @@ nav {
     background-image: url('img/darkwood.jpg');
 }
 
+#wrapper {
+    margin: 0 auto;
+    max-width: 1160px;
+    padding: 0 10px;
+}
+
 footer, header {
     color: white;
     background-image: url('img/wood.jpg');
 }
 
-nav a, nav a:active { 
+nav a, nav a:active {
     color: black;
     text-decoration: none;
 }
 
 nav a:hover {
-    text-decoration: underline; 
+    text-decoration: underline;
+}
+
+
+.left{
+    float : left;
+}
+.right{
+    float : right;
+}
+
+
+.clear {
+    clear: both;
 }
