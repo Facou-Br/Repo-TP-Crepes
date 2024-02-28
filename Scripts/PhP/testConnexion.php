@@ -17,9 +17,6 @@
             echo 'N° : ' . $e->getCode() . '<br />';;
             die();
         }
-
         ?>
-        <br/>
-        <button onclick="document.location = './PDO3-formTP.php'">Retour</button>
     </body>
 </html>
