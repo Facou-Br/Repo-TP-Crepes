@@ -8,7 +8,7 @@
         <?php
         require_once '../../BaseDeDonnees/connexionBdB.php';
         try {
-            echo 'mysql:host=' . $host . ';dbname='. $bdd, $user, $pwd . '<br />';;
+            echo 'mysql:host=' . $host . ';dbname='. $bdd, $user, $pwd . '<br />';
             $connex = new PDO('mysql:host=' . $host . ';dbname='
                     . $bdd, $user, $pwd,
                     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
