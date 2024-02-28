@@ -1,81 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A CHANGER</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>A CHANGER</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <header>
+            <h1>La Crêperie</h1>
+            <nav>
+                <table>
+                    <th><a href="..\index.html">Accueil</a></th>
+                    <th><a href=".\Html\gestions_stocks.html">Gestion des stocks</a></th>
+                    <th><a href="#">Menu</a></th>
+                    <th><a href="#">Réservation</a></th>
+                    <th><a href="#">Contact</a></th>
+                </table>
+            </nav>
+        </header>
+            <main>
+                <section id="about">
+                    <h2>À propos de nous</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nunc id aliquet ultrices, velit nunc tincidunt nisl, vel lacinia nunc nunc id nunc.</p>
+                </section>
 
-<body>
-    <header>
-        <h1>La Crêperie</h1>
-        <nav>
-            <table>
-                <th><a href="..\index.html">Accueil</a></th>
-                <th><a href=".\Html\gestions_stocks.html">Gestion des stocks</a></th>
-                <th><a href="#">Menu</a></th>
-                <th><a href="#">Réservation</a></th>
-                <th><a href="#">Contact</a></th>
-            </table>
-        </nav>
-    </header>
+                <section id="menu">
+                    <h2>Notre menu</h2>
+                    <ul>
+                        <li>Crêpe sucrée</li>
+                        <li>Crêpe salée</li>
+                        <li>Crêpe spéciale</li>
+                    </ul>
+                </section>
 
-    <main>
-        <section id="about">
-            <h2>À propos de nous</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nunc id aliquet ultrices, velit nunc tincidunt nisl, vel lacinia nunc nunc id nunc.</p>
-        </section>
+                <section id="reservation">
+                    <h2>Réservation</h2>
+                    <form>
+                        <label for="name">Nom:</label>
+                        <input type="text" id="name" name="name" required>
 
-        <section id="menu">
-            <h2>Notre menu</h2>
-            <ul>
-                <li>Crêpe sucrée</li>
-                <li>Crêpe salée</li>
-                <li>Crêpe spéciale</li>
-            </ul>
-        </section>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
 
-        <section id="reservation">
-            <h2>Réservation</h2>
-            <form>
-                <label for="name">Nom:</label>
-                <input type="text" id="name" name="name" required>
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                        <label for="time">Heure:</label>
+                        <input type="time" id="time" name="time" required>
 
-                <label for="date">Date:</label>
-                <input type="date" id="date" name="date" required>
+                        <button type="submit">Réserver</button>
+                    </form>
+                </section>
 
-                <label for="time">Heure:</label>
-                <input type="time" id="time" name="time" required>
+                <section id="contact">
+                    <h2>Contactez-nous</h2>
+                    <form>
+                        <label for="name">Nom:</label>
+                        <input type="text" id="name" name="name" required>
 
-                <button type="submit">Réserver</button>
-            </form>
-        </section>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
 
-        <section id="contact">
-            <h2>Contactez-nous</h2>
-            <form>
-                <label for="name">Nom:</label>
-                <input type="text" id="name" name="name" required>
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-
-                <button type="submit">Envoyer</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2022 La Crêperie. Tous droits réservés.</p>
-    </footer>
-
-
-</body>
+                        <button type="submit">Envoyer</button>
+                    </form>
+                </section>
+            </main>
+            
+            <footer>
+                <p>&copy; 2022 La Crêperie. Tous droits réservés.</p>
+            </footer>
+        </div>
+    </body>
 </html>
