@@ -20,7 +20,7 @@ try {
             afficherLivreurs($connexionBDB);
             break;
         case 'obtenirDetails':
-            $idLivreur = $_POST['idLivreur'] ?? '';
+            $idLivreur = filter_input(INPUT_POST, 'idLivreur', FILTER_SANITIZE_NUMBER_INT);
             obtenirDetailsLivreur($connexionBDB, $idLivreur);
             break;
         default:
@@ -39,7 +39,7 @@ function ajouterLivreur($pdo) {
     $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
     $tel = filter_input(INPUT_POST, 'tel', FILTER_SANITIZE_STRING);
     $numSS = filter_input(INPUT_POST, 'numSS', FILTER_SANITIZE_STRING);
-    $disponible = filter_var($_POST['disponibilite'], FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) ? 1 : 0;
+    $disponible = filter_input(INPUT_POST, 'disponible', FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) ? 1 : 0;
 
     $sql = "INSERT INTO livreur (Nom, Prenom, Tel, NumSS, Disponible) VALUES (?, ?, ?, ?, ?)";
     $stmt = $pdo->prepare($sql);
