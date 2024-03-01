@@ -1,6 +1,7 @@
 DirectAdmin Login : https://panel.freehosting.com:2222/ ou https://panel.freehosting.com/phpMyAdmin/ pour accès à la BDB
 Username: crepesco 
 Password: 4s2P7R2nm
+
 Php MYADMIN : https://panel.freehosting.com/phpMyAdmin/
 Username: crepesco_admin
 Password: Cnam2024_crepes
