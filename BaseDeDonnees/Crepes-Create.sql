@@ -1,284 +1,236 @@
-<<<<<<< HEAD:Base de donnees/Crepes-Create.sql
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
--- --------------------------------------------------------
-
-DROP DATABASE IF EXISTS `ProjetCnam-Crepes`;
-CREATE DATABASE `ProjetCnam-Crepes`;
-USE `ProjetCnam-Crepes`;
-
--- --------------------------------------------------------
-
---
--- Structure de la BD `ProjetCnam-Crepes` :
---
-
-DROP TABLE IF EXISTS `Commande`;
-CREATE TABLE `Commande` (
-    `NumCom` INT NOT NULL AUTO_INCREMENT,
-    `IdLivreur` INT NOT NULL,
-    `NomClient` VARCHAR(30) NOT NULL,
-    `TelClient` VARCHAR(30) NOT NULL,
-    `AdrClient` VARCHAR(30) NOT NULL,
-    `CP_Client` VARCHAR(30) NOT NULL,
-    `Date` DATE NOT NULL,
-    `HeureDispo` TIME NOT NULL,
-    `TypeEmballage` VARCHAR(30) NOT NULL,
-    `A_Livrer` BOOLEAN NOT NULL,
-    `EtatCde` VARCHAR(30) NOT NULL,
-    `EtatLivraison` BOOLEAN NOT NULL,
-    `CoutLivraison` FLOAT NOT NULL,
-    `TotalTTC` FLOAT NOT NULL,
-    `DateArchivage` DATE NOT NULL,
-    PRIMARY KEY (`NumCom`),
-    FOREIGN KEY (`IdLivreur`) REFERENCES `Livreur`(`IdLivreur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
-DROP TABLE IF EXISTS `Livreur`;
-CREATE TABLE `Livreur` (
-    `IdLivreur` INT NOT NULL AUTO_INCREMENT,
-    `Nom` VARCHAR(30) NOT NULL,
-    `Prenom` VARCHAR(30) NOT NULL,
-    `Tel` VARCHAR(30) NOT NULL,
-    `NumSS` VARCHAR(30) NOT NULL,
-    `Disponible` BOOLEAN NOT NULL,
-    `DateArchiv` DATE NOT NULL,
-    PRIMARY KEY (`IdLivreur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
-DROP TABLE IF EXISTS `Detail`;
-CREATE TABLE `Detail`(
-    `Num_OF` INT NOT NULL AUTO_INCREMENT,
-    `NomProd` VARCHAR(30) NOT NULL,
-    `IngBase1` TINYINT(1) NOT NULL,
-    `IngBase2` TINYINT(1) NOT NULL,
-    `IngBase3` TINYINT(1) NOT NULL,
-    `IngBase4` TINYINT(1) NOT NULL,
-    `IngBase5` TINYINT(1) NOT NULL,
-    `IngOpt1` TINYINT(1) NOT NULL,
-    `IngOpt2` TINYINT(1) NOT NULL,
-    `IngOpt3` TINYINT(1) NOT NULL,
-    `IngOpt4` TINYINT(1) NOT NULL,
-    `IngOpt5` TINYINT(1) NOT NULL,
-    `IngOpt6` TINYINT(1) NOT NULL,
-)
-
--- --------------------------------------------------------
-
-DROP TABLE IF EXISTS `Produit`;
-CREATE TABLE `Produit` (
-    `IdProd` INT NOT NULL AUTO_INCREMENT,
-    `IdIngredient` INT NOT NULL,
-    `NomProd` VARCHAR(30) NOT NULL,
-    `Active` BOOLEAN NOT NULL,
-    `Taille` INT NOT NULL,
-    `NombreIngredientBase` INT NOT NULL,
-    `NombreIngredientOption` INT NOT NULL,
-    `PrixUHT` FLOAT NOT NULL,
-    `Image` VARCHAR(30) NOT NULL,
-    `IngredientBase1` VARCHAR(30) NOT NULL,
-    `IngredientBase2` VARCHAR(30) NOT NULL,
-    `IngredientBase3` VARCHAR(30) NOT NULL,
-    `IngredientBase4` VARCHAR(30) NOT NULL,
-    `IngredientBase5` VARCHAR(30) NOT NULL,
-    `IngredientOption1` VARCHAR(30) NOT NULL,
-    `IngredientOption2` VARCHAR(30) NOT NULL,
-    `IngredientOption3` VARCHAR(30) NOT NULL,
-    `IngredientOption4` VARCHAR(30) NOT NULL,
-    `IngredientOption5` VARCHAR(30) NOT NULL,
-    `IngredientOption6` VARCHAR(30) NOT NULL,
-    `NombreOptionsMax` INT NOT NULL,
-    `DateArchivage` DATE NOT NULL,
-    PRIMARY KEY (`IdProd`),
-    FOREIGN KEY (`IdIngredient`) REFERENCES `Ingredient` (`IdIngredient`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
-DROP TABLE IF EXISTS `Ingredient`;
-CREATE TABLE `Ingredient` (
-    `IdIngredient` INT NOT NULL AUTO_INCREMENT,
-    `NomIngredient` VARCHAR(30) NOT NULL,
-    `Frais` FLOAT NOT NULL,
-    `Unite` INT NOT NULL,
-    `StockMinimum` INT NOT NULL,
-    `StockReel` INT NOT NULL,
-    `PrixUHTMoyen` FLOAT NOT NULL,
-    `QuantitesACommander` INT NOT NULL,
-    `DateArchivage` DATE NOT NULL,
-    PRIMARY KEY (`IdIngredient`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
-CREATE TABLE `Fournisseur` (
-    `NomFourn` VARCHAR(50) NOT NULL,
-    `Addresse` VARCHAR(30) NOT NULL,
-    `CP_Fourn` VARCHAR(10) NOT NULL,
-    `Ville` VARCHAR(30) NOT NULL,
-    `Telephone` VARCHAR(15) NOT NULL,
-    `DateArchiv` TINYINT(1) NOT NULL,
-    PRIMARY KEY (`NomFourn`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- *********************************************
+-- * SQL MySQL generation                      
+-- *--------------------------------------------
+-- * DB-MAIN version: 11.0.2              
+-- * Generator date: Sep 14 2021              
+-- * Generation date: Fri Mar  1 10:07:37 2024 
+-- * LUN file: C:\Users\OO\Downloads\PizzaTacos6.lun 
+-- * Schema: Physique/6 
+-- ********************************************* 
 
 
-CREATE TABLE `Responsable` (
-    `IdRes` INT NOT NULL,
-    `Nom` VARCHAR(30) NOT NULL,
-    `Prenom` VARCHAR(10) NOT NULL,
-    `Telephone` VARCHAR(15) NOT NULL,
-    PRIMARY KEY (`IdRes`)
-)
+-- Database Section
+-- ________________ 
 
-=======
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
--- --------------------------------------------------------
-
-DROP DATABASE IF EXISTS `ProjetCnam-Crepes`;
-CREATE DATABASE `ProjetCnam-Crepes`;
-USE `ProjetCnam-Crepes`;
-
--- --------------------------------------------------------
-
---
--- Structure de la BD `ProjetCnam-Crepes` :
---
-
-DROP TABLE IF EXISTS `Commande`;
-CREATE TABLE `Commande` (
-    `NumCom` INT NOT NULL AUTO_INCREMENT,
-    `IdLivreur` INT NOT NULL,
-    `NomClient` VARCHAR(30) NOT NULL,
-    `TelClient` VARCHAR(30) NOT NULL,
-    `AdrClient` VARCHAR(30) NOT NULL,
-    `CP_Client` VARCHAR(30) NOT NULL,
-    `Date` DATE NOT NULL,
-    `HeureDispo` TIME NOT NULL,
-    `TypeEmballage` VARCHAR(30) NOT NULL,
-    `A_Livrer` BOOLEAN NOT NULL,
-    `EtatCde` VARCHAR(30) NOT NULL,
-    `EtatLivraison` BOOLEAN NOT NULL,
-    `CoutLivraison` FLOAT NOT NULL,
-    `TotalTTC` FLOAT NOT NULL,
-    `DateArchivage` DATE NOT NULL,
-    PRIMARY KEY (`NumCom`),
-    FOREIGN KEY (`IdLivreur`) REFERENCES `Livreur`(`IdLivreur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
-DROP TABLE IF EXISTS `Livreur`;
-CREATE TABLE `Livreur` (
-    `IdLivreur` INT NOT NULL AUTO_INCREMENT,
-    `Nom` VARCHAR(30) NOT NULL,
-    `Prenom` VARCHAR(30) NOT NULL,
-    `Tel` VARCHAR(30) NOT NULL,
-    `NumSS` VARCHAR(30) NOT NULL,
-    `Disponible` BOOLEAN NOT NULL,
-    `DateArchiv` DATE NOT NULL,
-    PRIMARY KEY (`IdLivreur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
-DROP TABLE IF EXISTS `Detail`;
-CREATE TABLE `Detail`(
-    `Num_OF` INT NOT NULL AUTO_INCREMENT,
-    `NomProd` VARCHAR(30) NOT NULL,
-    `IngBase1` TINYINT(1) NOT NULL,
-    `IngBase2` TINYINT(1) NOT NULL,
-    `IngBase3` TINYINT(1) NOT NULL,
-    `IngBase4` TINYINT(1) NOT NULL,
-    `IngBase5` TINYINT(1) NOT NULL,
-    `IngOpt1` TINYINT(1) NOT NULL,
-    `IngOpt2` TINYINT(1) NOT NULL,
-    `IngOpt3` TINYINT(1) NOT NULL,
-    `IngOpt4` TINYINT(1) NOT NULL,
-    `IngOpt5` TINYINT(1) NOT NULL,
-    `IngOpt6` TINYINT(1) NOT NULL,
-    `DateArchiv` DATE NOT NULL,
-    `IdProd` INT NOT NULL,
-    PRIMARY KEY (`Num_OF`),
-    FOREIGN KEY (`IdProd`) REFERENCES `Produit`(`IdProd`)
-)
-
--- --------------------------------------------------------
-
-DROP TABLE IF EXISTS `Produit`;
-CREATE TABLE `Produit` (
-    `IdProd` INT NOT NULL AUTO_INCREMENT,
-    `IdIngredient` INT NOT NULL,
-    `NomProd` VARCHAR(30) NOT NULL,
-    `Active` BOOLEAN NOT NULL,
-    `Taille` INT NOT NULL,
-    `NombreIngredientBase` INT NOT NULL,
-    `NombreIngredientOption` INT NOT NULL,
-    `PrixUHT` FLOAT NOT NULL,
-    `Image` VARCHAR(30) NOT NULL,
-    `IngredientBase1` VARCHAR(30) NOT NULL,
-    `IngredientBase2` VARCHAR(30) NOT NULL,
-    `IngredientBase3` VARCHAR(30) NOT NULL,
-    `IngredientBase4` VARCHAR(30) NOT NULL,
-    `IngredientBase5` VARCHAR(30) NOT NULL,
-    `IngredientOption1` VARCHAR(30) NOT NULL,
-    `IngredientOption2` VARCHAR(30) NOT NULL,
-    `IngredientOption3` VARCHAR(30) NOT NULL,
-    `IngredientOption4` VARCHAR(30) NOT NULL,
-    `IngredientOption5` VARCHAR(30) NOT NULL,
-    `IngredientOption6` VARCHAR(30) NOT NULL,
-    `NombreOptionsMax` INT NOT NULL,
-    `DateArchivage` DATE NOT NULL,
-    PRIMARY KEY (`IdProd`),
-    FOREIGN KEY (`IdIngredient`) REFERENCES `Ingredient` (`IdIngredient`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
-DROP TABLE IF EXISTS `Ingredient`;
-CREATE TABLE `Ingredient` (
-    `IdIngredient` INT NOT NULL AUTO_INCREMENT,
-    `NomIngredient` VARCHAR(30) NOT NULL,
-    `Frais` FLOAT NOT NULL,
-    `Unite` INT NOT NULL,
-    `StockMinimum` INT NOT NULL,
-    `StockReel` INT NOT NULL,
-    `PrixUHTMoyen` FLOAT NOT NULL,
-    `QuantitesACommander` INT NOT NULL,
-    `DateArchivage` DATE NOT NULL,
-    PRIMARY KEY (`IdIngredient`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
-CREATE TABLE `Fournisseur` (
-    `NomFourn` VARCHAR(50) NOT NULL,
-    `Addresse` VARCHAR(30) NOT NULL,
-    `CP_Fourn` VARCHAR(10) NOT NULL,
-    `Ville` VARCHAR(30) NOT NULL,
-    `Telephone` VARCHAR(15) NOT NULL,
-    `DateArchiv` TINYINT(1) NOT NULL,
-    PRIMARY KEY (`NomFourn`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+create database Physique;
+use Physique;
 
 
-CREATE TABLE `Responsable` (
-    `IdRes` INT NOT NULL,
-    `Nom` VARCHAR(30) NOT NULL,
-    `Prenom` VARCHAR(10) NOT NULL,
-    `Telephone` VARCHAR(15) NOT NULL,
-    PRIMARY KEY (`IdRes`)
-)
+-- Tables Section
+-- _____________ 
 
->>>>>>> 4ee4b109bcdd37ecb8e3ed4d357e1a0b49625af5:sql/Crepes-Create.sql
+create table COM_DET (
+     Num_OF int not null,
+     Quant int not null,
+     NumCom int not null,
+     constraint FKCon_DET_ID primary key (Num_OF));
+
+create table COMMANDE (
+     NumCom int not null,
+     NomClient char(25) not null,
+     TelClient char(12) not null,
+     AdrClient char(30),
+     CP_Client char(5),
+     VilClient char(20),
+     Date date not null,
+     HeureDispo date not null,
+     TypeEmbal char(1) default 'carton' not null,
+     A_Livrer char(1) default 'N' not null,
+     EtatCde char(15) not null,
+     EtatLivraison char(1) default 'N',
+     CoutLiv float(6),
+     TotalTTC float(5),
+     DateArchiv date,
+     IdLivreur int,
+     constraint ID_COMMANDE_ID primary key (NumCom));
+
+create table DET_INGR (
+     Num_OF int not null,
+     IdIngred int not null,
+     constraint ID_Utilise_ID primary key (IdIngred, Num_OF));
+
+create table DETAIL (
+     Num_OF int not null,
+     NomProd char(30) not null,
+     IngBase1 char(20) not null,
+     IngBase2 char(20),
+     IngBase3 char(20),
+     IngBase4 char(20),
+     IngOpt1 char(20),
+     IngOpt2 char(20),
+     IngOpt3 char(20),
+     IngOpt4 char(20),
+     DateArchiv date,
+     IdProd int not null,
+     constraint ID_DETAIL_ID primary key (Num_OF));
+
+create table FOURN_INGR (
+     NomFourn char(25) not null,
+     IdIngred int not null,
+     PrixUHT float(1) not null,
+     constraint ID_Provient_ID primary key (NomFourn, IdIngred));
+
+create table FOURNISSEUR (
+     NomFourn char(25) not null,
+     Adresse char(30) not null,
+     CodePostal char(5) not null,
+     Ville char(20) not null,
+     Tel char(12) not null,
+     DateArchiv date,
+     constraint ID_FOURNISSEUR_ID primary key (NomFourn));
+
+create table INGREDIENT (
+     IdIngred int not null,
+     NomIngred char(30) not null,
+     Frais char(1) not null,
+     Unite char(10) default '"sans"' not null,
+     StockMin int not null,
+     StockReel float(7) not null,
+     PrixUHT_Moyen float(5) not null,
+     Q_A_Com int not null,
+     DateArchiv date,
+     constraint ID_INGREDIENT_ID primary key (IdIngred));
+
+create table LIVREUR (
+     IdLivreur int not null,
+     Nom char(20) not null,
+     Prenom char(20) not null,
+     Tel char(16) not null,
+     NumSS char(15) not null,
+     Disponible char not null,
+     DateArchiv date,
+     constraint ID_LIVREUR_ID primary key (IdLivreur));
+
+create table PROD_INGR (
+     IdIngred int not null,
+     IdProd int not null,
+     Quant int not null,
+     constraint ID_Comporte_ID primary key (IdIngred, IdProd));
+
+create table PRODUIT (
+     IdProd int not null,
+     NomProd char(20) not null,
+     Active char not null,
+     Taille char(1),
+     NbIngBase int,
+     NbIngOpt int,
+     PrixUHT float(5) not null,
+     Image char(50),
+     IngBase1 char(20) not null,
+     IngBase2 char(20),
+     IngBase3 char(20),
+     IngBase4 char(20),
+     IngBase5 char(20),
+     IngOpt1 char(20),
+     IngOpt2 char(20),
+     IngOpt3 char(20),
+     IngOpt4 char(20),
+     IngOpt5 char(20),
+     IngOpt6 char(20),
+     NbOptMax int,
+     DateArchiv date,
+     constraint ID_PRODUIT_ID primary key (IdProd));
+
+create table RESPONSABLE (
+     IdRes int not null,
+     Nom char(25) not null,
+     Prenom char(20) not null,
+     Tel char(10) not null,
+     constraint ID_RESPONSABLE_ID primary key (IdRes));
+
+
+-- Constraints Section
+-- ___________________ 
+
+alter table COM_DET add constraint FKCon_DET_FK
+     foreign key (Num_OF)
+     references DETAIL (Num_OF);
+
+alter table COM_DET add constraint FKCon_COM
+     foreign key (NumCom)
+     references COMMANDE (NumCom);
+
+alter table COMMANDE add constraint FKLivre
+     foreign key (IdLivreur)
+     references LIVREUR (IdLivreur);
+
+alter table DET_INGR add constraint FKUti_ING
+     foreign key (IdIngred)
+     references INGREDIENT (IdIngred);
+
+alter table DET_INGR add constraint FKUti_DET
+     foreign key (Num_OF)
+     references DETAIL (Num_OF);
+
+-- Not implemented
+-- alter table DETAIL add constraint ID_DETAIL_CHK
+--     check(exists(select * from DET_INGR
+--                  where DET_INGR.Num_OF = Num_OF)); 
+
+-- Not implemented
+-- alter table DETAIL add constraint ID_DETAIL_CHK
+--     check(exists(select * from COM_DET
+--                  where COM_DET.Num_OF = Num_OF)); 
+
+alter table DETAIL add constraint FKEstChoisi
+     foreign key (IdProd)
+     references PRODUIT (IdProd);
+
+alter table FOURN_INGR add constraint FKPro_ING
+     foreign key (IdIngred)
+     references INGREDIENT (IdIngred);
+
+alter table FOURN_INGR add constraint FKPro_FOU
+     foreign key (NomFourn)
+     references FOURNISSEUR (NomFourn);
+
+alter table PROD_INGR add constraint FKCom_PRO
+     foreign key (IdProd)
+     references PRODUIT (IdProd);
+
+alter table PROD_INGR add constraint FKCom_ING
+     foreign key (IdIngred)
+     references INGREDIENT (IdIngred);
+
+-- Not implemented
+-- alter table PRODUIT add constraint ID_PRODUIT_CHK
+--     check(exists(select * from PROD_INGR
+--                  where PROD_INGR.IdProd = IdProd)); 
+
+
+-- Index Section
+-- _____________ 
+
+create unique index FKCon_DET_IND
+     on COM_DET (Num_OF);
+
+create unique index ID_COMMANDE_IND
+     on COMMANDE (NumCom);
+
+create unique index ID_Utilise_IND
+     on DET_INGR (IdIngred, Num_OF);
+
+create unique index ID_DETAIL_IND
+     on DETAIL (Num_OF);
+
+create unique index ID_Provient_IND
+     on FOURN_INGR (NomFourn, IdIngred);
+
+create unique index ID_FOURNISSEUR_IND
+     on FOURNISSEUR (NomFourn);
+
+create unique index ID_INGREDIENT_IND
+     on INGREDIENT (IdIngred);
+
+create unique index ID_LIVREUR_IND
+     on LIVREUR (IdLivreur);
+
+create unique index ID_Comporte_IND
+     on PROD_INGR (IdIngred, IdProd);
+
+create unique index ID_PRODUIT_IND
+     on PRODUIT (IdProd);
+
+create unique index ID_RESPONSABLE_IND
+     on RESPONSABLE (IdRes);
 
