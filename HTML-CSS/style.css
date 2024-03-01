@@ -32,7 +32,7 @@ body {
     background-color: #EEEEEE;
     color: black;
     font-family: Arial, sans-serif; /* A modifier à la fin */
-    /*padding: 20px; */
+    /* padding: 20px; */
 }
 
 #wrapper {
@@ -43,9 +43,17 @@ body {
 
 header {
     color: white;
-    background-image: url('Images/jpeg/wood.jpg');
     padding: 10px;
     text-align: center;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -112,7 +120,7 @@ label {
 
 input, textarea {
     width: 100%;
-    padding: 8px;
+    padding: 6px;
     margin-bottom: 10px;
     border: 1px solid #CCCCCC;
     border-radius: 3px;
@@ -133,7 +141,6 @@ button:hover {
 
 footer {
     color: white;
-    background-image: url('Images/jpeg/wood.jpg');
     text-align: center;
     padding: 10px;
     margin-top: 20px;
