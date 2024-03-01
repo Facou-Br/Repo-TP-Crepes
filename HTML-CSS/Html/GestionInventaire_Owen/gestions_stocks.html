@@ -5,9 +5,26 @@
         <link rel="stylesheet" href="../../style.css">
         <meta charset="utf-8">
         <style>
-            .recherche {
+            .recherche, #bas{
                 height: fit-content;
                 width: fit-content;
+                float: left;
+                padding: 0 10px;
+            }
+            #rechercher {
+                margin: 0 10px;
+            }
+            #resultat {
+                margin: 0 10px;
+            }
+            footer{
+                color: white;
+                text-align: center;
+                position: absolute;
+                bottom: 0;
+                left: 0; 
+                right: 0;
+
             }
         </style>
     </head>
@@ -19,6 +36,7 @@
                     <a href="gestion_fournisseurs.html">Fournisseurs</a>
                 </nav>
             </header>
+            <br>
             <div id="rechercher">
                 <div class="recherche"><input id="id" placeholder="ID"/></div>
                 <div class="recherche"><input id="nom" placeholder="Nom"/></div>
@@ -27,6 +45,7 @@
                 <div class="recherche"><input id="stockMax" placeholder="Stock maximum"/></div>
                 <button id="rechercher">Rechercher</button>
             </div>
+            <br>
             <div id="resultat">
                 <table>
                     <tr>
@@ -47,16 +66,25 @@
                         <td>0.6€</td>
                         <td>2024-02-27</td>
                     </tr>
+                        <td>2</td>
+                        <td>Carotte</td>
+                        <td>30</td>
+                        <td>5</td>
+                        <td>20</td>
+                        <td>0.5€</td>
+                        <td>2024-02-27</td>
                 </table>
             </div>
-            
+            <br>
             <div id="bas">
-                <div id="date_inv"><p>Inventaire en date du </p><input placeholder="Date"></input></div>
+                <p>Inventaire en date du : </p>
+                <input placeholder="Date"/>
                 <a href="#"><button id="rapport" class="bouton">Rapport</button></a>
                 <a href="#"><button id="ajouter" class="bouton">Ajouter</button></a>
                 <a href="#"></a><button id="modifier" class="bouton">Modifier</button>
                 <a href="#"></a><button id="supprimer" class="bouton">Supprimer</button>
             </div>
+            <br><br>
             <footer>
                 <p>Interface de stockage</p>
             </footer>
