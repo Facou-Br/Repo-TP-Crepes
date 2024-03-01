@@ -4,6 +4,26 @@ document.getElementById('formLivreur').addEventListener('submit', function(e){
 });
 
 function ajouterLivreur() {
+    let nom = document.getElementById('nom').value;
+    let prenom = document.getElementById('prenom').value;
+    let tel = document.getElementById('tel').value;
+    let numSS = document.getElementById('numSS').value;
+
+    // Validation du téléphone
+    let regexTel = /^(\+\d{1,3})?\d{8,10}$/;
+    if (!regexTel.test(tel)) {
+        alert("Le format du numéro de téléphone est invalide.");
+        return;
+    }
+
+    // Validation du numéro SS
+    let regexSS = /^\d+$/;
+    if (!regexSS.test(numSS)) {
+        alert("Le format du numéro de sécurité sociale est invalide.");
+        return;
+    }
+
+    // Si tout est valide, procédez avec la création du FormData et l'appel AJAX
     let formData = new FormData(document.getElementById('formLivreur'));
     formData.append('action', 'ajouter'); // Ajouter une action pour le switch PHP
 
@@ -27,10 +47,41 @@ function ajouterLivreur() {
 
 
 function afficherLivreurs() {
-    const tbody = document.getElementById('listeLivreurs').getElementsByTagName('tbody')[0];
-    const tr = ``;
-    tbody.innerHTML += tr;
+    $.ajax({
+        url: '../../../Scripts/PhP/gestionLivreurs.php',
+        type: 'POST',
+        data: {action: 'afficher'},
+        dataType: 'json'
+    })
+    .done(function(data) {
+        const tbody = document.getElementById('listeLivreurs').getElementsByTagName('tbody')[0];
+        tbody.innerHTML = ''; // Réinitialiser le contenu du tbody
+        data.livreurs.forEach(function(livreur) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><input type="text" class="edit-nom" value="${livreur.Nom}"></td>
+                <td><input type="text" class="edit-prenom" value="${livreur.Prenom}"></td>
+                <td><input type="text" class="edit-tel" value="${livreur.Tel}"></td>
+                <td><input type="text" class="edit-numSS" value="${livreur.NumSS}"></td>
+                <td>
+                    <select class="edit-disponible">
+                        <option value="1" ${livreur.Disponible ? 'selected' : ''}>Oui</option>
+                        <option value="0" ${!livreur.Disponible ? 'selected' : ''}>Non</option>
+                    </select>
+                </td>
+                <td>
+                    <button onclick="enregistrerModification(${livreur.IdLivreur}, this.parentNode.parentNode)">Modifier</button>
+                    <button onclick="archiverLivreur(${livreur.IdLivreur})">Archiver</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    })
+    .fail(function(jqXHR, textStatus) {
+        console.error('Erreur:', textStatus);
+    });
 }
+
 
 function modifierLivreur(id) {
     let formData = new FormData();
@@ -60,7 +111,7 @@ function archiverLivreur(id) {
     formData.append('idLivreur', id);
 
     $.ajax({
-        url: '/Scripts/PhP/gestionLivreurs.php',
+        url: '../../../Scripts/PhP/gestionLivreurs.php',
         type: 'POST',
         data: formData,
         contentType: false,
@@ -85,24 +136,59 @@ function afficherLivreurs() {
     })
     .done(function(data) {
         const tbody = document.getElementById('listeLivreurs').getElementsByTagName('tbody')[0];
-        tbody.innerHTML = '';
-        data.forEach(function(livreur) {
-            const tr = `<tr>
-                            <td>${livreur.Nom}</td>
-                            <td>${livreur.Prenom}</td>
-                            <td>${livreur.Tel}</td>
-                            <td>${livreur.Disponible ? 'Oui' : 'Non'}</td>
-                            <td>
-                                <button onclick="modifierLivreur(${livreur.IdLivreur})">Modifier</button>
-                                <button onclick="archiverLivreur(${livreur.IdLivreur})">Archiver</button>
-                            </td>
-                        </tr>`;
-            tbody.innerHTML += tr;
+        tbody.innerHTML = ''; // Réinitialiser le contenu du tbody
+        data.livreurs.forEach(function(livreur) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><input type="text" class="edit-nom" value="${livreur.Nom}"></td>
+                <td><input type="text" class="edit-prenom" value="${livreur.Prenom}"></td>
+                <td><input type="text" class="edit-tel" value="${livreur.Tel}"></td>
+                <td>
+                    <select class="edit-disponible">
+                        <option value="1" ${livreur.Disponible ? 'selected' : ''}>Oui</option>
+                        <option value="0" ${!livreur.Disponible ? 'selected' : ''}>Non</option>
+                    </select>
+                </td>
+                <td>
+                    <button onclick="enregistrerModification(${livreur.IdLivreur}, this.parentNode.parentNode)">Modifier</button>
+                    <button onclick="archiverLivreur(${livreur.IdLivreur})">Archiver</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
         });
     })
     .fail(function(jqXHR, textStatus) {
         console.error('Erreur:', textStatus);
     });
 }
+
+function enregistrerModification(idLivreur, row) {
+    let formData = new FormData();
+    formData.append('action', 'modifier');
+    formData.append('idLivreur', idLivreur);
+    formData.append('nom', row.querySelector('.edit-nom').value);
+    formData.append('prenom', row.querySelector('.edit-prenom').value);
+    formData.append('tel', row.querySelector('.edit-tel').value);
+    formData.append('disponible', row.querySelector('.edit-disponible').value);
+
+    $.ajax({
+        url: '../../../Scripts/PhP/gestionLivreurs.php',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        dataType: 'json'
+    })
+    .done(function(data) {
+        console.log(data);
+        alert('Modification enregistrée avec succès');
+        afficherLivreurs(); // Recharger la liste pour afficher les modifications
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+        console.error('Erreur:', textStatus, 'Détails:', errorThrown);
+        alert('Erreur lors de l\'enregistrement des modifications');
+    });
+}
+
 
 afficherLivreurs();

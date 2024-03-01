@@ -91,16 +91,16 @@ create table INGREDIENT (
      DateArchiv date,
      constraint ID_INGREDIENT_ID primary key (IdIngred));
 
-     CREATE TABLE LIVREUR (
-         IdLivreur INT NOT NULL AUTO_INCREMENT,
-         Nom CHAR(20) NOT NULL,
-         Prenom CHAR(20) NOT NULL,
-         Tel CHAR(16) NOT NULL,
-         NumSS CHAR(15) NOT NULL,
-         Disponible CHAR NOT NULL,
-         DateArchiv DATE,
-         CONSTRAINT ID_LIVREUR_PK PRIMARY KEY (IdLivreur)
-     );
+CREATE TABLE LIVREUR (
+     IdLivreur INT NOT NULL AUTO_INCREMENT,
+     Nom CHAR(20) NOT NULL,
+     Prenom CHAR(20) NOT NULL,
+     Tel CHAR(16) NOT NULL,
+     NumSS CHAR(15) NOT NULL,
+     Disponible CHAR NOT NULL,
+     DateArchiv DATE,
+     CONSTRAINT ID_LIVREUR_PK PRIMARY KEY (IdLivreur)
+ );
 
 
 create table PROD_INGR (
