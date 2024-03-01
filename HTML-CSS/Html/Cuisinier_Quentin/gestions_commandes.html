@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ordre de Fabrication - Crêpes</title>
+        <link rel="stylesheet" href="../.././style.css">
+        <style>
+            .commandes {
+                display: grid;
+                margin: 30px;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 20px;
+            }
+
+            p {
+                margin-bottom: 5px;
+            }
+        </style>
+        <script src="../../.././Scripts/JavaScript/GestionsCommandes/script_cuisinier.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>Crêpes - Ordre de Fabrication</h1>
+            </header>
+            <div>
+                <div class="commandes" id="commandesList"></div>
+            </div>
+        </div>  <!-- WRAPPER -->
+    </body>
+</html>
+
