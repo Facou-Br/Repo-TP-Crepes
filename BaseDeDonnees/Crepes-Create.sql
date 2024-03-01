@@ -1,23 +1,23 @@
 -- *********************************************
--- * SQL MySQL generation                      
+-- * SQL MySQL generation
 -- *--------------------------------------------
--- * DB-MAIN version: 11.0.2              
--- * Generator date: Sep 14 2021              
--- * Generation date: Fri Mar  1 10:07:37 2024 
--- * LUN file: C:\Users\OO\Downloads\PizzaTacos6.lun 
--- * Schema: Physique/6 
--- ********************************************* 
+-- * DB-MAIN version: 11.0.2
+-- * Generator date: Sep 14 2021
+-- * Generation date: Fri Mar  1 10:07:37 2024
+-- * LUN file: C:\Users\OO\Downloads\PizzaTacos6.lun
+-- * Schema: Physique/6
+-- *********************************************
 
 
 -- Database Section
--- ________________ 
+-- ________________
 
 create database Physique;
 use Physique;
 
 
 -- Tables Section
--- _____________ 
+-- _____________
 
 create table COM_DET (
      Num_OF int not null,
@@ -34,10 +34,10 @@ create table COMMANDE (
      VilClient char(20),
      Date date not null,
      HeureDispo date not null,
-     TypeEmbal char(1) default 'carton' not null,
-     A_Livrer char(1) default 'N' not null,
+     TypeEmbal char(1)not null,
+     A_Livrer char(1) not null,
      EtatCde char(15) not null,
-     EtatLivraison char(1) default 'N',
+     EtatLivraison char(1),
      CoutLiv float(6),
      TotalTTC float(5),
      DateArchiv date,
@@ -140,7 +140,7 @@ create table RESPONSABLE (
 
 
 -- Constraints Section
--- ___________________ 
+-- ___________________
 
 alter table COM_DET add constraint FKCon_DET_FK
      foreign key (Num_OF)
@@ -165,12 +165,12 @@ alter table DET_INGR add constraint FKUti_DET
 -- Not implemented
 -- alter table DETAIL add constraint ID_DETAIL_CHK
 --     check(exists(select * from DET_INGR
---                  where DET_INGR.Num_OF = Num_OF)); 
+--                  where DET_INGR.Num_OF = Num_OF));
 
 -- Not implemented
 -- alter table DETAIL add constraint ID_DETAIL_CHK
 --     check(exists(select * from COM_DET
---                  where COM_DET.Num_OF = Num_OF)); 
+--                  where COM_DET.Num_OF = Num_OF));
 
 alter table DETAIL add constraint FKEstChoisi
      foreign key (IdProd)
@@ -195,11 +195,11 @@ alter table PROD_INGR add constraint FKCom_ING
 -- Not implemented
 -- alter table PRODUIT add constraint ID_PRODUIT_CHK
 --     check(exists(select * from PROD_INGR
---                  where PROD_INGR.IdProd = IdProd)); 
+--                  where PROD_INGR.IdProd = IdProd));
 
 
 -- Index Section
--- _____________ 
+-- _____________
 
 create unique index FKCon_DET_IND
      on COM_DET (Num_OF);
@@ -233,4 +233,3 @@ create unique index ID_PRODUIT_IND
 
 create unique index ID_RESPONSABLE_IND
      on RESPONSABLE (IdRes);
-

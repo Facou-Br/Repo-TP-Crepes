@@ -1,12 +1,14 @@
 <?php
 $host = "localhost";
-$user = "crepesco";
-$pwd = "4s2P7R2nmm";
-$bdd = "crepesco_test";
+$user = "root";
+$pwd = "";
+$bdd = "physique";
+
 
 //Connexion à la base de données
 try {
-    $connexionBDB = new PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8', $user, $pass);
+    $connexionBDB = new PDO('mysql:host='.$host.';dbname='.$bdd.';charset=utf8', $user, $pwd);
+    echo "Connection réussie à la BDD";
 } catch (Exception $e) {
     echo "Erreur de connexion à la base de données <BR>";
     die('Erreur : ' . $e->getMessage());
