@@ -1,77 +1,84 @@
-let commandes = [
-    { id: 1, nom: "Crepe au Nutella", temps: "10:00", statut: "En attente" },
-    { id: 2, nom: "Crepe à la confiture", temps: "10:30", statut: "En attente" },
-    { id: 3, nom: "Crepe au sucre", temps: "11:00", statut: "En attente" },
-    { id: 4, nom: "Crepe au Nutella", temps: "10:00", statut: "En attente" },
-    { id: 5, nom: "Crepe à la confiture", temps: "10:30", statut: "En attente" },
-    { id: 6, nom: "Crepe au sucre", temps: "15:00", statut: "En attente" },
-    { id: 7, nom: "Crepe à la confiture", temps: "14:00", statut: "En attente" },
-    { id: 8, nom: "Crepe au Nutella", temps: "13:00", statut: "En attente" },
-    { id: 9, nom: "Crepe au sucre", temps: "10:00", statut: "En attente" },
-    { id: 10, nom: "Crepe à la confiture", temps: "22:00", statut: "En attente" }
-];
+function chargerCommandes() {
+    $.getJSON("commandes.json", function (data) {
+        data.commandes.sort((a, b) => {
+            return a.temps.localeCompare(b.temps);
+        });
 
-let crepes = [
-    { idCrepe: 1, nom: "Crepe au Nutella", ingredient1: "Farine", ingredient2: "Oeuf", ingredient3: "Lait", ingredient4: "Nutella" },
-    { idCrepe: 2, nom: "Crepe à la confiture", ingredient1: "Farine", ingredient2: "Oeuf", ingredient3: "Lait", ingredient4: "Confiture" },
-    { idCrepe: 3, nom: "Crepe au sucre", ingredient1: "Farine", ingredient2: "Oeuf", ingredient3: "Lait", ingredient4: "Sucre" }
-];
+        let listeCommandes = $("#commandesList");
+        listeCommandes.html("");
 
-document.addEventListener('DOMContentLoaded', function() {
-    afficherCommandes();
-});
-
-function afficherCommandes() {
-    let listeCommandes = document.getElementById("commandesList");
-    listeCommandes.innerHTML = "";
-
-    commandes.sort((a, b) => {
-        return a.temps.localeCompare(b.temps);
-    });
-
-    commandes.forEach(commande => {
-        let elementCommande = document.createElement("div");
-        elementCommande.innerHTML = `
-            <div class="commande">
-                <p>Nom : ${commande.nom}</p>
-                <p>Heure de mise à disposition : ${commande.temps}</p>
-                <p>Statut : ${commande.statut}</p>
-                <button onclick="commencerCommande(${commande.id})">Commencer</button>
-                <button onclick="terminerCommande(${commande.id})">Terminer</button>
-                <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
-                <hr>
-            </div>
-        `;
-        listeCommandes.appendChild(elementCommande);
+        data.commandes.forEach(commande => {
+            if (commande.statut === "En attente") {
+                let elementCommande = `
+                    <div>
+                        <p>Nom : ${commande.nom}</p>
+                        <p>Heure de mise à disposition : ${commande.temps}</p>
+                        <p>Statut : ${commande.statut}</p>
+                        <button onclick="terminerCommande(${commande.id})">Terminer</button>
+                        <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
+                        <hr>
+                    </div>
+                `;
+                listeCommandes.append(elementCommande);
+            }
+        });
     });
 }
 
-
-function commencerCommande(idCommande) {
-    let commande = commandes.find(commandes => commandes.id === idCommande);
-    if (commande.statut === "En attente") {
-        let progressionCommande = commandes.some(commande => commande.statut === "En cours");
-        if (!progressionCommande) {
-            commande.statut = "En cours";
-            afficherCommandes();
-        } else {
-            alert("Une commande est dejà en cours. Terminez-la d'abord.");
-        }
-    } else {
-        alert("Cette commande a dejà ete commencee ou terminee.");
-    }
-}
 
 function terminerCommande(idCommande) {
-    let commande = commandes.find(commandes => commandes.id === idCommande);
-    if (commande.statut === "En cours") {
-        commande.statut = "Terminée";
-        afficherCommandes();
-    } else {
-        alert("Cette commande ne peut pas etre terminee car elle n'est pas en cours.");
-    }
+    $.getJSON("commandes.json", function (data) {
+        let commandes = data.commandes;
+
+        let commande = commandes.find(commande => commande.id === idCommande);
+
+        if (commande) {
+            if (commande.statut === "En attente") {
+                commande.statut = "Terminée";
+                sauvegarderCommandes(data);
+            } else {
+                alert("Cette commande ne peut pas être terminée car elle n'est pas en attente.");
+            }
+        } else {
+            alert("Commande non trouvée.");
+        }
+    });
+}
+
+function sauvegarderCommandes(data) {
+    $.ajax({
+        type: "POST",
+        url: "sauvegarder_commandes.php",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function(response) {
+            console.log("Commande terminée avec succès !");
+            chargerCommandes();
+        },
+        error: function(error) {
+            console.error("Erreur lors de la sauvegarde des commandes :", error);
+            alert("Une erreur s'est produite lors de la sauvegarde des commandes.");
+        }
+    });
 }
 
 function afficherIngredients(id) {
+    $.getJSON("commandes.json", function (data) {
+        let commande = data.commandes.find(commande => commande.id === id);
 
+        if (commande) {
+            let ingredients = [];
+            for (let i = 1; i <= 4; i++) {
+                let ingredientKey = "ingredient" + i;
+                if (commande[ingredientKey]) {
+                    ingredients.push(commande[ingredientKey]);
+                }
+            }
+
+            alert("Ingrédients de la commande " + commande.nom + " : \n\n" + ingredients.join("\n"));
+        } else {
+            alert("Commande non trouvée.");
+        }
+    });
 }
+

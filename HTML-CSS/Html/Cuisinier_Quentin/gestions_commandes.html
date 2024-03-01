@@ -4,27 +4,37 @@
         <meta charset="UTF-8">
         <title>Ordre de Fabrication - Crêpes</title>
         <link rel="stylesheet" href="../.././style.css">
+        <script src="https://code.jquery.com/jquery-latest.js"></script>
+        <script src="../../.././Scripts/JavaScript/GestionsCommandes/script_cuisinier.js"></script>
         <style>
-            .commandes {
+            #commandesList {
                 display: grid;
                 margin: 30px;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(4, 1fr);
                 grid-gap: 20px;
+            }
+
+            hr {
+                margin-right: 50px;
             }
 
             p {
                 margin-bottom: 5px;
             }
         </style>
-        <script src="../../.././Scripts/JavaScript/GestionsCommandes/script_cuisinier.js"></script>
     </head>
     <body>
         <div class="wrapper">
             <header>
-                <h1>Crêpes - Ordre de Fabrication</h1>
+                <h1>Crêpes - Liste des commandes</h1>
             </header>
             <div>
-                <div class="commandes" id="commandesList"></div>
+                <ul id="commandesList"></ul>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        chargerCommandes();
+                    });
+                </script>
             </div>
         </div>  <!-- WRAPPER -->
     </body>
