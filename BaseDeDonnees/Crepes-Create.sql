@@ -34,10 +34,10 @@ create table COMMANDE (
      VilClient char(20),
      Date date not null,
      HeureDispo date not null,
-     TypeEmbal char(1)not null,
-     A_Livrer char(1) not null,
+     TypeEmbal char(1) default 'carton' not null,
+     A_Livrer char(1) default 'N' not null,
      EtatCde char(15) not null,
-     EtatLivraison char(1),
+     EtatLivraison char(1) default 'N',
      CoutLiv float(6),
      TotalTTC float(5),
      DateArchiv date,
@@ -91,15 +91,17 @@ create table INGREDIENT (
      DateArchiv date,
      constraint ID_INGREDIENT_ID primary key (IdIngred));
 
-create table LIVREUR (
-     IdLivreur int not null,
-     Nom char(20) not null,
-     Prenom char(20) not null,
-     Tel char(16) not null,
-     NumSS char(15) not null,
-     Disponible char not null,
-     DateArchiv date,
-     constraint ID_LIVREUR_ID primary key (IdLivreur));
+     CREATE TABLE LIVREUR (
+         IdLivreur INT NOT NULL AUTO_INCREMENT,
+         Nom CHAR(20) NOT NULL,
+         Prenom CHAR(20) NOT NULL,
+         Tel CHAR(16) NOT NULL,
+         NumSS CHAR(15) NOT NULL,
+         Disponible CHAR NOT NULL,
+         DateArchiv DATE,
+         CONSTRAINT ID_LIVREUR_PK PRIMARY KEY (IdLivreur)
+     );
+
 
 create table PROD_INGR (
      IdIngred int not null,

@@ -8,7 +8,6 @@ $bdd = "physique";
 //Connexion à la base de données
 try {
     $connexionBDB = new PDO('mysql:host='.$host.';dbname='.$bdd.';charset=utf8', $user, $pwd);
-    echo "Connection réussie à la BDD";
 } catch (Exception $e) {
     echo "Erreur de connexion à la base de données <BR>";
     die('Erreur : ' . $e->getMessage());

@@ -20,8 +20,8 @@ function ajouterLivreur() {
         console.log(data);
         afficherLivreurs(); // Actualiser l'affichage des livreurs
     })
-    .fail(function(jqXHR, textStatus) {
-        console.error('Erreur:', textStatus);
+    .fail(function(jqXHR, textStatus, errorThrown) {
+        console.error('Erreur:', textStatus, 'Détails:', errorThrown, 'Réponse:', jqXHR.responseText);
     });
 }
 
