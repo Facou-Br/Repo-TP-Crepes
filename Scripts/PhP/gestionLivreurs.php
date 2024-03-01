@@ -48,21 +48,25 @@ function ajouterLivreur($pdo) {
 }
 
 function modifierLivreur($pdo) {
-    $idLivreur = $_POST['idLivreur'];
-    $nom = $_POST['nom'] ?? '';
-    $prenom = $_POST['prenom'] ?? '';
-    $tel = $_POST['tel'] ?? '';
-    $numSS = $_POST['numSS'] ?? '';
-    $disponible = $_POST['disponible'] ?? '';
+    $idLivreur = filter_input(INPUT_POST, 'idLivreur', FILTER_SANITIZE_NUMBER_INT);
+    $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
+    $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
+    $tel = filter_input(INPUT_POST, 'tel', FILTER_SANITIZE_STRING);
+    $numSS = filter_input(INPUT_POST, 'numSS', FILTER_SANITIZE_STRING);
+    $disponible = filter_input(INPUT_POST, 'disponible', FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) ? 1 : 0;
 
     $sql = "UPDATE livreur SET Nom = ?, Prenom = ?, Tel = ?, NumSS = ?, Disponible = ? WHERE IdLivreur = ?";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$nom, $prenom, $tel, $numSS, $disponible, $idLivreur]);
-    echo json_encode(['success' => true, 'message' => 'Livreur modifié avec succès']);
+    if ($stmt->execute([$nom, $prenom, $tel, $numSS, $disponible, $idLivreur])) {
+        echo json_encode(['success' => true, 'message' => 'Livreur modifié avec succès']);
+    } else {
+        throw new Exception('Erreur lors de la modification du livreur.');
+    }
 }
 
 function archiverLivreur($pdo) {
-    $idLivreur = $_POST['idLivreur'];
+    $idLivreur = filter_input(INPUT_POST, 'idLivreur', FILTER_SANITIZE_NUMBER_INT);
+
     $sql = "UPDATE livreur SET DateArchiv = NOW() WHERE IdLivreur = ?";
     $stmt = $pdo->prepare($sql);
     if ($stmt->execute([$idLivreur])) {
