@@ -2,8 +2,14 @@
 <html lang="fr">
     <head>
         <title>Interface de stockage</title>
-        <link rel="stylesheet" href="../../Css/style_gerant.css">
+        <link rel="stylesheet" href="../../style.css">
         <meta charset="utf-8">
+        <style>
+            .recherche {
+                height: fit-content;
+                width: fit-content;
+            }
+        </style>
     </head>
     <body>
         <div id="page" class="wrapper">
@@ -14,11 +20,11 @@
                 </nav>
             </header>
             <div id="rechercher">
-                <div class="recherche"><input id="id" placeholder="ID"></input></div>
-                <div class="recherche"><input id="nom" placeholder="Nom"></input></div>
-                <div class="recherche"><input id="unite" placeholder="Nombre d'unité"></input></div>
-                <div class="recherche"><input id="stockMin" placeholder="Stock minimum"></input></div>
-                <div class="recherche"><input id="stockMax" placeholder="Stock maximum"></input></div>
+                <div class="recherche"><input id="id" placeholder="ID"/></div>
+                <div class="recherche"><input id="nom" placeholder="Nom"/></div>
+                <div class="recherche"><input id="unite" placeholder="Nombre d'unité"/></div>
+                <div class="recherche"><input id="stockMin" placeholder="Stock minimum"/></div>
+                <div class="recherche"><input id="stockMax" placeholder="Stock maximum"/></div>
                 <button id="rechercher">Rechercher</button>
             </div>
             <div id="resultat">
