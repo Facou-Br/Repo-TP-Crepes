@@ -12,7 +12,7 @@
         },
         {
             "id": 2,
-            "nom": "Crepe à la confiture",
+            "nom": "Crepe \u00e0 la confiture",
             "temps": "10:30",
             "statut": "En attente",
             "ingredient1": "Farine",
@@ -42,7 +42,7 @@
         },
         {
             "id": 5,
-            "nom": "Crepe à la confiture",
+            "nom": "Crepe \u00e0 la confiture",
             "temps": "10:30",
             "statut": "En attente",
             "ingredient1": "Farine",
@@ -62,7 +62,7 @@
         },
         {
             "id": 7,
-            "nom": "Crepe à la confiture",
+            "nom": "Crepe \u00e0 la confiture",
             "temps": "14:00",
             "statut": "En attente",
             "ingredient1": "Farine",
@@ -92,7 +92,7 @@
         },
         {
             "id": 10,
-            "nom": "Crepe à la confiture",
+            "nom": "Crepe \u00e0 la confiture",
             "temps": "22:00",
             "statut": "En attente",
             "ingredient1": "Farine",

@@ -3,7 +3,7 @@
 
     if ($jsonData) {
         $data = json_decode($jsonData, true);
-        $file = 'commandes.json';
+        $file = '.././JavaScript/GestionsCommandes/commandes.json';
 
         file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT));
         $response = array('success' => true, 'message' => 'Commandes sauvegardées avec succès.');
