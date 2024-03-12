@@ -26,6 +26,14 @@
                 right: 0;
 
             }
+            table{
+                align-items: center;
+                border-collapse : separate;
+                border-spacing : 15px;
+            }
+            td{
+                text-align: center;
+            }
         </style>
     </head>
     <body>
@@ -63,6 +71,8 @@
                         <td>10</td>
                         <td>32</td>
                         <td>0.6€</td>
+                        <td><button>Test</button></td>
+
                     </tr>
                     <tr>
                         <td>2</td>
@@ -71,6 +81,7 @@
                         <td>5</td>
                         <td>20</td>
                         <td>0.5€</td>
+                        <td><button>Test</button></td>
                     </tr>
                 </table>
             </div>
