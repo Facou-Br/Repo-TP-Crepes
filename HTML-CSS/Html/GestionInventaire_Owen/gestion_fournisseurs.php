@@ -9,6 +9,10 @@
                 color: white;
                 text-decoration: none;
             }
+            footer{
+                position: fixed;
+                bottom:0
+            }
         </style>
     </head>
     <body>
@@ -33,10 +37,39 @@
                         <th>Email</th>
                     </tr>
                     <tr>
-                        <td>Leclerc</td>
-                        <td>1 rue de la République</td>
-                        <td>01 02 03 04 05</td>
-                        <td>leclerc@leclerc.fr</td>
+                        <?php
+
+                        require_once '../../../BaseDeDonnees/connexion_gerant.php';
+                        try {
+                            $connex = new PDO('mysql:host=' . $host . ';charset=utf8;dbname=' . $bdd.';port='.$port, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                        }
+                        catch (PDOException $e) {
+                            echo 'Erreur : ' . $e->getMessage() . '<br />';
+                            echo 'N° : ' . $e->getCode();
+                            die();
+                        }
+                        try{
+                            $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
+                            $requete1 = 'SELECT NomFourn, Adresse, CodePostal, Ville FROM `fournisseur`;';
+                            $ligne = $connex->query($requete1);
+                        }
+                        catch (PDOException $e) {
+                            echo 'Erreur : ' . $e->getMessage() . '<br />';
+                            echo 'N° : ' . $e->getCode();
+                            die();
+                        }
+
+                        foreach($ligne as $row) {
+                            echo "<tr>";
+                            echo "<td value='".$row['NomFourn']."'>".$row['NomFourn']."</td>";
+                            echo "<td value='".$row['Adresse']."'>".$row['Adresse']."</td>";
+                            echo "<td value='".$row['CodePostal']."'>".$row['CodePostal']."</td>";
+                            echo "<td value='".$row['Ville']."'>".$row['Ville']."</td>";
+                            echo "<td><button><a href='../../../Scripts/Php/ajouter_stock.php'>Modifier</a></button></td>";
+                            echo "</tr>";
+                        }
+
+                        ?>
                     </tr>
                 </table>
             </div>
