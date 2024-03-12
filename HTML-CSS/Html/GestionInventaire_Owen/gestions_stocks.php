@@ -31,8 +31,13 @@
                 border-collapse : separate;
                 border-spacing : 15px;
             }
+            #stocks{
+                color: #333333;
+                border-color: #333333;
+            }
             td{
                 text-align: center;
+
             }
         </style>
     </head>
@@ -55,34 +60,51 @@
             </div>
             <br>
             <div id="resultat">
-                <table>
+                <table align="center">
+                    <div id="stocks">
                     <tr>
                         <th>Id_Ingrédient</th>
                         <th>Nom Ingrédient</th>
-                        <th>Nombre d'Unité</th>
+                        <th>Seuil Stock</th>
                         <th>Stock Min</th>
-                        <th>Stock Max</th>
+                        <th>Stock Réel</th>
                         <th>Prix UHT</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tomate</td>
-                        <td>50</td>
-                        <td>10</td>
-                        <td>32</td>
-                        <td>0.6€</td>
-                        <td><button>Test</button></td>
+                    <?php
 
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Carotte</td>
-                        <td>30</td>
-                        <td>5</td>
-                        <td>20</td>
-                        <td>0.5€</td>
-                        <td><button>Test</button></td>
-                    </tr>
+                    require_once '../../../BaseDeDonnees/connexion_gerant.php';
+                    try {
+                        $connex = new PDO('mysql:host=' . $host . ';charset=utf8;dbname=' . $bdd.';port='.$port, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                    }
+                    catch (PDOException $e) {
+                        echo 'Erreur : ' . $e->getMessage() . '<br />';
+                        echo 'N° : ' . $e->getCode();
+                        die();
+                    }
+                    try{
+                        $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
+                        $requete1 = 'SELECT IdIngred, NomIngred, SeuilStock, StockMin, StockReel, PrixUHT_Moyen FROM `INGREDIENT`;';
+                        $ligne = $connex->query($requete1);
+                    }
+                    catch (PDOException $e) {
+                        echo 'Erreur : ' . $e->getMessage() . '<br />';
+                        echo 'N° : ' . $e->getCode();
+                        die();
+                    }
+
+                    foreach($ligne as $row) {
+                        echo "<tr>";
+                        echo "<td value='".$row['IdIngred']."'>".$row['IdIngred']."</td>";
+                        echo "<td value='".$row['NomIngred']."'>".$row['NomIngred']."</td>";
+                        echo "<td value='".$row['SeuilStock']."'>".$row['SeuilStock']."</td>";
+                        echo "<td value='".$row['StockMin']."'>".$row['StockMin']."</td>";
+                        echo "<td value='".$row['StockReel']."'>".$row['StockReel']."</td>";
+                        echo "<td value='".$row['PrixUHT_Moyen']."'>".$row['PrixUHT_Moyen']."</td>";
+                        echo "</tr>";
+                    }
+
+                    ?>
+                    </div>
                 </table>
             </div>
             <br>
