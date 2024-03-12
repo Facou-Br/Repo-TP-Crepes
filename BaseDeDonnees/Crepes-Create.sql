@@ -12,8 +12,8 @@
 -- Database Section
 -- ________________
 
-create database Physique;
-use Physique;
+create database creperie;
+use creperie;
 
 
 -- Tables Section
