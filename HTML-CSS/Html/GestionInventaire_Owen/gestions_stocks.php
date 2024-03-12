@@ -5,6 +5,10 @@
         <link rel="stylesheet" href="../../style.css">
         <meta charset="utf-8">
         <style>
+            a {
+                color: white;
+                text-decoration: none;
+            }
             .recherche, #bas{
                 height: fit-content;
                 width: fit-content;
@@ -63,7 +67,6 @@
                 <table align="center">
                     <div id="stocks">
                     <tr>
-                        <th>Id_Ingrédient</th>
                         <th>Nom Ingrédient</th>
                         <th>Seuil Stock</th>
                         <th>Stock Min</th>
@@ -83,7 +86,7 @@
                     }
                     try{
                         $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-                        $requete1 = 'SELECT IdIngred, NomIngred, SeuilStock, StockMin, StockReel, PrixUHT_Moyen FROM `INGREDIENT`;';
+                        $requete1 = 'SELECT NomIngred, SeuilStock, StockMin, StockReel, PrixUHT_Moyen FROM `INGREDIENT`;';
                         $ligne = $connex->query($requete1);
                     }
                     catch (PDOException $e) {
@@ -94,12 +97,12 @@
 
                     foreach($ligne as $row) {
                         echo "<tr>";
-                        echo "<td value='".$row['IdIngred']."'>".$row['IdIngred']."</td>";
                         echo "<td value='".$row['NomIngred']."'>".$row['NomIngred']."</td>";
                         echo "<td value='".$row['SeuilStock']."'>".$row['SeuilStock']."</td>";
                         echo "<td value='".$row['StockMin']."'>".$row['StockMin']."</td>";
                         echo "<td value='".$row['StockReel']."'>".$row['StockReel']."</td>";
                         echo "<td value='".$row['PrixUHT_Moyen']."'>".$row['PrixUHT_Moyen']."</td>";
+                        echo "<td><button><a href='../../../Scripts/Php/ajouter_stock.php'>Modifier</a></button></td>";
                         echo "</tr>";
                     }
 

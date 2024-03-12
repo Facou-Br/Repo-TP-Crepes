@@ -4,6 +4,12 @@
         <meta charset="UTF-8">
         <title>Gestion des fournisseurs</title>
         <link rel="stylesheet" href="../../style.css">
+        <style>
+            a {
+                color: white;
+                text-decoration: none;
+            }
+        </style>
     </head>
     <body>
         <div id="wrapper">
