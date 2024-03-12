@@ -236,7 +236,7 @@ create unique index ID_PRODUIT_IND
 create unique index ID_RESPONSABLE_IND
      on RESPONSABLE (IdRes);
 
---- Insertion de l'utilisateur Admin
+-- Insertion de l'utilisateur Admin
 CREATE USER 'admin'@'%' 
 IDENTIFIED WITH caching_sha2_password  BY '***';
 
@@ -246,11 +246,10 @@ ALTER USER 'admin'@'%' R
 EQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
 GRANT ALL PRIVILEGES ON `creperie`.* TO 'admin'@'%';
 
---- Création de l'utilisateur viewOnly
+-- Création de l'utilisateur viewOnly
 
 CREATE USER 'viewOnly'@'%' IDENTIFIED WITH caching_sha2_password BY '***';GRANT SELECT ON *.* TO 'viewOnly'@'%';
 ALTER USER 'viewOnly'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
 GRANT ALL PRIVILEGES ON `creperie`.* TO 'viewOnly'@'%';
 
---- End of file
-```
+-- End of file
