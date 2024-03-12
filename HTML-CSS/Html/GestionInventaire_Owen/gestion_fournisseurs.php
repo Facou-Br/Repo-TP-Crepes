@@ -65,7 +65,7 @@
                             echo "<td value='".$row['Adresse']."'>".$row['Adresse']."</td>";
                             echo "<td value='".$row['CodePostal']."'>".$row['CodePostal']."</td>";
                             echo "<td value='".$row['Ville']."'>".$row['Ville']."</td>";
-                            echo "<td><button><a href='../../../Scripts/Php/ajouter_stock.php'>Modifier</a></button></td>";
+                            echo "<td><button><a href='../../../Scripts/Php/ajouter_fourn.php'>Modifier</a></button></td>";
                             echo "</tr>";
                         }
 
