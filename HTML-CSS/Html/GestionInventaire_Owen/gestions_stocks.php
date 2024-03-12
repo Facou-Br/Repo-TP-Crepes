@@ -33,7 +33,7 @@
             <header>
                 <h1>Interface de stockage</h1>
                 <nav>
-                    <a href="gestion_fournisseurs.html">Fournisseurs</a>
+                    <a href="gestion_fournisseurs.php">Fournisseurs</a>
                 </nav>
             </header>
             <br>
@@ -55,7 +55,6 @@
                         <th>Stock Min</th>
                         <th>Stock Max</th>
                         <th>Prix UHT</th>
-                        <th>Date Archivage</th>
                     </tr>
                     <tr>
                         <td>1</td>
@@ -64,15 +63,15 @@
                         <td>10</td>
                         <td>32</td>
                         <td>0.6€</td>
-                        <td>2024-02-27</td>
                     </tr>
+                    <tr>
                         <td>2</td>
                         <td>Carotte</td>
                         <td>30</td>
                         <td>5</td>
                         <td>20</td>
                         <td>0.5€</td>
-                        <td>2024-02-27</td>
+                    </tr>
                 </table>
             </div>
             <br>
@@ -81,8 +80,7 @@
                 <input placeholder="Date"/>
                 <a href="#"><button id="rapport" class="bouton">Rapport</button></a>
                 <a href="#"><button id="ajouter" class="bouton">Ajouter</button></a>
-                <a href="#"></a><button id="modifier" class="bouton">Modifier</button>
-                <a href="#"></a><button id="supprimer" class="bouton">Supprimer</button>
+                <a href="#"><button id="modifier" class="bouton">Modifier</button></a>
             </div>
             <br><br>
             <footer>
