@@ -1,7 +1,7 @@
 -- Insertion des données de FOURNISSEUR exemple. Assez simple
 INSERT INTO FOURNISSEUR (NomFourn, Adresse, CodePostal, Ville, Tel, DateArchiv)
 VALUES
-('Nutella', '18 Rue Jacques Monod CS 90058', '76136', 'MONT SAINT AIGNAN', '0800 553 553 ', NOW())
+('Nutella', '18 Rue Jacques Monod CS 90058', '76136', 'MONT SAINT AIGNAN', '0800 553 553 ', NOW()),
 ('Mozzalat', '28 rue Gay Lussac - France', '75005', 'PARIS', '02 32 39 71 68', NOW()),
 ('TransGourmet', 'Lieudit Les Bonnes Filles', '21200', 'Levernois','0826 101 710', NOW()),
 ('Lactalis', '42 rue Rieussec', '53000', 'LAVAL', '02 43 59 59 59', NOW()),
