@@ -34,7 +34,7 @@ create table COMMANDE (
      VilClient char(20),
      Date date not null,
      HeureDispo date not null,
-     TypeEmbal char(1) default 'carton' not null,
+     TypeEmbal char(1) default 'C' not null,
      A_Livrer char(1) default 'N' not null,
      EtatCde char(15) not null,
      EtatLivraison char(1) default 'N',
