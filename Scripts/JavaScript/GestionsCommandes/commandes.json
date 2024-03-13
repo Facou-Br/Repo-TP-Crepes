@@ -3,53 +3,71 @@
         {
             "id": 1,
             "nom": "CrepesSuzette",
-            "temps": "21:24",
+            "temps": "01:00",
             "statut": "En attente",
-            "ingBase1": "Farine",
-            "ingBase2": "Oeufs",
-            "ingBase3": "Lait",
-            "ingBase4": "Nutella",
-            "ingBase5": "Chocolat",
-            "ingOpt1": "Fraise",
-            "ingOpt2": "Banane",
-            "ingOpt3": "Chantilly",
-            "ingOpt4": "Jambon",
-            "ingOpt5": "Bacon",
-            "ingOpt6": ""
+            "ingredients": {
+                "base": [
+                    "Farine",
+                    "Oeufs",
+                    "Lait",
+                    "Nutella",
+                    "Chocolat"
+                ],
+                "optionnels": [
+                    "Fraise",
+                    "Banane",
+                    "Chantilly",
+                    "Jambon",
+                    "Bacon",
+                    "Emmental"
+                ]
+            }
         },
         {
             "id": 2,
             "nom": "CrepesBretonnes",
             "temps": "21:24",
             "statut": "En attente",
-            "ingBase1": "Farine",
-            "ingBase2": "Oeufs",
-            "ingBase3": "Lait",
-            "ingBase4": "Oeuf",
-            "ingBase5": "Jambom",
-            "ingOpt1": "Emental",
-            "ingOpt2": "Fraise",
-            "ingOpt3": "Banane",
-            "ingOpt4": "Chantilly",
-            "ingOpt5": "Jambon",
-            "ingOpt6": "Bacon"
+            "ingredients": {
+                "base": [
+                    "Farine",
+                    "Oeufs",
+                    "Lait",
+                    "Oeuf",
+                    "Jambom"
+                ],
+                "optionnels": [
+                    "Emental",
+                    "Fraise",
+                    "Banane",
+                    "Chantilly",
+                    "Jambon",
+                    "Bacon"
+                ]
+            }
         },
         {
             "id": 3,
             "nom": "Salade",
             "temps": "21:24",
             "statut": "En attente",
-            "ingBase1": "Tomate",
-            "ingBase2": "Salade",
-            "ingBase3": "Pomme de terre",
-            "ingBase4": "Carotte",
-            "ingBase5": "Courgette",
-            "ingOpt1": "Aubergine",
-            "ingOpt2": "Poivron",
-            "ingOpt3": "Oignon",
-            "ingOpt4": "Ail",
-            "ingOpt5": "Huile",
-            "ingOpt6": "Reblochon"
+            "ingredients": {
+                "base": [
+                    "Tomate",
+                    "Salade",
+                    "Pomme de terre",
+                    "Carotte",
+                    "Courgette"
+                ],
+                "optionnels": [
+                    "Aubergine",
+                    "Poivron",
+                    "Oignon",
+                    "Ail",
+                    "Huile",
+                    "Reblochon"
+                ]
+            }
         }
     ]
 }
