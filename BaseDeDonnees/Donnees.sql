@@ -13,7 +13,7 @@ VALUES
 ('Nestle', '7 boulevard Pierre Carle', '77186', 'NOISIEL', '01 60 37 68 00', NOW());
 
 -- Insertion des données de INGREDIENT exemple. Assez simple
-INSERT INTO INGREDIENT (IdIngred, NomIngred, Unite, SeuilStock, StockMin, StockReel, PrixUHT_Moyen, Q_A_Com, DateArchiv)
+INSERT INTO INGREDIENT (NomIngred, Unite, SeuilStock, StockMin, StockReel, PrixUHT_Moyen, Q_A_Com, DateArchiv)
 VALUES
 ('Farine', 'kg', 1, 0, 5, 2, 1, NOW()),
 ('Oeufs', 'unite', 1, 0, 5, 2, 1, NOW()),
@@ -44,7 +44,7 @@ INSERT INTO FOURN_INGR (NomFourn, IdIngred, PrixUHT)
 VALUES
 ()
 
-INSERT INTO LIVREUR (IdLivreur, Nom, Prenom, Tel, NumSS, Disponible, DateArchiv)
+INSERT INTO LIVREUR ( Nom, Prenom, Tel, NumSS, Disponible, DateArchiv)
 VALUES
 ('ROULLET','Rémi', '01 02 03 04 06', '1 04 07 71 014 248 36',1,NOW()),
 ('DUPONT','Jean', '01 02 03 04 07', '1 04 07 71 014 248 37',1,NOW()),
@@ -58,7 +58,7 @@ VALUES
 ('LACROIX','Philippe', '01 02 03 04 15', '1 04 07 71 014 248 45',1,NOW());
 
 
-INSERT INTO COMMANDE (NumCom, NomClient, TelClient, AdrClient, CP_Client, VilleClient, Date, HeureDispo, TypeEmbal, A_Livrer, EtatLivraison, CoutLiv, TotalTTC,	DateArchiv, IdLivreur)
+INSERT INTO COMMANDE (NomClient, TelClient, AdrClient, CP_Client, VilleClient, Date, HeureDispo, TypeEmbal, A_Livrer, EtatLivraison, CoutLiv, TotalTTC,	DateArchiv, IdLivreur)
 VALUES
 ('DUPONT', '01 02 03 04 05', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'preparation', 5, 10, NOW(), 1),
 ('DURAND', '01 02 03 04 06', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'fin_preparation', 5, 10, NOW(), 2),
@@ -68,4 +68,4 @@ VALUES
 ('MOREAU', '01 02 03 04 10', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'en_livraision', 5, 10, NOW(), 6),
 ('SIMON', '01 02 03 04 11', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'livree', 5, 10, NOW(), 7);
 
-INSERT INTO 
+INSERT INTO PRODUIT (NomProd, Active, Taille, NbIngBase, NbIngOpt, 	PrixUHT, Image, IngBase1, IngBase2, IngBase3, IngBase4, IngBase5, IngOpt1, IngOpt2, IngOpt3, IngOpt4, IngOpt5, IngOpt6, NbOptMax, DateArchiv)  
