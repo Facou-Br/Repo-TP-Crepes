@@ -69,31 +69,31 @@ VALUES
 ('CrepesBretonnes', 1, 'M', 3, 2, 2, 'crepes.jpg', 'Farine', 'Oeufs', 'Lait', 'Oeuf', 'Jambom', 'Emental', 'Fraise', 'Banane', 'Chantilly', 'Jambon', 'Bacon', 2, NOW()),
 ('Salade', 1, 'M', 3, 2, 2, 'salade.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, NOW());
 
-INSERT INTO `detail` (`NomProd`, `IngBase1`, `IngBase2`, `IngBase3`, `IngBase4`, `IngOpt1`, `IngOpt2`, `IngOpt3`, `IngOpt4`, `DateArchiv`, `IdProd`) 
+INSERT INTO DETAIL (`NomProd`, `IngBase1`, `IngBase2`, `IngBase3`, `IngBase4`, `IngOpt1`, `IngOpt2`, `IngOpt3`, `IngOpt4`, `DateArchiv`, `IdProd`) 
 VALUES 
 ('CrepesSuzette', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', NOW(), 0),
 ('CrepesBretonnes', 'Farine', 'Oeufs', 'Lait', 'Oeuf', 'Jambom', 'Emental', 'Fraise', 'Banane', NOW(), 1),
 ('Salade', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', NOW(), 2);
 
-INSERT INTO `com_det` (`Num_OF`, `Quant`, `NumCom`) 
+INSERT INTO COM_DET (`Num_OF`, `Quant`, `NumCom`) 
 VALUES 
-(0, 5, 0),
-(1, 10, 1),
-(2, 15, 2);
+(1, 5, 1),
+(2, 10, 2),
+(3, 15, 3);
 
-INSERT INTO `det_ingr` (`Num_OF`, `IdIngred`) 
+INSERT INTO DET_INGR (`Num_OF`, `IdIngred`) 
 VALUES 
-(0, 0),
 (1, 1),
-(2, 2);
+(2, 2),
+(3, 3);
 
-INSERT INTO `fourn_ingr` (`NomFourn`, `IdIngred`, `PrixUHT`) 
+INSERT INTO FOURN_INGR (`NomFourn`, `IdIngred`, `PrixUHT`) 
 VALUES 
 ('Coca-Cola', 0, 3),
 ('Ferrero', 5, 12),
 ('Nestle', 3, 2);
 
-INSERT INTO `prod_ingr` (`IdIngred`, `IdProd`, `Quant`) 
+INSERT INTO PROD_INGR (`IdIngred`, `IdProd`, `Quant`) 
 VALUES 
 (1, 0, 5),
 (2,0,10),
@@ -101,6 +101,6 @@ VALUES
 
 
 
-INSERT INTO `responsable` (`Nom`, `Prenom`, `Tel`) 
+INSERT INTO RESPONSABLE (`Nom`, `Prenom`, `Tel`) 
 VALUES 
 ('Boudon', 'Owen', '0614765634');
