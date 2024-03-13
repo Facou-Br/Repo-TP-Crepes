@@ -2,103 +2,54 @@
     "commandes": [
         {
             "id": 1,
-            "nom": "Crepe au Nutella",
-            "temps": "10:00",
+            "nom": "CrepesSuzette",
+            "temps": "21:24",
             "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Nutella"
+            "ingBase1": "Farine",
+            "ingBase2": "Oeufs",
+            "ingBase3": "Lait",
+            "ingBase4": "Nutella",
+            "ingBase5": "Chocolat",
+            "ingOpt1": "Fraise",
+            "ingOpt2": "Banane",
+            "ingOpt3": "Chantilly",
+            "ingOpt4": "Jambon",
+            "ingOpt5": "Bacon",
+            "ingOpt6": ""
         },
         {
             "id": 2,
-            "nom": "Crepe \u00e0 la confiture",
-            "temps": "10:30",
+            "nom": "CrepesBretonnes",
+            "temps": "21:24",
             "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Confiture"
+            "ingBase1": "Farine",
+            "ingBase2": "Oeufs",
+            "ingBase3": "Lait",
+            "ingBase4": "Oeuf",
+            "ingBase5": "Jambom",
+            "ingOpt1": "Emental",
+            "ingOpt2": "Fraise",
+            "ingOpt3": "Banane",
+            "ingOpt4": "Chantilly",
+            "ingOpt5": "Jambon",
+            "ingOpt6": "Bacon"
         },
         {
             "id": 3,
-            "nom": "Crepe au sucre",
-            "temps": "11:00",
+            "nom": "Salade",
+            "temps": "21:24",
             "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Sucre"
-        },
-        {
-            "id": 4,
-            "nom": "Crepe au Nutella",
-            "temps": "10:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Nutella"
-        },
-        {
-            "id": 5,
-            "nom": "Crepe \u00e0 la confiture",
-            "temps": "10:30",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Confiture"
-        },
-        {
-            "id": 6,
-            "nom": "Crepe au sucre",
-            "temps": "15:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Sucre"
-        },
-        {
-            "id": 7,
-            "nom": "Crepe \u00e0 la confiture",
-            "temps": "14:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Confiture"
-        },
-        {
-            "id": 8,
-            "nom": "Crepe au Nutella",
-            "temps": "13:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Nutella"
-        },
-        {
-            "id": 9,
-            "nom": "Crepe au sucre",
-            "temps": "10:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Sucre"
-        },
-        {
-            "id": 10,
-            "nom": "Crepe \u00e0 la confiture",
-            "temps": "22:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Confiture"
+            "ingBase1": "Tomate",
+            "ingBase2": "Salade",
+            "ingBase3": "Pomme de terre",
+            "ingBase4": "Carotte",
+            "ingBase5": "Courgette",
+            "ingOpt1": "Aubergine",
+            "ingOpt2": "Poivron",
+            "ingOpt3": "Oignon",
+            "ingOpt4": "Ail",
+            "ingOpt5": "Huile",
+            "ingOpt6": "Reblochon"
         }
     ]
 }

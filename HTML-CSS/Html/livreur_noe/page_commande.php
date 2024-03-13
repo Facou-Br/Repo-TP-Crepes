@@ -5,18 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livreur</title>
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
-        .card {
-            width: 400px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        
         #map {
+            height: 400px;
             width: 100%;
-            height: 300px;
         }
     </style>
 </head>
@@ -36,38 +29,7 @@
     </header>
 
     <card style="display:flex; margin-left:auto; margin-right:auto; ">
-        <div class="card">
-            <div id="map"></div>
-        </div>
 
-        <script>
-            let map;
-            async function initMap(): Promise<void> {
-            const position = { lat: -25.344, lng: 131.031 };
-
-            const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
-            const { AdvancedMarkerView } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary;
-
-            map = new Map(
-                document.getElementById('map') as HTMLElement,
-                {
-                zoom: 4,
-                center: position,
-                mapId: 'DEMO_MAP_ID',
-                }
-            );
-
-            const marker = new AdvancedMarkerView({
-                map: map,
-                position: position,
-                title: 'Uluru'
-            });
-            }
-
-            initMap();
-        </script>
-
-        <script src="https://maps.googleapis.com/maps/api/js?key=VOTRE_CLE_API&callback=initMap" async defer></script>
     </card>
     
     <footer>
