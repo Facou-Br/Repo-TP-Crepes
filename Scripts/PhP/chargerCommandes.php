@@ -1,0 +1,50 @@
+
+
+<?php
+    $host = "localhost";
+    $user = "root";
+    $pwd = "root";
+    $bdd = "crespesco_test";
+    $port = 8889;
+
+    try {
+        $connex = new PDO('mysql:host=' . $host . ';charset=utf8;dbname=' . $bdd . ';port=' . $port, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    } catch (Exception $e) {
+        echo 'Erreur : ' . $e->getMessage() . '<br/>';
+        echo 'N° : ' . $e->getCode();
+        die();
+    }
+
+    try {
+        $rq = "SELECT * FROM COMMANDE; ";
+        $result = $connex->query($rq);
+
+        $commandes_array = array();
+
+        while ($ligne = $result->fetch(PDO::FETCH_ASSOC)) {
+            $commande = array(
+                "id" => (int)$ligne["NumCom"],
+                "nom" => $ligne["NomClient"],
+                "temps" => substr($ligne["HeureDispo"], 0, 5),
+                "statut" => $ligne["EtatCde"]
+            );
+            $commandes_array[] = $commande;
+        }
+
+        $result->free_result();
+        $connex->close();
+        $final_array = array("commandes" => $commandes_array);
+        $json_data = json_encode($final_array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+
+        $filename = '.././JavaScript/GestionsCommandes/commandes.json';
+
+        if (file_put_contents($filename, $json_data)) {
+            echo "Le fichier JSON a été créé avec succès.";
+        } else {
+            echo "Erreur lors de la création du fichier JSON.";
+        }
+
+    } catch (PDOException $e) {
+        print $e->getMessage();
+    }
+?>
