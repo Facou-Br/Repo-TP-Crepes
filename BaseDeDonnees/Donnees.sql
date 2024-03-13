@@ -67,3 +67,8 @@ VALUES
 ('LEROY', '01 02 03 04 09', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'En cours', 5, 10, NOW(), 5),
 ('MOREAU', '01 02 03 04 10', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'En cours', 5, 10, NOW(), 6),
 ('SIMON', '01 02 03 04 11', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'En cours', 5, 10, NOW(), 7);
+
+INSERT INTO `FOURN_INGR` (`NomFourn`, `IdIngred`, `PrixUHT`)
+VALUES
+('Coca-Cola', '0', '12'),
+('Ferrero', '5', '2');
