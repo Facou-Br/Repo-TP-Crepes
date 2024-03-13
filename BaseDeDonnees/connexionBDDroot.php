@@ -12,4 +12,3 @@ try {
     echo "Erreur de connexion à la base de données <BR>";
     die('Erreur : ' . $e->getMessage());
 }
-?>
