@@ -115,8 +115,6 @@
                 <p>Inventaire en date du : </p>
                 <input placeholder="Date"/>
                 <a href="#"><button id="rapport" class="bouton">Rapport</button></a>
-                <a href="#"><button id="ajouter" class="bouton">Ajouter</button></a>
-                <a href="#"><button id="modifier" class="bouton">Modifier</button></a>
             </div>
             <br><br>
             <footer>

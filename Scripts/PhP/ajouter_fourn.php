@@ -46,12 +46,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo 'N° : ' . $e->getCode();
         die();
     }
-
+/*
     if ($connex->query($sql) === TRUE) {
         echo "Le fournisseur a été ajouté avec succès.";
     } else {
         echo "Erreur : " . $sql . "<br>" . $connex->error;
-    }
+    }*/
 }
 ?>
 

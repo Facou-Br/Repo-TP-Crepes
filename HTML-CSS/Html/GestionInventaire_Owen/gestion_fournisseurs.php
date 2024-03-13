@@ -76,8 +76,6 @@
         </div>
         <div id="bas">
             <a href="#"><button id="rapport" class="bouton">Rapport</button></a>
-            <a href="#"><button id="ajouter" class="bouton">Ajouter</button></a>
-            <a href="#"></a><button id="modifier" class="bouton">Modifier</button>
             <a href="#"></a><button id="supprimer" class="bouton">Supprimer</button>
         </div>
         <footer>
