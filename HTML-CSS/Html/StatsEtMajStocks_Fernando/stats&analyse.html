@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MajStock</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">>
+    <title>Mise à jour Stock</title>
 </head>
+
 <body>
-    <script src="../../../Scripts/JavaScript/StatsEtMajStocks/getCrepes.js"></script>
+    <fieldset>
+        <legend> Mise à jour Stock </legend>
+        <form action="../../../Scripts/PhP/majStock_Fournisseur.php" method="post">
+
+            <label for="fournisseurs">Nom fournisseur:</label>
+            <select id="fournisseurs" name="fournisseurs" title="fournisseurs" required>
+                <option value="">Choissisez un fournisseur parmi la liste</option>
+                <!-- Rajouter les fournisseurs dynamiquement ici -->
+                <option value="Ferrero">Ferrero</option>
+                <option value="Coca-Cola">Coca-Cola</option>
+                <option value="Nestle">Nestle</option>
+            </select><br>
+            
+            <label for="nutella">Nutella :</label>
+            <input type="number" id="nutella" name="nutella" value="5" hidden>
+            <label for="quantite1">Quantité apporté</label>
+            <!-- La valeur doit être incrémentée dynamiquement par rapport à la commande. -->
+            <input type="number" id="quantite1" name="quantite1" min=1 value="" required><br>
+
+            <label for="lait">Lait :</label>
+            <input type="number" id="lait" name="lait" value="3" hidden>
+            <label for="quantite2">Quantité apporté</label>
+            <!-- La valeur doit être incrémentée dynamiquement par rapport à la commande. -->
+            <input type="number" id="quantite2" name="quantite2" min=1 value="" required><br>
+
+            <label for="farine">Farine:</label>
+            <input type="number" id="farine" name="farine" value="1" hidden>
+            <label for="quantite3">Quantité apporté</label>
+            <!-- La valeur doit être incrémentée dynamiquement par rapport à la commande. -->
+            <input type="number" id="quantite3" name="quantite3" min=1 value="" required><br>
+
+            <input type="submit" value="Mettre à jour">
+        </form>
+    </fieldset>
 </body>
+
 </html>
