@@ -89,15 +89,15 @@ VALUES
 
 INSERT INTO FOURN_INGR (`NomFourn`, `IdIngred`, `PrixUHT`) 
 VALUES 
-('Coca-Cola', 0, 3),
+('Coca-Cola', 1, 3),
 ('Ferrero', 5, 12),
 ('Nestle', 3, 2);
 
 INSERT INTO PROD_INGR (`IdIngred`, `IdProd`, `Quant`) 
 VALUES 
-(1, 0, 5),
-(2,0,10),
-(3,0,2);
+(1, 1, 5),
+(2,1,10),
+(3,1,2);
 
 
 
