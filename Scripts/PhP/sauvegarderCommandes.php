@@ -1,5 +1,4 @@
 <?php
-    // Permet de modifier le statut de commande dans le format json
     $jsonData = file_get_contents('php://input');
 
     if ($jsonData) {

@@ -99,13 +99,18 @@ function afficherIngredients(id) {
         if (commande) {
             let ingredients = [];
             for (let i = 1; i <= 4; i++) {
-                let ingredientKey = "ingredient" + i;
+                let ingredientKey = "ingBase" + i;
                 if (commande[ingredientKey]) {
                     ingredients.push(commande[ingredientKey]);
                 }
             }
-
-            alert("Ingrédients de la commande " + commande.nom + " : \n\n" + ingredients.join("\n"));
+            for (let i = 1; i <= 4; i++) {
+                let ingredientKey = "ingOpt" + i;
+                if (commande[ingredientKey]) {
+                    ingredients.push(commande[ingredientKey]);
+                }
+            }
+            alert("Ingrédients de " + commande.nom + " : \n\n" + ingredients.join("\n"));
         } else {
             alert("Commande non trouvée.");
         }

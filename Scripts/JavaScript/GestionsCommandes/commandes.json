@@ -1,46 +1,46 @@
 {
     "commandes": [
         {
-            "id": 0,
-            "nom": "DUPONT",
-            "temps": "12:00",
-            "statut": "En attente"
-        },
-        {
             "id": 1,
-            "nom": "DURAND",
-            "temps": "12:00",
-            "statut": "En attente"
+            "nom": "CrepesSuzette",
+            "temps": "21:24",
+            "statut": "En attente",
+            "ingBase1": "Farine",
+            "ingBase2": "Oeufs",
+            "ingBase3": "Lait",
+            "ingBase4": "Nutella",
+            "ingOpt1": "Chocolat",
+            "ingOpt2": "Fraise",
+            "ingOpt3": "Banane",
+            "ingOpt4": "Chantilly"
         },
         {
             "id": 2,
-            "nom": "MARTIN",
-            "temps": "12:00",
-            "statut": "En attente"
+            "nom": "CrepesBretonnes",
+            "temps": "21:24",
+            "statut": "En attente",
+            "ingBase1": "Farine",
+            "ingBase2": "Oeufs",
+            "ingBase3": "Lait",
+            "ingBase4": "Oeuf",
+            "ingOpt1": "Jambom",
+            "ingOpt2": "Emental",
+            "ingOpt3": "Fraise",
+            "ingOpt4": "Banane"
         },
         {
             "id": 3,
-            "nom": "PETIT",
-            "temps": "12:00",
-            "statut": "En attente"
-        },
-        {
-            "id": 4,
-            "nom": "LEROY",
-            "temps": "12:00",
-            "statut": "En attente"
-        },
-        {
-            "id": 5,
-            "nom": "MOREAU",
-            "temps": "12:00",
-            "statut": "En attente"
-        },
-        {
-            "id": 6,
-            "nom": "SIMON",
-            "temps": "12:00",
-            "statut": "En attente"
+            "nom": "Salade",
+            "temps": "21:24",
+            "statut": "En attente",
+            "ingBase1": "Tomate",
+            "ingBase2": "Salade",
+            "ingBase3": "Pomme de terre",
+            "ingBase4": "Carotte",
+            "ingOpt1": "Courgette",
+            "ingOpt2": "Aubergine",
+            "ingOpt3": "Poivron",
+            "ingOpt4": "Oignon"
         }
     ]
 }
