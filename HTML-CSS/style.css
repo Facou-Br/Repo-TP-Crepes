@@ -140,6 +140,8 @@ button:hover {
 }
 
 footer {
+    position: absolute;
+    width: 100%;
     color: white;
     text-align: center;
     padding: 10px;
@@ -202,3 +204,4 @@ footer {
         padding: 8px 16px;
     }
 }
+
