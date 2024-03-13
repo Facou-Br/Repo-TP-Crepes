@@ -85,6 +85,7 @@ create table INGREDIENT (
      NomIngred char(30) not null,
      Frais char(1) not null,
      Unite char(10) default '"sans"' not null,
+     SeuilStock int not null default 1,
      StockMin int not null,
      StockReel float(7) not null,
      PrixUHT_Moyen float(5) not null,

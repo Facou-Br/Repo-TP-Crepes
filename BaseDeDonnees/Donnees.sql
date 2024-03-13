@@ -68,12 +68,4 @@ VALUES
 ('MOREAU', '01 02 03 04 10', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'en_livraision', 5, 10, NOW(), 6),
 ('SIMON', '01 02 03 04 11', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'livree', 5, 10, NOW(), 7);
 
-INSERT INTO DETAIL (, NomProd, IngBase1, IngBase2, IngBase3, IngBase4, IngOpt1, IngOpt2, IngOpt3, IngOpt4, DateArchiv, IdProd)
-VALUES
-(1, 'Crepes', 'Farine', 'Oeufs', 'Lait', 'Sucre', NULL, NULL, NULL, NULL, NOW(), 1),
-(2, 'Gaufres', 'Farine', 'Oeufs', 'Lait', 'Sucre', NULL, NULL, NULL, NULL, NOW(), 2),
-(3, 'Pancakes', 'Farine', 'Oeufs', 'Lait', 'Sucre', NULL, NULL, NULL, NULL, NOW(), 3),
-(4, 'Crepes', 'Farine', 'Oeufs', 'Lait', 'Sucre', NULL, NULL, NULL, NULL, NOW(), 1),
-(5, 'Gaufres', 'Farine', 'Oeufs', 'Lait', 'Sucre', NULL, NULL, NULL, NULL, NOW(), 2),
-(6, 'Pancakes', 'Farine', 'Oeufs', 'Lait', 'Sucre', NULL, NULL, NULL, NULL, NOW(), 3),
-(7, 'Crepes', 'Farine', 'Oeufs', 'Lait', 'Sucre', NULL, NULL, NULL, NULL, NOW(), 1);
+INSERT INTO PRODUIT (NomProd, Active, Taille, NbIngBase, NbIngOpt, 	PrixUHT, Image, IngBase1, IngBase2, IngBase3, IngBase4, IngBase5, IngOpt1, IngOpt2, IngOpt3, IngOpt4, IngOpt5, IngOpt6, NbOptMax, DateArchiv)  
