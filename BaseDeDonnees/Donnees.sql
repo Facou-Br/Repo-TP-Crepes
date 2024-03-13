@@ -13,7 +13,7 @@ VALUES
 ('Nestle', '7 boulevard Pierre Carle', '77186', 'NOISIEL', '01 60 37 68 00', NOW());
 
 -- Insertion des données de INGREDIENT exemple. Assez simple
-INSERT INTO INGREDIENT (IdIngred, NomIngred, Unite, SeuilStock, StockMin, StockReel, PrixUHT_Moyen, Q_A_Com, DateArchiv)
+INSERT INTO INGREDIENT (NomIngred, Unite, SeuilStock, StockMin, StockReel, PrixUHT_Moyen, Q_A_Com, DateArchiv)
 VALUES
 ('Farine', 'kg', 1, 0, 5, 2, 1, NOW()),
 ('Oeufs', 'unite', 1, 0, 5, 2, 1, NOW()),
@@ -39,12 +39,7 @@ VALUES
 ('Huile', 'l', 1, 0, 5, 2, 1, NOW()),
 ("Reblochon", 'kg', 0,0,0,12,2,NOW());
 
--- Insertion des données de FOURN_INGR exemple. Faire attention aux clés étrangères entre les tables FOURNISSEUR et INGREDIENT.
-INSERT INTO FOURN_INGR (NomFourn, IdIngred, PrixUHT)
-VALUES
-()
-
-INSERT INTO LIVREUR (IdLivreur, Nom, Prenom, Tel, NumSS, Disponible, DateArchiv)
+INSERT INTO LIVREUR ( Nom, Prenom, Tel, NumSS, Disponible, DateArchiv)
 VALUES
 ('ROULLET','Rémi', '01 02 03 04 06', '1 04 07 71 014 248 36',1,NOW()),
 ('DUPONT','Jean', '01 02 03 04 07', '1 04 07 71 014 248 37',1,NOW()),
@@ -58,12 +53,54 @@ VALUES
 ('LACROIX','Philippe', '01 02 03 04 15', '1 04 07 71 014 248 45',1,NOW());
 
 
-INSERT INTO COMMANDE (NumCom, NomClient, TelClient, AdrClient, CP_Client, VilleClient, Date, HeureDispo, TypeEmbal, A_Livrer, EtatLivraison, CoutLiv, TotalTTC,	DateArchiv, IdLivreur)
+INSERT INTO COMMANDE (NomClient, TelClient, AdrClient, CP_Client, VilClient, Date, HeureDispo, TypeEmbal, A_Livrer, EtatLivraison, CoutLiv, TotalTTC,	DateArchiv, IdLivreur)
 VALUES
-('DUPONT', '01 02 03 04 05', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'En cours', 5, 10, NOW(), 1),
-('DURAND', '01 02 03 04 06', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'En cours', 5, 10, NOW(), 2),
-('MARTIN', '01 02 03 04 07', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'En cours', 5, 10, NOW(), 3),
-('PETIT', '01 02 03 04 08', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'En cours', 5, 10, NOW(), 4),
-('LEROY', '01 02 03 04 09', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'En cours', 5, 10, NOW(), 5),
-('MOREAU', '01 02 03 04 10', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'En cours', 5, 10, NOW(), 6),
-('SIMON', '01 02 03 04 11', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'En cours', 5, 10, NOW(), 7);
+('DUPONT', '01 02 03 04 05', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'preparation', 5, 10, NOW(), 1),
+('DURAND', '01 02 03 04 06', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'fin_preparation', 5, 10, NOW(), 2),
+('MARTIN', '01 02 03 04 07', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'en_livraision', 5, 10, NOW(), 3),
+('PETIT', '01 02 03 04 08', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'livree', 5, 10, NOW(), 4),
+('LEROY', '01 02 03 04 09', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'preparation', 5, 10, NOW(), 5),
+('MOREAU', '01 02 03 04 10', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'en_livraision', 5, 10, NOW(), 6),
+('SIMON', '01 02 03 04 11', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'livree', 5, 10, NOW(), 7);
+
+INSERT INTO PRODUIT (NomProd, Active, Taille, NbIngBase, NbIngOpt, 	PrixUHT, Image, IngBase1, IngBase2, IngBase3, IngBase4, IngBase5, IngOpt1, IngOpt2, IngOpt3, IngOpt4, IngOpt5, IngOpt6, NbOptMax, DateArchiv)
+VALUES
+('CrepesSuzette', 1, 'M', 3, 2, 2, 'crepes.jpg', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', 'Jambon', 'Bacon', 'Emmental', 2, NOW()),
+('CrepesBretonnes', 1, 'M', 3, 2, 2, 'crepes.jpg', 'Farine', 'Oeufs', 'Lait', 'Oeuf', 'Jambom', 'Emental', 'Fraise', 'Banane', 'Chantilly', 'Jambon', 'Bacon', 2, NOW()),
+('Salade', 1, 'M', 3, 2, 2, 'salade.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, NOW());
+
+INSERT INTO `detail` (`NomProd`, `IngBase1`, `IngBase2`, `IngBase3`, `IngBase4`, `IngOpt1`, `IngOpt2`, `IngOpt3`, `IngOpt4`, `DateArchiv`, `IdProd`) 
+VALUES 
+('CrepesSuzette', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', NOW(), 0),
+('CrepesBretonnes', 'Farine', 'Oeufs', 'Lait', 'Oeuf', 'Jambom', 'Emental', 'Fraise', 'Banane', NOW(), 1),
+('Salade', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', NOW(), 2);
+
+INSERT INTO `com_det` (`Num_OF`, `Quant`, `NumCom`) 
+VALUES 
+(0, 5, 0),
+(1, 10, 1),
+(2, 15, 2);
+
+INSERT INTO `det_ingr` (`Num_OF`, `IdIngred`) 
+VALUES 
+(0, 0),
+(1, 1),
+(2, 2);
+
+INSERT INTO `fourn_ingr` (`NomFourn`, `IdIngred`, `PrixUHT`) 
+VALUES 
+('Coca-Cola', 0, 3),
+('Ferrero', 5, 12),
+('Nestle', 3, 2);
+
+INSERT INTO `prod_ingr` (`IdIngred`, `IdProd`, `Quant`) 
+VALUES 
+(1, 0, 5),
+(2,0,10),
+(3,0,2);
+
+
+
+INSERT INTO `responsable` (`Nom`, `Prenom`, `Tel`) 
+VALUES 
+('Boudon', 'Owen', '0614765634');
