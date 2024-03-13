@@ -12,6 +12,7 @@
 -- Database Section
 -- ________________
 
+drop database if exists crepesco_test;
 create database crepesco_test;
 use crepesco_test;
 
@@ -26,7 +27,7 @@ create table COM_DET (
      constraint FKCon_DET_ID primary key (Num_OF));
 
 create table COMMANDE (
-     NumCom int not null,
+     NumCom int not null AUTO_INCREMENT,
      NomClient char(25) not null,
      TelClient char(12) not null,
      AdrClient char(30),
@@ -35,9 +36,9 @@ create table COMMANDE (
      Date date not null,
      HeureDispo date not null,
      TypeEmbal char(1) default 'C' not null,
-     A_Livrer char(1) default 'N' not null,
+     A_Livrer BOOLEAN default TRUE not null,
      EtatCde char(15) not null,
-     EtatLivraison char(1) default 'N',
+     EtatLivraison char(20) default 'preparation',
      CoutLiv float(6),
      TotalTTC float(5),
      DateArchiv date,
@@ -50,7 +51,7 @@ create table DET_INGR (
      constraint ID_Utilise_ID primary key (IdIngred, Num_OF));
 
 create table DETAIL (
-     Num_OF int not null,
+     Num_OF int not null AUTO_INCREMENT,
      NomProd char(30) not null,
      IngBase1 char(20) not null,
      IngBase2 char(20),
@@ -80,10 +81,11 @@ create table FOURNISSEUR (
      constraint ID_FOURNISSEUR_ID primary key (NomFourn));
 
 create table INGREDIENT (
-     IdIngred int not null,
+     IdIngred int not null AUTO_INCREMENT,
      NomIngred char(30) not null,
      Frais char(1) not null,
      Unite char(10) default '"sans"' not null,
+     SeuilStock int not null default 1,
      StockMin int not null,
      StockReel float(7) not null,
      PrixUHT_Moyen float(5) not null,
@@ -110,7 +112,7 @@ create table PROD_INGR (
      constraint ID_Comporte_ID primary key (IdIngred, IdProd));
 
 create table PRODUIT (
-     IdProd int not null,
+     IdProd int not null AUTO_INCREMENT,
      NomProd char(20) not null,
      Active char not null,
      Taille char(1),
@@ -134,7 +136,7 @@ create table PRODUIT (
      constraint ID_PRODUIT_ID primary key (IdProd));
 
 create table RESPONSABLE (
-     IdRes int not null,
+     IdRes int not null AUTO_INCREMENT,
      Nom char(25) not null,
      Prenom char(20) not null,
      Tel char(10) not null,

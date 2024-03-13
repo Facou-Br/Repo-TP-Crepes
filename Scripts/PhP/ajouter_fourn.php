@@ -21,7 +21,8 @@
 </form>
 
 <?php
-require_once '../../BaseDeDonnees/connexion_gerant.php';
+require_once '../../../BaseDeDonnees/codesConnexion.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nomFourn = $_POST["nomFourn"];
     $adresse = $_POST["adresse"];
@@ -32,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Insérer les données dans la base de données
 
     try {
-        $connex = new PDO('mysql:host=' . $host . ';charset=utf8;dbname=' . $bdd . ';port=' . $port, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE.';port='.PORT, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     } catch (PDOException $e) {
         echo 'Erreur : ' . $e->getMessage() . '<br />';
         echo 'N° : ' . $e->getCode();
