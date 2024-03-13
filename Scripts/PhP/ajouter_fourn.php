@@ -22,6 +22,7 @@
 
 <?php
 require_once '../../BaseDeDonnees/connexion_gerant.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nomFourn = $_POST["nomFourn"];
     $adresse = $_POST["adresse"];

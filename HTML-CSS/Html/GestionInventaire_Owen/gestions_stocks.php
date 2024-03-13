@@ -68,6 +68,7 @@
                     <div id="stocks">
                     <tr>
                         <th>Nom Ingrédient</th>
+                        <th>Fournisseur</th>
                         <th>Seuil Stock</th>
                         <th>Stock Min</th>
                         <th>Stock Réel</th>
@@ -86,8 +87,8 @@
                     }
                     try{
                         $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-                        $requete1 = 'SELECT NomIngred, SeuilStock, StockMin, StockReel, PrixUHT_Moyen FROM `INGREDIENT`;';
-                        $ligne = $connex->query($requete1);
+                        $sql = "SELECT F.NomFourn, I.NomIngred FROM INGREDIENT I JOIN fourn_ingr FI ON I.IdIngred=FI.IdIngred JOIN fournisseur F ON FI.NomFourn=F.NomFourn;";
+                        $ligne = $connex->query($sql);
                     }
                     catch (PDOException $e) {
                         echo 'Erreur : ' . $e->getMessage() . '<br />';
@@ -97,7 +98,8 @@
 
                     foreach($ligne as $row) {
                         echo "<tr>";
-                        echo "<td value='".$row['NomIngred']."'>".$row['NomIngred']."</td>";
+                        echo "<td value=".$row['NomIngred'].">".$row['NomIngred']."</td>";
+                        echo "<td></td>";
                         echo "<td value='".$row['SeuilStock']."'>".$row['SeuilStock']."</td>";
                         echo "<td value='".$row['StockMin']."'>".$row['StockMin']."</td>";
                         echo "<td value='".$row['StockReel']."'>".$row['StockReel']."</td>";
