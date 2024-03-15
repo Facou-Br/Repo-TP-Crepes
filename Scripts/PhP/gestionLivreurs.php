@@ -1,27 +1,27 @@
 <?php
 header('Content-Type: application/json');
 
-include '../../BaseDeDonnees/connexionBdB.php';
+include '../../BaseDeDonnees/connexionBDD.php';
 
-$action = $_POST['action'] ?? '';
+$action = $_POST['action'] ?? ''; //filtering is not required, sql injection is not possible on this variable
 
 try {
     switch ($action) {
         case 'ajouter':
-            ajouterLivreur($connexionBDB);
+            ajouterLivreur($conn);
             break;
         case 'modifier':
-            modifierLivreur($connexionBDB);
+            modifierLivreur($conn);
             break;
         case 'archiver':
-            archiverLivreur($connexionBDB);
+            archiverLivreur($conn);
             break;
         case 'afficher':
-            afficherLivreurs($connexionBDB);
+            afficherLivreurs($conn);
             break;
         case 'obtenirDetails':
             $idLivreur = filter_input(INPUT_POST, 'idLivreur', FILTER_SANITIZE_NUMBER_INT);
-            obtenirDetailsLivreur($connexionBDB, $idLivreur);
+            obtenirDetailsLivreur($conn, $idLivreur);
             break;
         default:
             http_response_code(400); // Bad Request
@@ -34,7 +34,6 @@ try {
 }
 
 function ajouterLivreur($pdo) {
-    // Validation et nettoyage des entrées (exemple basique)
     $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
     $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
     $tel = filter_input(INPUT_POST, 'tel', FILTER_SANITIZE_STRING);
@@ -56,7 +55,7 @@ function modifierLivreur($pdo) {
     $disponible = filter_input(INPUT_POST, 'disponible', FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) ? 1 : 0;
 
     $sql = "UPDATE livreur SET Nom = ?, Prenom = ?, Tel = ?, NumSS = ?, Disponible = ? WHERE IdLivreur = ?";
-    $stmt = $pdo->prepare($sql);
+    $stmt = $pdo->prepare($sql); //pdo.prepare sanitizes the sql query
     if ($stmt->execute([$nom, $prenom, $tel, $numSS, $disponible, $idLivreur])) {
         echo json_encode(['success' => true, 'message' => 'Livreur modifié avec succès']);
     } else {
@@ -82,8 +81,11 @@ function afficherLivreurs($pdo) {
     $stmt->execute();
     $livreurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo json_encode(['success' => true, 'livreurs' => $livreurs]);
-}
+    if ($livreurs) {
+        echo json_encode(['success' => true, 'livreurs' => $livreurs]);
+    } else {
+        throw new Exception('Livreur non trouvé.');
+    }}
 
 function obtenirDetailsLivreur($pdo, $idLivreur) {
     $sql = "SELECT * FROM livreur WHERE IdLivreur = ?";
