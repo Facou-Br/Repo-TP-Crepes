@@ -13,22 +13,39 @@ try {
     die();
 }
 
-if (isset ($_POST["fournisseurs"])) {
-    $tableauIdIngredients = array();
-    try {
-        $commandeSQL = "SELECT IdIngred FROM fourn_ingr WHERE NomFourn = '" . $_POST["fournisseurs"] . "'";
-        $ingredients = $connexionPDO->query($commandeSQL);
-        $ingredients = $ingredients->fetchAll(PDO::FETCH_ASSOC);
+$tableauIdIngredients = array();
+$tableauIngredients = array();
+try {
+    $commandeSQL = "SELECT IdIngred FROM fourn_ingr WHERE NomFourn = 'Coca-Cola'";
+    $ingredients = $connexionPDO->query($commandeSQL);
+    $ingredients = $ingredients->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($ingredients as $ingredient => $idIngredient) {
-            foreach ($idIngredient as $id) {
-                array_push($tableauIdIngredients, $id);
-            }
+    foreach ($ingredients as $idIngredient) {
+        foreach ($idIngredient as $id) {
+            array_push($tableauIdIngredients, $id);
         }
-    } catch (Exception $e) {
-        echo 'Erreur : ' . $e->getMessage() . '<br />';
-        echo 'N° : ' . $e->getCode();
-        die();
     }
+} catch (Exception $e) {
+    echo 'Erreur : ' . $e->getMessage() . '<br />';
+    echo 'N° : ' . $e->getCode();
+    die();
 }
-json_encode($tableauIdIngredients);
+
+try {
+    foreach ($tableauIdIngredients as $id){
+        $commandeSQL = "SELECT NomIngred FROM ingredient WHERE IdIngred =" . $id;
+        $nomIngredient = $connexionPDO->query($commandeSQL);
+        $nomIngredient = $nomIngredient->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($nomIngredient as $nom){
+            $tableauIngredients[$id] = $nom['NomIngred'];
+        }
+    }
+} catch (Exception $e) {
+    echo 'Erreur : ' . $e->getMessage() . '<br />';
+    echo 'N° : ' . $e->getCode();
+    die();
+}
+
+$data = json_encode($tableauIngredients);
+$fileadress = "../../JavaScript/Fernando/ingredientsId.json";
+file_put_contents($fileadress, $data);
