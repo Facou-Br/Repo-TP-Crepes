@@ -1,16 +1,9 @@
 -- Insertion des données de FOURNISSEUR exemple. Assez simple
 INSERT INTO FOURNISSEUR (NomFourn, Adresse, CodePostal, Ville, Tel, DateArchiv)
 VALUES
-('Nutella', '18 Rue Jacques Monod CS 90058', '76136', 'MONT SAINT AIGNAN', '0800 553 553 ', NOW()),
-('Mozzalat', '28 rue Gay Lussac - France', '75005', 'PARIS', '02 32 39 71 68', NOW()),
 ('TransGourmet', 'Lieudit Les Bonnes Filles', '21200', 'Levernois','0826 101 710', NOW()),
-('Lactalis', '42 rue Rieussec', '53000', 'LAVAL', '02 43 59 59 59', NOW()),
-('Ferrero', '18 Rue Jacques Monod CS 90058', '76136', 'MONT SAINT AIGNAN', '0800 553 553 ', NOW()),
 ('Coca-Cola', '9 Chemin de Bretagne', '92130', 'ISSY LES MOULINEAUX', '01 46 88 89 00', NOW()),
-('PepsiCo', '420 rue d''Estienne d''Orves', '92705', 'COLOMBES', '01 41 04 11 11', NOW()),
 ('Heineken', '4 rue de la Mare Blanche', '77186', 'NOISIEL', '01 60 37 68 00', NOW()),
-('Danone', '17 boulevard Haussmann', '75009', 'PARIS', '01 44 35 20 20', NOW()),
-('Nestle', '7 boulevard Pierre Carle', '77186', 'NOISIEL', '01 60 37 68 00', NOW());
 ('Mondelez', '13 Rue Benjamin Franklin', '75116', 'PARIS', '01 40 69 70 00', NOW()),
 ('Unilever', '20 Rue des Deux Gares', '92500', 'RUEIL MALMAISON', '01 41 42 23 23', NOW()),
 ('Ferrero', '18 Rue Jacques Monod CS 90058', '76136', 'MONT SAINT AIGNAN', '0800 553 553', NOW()),
@@ -66,7 +59,7 @@ VALUES
 ('Oignon', 'kg', 1, 0, 5, 2, 1, NOW()),
 ('Ail', 'kg', 1, 0, 5, 2, 1, NOW()),
 ('Huile', 'l', 1, 0, 5, 2, 1, NOW()),
-('Reblochon', 'kg', 0,0,0,12,2,NOW());
+('Reblochon', 'kg', 0,0,0,12,2,NOW()),
 ('Pâtes', 'kg', 1, 0, 5, 2, 1, NOW()),
 ('Riz', 'kg', 1, 0, 5, 2, 1, NOW()),
 ('Poulet', 'kg', 1, 0, 5, 2, 1, NOW()),
@@ -96,48 +89,38 @@ VALUES
 ('Gin', 'l', 1, 0, 5, 2, 1, NOW()),
 ('Triple Sec', 'l', 1, 0, 5, 2, 1, NOW());
 
-INSERT INTO LIVREUR ( Nom, Prenom, Tel, NumSS, Disponible, DateArchiv)
+INSERT INTO LIVREUR (Nom, Prenom, Tel, NumSS, Disponible, DateArchiv)
 VALUES
-('ROULLET','Rémi', '01 02 03 04 06', '1 04 07 71 014 248 36',1,NULL),
-('DUPONT','Jean', '01 02 03 04 07', '1 04 07 71 014 248 37',1,NULL),
-('DURAND','Pierre', '01 02 03 04 08', '1 04 07 71 014 248 38',1,NULL),
-('MARTIN','Paul', '01 02 03 04 09', '1 04 07 71 014 248 39',1,NULL),
-('PETIT','Jacques', '01 02 03 04 10', '1 04 07 71 014 248 40',1,NULL),
-('LEROY','Alain', '01 02 03 04 11', '1 04 07 71 014 248 41',1,NULL),
-('MOREAU','René', '01 02 03 04 12', '1 04 07 71 014 248 42',1,NULL),
-('SIMON','Jean-Pierre', '01 02 03 04 13', '1 04 07 71 014 248 43',1,NULL),
-('LAURENT','Michel', '01 02 03 04 14', '1 04 07 71 014 248 44',1,NULL),
-('LACROIX','Philippe', '01 02 03 04 15', '1 04 07 71 014 248 45',1,NULL);
-('GARCIA', 'Carlos', '01 02 03 04 16', '1 04 07 71 014 248 46', 1, NULL),
-('FERNANDEZ', 'Luis', '01 02 03 04 17', '1 04 07 71 014 248 47', 1, NULL),
-('RODRIGUEZ', 'Javier', '01 02 03 04 18', '1 04 07 71 014 248 48', 1, NULL),
-('LOPEZ', 'Miguel', '01 02 03 04 19', '1 04 07 71 014 248 49', 1, NULL),
-('MARTINEZ', 'Jose', '01 02 03 04 20', '1 04 07 71 014 248 50', 1, NULL),
-('SANCHEZ', 'Manuel', '01 02 03 04 21', '1 04 07 71 014 248 51', 1, NULL),
-('RAMIREZ', 'Pedro', '01 02 03 04 22', '1 04 07 71 014 248 52', 1, NULL),
-('TORRES', 'Antonio', '01 02 03 04 23', '1 04 07 71 014 248 53', 1, NULL),
-('GOMEZ', 'Juan', '01 02 03 04 24', '1 04 07 71 014 248 54', 1, NULL),
-('DIAZ', 'Angel', '01 02 03 04 25', '1 04 07 71 014 248 55', 1, NULL),
-('ALVAREZ', 'Fernando', '01 02 03 04 26', '1 04 07 71 014 248 56', 1, NULL),
-('MORENO', 'Santiago', '01 02 03 04 27', '1 04 07 71 014 248 57', 1, NULL),
-('ROMERO', 'Jorge', '01 02 03 04 28', '1 04 07 71 014 248 58', 1, NULL),
-('ALONSO', 'Diego', '01 02 03 04 29', '1 04 07 71 014 248 59', 1, NULL),
-('MORALES', 'Raul', '01 02 03 04 30', '1 04 07 71 014 248 60', 1, NULL),
-('ORTIZ', 'Pablo', '01 02 03 04 31', '1 04 07 71 014 248 61', 1, NULL),
-('GUTIERREZ', 'Manuel', '01 02 03 04 32', '1 04 07 71 014 248 62', 1, NULL),
-('CRUZ', 'Sergio', '01 02 03 04 33', '1 04 07 71 014 248 63', 1, NULL),
-('TORO', 'Ramon', '01 02 03 04 34', '1 04 07 71 014 248 64', 1, NULL),
-('VEGA', 'Francisco', '01 02 03 04 35', '1 04 07 71 014 248 65', 1, NULL),
-('MOLINA', 'Emilio', '01 02 03 04 36', '1 04 07 71 014 248 66', 1, NULL),
-('GALLEGOS', 'Andres', '01 02 03 04 37', '1 04 07 71 014 248 67', 1, NULL),
-('SERRANO', 'Joaquin', '01 02 03 04 38', '1 04 07 71 014 248 68', 1, NULL),
-('GARRIDO', 'Marcos', '01 02 03 04 39', '1 04 07 71 014 248 69', 1, NULL),
-('GIMENEZ', 'Enrique', '01 02 03 04 40', '1 04 07 71 014 248 70', 1, NULL),
-('DIEZ', 'Ruben', '01 02 03 04 41', '1 04 07 71 014 248 71', 1, NULL),
-('REYES', 'Alfonso', '01 02 03 04 42', '1 04 07 71 014 248 72', 1, NULL),
-('NAVARRO', 'Ivan', '01 02 03 04 43', '1 04 07 71 014 248 73', 1, NULL),
-('IGLESIAS', 'Eduardo', '01 02 03 04 44', '1 04 07 71 014 248 74', 1, NULL),
-('RUIZ', 'Roberto', '01 02 03 04 45', '1 04 07 71 014 248 75', 1, NULL);
+    ('GARCIA', 'Carlos', '01 02 03 04 16', '1 04 07 71 014 248 46', 1, NULL),
+    ('FERNANDEZ', 'Luis', '01 02 03 04 17', '1 04 07 71 014 248 47', 1, NULL),
+    ('RODRIGUEZ', 'Javier', '01 02 03 04 18', '1 04 07 71 014 248 48', 1, NULL),
+    ('LOPEZ', 'Miguel', '01 02 03 04 19', '1 04 07 71 014 248 49', 1, NULL),
+    ('MARTINEZ', 'Jose', '01 02 03 04 20', '1 04 07 71 014 248 50', 1, NULL),
+    ('SANCHEZ', 'Manuel', '01 02 03 04 21', '1 04 07 71 014 248 51', 1, NULL),
+    ('RAMIREZ', 'Pedro', '01 02 03 04 22', '1 04 07 71 014 248 52', 1, NULL),
+    ('TORRES', 'Antonio', '01 02 03 04 23', '1 04 07 71 014 248 53', 1, NULL),
+    ('GOMEZ', 'Juan', '01 02 03 04 24', '1 04 07 71 014 248 54', 1, NULL),
+    ('DIAZ', 'Angel', '01 02 03 04 25', '1 04 07 71 014 248 55', 1, NULL),
+    ('ALVAREZ', 'Fernando', '01 02 03 04 26', '1 04 07 71 014 248 56', 1, NULL),
+    ('MORENO', 'Santiago', '01 02 03 04 27', '1 04 07 71 014 248 57', 1, NULL),
+    ('ROMERO', 'Jorge', '01 02 03 04 28', '1 04 07 71 014 248 58', 1, NULL),
+    ('ALONSO', 'Diego', '01 02 03 04 29', '1 04 07 71 014 248 59', 1, NULL),
+    ('MORALES', 'Raul', '01 02 03 04 30', '1 04 07 71 014 248 60', 1, NULL),
+    ('ORTIZ', 'Pablo', '01 02 03 04 31', '1 04 07 71 014 248 61', 1, NULL),
+    ('GUTIERREZ', 'Manuel', '01 02 03 04 32', '1 04 07 71 014 248 62', 1, NULL),
+    ('CRUZ', 'Sergio', '01 02 03 04 33', '1 04 07 71 014 248 63', 1, NULL),
+    ('TORO', 'Ramon', '01 02 03 04 34', '1 04 07 71 014 248 64', 1, NULL),
+    ('VEGA', 'Francisco', '01 02 03 04 35', '1 04 07 71 014 248 65', 1, NULL),
+    ('MOLINA', 'Emilio', '01 02 03 04 36', '1 04 07 71 014 248 66', 1, NULL),
+    ('GALLEGOS', 'Andres', '01 02 03 04 37', '1 04 07 71 014 248 67', 1, NULL),
+    ('SERRANO', 'Joaquin', '01 02 03 04 38', '1 04 07 71 014 248 68', 1, NULL),
+    ('GARRIDO', 'Marcos', '01 02 03 04 39', '1 04 07 71 014 248 69', 1, NULL),
+    ('GIMENEZ', 'Enrique', '01 02 03 04 40', '1 04 07 71 014 248 70', 1, NULL),
+    ('DIEZ', 'Ruben', '01 02 03 04 41', '1 04 07 71 014 248 71', 1, NULL),
+    ('REYES', 'Alfonso', '01 02 03 04 42', '1 04 07 71 014 248 72', 1, NULL),
+    ('NAVARRO', 'Ivan', '01 02 03 04 43', '1 04 07 71 014 248 73', 1, NULL),
+    ('IGLESIAS', 'Eduardo', '01 02 03 04 44', '1 04 07 71 014 248 74', 1, NULL),
+    ('RUIZ', 'Roberto', '01 02 03 04 45', '1 04 07 71 014 248 75', 1, NULL);
 
 INSERT INTO COMMANDE (NomClient, TelClient, AdrClient, CP_Client, VilClient, Date, HeureDispo, TypeEmbal, A_Livrer, EtatLivraison, CoutLiv, TotalTTC,	DateArchiv, IdLivreur)
 VALUES
@@ -147,7 +130,7 @@ VALUES
 ('PETIT', '01 02 03 04 08', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'livree', 5, 10, NOW(), 4),
 ('LEROY', '01 02 03 04 09', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'preparation', 5, 10, NOW(), 5),
 ('MOREAU', '01 02 03 04 10', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'en_livraision', 5, 10, NOW(), 6),
-('SIMON', '01 02 03 04 11', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'livree', 5, 10, NOW(), 7);
+('SIMON', '01 02 03 04 11', '18 rue de la Paix', '75000', 'PARIS', '2019-01-01', '12:00', 'Sac', 1, 'livree', 5, 10, NOW(), 7),
 ('CLERC', '01 02 03 04 12', '20 avenue des Roses', '69001', 'LYON', '2019-02-01', '14:00', 'Boîte', 1, 'preparation', 7, 15, NOW(), 8),
 ('ROUX', '01 02 03 04 13', '25 rue de la Liberté', '75001', 'PARIS', '2019-02-02', '15:00', 'Sac', 1, 'fin_preparation', 7, 15, NOW(), 9),
 ('LEFEBVRE', '01 02 03 04 14', '30 rue du Commerce', '44000', 'NANTES', '2019-02-03', '16:00', 'Carton', 1, 'en_livraison', 7, 15, NOW(), 10),
@@ -186,8 +169,8 @@ VALUES
 ('CrepesBretonnes', 1, 'M', 3, 2, 2, 'crepes.jpg', 'Farine', 'Oeufs', 'Lait', 'Oeuf', 'Jambom', 'Emental', 'Fraise', 'Banane', 'Chantilly', 'Jambon', 'Bacon', 2, NOW()),
 ('Salade', 1, 'M', 3, 2, 2, 'salade.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, NOW());
 
-INSERT INTO DETAIL (`NomProd`, `IngBase1`, `IngBase2`, `IngBase3`, `IngBase4`, `IngOpt1`, `IngOpt2`, `IngOpt3`, `IngOpt4`, `DateArchiv`, `IdProd`) 
-VALUES 
+INSERT INTO DETAIL (`NomProd`, `IngBase1`, `IngBase2`, `IngBase3`, `IngBase4`, `IngOpt1`, `IngOpt2`, `IngOpt3`, `IngOpt4`, `DateArchiv`, `IdProd`)
+VALUES
 ('CrepesSuzette', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', NOW(), 0),
 ('CrepesBretonnes', 'Farine', 'Oeufs', 'Lait', 'Oeuf', 'Jambom', 'Emental', 'Fraise', 'Banane', NOW(), 1),
 ('Salade', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', NOW(), 2);
@@ -249,8 +232,8 @@ VALUES
 
 
 
-INSERT INTO RESPONSABLE (`Nom`, `Prenom`, `Tel`) 
-VALUES 
+INSERT INTO RESPONSABLE (`Nom`, `Prenom`, `Tel`)
+VALUES
 ('Boudon', 'Owen', '0638045422');
 
 
