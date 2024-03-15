@@ -3,7 +3,7 @@
         {
             "id": 1,
             "nom": "CrepesSuzette",
-            "temps": "01:00",
+            "temps": "11:11",
             "statut": "En attente",
             "ingredients": {
                 "base": [
@@ -26,7 +26,7 @@
         {
             "id": 2,
             "nom": "CrepesBretonnes",
-            "temps": "21:24",
+            "temps": "00:00",
             "statut": "En attente",
             "ingredients": {
                 "base": [

@@ -1,7 +1,12 @@
 <?php
 header('Content-Type: application/json');
 
-include '../../BaseDeDonnees/connexionBDD.php';
+try {
+    include '../../BaseDeDonnees/connexionBDD.php';
+} catch (Exception $ex) {
+    echo json_encode(['error' => 'DB connection failed']);
+    die();
+}
 
 $action = $_POST['action'] ?? ''; //filtering is not required, sql injection is not possible on this variable
 
@@ -23,6 +28,10 @@ try {
             $idLivreur = filter_input(INPUT_POST, 'idLivreur', FILTER_SANITIZE_NUMBER_INT);
             obtenirDetailsLivreur($conn, $idLivreur);
             break;
+        case 'specifierDisponibiliteSoir':
+            specifierDisponibiliteSoir($conn);
+            break;
+
         default:
             http_response_code(400); // Bad Request
             echo json_encode(['error' => 'Action non reconnue']);
@@ -59,7 +68,7 @@ function modifierLivreur($pdo) {
     if ($stmt->execute([$nom, $prenom, $tel, $numSS, $disponible, $idLivreur])) {
         echo json_encode(['success' => true, 'message' => 'Livreur modifié avec succès']);
     } else {
-        throw new Exception('Erreur lors de la modification du livreur.');
+        throw new Exception('Erreur lo rs de la modification du livreur.');
     }
 }
 
@@ -76,16 +85,24 @@ function archiverLivreur($pdo) {
 }
 
 function afficherLivreurs($pdo) {
-    $sql = "SELECT IdLivreur, Nom, Prenom, Tel, NumSS, Disponible FROM livreur WHERE DateArchiv IS NULL OR DateArchiv = '0000-00-00'";
+    // La date d'aujourd'hui pour filtrer les disponibilités du soir
+    $today = date('Y-m-d');
+
+    $sql = "SELECT l.IdLivreur, l.Nom, l.Prenom, l.Tel, l.NumSS, l.Disponible, 
+                   COALESCE(ds.Present, FALSE) AS PresentCeSoir
+            FROM livreur l
+            LEFT JOIN DisponibiliteSoir ds ON l.IdLivreur = ds.IdLivreur AND ds.Date = ?
+            WHERE l.DateArchiv IS NULL OR l.DateArchiv = '0000-00-00'";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute();
+    $stmt->execute([$today]);
     $livreurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     if ($livreurs) {
         echo json_encode(['success' => true, 'livreurs' => $livreurs]);
     } else {
-        throw new Exception('Livreur non trouvé.');
-    }}
+        throw new Exception('Aucun livreur trouvé.');
+    }
+}
 
 function obtenirDetailsLivreur($pdo, $idLivreur) {
     $sql = "SELECT * FROM livreur WHERE IdLivreur = ?";
@@ -98,4 +115,29 @@ function obtenirDetailsLivreur($pdo, $idLivreur) {
     } else {
         throw new Exception('Livreur non trouvé.');
     }
+}
+
+function specifierDisponibiliteSoir($pdo) {
+    $idLivreur = filter_input(INPUT_POST, 'idLivreur', FILTER_SANITIZE_NUMBER_INT);
+    $present = filter_input(INPUT_POST, 'present', FILTER_VALIDATE_BOOLEAN);
+
+    // Vérifiez si l'entrée pour ce livreur et cette date existe déjà
+    $sqlVerif = "SELECT IdDisponibilite FROM DisponibiliteSoir WHERE IdLivreur = ? AND Date = CURDATE()";
+    $stmtVerif = $pdo->prepare($sqlVerif);
+    $stmtVerif->execute([$idLivreur]);
+    $exist = $stmtVerif->fetch();
+
+    if ($exist) {
+        // Mise à jour si l'entrée existe déjà
+        $sqlUpdate = "UPDATE DisponibiliteSoir SET Present = ? WHERE IdDisponibilite = ?";
+        $stmtUpdate = $pdo->prepare($sqlUpdate);
+        $stmtUpdate->execute([$present, $exist['IdDisponibilite']]);
+    } else {
+        // Insertion d'une nouvelle entrée si elle n'existe pas
+        $sqlInsert = "INSERT INTO DisponibiliteSoir (IdLivreur, Date, Present) VALUES (?, CURDATE(), ?)";
+        $stmtInsert = $pdo->prepare($sqlInsert);
+        $stmtInsert->execute([$idLivreur, $present]);
+    }
+
+    echo json_encode(['success' => true, 'message' => 'Disponibilité spécifiée avec succès']);
 }
