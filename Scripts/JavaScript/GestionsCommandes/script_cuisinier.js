@@ -74,7 +74,6 @@ function terminerCommande(idCommande) {
     });
 }
 
-
 function sauvegarderCommandes(data) {
     $.ajax({
         type: "POST",
@@ -93,29 +92,26 @@ function sauvegarderCommandes(data) {
 }
 
 function afficherIngredients(id) {
+    // Faire en sorte d'afficher la quantité pour chaque ingrédient
     $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
         let commande = data.commandes.find(commande => commande.id === id);
 
         if (commande) {
-            let ingredients = [];
-            for (let i = 1; i <= 5; i++) {
-                let ingredientKey = "ingBase" + i;
-                if (commande[ingredientKey]) {
-                    ingredients.push(commande[ingredientKey]);
-                }
+            let ingredientsText = "Ingrédients de " + commande.nom + " :\n\n";
+
+            if (commande.ingredients.base.length > 0) {
+                ingredientsText += "Ingrédients de base :\n";
+                ingredientsText += "• " + commande.ingredients.base.join("\n• ") + "\n\n";
             }
-            for (let i = 1; i <= 6; i++) {
-                let ingredientKey = "ingOpt" + i;
-                if (commande[ingredientKey]) {
-                    if (commande[ingredientKey] !== null) {
-                        ingredients.push(commande[ingredientKey]);
-                    }
-                }
+
+            if (commande.ingredients.optionnels.length > 0) {
+                ingredientsText += "Ingrédients optionnels :\n";
+                ingredientsText += "• " + commande.ingredients.optionnels.join("\n• ");
             }
-            alert("Ingrédients de " + commande.nom + " : \n\n" + ingredients.join("\n"));
+
+            alert(ingredientsText);
         } else {
             alert("Commande non trouvée.");
         }
     });
 }
-
