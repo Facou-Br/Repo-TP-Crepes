@@ -59,18 +59,18 @@
 
         try {
             $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-            $sql = "INSERT INTO `ingredient` (NomIngred, SeuilStock, StockMin, StockReel, PrixUHT_Moyen) VALUES ('$nomIngred', $seuilStock, $stockMin, $stockReel, $prixUHTMoyen)";
+            $sql = "INSERT INTO `ingredient` (NomIngred, SeuilStock, StockMin, StockReel, PrixUHT_Moyen) VALUES ('.$nomIngred.', $seuilStock, $stockMin, $stockReel, $prixUHTMoyen)";
             $test1=$connex->query($sql);
             var_dump($test1);
 
-            $sqlId="SELECT IdIngred FROM `ingredient` WHERE NomIngred='$nomIngred';";
-            $idIngred=$connex->query($sqlId)->fetchColumn();
+            $sqlId="SELECT IdIngred FROM `ingredient` WHERE NomIngred=\'.$nomIngred.\';";
+            var_dump($sqlId);
+            $result = $connex->query($sqlId);
+            $row = $result->fetch(PDO::FETCH_ASSOC);
             var_dump($idIngred);
 
             $sql2 = "INSERT INTO `fourn_ingr` (NomFourn, IdIngred) VALUES ('$nomFourn', $idIngred)";
             $test2=$connex->query($sql2);
-
-
             var_dump($test2);
 
         } catch (PDOException $e) {
