@@ -166,7 +166,6 @@ input, select {
 }
 
 #listeLivreurs .livreur-item input[type=checkbox] {
-    /* Pas besoin de transform: scale(1.5); si cela crée des problèmes d'alignement */
     margin-right: 20px; /* Ajoute un espace entre la checkbox et le label */
     cursor: pointer;
 }
@@ -174,4 +173,9 @@ input, select {
 #listeLivreurs .livreur-item label {
     margin-left: 10px;
     flex-grow: 1;
+}
+
+form#formLivreur {
+    width: 500px;
+    margin: 0 auto;
 }

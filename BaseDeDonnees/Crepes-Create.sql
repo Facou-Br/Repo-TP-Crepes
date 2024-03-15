@@ -238,10 +238,6 @@ create unique index ID_PRODUIT_IND
 create unique index ID_RESPONSABLE_IND
      on RESPONSABLE (IdRes);
 
-/* Assurez-vous que les événements programmés sont activés dans votre serveur MySQL. 
-Vous pouvez vérifier cela avec la commande SHOW VARIABLES LIKE 'event_scheduler'; 
-et l'activer si nécessaire avec SET GLOBAL event_scheduler = ON;. */
-
 CREATE TABLE DisponibiliteSoir (
     IdDisponibilite INT NOT NULL AUTO_INCREMENT,
     IdLivreur INT NOT NULL,
@@ -252,6 +248,21 @@ CREATE TABLE DisponibiliteSoir (
         REFERENCES LIVREUR(IdLivreur)
 );
 
+CREATE TABLE Inventaire (
+    IdInventaire INT NOT NULL AUTO_INCREMENT,
+    IdProd INT NOT NULL,
+    Date DATE NOT NULL,
+    Quantite INT NOT NULL,
+    CONSTRAINT PK_Inventaire PRIMARY KEY (IdInventaire),
+    CONSTRAINT FK_Inventaire_Produit FOREIGN KEY (IdProd)
+        REFERENCES PRODUIT(IdProd)
+);
+
+
+
+/* Assurez-vous que les événements programmés sont activés dans votre serveur MySQL. 
+Vous pouvez vérifier cela avec la commande SHOW VARIABLES LIKE 'event_scheduler'; 
+et l'activer si nécessaire avec SET GLOBAL event_scheduler = ON;. */
 
 DELIMITER $$
 
