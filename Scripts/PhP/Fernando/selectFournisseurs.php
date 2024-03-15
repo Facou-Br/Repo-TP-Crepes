@@ -31,5 +31,5 @@ try {
 }
 
 $data = json_encode($tableauFournisseurs);
-$fileadress = "../../JavaScript/Fernando/fournisseurs.json";
+$fileadress = "../../../Scripts/JavaScript/Fernando/fournisseurs.json";
 file_put_contents($fileadress, $data);
