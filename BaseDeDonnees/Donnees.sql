@@ -237,17 +237,16 @@ VALUES
 ('Boudon', 'Owen', '0638045422');
 
 
-INSERT INTO Inventaire (IdProd, Date, Quantite, StockTheorique) VALUES
--- Inventaires pour le produit avec IdProd = 1
+INSERT INTO Inventaire (IdIngred, Date, Quantite, StockTheorique) VALUES
+-- Inventaires pour le produit avec IdIngred = 1
 (1, CURDATE(), 100, 95),
-(1, DATE_ADD(CURDATE(), INTERVAL 1 DAY), 105, 100),
-(1, DATE_ADD(CURDATE(), INTERVAL 2 DAY), 110, 108),
-(1, DATE_ADD(CURDATE(), INTERVAL 3 DAY), 95, 90),
-(1, DATE_ADD(CURDATE(), INTERVAL 4 DAY), 120, 118),
-(1, DATE_ADD(CURDATE(), INTERVAL 5 DAY), 105, 102),
-(1, DATE_ADD(CURDATE(), INTERVAL 6 DAY), 100, 99),
+(1, DATE_ADD(CURDATE(), INTERVAL 1 DAY), 105, 99),
+(1, DATE_ADD(CURDATE(), INTERVAL 2 DAY), 112, 108),
+(1, DATE_ADD(CURDATE(), INTERVAL 3 DAY), 84, 90),
+(1, DATE_ADD(CURDATE(), INTERVAL 4 DAY), 130, 118),
+(1, DATE_ADD(CURDATE(), INTERVAL 5 DAY), 105, 120),
+(1, DATE_ADD(CURDATE(), INTERVAL 6 DAY), 100, 102),
 
--- Inventaires pour le produit avec IdProd = 2
 (2, CURDATE(), 150, 145),
 (2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), 155, 150),
 (2, DATE_ADD(CURDATE(), INTERVAL 2 DAY), 160, 158),
@@ -256,11 +255,15 @@ INSERT INTO Inventaire (IdProd, Date, Quantite, StockTheorique) VALUES
 (2, DATE_ADD(CURDATE(), INTERVAL 5 DAY), 155, 152),
 (2, DATE_ADD(CURDATE(), INTERVAL 6 DAY), 150, 149),
 
--- Inventaires pour le produit avec IdProd = 3
 (3, CURDATE(), 200, 195),
-(3, DATE_ADD(CURDATE(), INTERVAL 1 DAY), 205, 200),
-(3, DATE_ADD(CURDATE(), INTERVAL 2 DAY), 210, 208),
-(3, DATE_ADD(CURDATE(), INTERVAL 3 DAY), 195, 190),
-(3, DATE_ADD(CURDATE(), INTERVAL 4 DAY), 220, 218),
-(3, DATE_ADD(CURDATE(), INTERVAL 5 DAY), 205, 202),
-(3, DATE_ADD(CURDATE(), INTERVAL 6 DAY), 200, 199);
+(3, DATE_ADD(CURDATE(), INTERVAL 1 DAY), 199, 200),
+(3, DATE_ADD(CURDATE(), INTERVAL 2 DAY), 210, 130),
+(3, DATE_ADD(CURDATE(), INTERVAL 3 DAY), 192, 190),
+(3, DATE_ADD(CURDATE(), INTERVAL 4 DAY), 205, 218),
+(3, DATE_ADD(CURDATE(), INTERVAL 5 DAY), 100, 120),
+(3, DATE_ADD(CURDATE(), INTERVAL 6 DAY), 199, 200);
+
+INSERT INTO RenouvellementIngredients (IdIngred, QuantiteARecommander) VALUES
+(1, 50), -- Pour l'ingrédient avec IdIngred = 1
+(2, 30), -- Pour l'ingrédient avec IdIngred = 2
+(3, 20); -- Pour l'ingrédient avec IdIngred = 3
