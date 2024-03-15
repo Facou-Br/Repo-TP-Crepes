@@ -9,7 +9,7 @@
 <body>
     <fieldset>
         <legend> Mise à jour Stock </legend>
-        <form action="../../../Scripts/PhP/Fernando/majStock_Fournisseur.php" method="post">
+        <form action="../../../Scripts/PhP/Fernando/selectIngredients.php" method="post">
 
             <label for="fournisseurs">Nom fournisseur:</label>
             <select id="fournisseurs" name="fournisseurs" title="fournisseurs" required>
@@ -19,6 +19,10 @@
                 <option value="Coca-Cola">Coca-Cola</option>
                 <option value="Nestle">Nestle</option>
             </select><br>
+            
+            <input type="submit" value="Mettre à jour">
+        </form>
+        <form action="../../../Scripts/PhP/Fernando/majStock_Fournisseur.php" method="post">
             
             <div>Nutella -> 
             <label for="5">Quantité apporté</label>

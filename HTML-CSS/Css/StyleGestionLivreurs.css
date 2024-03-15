@@ -1,4 +1,4 @@
-/* Styles de base pour le corps et les en-têtes */
+/* Styles pour le corps et les en-têtes */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -125,3 +125,53 @@ footer {
     margin-left: 5px;
 }
 
+/* Styles spécifiques pour la gestion de la disponibilité des livreurs */
+#gestionDisponibiliteSoir {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+#listeLivreurs {
+    margin-top: 20px;
+}
+
+#listeLivreurs div {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#listeLivreurs label {
+    margin-left: 10px;
+    font-size: 1.1em;
+}
+
+#listeLivreurs input[type=checkbox] {
+    transform: scale(1.5);
+    margin-left: 20px;
+}
+
+/* Ajout d'un peu d'espace autour des inputs pour une meilleure lisibilité */
+input, select {
+    margin: 10px 0;
+}
+
+#listeLivreurs .livreur-item {
+    display: flex;
+    align-items: center; /* Centre verticalement les enfants */
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+#listeLivreurs .livreur-item input[type=checkbox] {
+    /* Pas besoin de transform: scale(1.5); si cela crée des problèmes d'alignement */
+    margin-right: 20px; /* Ajoute un espace entre la checkbox et le label */
+    cursor: pointer;
+}
+
+#listeLivreurs .livreur-item label {
+    margin-left: 10px;
+    flex-grow: 1;
+}
