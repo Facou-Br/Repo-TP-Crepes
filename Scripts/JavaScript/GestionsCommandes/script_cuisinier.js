@@ -26,6 +26,23 @@ function chargerCommandes() {
     });
 }
 
+function mettreAJourBDD(idCommande, nouveauStatut) {
+    $.ajax({
+        type: "POST",
+        url: "../../.././Scripts/PhP/modifierCommande.php",
+        data: JSON.stringify({ id: idCommande, statut: nouveauStatut }),
+        contentType: "application/json",
+        success: function(response) {
+            console.log("Commande mise à jour dans la base de données avec succès !");
+        },
+        error: function(error) {
+            console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error);
+            alert("Une erreur s'est produite lors de la mise à jour de la commande dans la base de données.");
+        }
+    });
+}
+
+
 function actualiserCommandesBdD(data) {
     $.ajax({
         type: "POST",
@@ -57,8 +74,8 @@ function commencerCommande(idCommande) {
         if (commande) {
             if (commande.statut === "En attente") {
                 commandeEnCours = idCommande;
-                sauvegarderCommandes(data);
                 mettreAJourBDD(idCommande, "En cours");
+                actualiserCommandesBdD();
             } else {
                 alert("Cette commande ne peut pas être commencée car elle n'est pas en attente.");
             }
@@ -79,31 +96,14 @@ function terminerCommande(idCommande) {
 
         if (commande) {
             if (commande.statut === "En cours") {
-                commande.statut = "Terminée";
+                mettreAJourBDD(idCommande, "Terminée");
                 commandeEnCours = null;
-                sauvegarderCommandes(data);
+                actualiserCommandesBdD();
             } else {
                 alert("Cette commande ne peut pas être terminée car elle n'est pas en cours.");
             }
         } else {
             alert("Commande non trouvée.");
-        }
-    });
-}
-
-function sauvegarderCommandes(data) {
-    $.ajax({
-        type: "POST",
-        url: "../../.././Scripts/PhP/sauvegarderCommandes.php",
-        data: JSON.stringify(data),
-        contentType: "application/json",
-        success: function(response) {
-            console.log("Commande terminée avec succès !");
-            chargerCommandes();
-        },
-        error: function(error) {
-            console.error("Erreur lors de la sauvegarde des commandes :", error);
-            alert("Une erreur s'est produite lors de la sauvegarde des commandes.");
         }
     });
 }
@@ -133,19 +133,21 @@ function afficherIngredients(id) {
     });
 }
 
-function mettreAJourBDD(idCommande, nouveauStatut) {
+/*
+function sauvegarderCommandes(data) {
     $.ajax({
         type: "POST",
-        url: "../../.././Scripts/PhP/modifierCommande.php",
-        data: JSON.stringify({ id: idCommande, statut: nouveauStatut }),
+        url: "../../.././Scripts/PhP/sauvegarderCommandes.php",
+        data: JSON.stringify(data),
         contentType: "application/json",
         success: function(response) {
-            console.log("Commande mise à jour dans la base de données avec succès !");
+            console.log("Commande terminée avec succès !");
+            chargerCommandes();
         },
         error: function(error) {
-            console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error);
-            alert("Une erreur s'est produite lors de la mise à jour de la commande dans la base de données.");
+            console.error("Erreur lors de la sauvegarde des commandes :", error);
+            alert("Une erreur s'est produite lors de la sauvegarde des commandes.");
         }
     });
 }
-
+*/

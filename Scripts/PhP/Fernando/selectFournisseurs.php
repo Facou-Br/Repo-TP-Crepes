@@ -29,4 +29,7 @@ try {
     echo 'N° : ' . $e->getCode();
     die();
 }
+
 $data = json_encode($tableauFournisseurs);
+$fileadress = "../../JavaScript/Fernando/fournisseurs.json";
+file_put_contents($fileadress, $data);
