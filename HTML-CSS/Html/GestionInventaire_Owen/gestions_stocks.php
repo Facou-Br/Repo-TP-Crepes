@@ -59,7 +59,7 @@
                 <div class="recherche"><input id="nom" placeholder="Nom"/></div>
                 <div class="recherche"><input id="unite" placeholder="Nombre d'unité"/></div>
                 <div class="recherche"><input id="stockMin" placeholder="Stock minimum"/></div>
-                <div class="recherchton id="rechercher">Rechercher</button>
+                <div class="recherchton id="rechercher"><button>Rechercher</button></div>
             </div>
             <br>
             <div id="resultat">
