@@ -87,7 +87,7 @@ create table INGREDIENT (
      Unite char(10) default '"sans"' not null,
      SeuilStock int not null default 1,
      StockMin int not null,
-     StockReel float(7) not null,
+     StockTheorique float(7) not null,
      PrixUHT_Moyen float(5) not null,
      Q_A_Com int not null,
      DateArchiv date,

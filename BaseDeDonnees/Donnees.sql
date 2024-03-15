@@ -13,7 +13,7 @@ VALUES
 ('Nestle', '7 boulevard Pierre Carle', '77186', 'NOISIEL', '01 60 37 68 00', NOW());
 
 -- Insertion des données de INGREDIENT exemple. Assez simple
-INSERT INTO INGREDIENT (NomIngred, Unite, SeuilStock, StockMin, StockReel, PrixUHT_Moyen, Q_A_Com, DateArchiv)
+INSERT INTO INGREDIENT (NomIngred, Unite, SeuilStock, StockMin, StockTheorique, PrixUHT_Moyen, Q_A_Com, DateArchiv)
 VALUES
 ('Farine', 'kg', 1, 0, 5, 2, 1, NOW()),
 ('Oeufs', 'unite', 1, 0, 5, 2, 1, NOW()),
