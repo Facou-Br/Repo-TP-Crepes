@@ -4,7 +4,7 @@
             "id": 1,
             "nom": "CrepesSuzette",
             "temps": "11:11",
-            "statut": "En attente",
+            "statut": "Acceptée",
             "ingredients": {
                 "base": [
                     "Farine",
@@ -27,7 +27,7 @@
             "id": 2,
             "nom": "CrepesBretonnes",
             "temps": "00:00",
-            "statut": "En attente",
+            "statut": "Acceptée",
             "ingredients": {
                 "base": [
                     "Farine",
@@ -50,7 +50,7 @@
             "id": 3,
             "nom": "Salade",
             "temps": "21:24",
-            "statut": "En attente",
+            "statut": "Acceptée",
             "ingredients": {
                 "base": [
                     "Tomate",
