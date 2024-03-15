@@ -37,7 +37,7 @@ VALUES
 ('Oignon', 'kg', 1, 0, 5, 2, 1, NOW()),
 ('Ail', 'kg', 1, 0, 5, 2, 1, NOW()),
 ('Huile', 'l', 1, 0, 5, 2, 1, NOW()),
-("Reblochon", 'kg', 0,0,0,12,2,NOW());
+('Reblochon', 'kg', 0,0,0,12,2,NOW());
 
 INSERT INTO LIVREUR ( Nom, Prenom, Tel, NumSS, Disponible, DateArchiv)
 VALUES
