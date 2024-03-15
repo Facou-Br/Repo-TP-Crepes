@@ -1,7 +1,12 @@
 <?php
 header('Content-Type: application/json');
 
-include '../../BaseDeDonnees/connexionBDD.php';
+try {
+    include '../../BaseDeDonnees/connexionBDD.php';
+} catch (Exception $ex) {
+    echo json_encode(['error' => 'DB connection failed']);
+    die();
+}
 
 $action = $_POST['action'] ?? ''; //filtering is not required, sql injection is not possible on this variable
 

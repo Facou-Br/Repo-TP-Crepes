@@ -9,7 +9,7 @@ function chargerLivreurs() {
             const div = document.getElementById('listeLivreurs');
             div.innerHTML = '';
             data.livreurs.forEach(function(livreur) {
-                // Créez un nouveau div pour contenir la checkbox et le label
+                // nouveau div pour contenir la checkbox et le label
                 const livreurItem = document.createElement('div');
                 livreurItem.className = 'livreur-item'; // Ajoutez une classe pour le styling
                 
@@ -26,11 +26,11 @@ function chargerLivreurs() {
                 label.htmlFor = checkbox.id;
                 label.textContent = livreur.Nom + ' ' + livreur.Prenom;
 
-                // Ajoutez la checkbox et le label au div 'livreur-item'
+                // ajout checkbox et label au div 'livreur-item'
                 livreurItem.appendChild(checkbox);
                 livreurItem.appendChild(label);
 
-                // Ajoutez le 'livreur-item' au div principal
+                // Ajout 'livreur-item' au div principal
                 div.appendChild(livreurItem);
             });
         }
@@ -39,8 +39,6 @@ function chargerLivreurs() {
 
 
 function specifierDisponibiliteSoir(idLivreur, present) {
-    console.log(idLivreur);
-    console.log(present);
     $.ajax({
         url: '../../../Scripts/PhP/gestionLivreurs.php',
         type: 'POST',
