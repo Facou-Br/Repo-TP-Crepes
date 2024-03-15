@@ -38,10 +38,9 @@
         echo 'N° : ' . $e->getCode();
         die();
     }
-    echo "<select>";
+    echo "<select name ='fournisseur'>";
     foreach ($ligne as $row) {
             echo "<option value ='" . $row['nomFourn']. "'>" . $row['nomFourn'] . "</option>";
-
     }
     echo "</select>";
     ?>
@@ -56,20 +55,33 @@
         $stockMin = $_POST["stockMin"];
         $stockReel = $_POST["stockReel"];
         $prixUHTMoyen = $_POST["prixUHTMoyen"];
+        $nomFourn = $_POST["fournisseur"];
+
         try {
             $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-            $sql = "INSERT INTO 'ingredient' (NomIngred, SeuilStock, StockMin, StockReel, PrixUHT_Moyen, DateArchiv) VALUES ('$nomIngred', '$seuilStock', '$stockMin', '$stockReel', '$prixUHTMoyen', NOW()";
+            $sql = "INSERT INTO `ingredient` (NomIngred, SeuilStock, StockMin, StockReel, PrixUHT_Moyen) VALUES ('$nomIngred', $seuilStock, $stockMin, $stockReel, $prixUHTMoyen)";
+            $test1=$connex->query($sql);
+            var_dump($test1);
+
+            $sqlId="SELECT IdIngred FROM `ingredient` WHERE NomIngred='$nomIngred';";
+            $idIngred=$connex->query($sqlId)->fetchColumn();
+            var_dump($idIngred);
+
+            $sql2 = "INSERT INTO `fourn_ingr` (NomFourn, IdIngred) VALUES ('$nomFourn', $idIngred)";
+            $test2=$connex->query($sql2);
+
+
+            var_dump($test2);
+
         } catch (PDOException $e) {
             echo 'Erreur : ' . $e->getMessage() . '<br />';
             echo 'N° : ' . $e->getCode();
             die();
         }
-/*
-        if ($connex->query($sql) === TRUE) {
-            echo "L'article a été ajouté avec succès.";
+        if ($test1 === TRUE && $test2 === TRUE){
+            echo "Le stock a été ajouté avec succès.";
         } else {
-            echo "Erreur : " . $sql . "<br>" . $connex->error;
-        }*/
+            echo "Erreur";        }
     }
     ?>
     
