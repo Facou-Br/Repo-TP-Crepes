@@ -9,7 +9,7 @@
 <body>
     <fieldset>
         <legend> Mise à jour Stock </legend>
-        <form action="../../../Scripts/PhP/majStock_Fournisseur.php" method="post">
+        <form action="../../../Scripts/PhP/Fernando/majStock_Fournisseur.php" method="post">
 
             <label for="fournisseurs">Nom fournisseur:</label>
             <select id="fournisseurs" name="fournisseurs" title="fournisseurs" required>
@@ -20,23 +20,17 @@
                 <option value="Nestle">Nestle</option>
             </select><br>
             
-            <label for="nutella">Nutella :</label>
-            <input type="number" id="nutella" name="nutella" value="5" hidden>
-            <label for="quantite1">Quantité apporté</label>
-            <!-- La valeur doit être incrémentée dynamiquement par rapport à la commande. -->
-            <input type="number" id="quantite1" name="quantite1" min=1 value="" required><br>
+            <div>Nutella -> 
+            <label for="5">Quantité apporté</label>
+            <input type="number" id="5" name="5" min=1 value="" required></div>
 
-            <label for="lait">Lait :</label>
-            <input type="number" id="lait" name="lait" value="3" hidden>
-            <label for="quantite2">Quantité apporté</label>
-            <!-- La valeur doit être incrémentée dynamiquement par rapport à la commande. -->
-            <input type="number" id="quantite2" name="quantite2" min=1 value="" required><br>
+            <div> Lait ->
+            <label for="3">Quantité apporté</label>
+            <input type="number" id="3" name="3" min=1 value="" required></div>
 
-            <label for="farine">Farine:</label>
-            <input type="number" id="farine" name="farine" value="1" hidden>
-            <label for="quantite3">Quantité apporté</label>
-            <!-- La valeur doit être incrémentée dynamiquement par rapport à la commande. -->
-            <input type="number" id="quantite3" name="quantite3" min=1 value="" required><br>
+            <div >Farine ->
+            <label for="1">Quantité apporté</label>
+            <input type="number" id="1" name="1" min=1 value="" required></div>
 
             <input type="submit" value="Mettre à jour">
         </form>
