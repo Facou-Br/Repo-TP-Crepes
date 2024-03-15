@@ -13,7 +13,7 @@ VALUES
 ('Nestle', '7 boulevard Pierre Carle', '77186', 'NOISIEL', '01 60 37 68 00', NOW());
 
 -- Insertion des données de INGREDIENT exemple. Assez simple
-INSERT INTO INGREDIENT (NomIngred, Unite, SeuilStock, StockMin, StockReel, PrixUHT_Moyen, Q_A_Com, DateArchiv)
+INSERT INTO INGREDIENT (NomIngred, Unite, SeuilStock, StockMin, StockTheorique, PrixUHT_Moyen, Q_A_Com, DateArchiv)
 VALUES
 ('Farine', 'kg', 1, 0, 5, 2, 1, NOW()),
 ('Oeufs', 'unite', 1, 0, 5, 2, 1, NOW()),
@@ -41,16 +41,16 @@ VALUES
 
 INSERT INTO LIVREUR ( Nom, Prenom, Tel, NumSS, Disponible, DateArchiv)
 VALUES
-('ROULLET','Rémi', '01 02 03 04 06', '1 04 07 71 014 248 36',1,NOW()),
-('DUPONT','Jean', '01 02 03 04 07', '1 04 07 71 014 248 37',1,NOW()),
-('DURAND','Pierre', '01 02 03 04 08', '1 04 07 71 014 248 38',1,NOW()),
-('MARTIN','Paul', '01 02 03 04 09', '1 04 07 71 014 248 39',1,NOW()),
-('PETIT','Jacques', '01 02 03 04 10', '1 04 07 71 014 248 40',1,NOW()),
-('LEROY','Alain', '01 02 03 04 11', '1 04 07 71 014 248 41',1,NOW()),
-('MOREAU','René', '01 02 03 04 12', '1 04 07 71 014 248 42',1,NOW()),
-('SIMON','Jean-Pierre', '01 02 03 04 13', '1 04 07 71 014 248 43',1,NOW()),
-('LAURENT','Michel', '01 02 03 04 14', '1 04 07 71 014 248 44',1,NOW()),
-('LACROIX','Philippe', '01 02 03 04 15', '1 04 07 71 014 248 45',1,NOW());
+('ROULLET','Rémi', '01 02 03 04 06', '1 04 07 71 014 248 36',1,NULL),
+('DUPONT','Jean', '01 02 03 04 07', '1 04 07 71 014 248 37',1,NULL),
+('DURAND','Pierre', '01 02 03 04 08', '1 04 07 71 014 248 38',1,NULL),
+('MARTIN','Paul', '01 02 03 04 09', '1 04 07 71 014 248 39',1,NULL),
+('PETIT','Jacques', '01 02 03 04 10', '1 04 07 71 014 248 40',1,NULL),
+('LEROY','Alain', '01 02 03 04 11', '1 04 07 71 014 248 41',1,NULL),
+('MOREAU','René', '01 02 03 04 12', '1 04 07 71 014 248 42',1,NULL),
+('SIMON','Jean-Pierre', '01 02 03 04 13', '1 04 07 71 014 248 43',1,NULL),
+('LAURENT','Michel', '01 02 03 04 14', '1 04 07 71 014 248 44',1,NULL),
+('LACROIX','Philippe', '01 02 03 04 15', '1 04 07 71 014 248 45',1,NULL);
 
 
 INSERT INTO COMMANDE (NomClient, TelClient, AdrClient, CP_Client, VilClient, Date, HeureDispo, TypeEmbal, A_Livrer, EtatLivraison, CoutLiv, TotalTTC,	DateArchiv, IdLivreur)
@@ -104,3 +104,32 @@ VALUES
 INSERT INTO RESPONSABLE (`Nom`, `Prenom`, `Tel`) 
 VALUES 
 ('Boudon', 'Owen', '0638045422');
+
+
+INSERT INTO Inventaire (IdProd, Date, Quantite, StockTheorique) VALUES
+-- Inventaires pour le produit avec IdProd = 1
+(1, CURDATE(), 100, 95),
+(1, DATE_ADD(CURDATE(), INTERVAL 1 DAY), 105, 100),
+(1, DATE_ADD(CURDATE(), INTERVAL 2 DAY), 110, 108),
+(1, DATE_ADD(CURDATE(), INTERVAL 3 DAY), 95, 90),
+(1, DATE_ADD(CURDATE(), INTERVAL 4 DAY), 120, 118),
+(1, DATE_ADD(CURDATE(), INTERVAL 5 DAY), 105, 102),
+(1, DATE_ADD(CURDATE(), INTERVAL 6 DAY), 100, 99),
+
+-- Inventaires pour le produit avec IdProd = 2
+(2, CURDATE(), 150, 145),
+(2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), 155, 150),
+(2, DATE_ADD(CURDATE(), INTERVAL 2 DAY), 160, 158),
+(2, DATE_ADD(CURDATE(), INTERVAL 3 DAY), 145, 140),
+(2, DATE_ADD(CURDATE(), INTERVAL 4 DAY), 170, 168),
+(2, DATE_ADD(CURDATE(), INTERVAL 5 DAY), 155, 152),
+(2, DATE_ADD(CURDATE(), INTERVAL 6 DAY), 150, 149),
+
+-- Inventaires pour le produit avec IdProd = 3
+(3, CURDATE(), 200, 195),
+(3, DATE_ADD(CURDATE(), INTERVAL 1 DAY), 205, 200),
+(3, DATE_ADD(CURDATE(), INTERVAL 2 DAY), 210, 208),
+(3, DATE_ADD(CURDATE(), INTERVAL 3 DAY), 195, 190),
+(3, DATE_ADD(CURDATE(), INTERVAL 4 DAY), 220, 218),
+(3, DATE_ADD(CURDATE(), INTERVAL 5 DAY), 205, 202),
+(3, DATE_ADD(CURDATE(), INTERVAL 6 DAY), 200, 199);

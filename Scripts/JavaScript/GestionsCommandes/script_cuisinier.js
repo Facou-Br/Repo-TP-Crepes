@@ -8,7 +8,7 @@ function chargerCommandes() {
         listeCommandes.html("");
 
         data.commandes.forEach(commande => {
-            if (commande.statut !== "Terminée") {
+            if (commande.statut !== "Prête") {
                 let elementCommande = `
                     <div>
                         <p>Nom : ${commande.nom}</p>
@@ -25,6 +25,63 @@ function chargerCommandes() {
         });
     });
 }
+
+/*
+function chargerCommandes() {
+    // Faire en sorte de faire qu'une commande avec plusieurs produits, cela affiche qu'un rectangle
+
+    $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
+        data.commandes.sort((a, b) => {
+            return a.temps.localeCompare(b.temps);
+        });
+
+        let listeCommandes = $("#commandesList");
+        listeCommandes.html("");
+
+        data.commandes.forEach(commande => {
+            if (commande.statut !== "Prête") {
+                let elementCommande = `
+                    <div id="commande">
+                        <h2>Commande : 'NomCli'</h2>
+                        <p>Heure de mise à disposition : ${commande.temps}</p>        
+                        <hr>
+                        <p>1 ${commande.nom}</p>
+                        <p>Statut : ${commande.statut}</p>
+                        <button onclick="commencerCommande(${commande.id})">Commencer</button>
+                        <button onclick="terminerCommande(${commande.id})">Terminer</button>
+                        <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
+                        <hr>
+                        <p>4 ${commande.nom}</p>
+                        <p>Statut : ${commande.statut}</p>
+                        <button onclick="commencerCommande(${commande.id})">Commencer</button>
+                        <button onclick="terminerCommande(${commande.id})">Terminer</button>
+                        <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
+                        <hr>
+                    </div>
+                `;
+                listeCommandes.append(elementCommande);
+            }
+        });
+    });
+}
+*/
+
+function mettreAJourBDD(idCommande, nouveauStatut) {
+    $.ajax({
+        type: "POST",
+        url: "../../.././Scripts/PhP/modifierCommande.php",
+        data: JSON.stringify({ id: idCommande, statut: nouveauStatut }),
+        contentType: "application/json",
+        success: function(response) {
+            console.log("Commande mise à jour dans la base de données avec succès !");
+        },
+        error: function(error) {
+            console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error);
+            alert("Une erreur s'est produite lors de la mise à jour de la commande dans la base de données.");
+        }
+    });
+}
+
 
 function actualiserCommandesBdD(data) {
     $.ajax({
@@ -47,7 +104,7 @@ let commandeEnCours = null;
 
 function commencerCommande(idCommande) {
     if (commandeEnCours !== null) {
-        alert("Une commande est déjà en cours. Terminez-la d'abord.");
+        alert("Une commande est déjà en préparation. Terminez-la d'abord.");
         return;
     }
 
@@ -55,12 +112,12 @@ function commencerCommande(idCommande) {
         let commande = data.commandes.find(commande => commande.id === idCommande);
 
         if (commande) {
-            if (commande.statut === "En attente") {
+            if (commande.statut === "Acceptée") {
                 commandeEnCours = idCommande;
-                sauvegarderCommandes(data);
-                mettreAJourBDD(idCommande, "En cours");
+                mettreAJourBDD(idCommande, "En préparation");
+                actualiserCommandesBdD();
             } else {
-                alert("Cette commande ne peut pas être commencée car elle n'est pas en attente.");
+                alert("Cette commande ne peut pas être commencée car elle n'est pas acceptée.");
             }
         } else {
             alert("Commande non trouvée.");
@@ -69,8 +126,10 @@ function commencerCommande(idCommande) {
 }
 
 function terminerCommande(idCommande) {
+    // Quand une commande est terminée, mettre à jour le stock !!
+
     if (commandeEnCours !== idCommande) {
-        alert("Cette commande ne peut pas être terminée car elle n'est pas en cours.");
+        alert("Cette commande ne peut pas être terminée car elle n'est pas en préparation.");
         return;
     }
 
@@ -78,10 +137,10 @@ function terminerCommande(idCommande) {
         let commande = data.commandes.find(commande => commande.id === idCommande);
 
         if (commande) {
-            if (commande.statut === "En cours") {
-                commande.statut = "Terminée";
+            if (commande.statut === "En préparation") {
+                mettreAJourBDD(idCommande, "Prête");
                 commandeEnCours = null;
-                sauvegarderCommandes(data);
+                actualiserCommandesBdD();
             } else {
                 alert("Cette commande ne peut pas être terminée car elle n'est pas en cours.");
             }
@@ -91,25 +150,9 @@ function terminerCommande(idCommande) {
     });
 }
 
-function sauvegarderCommandes(data) {
-    $.ajax({
-        type: "POST",
-        url: "../../.././Scripts/PhP/sauvegarderCommandes.php",
-        data: JSON.stringify(data),
-        contentType: "application/json",
-        success: function(response) {
-            console.log("Commande terminée avec succès !");
-            chargerCommandes();
-        },
-        error: function(error) {
-            console.error("Erreur lors de la sauvegarde des commandes :", error);
-            alert("Une erreur s'est produite lors de la sauvegarde des commandes.");
-        }
-    });
-}
-
 function afficherIngredients(id) {
     // Faire en sorte d'afficher la quantité pour chaque ingrédient
+
     $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
         let commande = data.commandes.find(commande => commande.id === id);
 
@@ -133,19 +176,21 @@ function afficherIngredients(id) {
     });
 }
 
-function mettreAJourBDD(idCommande, nouveauStatut) {
+/*
+function sauvegarderCommandes(data) {
     $.ajax({
         type: "POST",
-        url: "../../.././Scripts/PhP/modifierCommande.php",
-        data: JSON.stringify({ id: idCommande, statut: nouveauStatut }),
+        url: "../../.././Scripts/PhP/sauvegarderCommandes.php",
+        data: JSON.stringify(data),
         contentType: "application/json",
         success: function(response) {
-            console.log("Commande mise à jour dans la base de données avec succès !");
+            console.log("Commande terminée avec succès !");
+            chargerCommandes();
         },
         error: function(error) {
-            console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error);
-            alert("Une erreur s'est produite lors de la mise à jour de la commande dans la base de données.");
+            console.error("Erreur lors de la sauvegarde des commandes :", error);
+            alert("Une erreur s'est produite lors de la sauvegarde des commandes.");
         }
     });
 }
-
+*/

@@ -141,26 +141,34 @@ function afficherLivreurs() {
         console.log(data);
         const tbody = document.getElementById('listeLivreurs').getElementsByTagName('tbody')[0];
         tbody.innerHTML = ''; // Réinitialiser le contenu du tbody
-        data.livreurs.forEach(function(livreur) {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td><input type="text" class="edit-nom" value="${livreur.Nom}" /></td>
-                <td><input type="text" class="edit-prenom" value="${livreur.Prenom}" /></td>
-                <td><input type="text" class="edit-tel" value="${livreur.Tel}" /></td>
-                <td><input type="text" class="edit-numSS" value="${livreur.NumSS}" /></td>
-                <td>
-                    <select class="edit-disponible">
-                        <option value="1" ${livreur.Disponible === "1" ? 'selected' : ''}>Oui</option>
-                        <option value="0" ${livreur.Disponible === "0" ? 'selected' : ''}>Non</option>
-                    </select>
-                </td>
-                <td>
-                    <button onclick="enregistrerModification(${livreur.IdLivreur}, this.parentNode.parentNode)">Modifier</button>
-                    <button onclick="archiverLivreur(${livreur.IdLivreur})">Archiver</button>
-                </td>
-            `;
-            tbody.appendChild(tr);
-        });
+        if (data.livreurs)
+        {
+            data.livreurs.forEach(function(livreur) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><input type="text" class="edit-nom" value="${livreur.Nom}" /></td>
+                    <td><input type="text" class="edit-prenom" value="${livreur.Prenom}" /></td>
+                    <td><input type="text" class="edit-tel" value="${livreur.Tel}" /></td>
+                    <td><input type="text" class="edit-numSS" value="${livreur.NumSS}" /></td>
+                    <td>
+                        <select class="edit-disponible">
+                            <option value="1" ${livreur.Disponible === "1" ? 'selected' : ''}>Oui</option>
+                            <option value="0" ${livreur.Disponible === "0" ? 'selected' : ''}>Non</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button onclick="enregistrerModification(${livreur.IdLivreur}, this.parentNode.parentNode)">Modifier</button>
+                        <button onclick="archiverLivreur(${livreur.IdLivreur})">Archiver</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        else if (data.error)
+        {
+            console.error("php error : " + data.error); 
+            alert('Database Error');
+        }
     })
     .fail(function(jqXHR, textStatus) {
         console.error('Erreur lors de la récupération des livreurs:', textStatus);
