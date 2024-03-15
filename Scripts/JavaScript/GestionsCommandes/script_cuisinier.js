@@ -26,6 +26,23 @@ function chargerCommandes() {
     });
 }
 
+function actualiserCommandesBdD(data) {
+    $.ajax({
+        type: "POST",
+        url: "../../.././Scripts/PhP/chargerCommandes.php",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function(response) {
+            console.log("Commandes chargées dans la BdD avec succès !");
+            chargerCommandes();
+        },
+        error: function(error) {
+            console.error("Erreur lors de la sauvegarde des commandes :", error);
+            alert("Une erreur s'est produite lors de la sauvegarde des commandes.");
+        }
+    });
+}
+
 let commandeEnCours = null;
 
 function commencerCommande(idCommande) {
@@ -39,9 +56,9 @@ function commencerCommande(idCommande) {
 
         if (commande) {
             if (commande.statut === "En attente") {
-                commande.statut = "En cours";
                 commandeEnCours = idCommande;
                 sauvegarderCommandes(data);
+                mettreAJourBDD(idCommande, "En cours");
             } else {
                 alert("Cette commande ne peut pas être commencée car elle n'est pas en attente.");
             }
@@ -115,3 +132,20 @@ function afficherIngredients(id) {
         }
     });
 }
+
+function mettreAJourBDD(idCommande, nouveauStatut) {
+    $.ajax({
+        type: "POST",
+        url: "../../.././Scripts/PhP/modifierCommande.php",
+        data: JSON.stringify({ id: idCommande, statut: nouveauStatut }),
+        contentType: "application/json",
+        success: function(response) {
+            console.log("Commande mise à jour dans la base de données avec succès !");
+        },
+        error: function(error) {
+            console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error);
+            alert("Une erreur s'est produite lors de la mise à jour de la commande dans la base de données.");
+        }
+    });
+}
+

@@ -15,10 +15,10 @@
 
     try {
         $rq = "SELECT cm.NumCom, cm.HeureDispo, cm.EtatCde, d.NomProd, p.IngBase1, p.IngBase2, p.IngBase3, p.IngBase4, p.IngBase5, p.IngOpt1, p.IngOpt2, p.IngOpt3, p.IngOpt4, p.IngOpt5 , p.IngOpt6 
-                FROM COMMANDE cm
-                INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
-                INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
-                INNER JOIN PRODUIT p ON d.IdProd = p.IdProd;";
+                    FROM COMMANDE cm
+                    INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
+                    INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
+                    INNER JOIN PRODUIT p ON d.IdProd = p.IdProd;";
 
         $result = $connex->query($rq);
 
@@ -56,6 +56,12 @@
         $json_data = json_encode($commandes_array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
         $filename = '.././JavaScript/GestionsCommandes/commandes.json';
+
+        if (file_put_contents($filename, $json_data)) {
+            echo "Le fichier JSON a été créé avec succès.";
+        } else {
+            echo "Erreur lors de la création du fichier JSON.";
+        }
     } catch (PDOException $e) {
         print $e->getMessage();
     }
