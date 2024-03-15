@@ -14,7 +14,8 @@
     }
 
     try {
-        $rq = "SELECT cm.NumCom, cm.HeureDispo, cm.EtatCde, d.NomProd, p.IngBase1, p.IngBase2, p.IngBase3, p.IngBase4, p.IngBase5, p.IngOpt1, p.IngOpt2, p.IngOpt3, p.IngOpt4, p.IngOpt5 , p.IngOpt6 FROM COMMANDE cm
+        $rq = "SELECT cm.NumCom, cm.HeureDispo, cm.EtatCde, d.NomProd, p.IngBase1, p.IngBase2, p.IngBase3, p.IngBase4, p.IngBase5, p.IngOpt1, p.IngOpt2, p.IngOpt3, p.IngOpt4, p.IngOpt5 , p.IngOpt6 
+                FROM COMMANDE cm
                 INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
                 INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
                 INNER JOIN PRODUIT p ON d.IdProd = p.IdProd;";
@@ -29,17 +30,23 @@
                 "nom" => $ligne["NomProd"],
                 "temps" => substr($ligne["HeureDispo"], 0, 5),
                 "statut" => $ligne["EtatCde"],
-                "ingBase1" => $ligne["IngBase1"],
-                "ingBase2" => $ligne["IngBase2"],
-                "ingBase3" => $ligne["IngBase3"],
-                "ingBase4" => $ligne["IngBase4"],
-                "ingBase5" => $ligne["IngBase5"],
-                "ingOpt1" => $ligne["IngOpt1"],
-                "ingOpt2" => $ligne["IngOpt2"],
-                "ingOpt3" => $ligne["IngOpt3"],
-                "ingOpt4" => $ligne["IngOpt4"],
-                "ingOpt5" => $ligne["IngOpt5"],
-                "ingOpt6" => $ligne["IngOpt6"],
+                "ingredients" => array(
+                    "base" => array(
+                        $ligne["IngBase1"],
+                        $ligne["IngBase2"],
+                        $ligne["IngBase3"],
+                        $ligne["IngBase4"],
+                        $ligne["IngBase5"]
+                    ),
+                    "optionnels" => array(
+                        $ligne["IngOpt1"],
+                        $ligne["IngOpt2"],
+                        $ligne["IngOpt3"],
+                        $ligne["IngOpt4"],
+                        $ligne["IngOpt5"],
+                        $ligne["IngOpt6"]
+                    )
+                )
             );
             $commandes_array[] = $commande;
         }
@@ -49,13 +56,6 @@
         $json_data = json_encode($commandes_array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
         $filename = '.././JavaScript/GestionsCommandes/commandes.json';
-
-        if (file_put_contents($filename, $json_data)) {
-            echo "Le fichier JSON a été créé avec succès.";
-        } else {
-            echo "Erreur lors de la création du fichier JSON.";
-        }
-
     } catch (PDOException $e) {
         print $e->getMessage();
     }

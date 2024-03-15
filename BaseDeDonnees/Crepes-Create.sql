@@ -99,7 +99,7 @@ CREATE TABLE LIVREUR (
      Prenom CHAR(20) NOT NULL,
      Tel CHAR(16) NOT NULL,
      NumSS CHAR(15) NOT NULL,
-     Disponible CHAR NOT NULL,
+     Disponible BOOLEAN NOT NULL,
      DateArchiv DATE,
      CONSTRAINT ID_LIVREUR_PK PRIMARY KEY (IdLivreur)
  );
