@@ -40,11 +40,12 @@
     }
     echo "<select>";
     foreach ($ligne as $row) {
+            echo "<option value ='" . $row['nomFourn']. "'>" . $row['nomFourn'] . "</option>";
 
-        echo "<option value ='". $row['NomFourn'] ."'>" . $row['NomFourn'] . "</option>";
     }
     echo "</select>";
     ?>
+    <br><br>
     <button type="submit" value="Ajouter">Ajouter</button>
 </form>
 
@@ -57,8 +58,7 @@
         $prixUHTMoyen = $_POST["prixUHTMoyen"];
         try {
             $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-            $sql = "INSERT INTO 'ingredient' (NomIngred, SeuilStock, StockMin, StockReel, PrixUHT_Moyen, DateArchiv)
-                VALUES ('$nomIngred', '$seuilStock', '$stockMin', '$stockReel', '$prixUHTMoyen', NOW()";
+            $sql = "INSERT INTO 'ingredient' (NomIngred, SeuilStock, StockMin, StockReel, PrixUHT_Moyen, DateArchiv) VALUES ('$nomIngred', '$seuilStock', '$stockMin', '$stockReel', '$prixUHTMoyen', NOW()";
         } catch (PDOException $e) {
             echo 'Erreur : ' . $e->getMessage() . '<br />';
             echo 'N° : ' . $e->getCode();
