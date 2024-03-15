@@ -84,10 +84,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Num_OF = $_POST["Num_OF"];
     $Quant = $_POST["Quant"];
     $NumCom = $_POST["NumCom"];
+
+    $NumCom = $_POST["NumCom"];
+    $NomClient = $_POST["NomClient"];
+    $TelClient = $_POST["TelClient"];
+    $AdrClient = $_POST["AdrClient"];
+    $AdrClient = $_POST["AdrClient"];
+    $CP_Client = $_POST["CP_Client"];
+    $VilClient = $_POST["VilClient"];
+    $Date = $_POST["Date"];
+    $HeureDispo = $_POST["HeureDispo"];
+    $TypeEmbal = $_POST["TypeEmbal"];
+    $A_Livrer = $_POST["A_Livrer"];
+    $EtatCde = $_POST["EtatCde"];
+    $EtatLivraison = $_POST["EtatLivraison"];
+    $CoutLiv = $_POST["CoutLiv"];
+    $TotalTTC = $_POST["TotalTTC"];
+    $DateArchiv = $_POST["DateArchiv"];
+    $Date = $_POST["Date"];
+    $IdLivreu = $_POST["IdLivreu"];
+
+
     try {
         $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
         $sqlDetail = "INSERT INTO `com_det` (`Num_OF`, `Quant`, `NumCom`) VALUES ('$Num_OF', '$Quant', '$NumCom');";
-        $sqlCommande = "INSERT INTO `com_det` (`NumCom`) VALUES ('$NumCom');"; //TODO : complete
+        $sqlCommande = "INSERT INTO `com_det` (`NumCom`,`NomClient` ,`TelClient` ,`AdrClient` ,`CP_Client` ,`VilClient` ,`Date` ,`HeureDispo` ,`TypeEmbal` ,`A_Livrer` ,`EtatCde` ,`EtatLivraison` ,`CoutLiv` ,`TotalTTC` ,`DateArchiv` ,`Date` ,`IdLivreu`) VALUES ('$NumCom', '$NomClient', '$TelClient', '$AdrClient', '$CP_Client', '$VilClient', '$Date', '$HeureDispo', '$TypeEmbal', '$A_Livrer', '$EtatCde', '$EtatLivraison', '$CoutLiv', '$TotalTTC', '$DateArchiv', '$Date', '$IdLivreu');";
 
     } catch (PDOException $e) {
         echo 'Erreur : ' . $e->getMessage() . '<br />';
