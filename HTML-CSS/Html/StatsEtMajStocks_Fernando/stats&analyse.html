@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+
     <title>Mise à jour Stock</title>
 </head>
 
@@ -12,33 +14,34 @@
         <form action="../../../Scripts/PhP/Fernando/selectIngredients.php" method="post">
 
             <label for="fournisseurs">Nom fournisseur:</label>
-            <select id="fournisseurs" name="fournisseurs" title="fournisseurs" required>
+            <select id="fournisseurs" class="fournisseurs" name="fournisseurs" title="fournisseurs" required>
                 <option value="">Choissisez un fournisseur parmi la liste</option>
-                <!-- Rajouter les fournisseurs dynamiquement ici -->
-                <option value="Ferrero">Ferrero</option>
-                <option value="Coca-Cola">Coca-Cola</option>
-                <option value="Nestle">Nestle</option>
-            </select><br>
-            
+            </select>
+            <script src="../../../Scripts/JavaScript/Fernando/affichageDynamique.js"></script>
+            <br>
+
             <input type="submit" value="Mettre à jour">
-        </form>
+        </form><BR>
+
         <form action="../../../Scripts/PhP/Fernando/majStock_Fournisseur.php" method="post">
-            
-            <div>Nutella -> 
-            <label for="5">Quantité apporté</label>
-            <input type="number" id="5" name="5" min=1 value="" required></div>
+
+            <div>Nutella ->
+                <label for="5">Quantité apporté</label>
+                <input type="number" id="5" name="5" min=1 value="" required>
+            </div>
 
             <div> Lait ->
-            <label for="3">Quantité apporté</label>
-            <input type="number" id="3" name="3" min=1 value="" required></div>
+                <label for="3">Quantité apporté</label>
+                <input type="number" id="3" name="3" min=1 value="" required>
+            </div>
 
-            <div >Farine ->
-            <label for="1">Quantité apporté</label>
-            <input type="number" id="1" name="1" min=1 value="" required></div>
+            <div>Farine ->
+                <label for="1">Quantité apporté</label>
+                <input type="number" id="1" name="1" min=1 value="" required>
+            </div>
 
             <input type="submit" value="Mettre à jour">
         </form>
     </fieldset>
 </body>
-
 </html>
