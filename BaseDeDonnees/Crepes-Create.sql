@@ -99,7 +99,7 @@ CREATE TABLE LIVREUR (
      Prenom CHAR(20) NOT NULL,
      Tel CHAR(16) NOT NULL,
      NumSS CHAR(15) NOT NULL,
-     Disponible CHAR NOT NULL,
+     Disponible BOOLEAN NOT NULL,
      DateArchiv DATE,
      CONSTRAINT ID_LIVREUR_PK PRIMARY KEY (IdLivreur)
  );
@@ -237,3 +237,30 @@ create unique index ID_PRODUIT_IND
 
 create unique index ID_RESPONSABLE_IND
      on RESPONSABLE (IdRes);
+
+/* Assurez-vous que les événements programmés sont activés dans votre serveur MySQL. 
+Vous pouvez vérifier cela avec la commande SHOW VARIABLES LIKE 'event_scheduler'; 
+et l'activer si nécessaire avec SET GLOBAL event_scheduler = ON;. */
+
+CREATE TABLE DisponibiliteSoir (
+    IdDisponibilite INT NOT NULL AUTO_INCREMENT,
+    IdLivreur INT NOT NULL,
+    Date DATE NOT NULL,
+    Present BOOLEAN NOT NULL DEFAULT TRUE,
+    CONSTRAINT PK_DisponibiliteSoir PRIMARY KEY (IdDisponibilite),
+    CONSTRAINT FK_DisponibiliteSoir_Livreur FOREIGN KEY (IdLivreur)
+        REFERENCES LIVREUR(IdLivreur)
+);
+
+
+DELIMITER $$
+
+CREATE EVENT IF NOT EXISTS ResetDisponibiliteSoir
+ON SCHEDULE EVERY 1 DAY
+STARTS TIMESTAMP(CURRENT_DATE, '00:03:00') + INTERVAL 1 DAY
+DO
+  BEGIN
+    DELETE FROM DisponibiliteSoir WHERE Date < CURRENT_DATE;
+  END$$
+
+DELIMITER ;
