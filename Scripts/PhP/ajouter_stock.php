@@ -69,7 +69,7 @@
             $idIngred = $result->fetch(PDO::FETCH_ASSOC);
             var_dump($idIngred[1]);
 
-            $sql2 = "INSERT INTO `fourn_ingr` (NomFourn, IdIngred) VALUES ('$nomFourn', $idIngred[1]);";
+            $sql2 = "INSERT INTO `fourn_ingr` (NomFourn, IdIngred) VALUES ('$nomFourn', $idIngred);";
             $test2=$connex->query($sql2);
             var_dump($test2);
 
@@ -81,7 +81,8 @@
         if ($test1 === TRUE && $test2 === TRUE){
             echo "Le stock a été ajouté avec succès.";
         } else {
-            echo "Erreur";        }
+            echo "Erreur";
+        }
     }
     ?>
     
