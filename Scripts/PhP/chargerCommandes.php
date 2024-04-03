@@ -18,7 +18,7 @@
                     FROM COMMANDE cm
                     INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
                     INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
-                    INNER JOIN PRODUIT p ON d.IdProd = p.IdProd;";
+                    INNER JOIN PRODUIT p ON d.IdProd = p.IdProd";
 
         $result = $connex->query($rq);
 
