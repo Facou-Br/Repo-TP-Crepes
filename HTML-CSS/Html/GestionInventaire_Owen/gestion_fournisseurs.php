@@ -20,7 +20,7 @@
         <header>
             <h1>Gestion des Fournisseurs</h1>
             <nav>
-                <a href="gestions_stocks.php">Gestion des stocks</a>
+                <a href="gestions_stocks.html">Gestion des stocks</a>
             </nav>
         </header>
 
