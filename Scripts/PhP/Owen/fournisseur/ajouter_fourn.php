@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Ajouter un fournisseur</title>
-    <link rel="stylesheet" type="text/css" href="../../HTML-CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../../HTML-CSS/style.css">
     <meta charset="utf-8">
     <?php
     require_once '../../../BaseDeDonnees/codesConnexion.php';
