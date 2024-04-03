@@ -27,7 +27,7 @@
             "id": 2,
             "nom": "CrepesBretonnes",
             "temps": "00:00",
-            "statut": "Prête",
+            "statut": "Acceptée",
             "ingredients": {
                 "base": [
                     "Farine",
@@ -51,6 +51,75 @@
             "nom": "Salade",
             "temps": "21:24",
             "statut": "En préparation",
+            "ingredients": {
+                "base": [
+                    "Tomate",
+                    "Salade",
+                    "Pomme de terre",
+                    "Carotte",
+                    "Courgette"
+                ],
+                "optionnels": [
+                    "Aubergine",
+                    "Poivron",
+                    "Oignon",
+                    "Ail",
+                    "Huile",
+                    "Reblochon"
+                ]
+            }
+        },
+        {
+            "id": 10,
+            "nom": "CrepesSuzette",
+            "temps": "10:00",
+            "statut": "Acceptée",
+            "ingredients": {
+                "base": [
+                    "Farine",
+                    "Oeufs",
+                    "Lait",
+                    "Nutella",
+                    "Chocolat"
+                ],
+                "optionnels": [
+                    "Fraise",
+                    "Banane",
+                    "Chantilly",
+                    "Jambon",
+                    "Bacon",
+                    "Emmental"
+                ]
+            }
+        },
+        {
+            "id": 11,
+            "nom": "CrepesBretonnes",
+            "temps": "12:00",
+            "statut": "Acceptée",
+            "ingredients": {
+                "base": [
+                    "Farine",
+                    "Oeufs",
+                    "Lait",
+                    "Oeuf",
+                    "Jambom"
+                ],
+                "optionnels": [
+                    "Emental",
+                    "Fraise",
+                    "Banane",
+                    "Chantilly",
+                    "Jambon",
+                    "Bacon"
+                ]
+            }
+        },
+        {
+            "id": 12,
+            "nom": "Salade",
+            "temps": "12:00",
+            "statut": "Acceptée",
             "ingredients": {
                 "base": [
                     "Tomate",

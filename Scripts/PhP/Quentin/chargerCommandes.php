@@ -18,7 +18,7 @@
                     FROM COMMANDE cm
                     INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
                     INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
-                    INNER JOIN PRODUIT p ON d.IdProd = p.IdProd";
+                    INNER JOIN PRODUIT p ON d.IdProd = p.IdProd;";
 
         $result = $connex->query($rq);
 
@@ -55,7 +55,7 @@
         $commandes_array = array("commandes" => $commandes_array);
         $json_data = json_encode($commandes_array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
-        $filename = '.././JavaScript/GestionsCommandes/commandes.json';
+        $filename = '../.././JavaScript/GestionsCommandes/commandes.json';
 
         if (file_put_contents($filename, $json_data)) {
             echo "Le fichier JSON a été créé avec succès.";
