@@ -24,6 +24,9 @@ foreach ($ligne as $row) {
     $temp[]=$row;
 }
 $stocksJson = json_encode($temp);
+if (file_exists("../../../JavaScript/Owen/stocks.json")) {
+    unlink("../../../JavaScript/Owen/stocks.json");
+}
 file_put_contents("../../../JavaScript/Owen/stocks.json", $stocksJson);
 
 ?>
