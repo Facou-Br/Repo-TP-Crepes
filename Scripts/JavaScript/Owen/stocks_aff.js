@@ -1,4 +1,4 @@
-$(".aff_stock").on("click", function(){
+$(".aff_stock").change(function(){
     $("div").empty();
     $.ajax({
         url: "../../PhP/Owen/stock/afficher_stock.php",
@@ -6,10 +6,10 @@ $(".aff_stock").on("click", function(){
         data: 'action=' + $(this).attr('value'),
         success: function (data) {
             $.getJSON(
-                "../../../Scripts/JavaScript/Owen/stocks.json",
+                "stocks.json",
                 function (data) {
                     $.each(data, function (key, val) {
-                        $("div").append("<td value="+val+">" + val + " : </td>");
+                        $("div").append("<td value="+val+">" + val + "</td>");
                     });
                 }
             );

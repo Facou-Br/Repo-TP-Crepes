@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../../BaseDeDonnees/codesConnexion.php';
+require_once '../../../../BaseDeDonnees/codesConnexion.php';
 try {
     $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE.';port='.PORT, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
@@ -19,17 +19,11 @@ catch (PDOException $e) {
     echo 'N° : ' . $e->getCode();
     die();
 }
-
-foreach($ligne as $row) {
-    echo "<tr>";
-    echo "<td value=".$row['NomIngred'].">".$row['NomIngred']."</td>";
-    echo "<td value=".$row['NomFourn'].">".$row['NomFourn']."</td>";
-    echo "<td value='".$row['SeuilStock']."'>".$row['SeuilStock']."</td>";
-    echo "<td value='".$row['StockMin']."'>".$row['StockMin']."</td>";
-    echo "<td value='".$row['StockReel']."'>".$row['StockReel']."</td>";
-    echo "<td value='".$row['PrixUHT_Moyen']."'>".$row['PrixUHT_Moyen']."</td>";
-    echo "<td><button type='button' class='modif_stock'>'>Modifier</button></td>";
-    echo "</tr>";
+$temp=array();
+foreach ($ligne as $row) {
+    $temp[]=$row;
 }
+$stocksJson = json_encode($temp);
+file_put_contents("../../../JavaScript/Owen/stocks.json", $stocksJson);
 
 ?>
