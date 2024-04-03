@@ -10,12 +10,16 @@ $("select.fournisseurs").change(function () {
       $.getJSON(
         "../../../Scripts/JavaScript/Fernando/ingredientsId.json",
         function (data) {
+          $("div").append("<br>");
           $.each(data, function (key, val) {
             $("div").append("<label for='ingredient'>" + val + " : </label>");
             $("div").append(
-              "<input type='text' name='ingredient' placeholder='Ingrédient'>"
+              "<input type='text' name='ingredient' placeholder='Ingrédient'> <br>"
             );
           });
+          $("div").append(
+            "<br> <input id='majStock' class='majStock' type='submit' value='Mettre à jour le stock'>"
+          );
         }
       );
     },
@@ -23,5 +27,13 @@ $("select.fournisseurs").change(function () {
       alert("Erreur lors de la récupération des fournisseurs.");
     },
   });
-  $("div").append("<input type='submit' value='Ajouter un ingrédient'>");
+});
+
+$(document).ready(function() {
+  $('#formulaireIngredients').on('submit', function(e) {
+      e.preventDefault();
+      let mettreStockAJour = $('#majStock').click(function() {
+        return confirm('Are you sure you want to update the stock?');
+    });
+  });
 });
