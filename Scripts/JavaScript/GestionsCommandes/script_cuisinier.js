@@ -4,7 +4,7 @@ function chargerCommandes() {
             return a.temps.localeCompare(b.temps);
         });
 
-        let listeCommandes = $("#commandesList");
+        let listeCommandes = $("#commandes");
         listeCommandes.html("");
 
         data.commandes.forEach(commande => {
@@ -31,7 +31,7 @@ function chargerCommandes() {
     // Faire en sorte de faire qu'une commande avec plusieurs produits, cela affiche qu'un rectangle
 
     $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
-        data.commandes.sort((a, b) => {
+        data.commandes.sort((a, b) =>
             return a.temps.localeCompare(b.temps);
         });
 
@@ -69,7 +69,7 @@ function chargerCommandes() {
 function mettreAJourBDD(idCommande, nouveauStatut) {
     $.ajax({
         type: "POST",
-        url: "../../.././Scripts/PhP/modifierCommande.php",
+        url: "../../.././Scripts/PhP/Quentin/modifierCommande.php",
         data: JSON.stringify({ id: idCommande, statut: nouveauStatut }),
         contentType: "application/json",
         success: function(response) {
@@ -86,7 +86,7 @@ function mettreAJourBDD(idCommande, nouveauStatut) {
 function actualiserCommandesBdD(data) {
     $.ajax({
         type: "POST",
-        url: "../../.././Scripts/PhP/chargerCommandes.php",
+        url: "../../.././Scripts/PhP/Quentin/chargerCommandes.php",
         data: JSON.stringify(data),
         contentType: "application/json",
         success: function(response) {
@@ -127,6 +127,7 @@ function commencerCommande(idCommande) {
 
 function terminerCommande(idCommande) {
     // Quand une commande est terminée, mettre à jour le stock !!
+    // --> Dans la table INGREDIENT
 
     if (commandeEnCours !== idCommande) {
         alert("Cette commande ne peut pas être terminée car elle n'est pas en préparation.");
@@ -152,6 +153,7 @@ function terminerCommande(idCommande) {
 
 function afficherIngredients(id) {
     // Faire en sorte d'afficher la quantité pour chaque ingrédient
+    // --> Dans la table PROD_INGR
 
     $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
         let commande = data.commandes.find(commande => commande.id === id);
