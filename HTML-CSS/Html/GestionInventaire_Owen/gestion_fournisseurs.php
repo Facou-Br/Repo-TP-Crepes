@@ -16,7 +16,7 @@
         </style>
     </head>
     <body>
-        <div id="wrapper">
+        <div class="wrapper">
         <header>
             <h1>Gestion des Fournisseurs</h1>
             <nav>
