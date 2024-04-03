@@ -11,12 +11,7 @@ $("select.fournisseurs").change(function () {
         "../../../Scripts/JavaScript/Fernando/ingredientsId.json",
         function (data) {
           $.each(data, function (key, val) {
-            $("div").append(
-                "<label for='ingredient'>" + val + " : </label>"
-            );
-            $("div").append(
-              "<input type='text' name='ingredient' placeholder='Ingrédient'>"
-            );
+            
           });
         }
       );
