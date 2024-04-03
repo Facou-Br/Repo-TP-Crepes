@@ -17,7 +17,6 @@ try {
 
 // Mise à jour du stock du fournisseur
 if (isset ($_POST)) {
-    $fournisseur = $_POST['fournisseurs'];
     foreach ($_POST as $key => $value) {
         if ($key != 'fournisseurs') {
             $commandeSQL = "UPDATE INGREDIENT SET StockReel = " . $value . " WHERE IdIngred = " . $key;
