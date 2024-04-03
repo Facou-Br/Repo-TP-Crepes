@@ -250,14 +250,22 @@ CREATE TABLE DisponibiliteSoir (
 
 CREATE TABLE Inventaire (
     IdInventaire INT NOT NULL AUTO_INCREMENT,
-    IdProd INT NOT NULL,
+    IdIngred INT NOT NULL,
     Date DATE NOT NULL,
     Quantite INT NOT NULL,
     StockTheorique INT NOT NULL,
     CONSTRAINT PK_Inventaire PRIMARY KEY (IdInventaire),
-    CONSTRAINT FK_Inventaire_Produit FOREIGN KEY (IdProd)
-        REFERENCES PRODUIT(IdProd)
+    CONSTRAINT FK_Inventaire_Ingredient FOREIGN KEY (IdIngred) REFERENCES INGREDIENT(IdIngred)
 );
+
+CREATE TABLE RenouvellementIngredients (
+    IdRenouvellement INT NOT NULL AUTO_INCREMENT,
+    IdIngred INT NOT NULL,
+    QuantiteARecommander INT NOT NULL,
+    CONSTRAINT PK_RenouvellementIngredients PRIMARY KEY (IdRenouvellement),
+    CONSTRAINT FK_RenouvellementIngredients_Ingredient FOREIGN KEY (IdIngred) REFERENCES INGREDIENT(IdIngred)
+);
+
 
 /* Assurez-vous que les événements programmés sont activés dans votre serveur MySQL. 
 Vous pouvez vérifier cela avec la commande SHOW VARIABLES LIKE 'event_scheduler'; 
