@@ -12,9 +12,13 @@ $("select.fournisseurs").change(function () {
         function (data) {
           $("div").append("<br>");
           $.each(data, function (key, val) {
-            $("div").append("<label for='ingredient'>" + val + " : </label>");
+            $("div").append("<label for=" + key + ">" + val + " : </label>");
             $("div").append(
-              "<input type='text' name='ingredient' placeholder='Ingrédient'> <br>"
+              "<input type='number' name=" +
+                key +
+                " required value=0 id=" +
+                key +
+                " class='ingredient'> <br>"
             );
           });
           $("div").append(
@@ -29,11 +33,39 @@ $("select.fournisseurs").change(function () {
   });
 });
 
-$(document).ready(function() {
-  $('#formulaireIngredients').on('submit', function(e) {
-      e.preventDefault();
-      let mettreStockAJour = $('#majStock').click(function() {
-        return confirm('Are you sure you want to update the stock?');
-    });
+$("#formulaireIngredients").on("submit", function (e) {
+  e.preventDefault();
+
+  let idIngredients = [];
+  let ingredients = [];
+
+  $(".ingredient").each(function () {
+    idIngredients.push($(this).attr('id'));
+    ingredients.push($(this).val());
   });
+
+  let ingredientsObj = {};
+  for (let i = 0; i < idIngredients.length; i++) {
+    ingredientsObj[idIngredients[i]] = ingredients[i];
+  }
+
+  console.log(ingredientsObj);
+
+  if (confirm("Are you sure you want to update the stock?")) {
+    $.ajax({
+      url: "../../../Scripts/PhP/Fernando/majStock_Fournisseur.php",
+      type: "POST",
+      data: {
+        ingredientsObj: JSON.stringify(ingredientsObj),
+      },
+      success: function (data) {
+        alert("Stock mis à jour.");
+      },
+      error: function () {
+        alert("Erreur lors de la mise à jour du stock.");
+      },
+    });
+  } else {
+    alert("Mise à jour du stock annulée.");
+  }
 });

@@ -16,13 +16,17 @@ try {
 
 
 // Mise à jour du stock du fournisseur
-if (isset ($_POST)) {
-    foreach ($_POST as $key => $value) {
-        if ($key != 'fournisseurs') {
-            $commandeSQL = "UPDATE INGREDIENT SET StockReel = " . $value . " WHERE IdIngred = " . $key;
-            $connexionPDO->query($commandeSQL);
+if (isset($_POST["ingredientsObj"])) {
+    $ingredients = json_decode($_POST["ingredientsObj"], true);
+
+    foreach ($ingredients as $key => $value) {
+        try {
+            $sqlCommande = "UPDATE ingredient SET StockReel = $value  + StockReel WHERE IdIngred = $key";
+            $stmt = $connexionPDO->prepare($sqlCommande);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
         }
     }
 }
 $connexionPDO = null;
-header('Location: ../../../HTML-CSS/HTML/StatsEtMajStocks_Fernando/stats&analyse.html');
