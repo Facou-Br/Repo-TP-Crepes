@@ -1,6 +1,5 @@
 $.ajax({
   url: "../../../Scripts/PhP/Fernando/selectFournisseurs.php",
-  type: "POST",
   success: function (data) {
     $.getJSON(
       "../../../Scripts/JavaScript/Fernando/fournisseurs.json",
