@@ -17,9 +17,6 @@ $("select.fournisseurs").change(function () {
             $("div").append(
               "<input type='text' name='ingredient' placeholder='Ingrédient'>"
             );
-            $("div").append(
-                "<input type='submit' value='Mettre à jour'><br>"
-            );
           });
         }
       );
@@ -28,4 +25,7 @@ $("select.fournisseurs").change(function () {
       alert("Erreur lors de la récupération des fournisseurs.");
     },
   });
+  $("div").append(
+    "<input type='submit' value='Ajouter un ingrédient'>"
+  );
 });
