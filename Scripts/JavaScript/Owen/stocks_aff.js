@@ -1,15 +1,21 @@
-require("https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js");
-$(".modif_stock").on("click", function(){
+$(".aff_stock").on("click", function(){
+    $("div").empty();
     $.ajax({
-        url: "../../../Scripts/PhP/Owen/stock/modif_stock.php",
+        url: "../../PhP/Owen/stock/afficher_stock.php",
         type: "POST",
         data: 'action=' + $(this).attr('value'),
-    })
-        .done(function(data){
-            $("#madiv").html(data);
-        })
-        .fail(function(err) {
-            alert( "error fail :"+err );
-        });
+        success: function (data) {
+            $.getJSON(
+                "../../../Scripts/JavaScript/Owen/stocks.json",
+                function (data) {
+                    $.each(data, function (key, val) {
+                        $("div").append("<td value="+val+">" + val + " : </td>");
+                    });
+                }
+            );
+        },
+        error: function () {
+            alert("Erreur lors de la récupération des stocks.");
+        },
     });
 });

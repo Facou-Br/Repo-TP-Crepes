@@ -74,7 +74,7 @@
                             <th>Prix UHT</th>e"><input id="stockMax" placeholder="Stock maximum"/>
 
                     </tr>
-                        <div action="../../../Scripts/PhP/Owen/stock/afficher_stock.php"></div>
+                        <div action="../../../Scripts/PhP/Owen/stock/afficher_stock.php" class="aff_stock"></div>
                     </div>
                 </table>
                 <script src="../../../Scripts/JavaScript/Owen/stocks_aff.js"></script>
