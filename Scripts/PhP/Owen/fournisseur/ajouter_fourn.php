@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ajouter un fournisseur</title>
-    <link rel="stylesheet" type="text/css" href="../../../../HTML-CSS/style.css">
-    <meta charset="utf-8">
+
     <?php
     require_once '../../../BaseDeDonnees/codesConnexion.php';
     try {
@@ -14,21 +9,7 @@
         die();
     }
     ?>
-</head>
-<body>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <label for="nomFourn">Nom du fournisseur :</label>
-    <input type="text" name="nomFourn" required><br><br>
-    <label for="adresse">Adresse :</label>
-    <input type="text" name="adresse" required><br><br>
-    <label for="codePostal">Code postal :</label>
-    <input type="text" name="codePostal" required><br><br>
-    <label for="ville">Ville :</label>
-    <input type="text" name="ville" required><br><br>
-    <label for="telephone">Téléphone :</label>
-    <input type="text" name="telephone" required><br><br>
-    <button type="submit" value="Ajouter">Ajouter</button>
-</form>
+
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -55,5 +36,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-</body>
-</html>
