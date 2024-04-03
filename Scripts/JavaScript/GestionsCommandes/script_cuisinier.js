@@ -11,6 +11,7 @@ function chargerCommandes() {
             if (commande.statut !== "Prête") {
                 let elementCommande = `
                     <div>
+                        <h2>Numéro Commande : ${commande.id} </h2><br>
                         <p>Nom : ${commande.nom}</p>
                         <p>Heure de mise à disposition : ${commande.temps}</p>
                         <p>Statut : ${commande.statut}</p>
@@ -31,27 +32,20 @@ function chargerCommandes() {
     // Faire en sorte de faire qu'une commande avec plusieurs produits, cela affiche qu'un rectangle
 
     $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
-        data.commandes.sort((a, b) =>
+        data.commandes.sort((a, b) => {
             return a.temps.localeCompare(b.temps);
         });
 
-        let listeCommandes = $("#commandesList");
+        let listeCommandes = $("#commandes");
         listeCommandes.html("");
 
         data.commandes.forEach(commande => {
             if (commande.statut !== "Prête") {
                 let elementCommande = `
-                    <div id="commande">
-                        <h2>Commande : 'NomCli'</h2>
-                        <p>Heure de mise à disposition : ${commande.temps}</p>        
-                        <hr>
-                        <p>1 ${commande.nom}</p>
-                        <p>Statut : ${commande.statut}</p>
-                        <button onclick="commencerCommande(${commande.id})">Commencer</button>
-                        <button onclick="terminerCommande(${commande.id})">Terminer</button>
-                        <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
-                        <hr>
-                        <p>4 ${commande.nom}</p>
+                    <div>
+                        <h2>Numéro Commande : ${commande.id} </h2><br>
+                        <p>Nom : ${commande.nom}</p>
+                        <p>Heure de mise à disposition : ${commande.temps}</p>
                         <p>Statut : ${commande.statut}</p>
                         <button onclick="commencerCommande(${commande.id})">Commencer</button>
                         <button onclick="terminerCommande(${commande.id})">Terminer</button>
@@ -65,7 +59,6 @@ function chargerCommandes() {
     });
 }
 */
-
 function mettreAJourBDD(idCommande, nouveauStatut) {
     $.ajax({
         type: "POST",
