@@ -1,0 +1,12 @@
+a {
+    color: white;
+    text-decoration: none;
+}
+footer{
+    position: fixed;
+    bottom:0
+}
+table{
+    align-items: center;
+    -webkit-border-horizontal-spacing: 22px ;
+}
