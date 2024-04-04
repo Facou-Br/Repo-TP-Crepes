@@ -25,15 +25,30 @@
     section {
         align-content: center;
         box-sizing: border-box;}
+
+    .box {
+            display: flex;
+            align-items: flex-start;}
+    .box img {
+        margin-left: auto;
+    }
+    .box p {
+        margin-right: 10px;
+    }
+
     section.splited {
         width: 49.5%;
         text-align: justify;}
     img {
-        float: left;
+        /*float: left;
         margin-right: 5px;
-        border-radius: 3px;
+        height: auto;*/
         max-width: 170px;
-        height: auto;}
+        border-radius: 3px;
+
+
+
+    }
 </style>
 <div class="wrapper">
     <header>
@@ -58,8 +73,10 @@
             <div class="titreContent">
                 <h3>Crêpe of the day, La Crêpe Kebab : Une Fusion Culinaire Divine :</h3>
             </div> <!-- .titreContent -->
-            <img src="../../Images/jpeg/kebab.jpg">
-            <p>La crêpe kebab est une fusion exquise entre la délicatesse d'une crêpe française et la richesse des saveurs d'un kebab traditionnel. Dorée et moelleuse, la crêpe enveloppe une farce généreuse composée de viande grillée, de légumes frais et d'une sauce blanche du chef bio. Cette symphonie de saveurs offre une expérience gustative incomparable, où la douceur de la crêpe se marie parfaitement avec le piquant du kebab. Présentée avec des frites croustillantes et une touche de salade fraîche, la crêpe kebab est un délice à déguster à tout moment de la journée. Que ce soit pour une pause déjeuner rapide ou une gourmandise nocturne, elle promet une satisfaction culinaire absolue.</p>
+            <div class="box">
+                <p>La crêpe kebab est une fusion exquise entre la délicatesse d'une crêpe française et la richesse des saveurs d'un kebab traditionnel. Dorée et moelleuse, la crêpe enveloppe une farce généreuse composée de viande grillée, de légumes frais et d'une sauce blanche du chef bio. Cette symphonie de saveurs offre une expérience gustative incomparable, où la douceur de la crêpe se marie parfaitement avec le piquant du kebab. Présentée avec des frites croustillantes et une touche de salade fraîche, la crêpe kebab est un délice à déguster à tout moment de la journée. Que ce soit pour une pause déjeuner rapide ou une gourmandise nocturne, elle promet une satisfaction culinaire absolue.</p>
+                <img src="../../Images/jpeg/kebab.jpg" alt="Image Crêpe Kebab">
+            </div> <!-- .box -->
         </section>
 
         <br class="clear">
