@@ -1,13 +1,14 @@
 $(".aff_stock").change(function(){
+    var actionValue = $(this).val();
     $("div").empty();
     $.ajax({
         url: "../../PhP/Owen/stock/afficher_stock.php",
-        type: "GET",
-        data: 'action=' + $(this).attr('value'),
+        type: "POST",
+        data: {action: actionValue},
         success: function (data) {
             $.getJSON("stocks.json", function(data) {
                 $.each(data, function(index, row) {
-                    $(".aff_stock").append(
+                    $("div").append(
                         "<tr>" +
                         "<td value='" + row['NomIngred'] + "'>" + row['NomIngred'] + "</td>" +
                         "<td value='" + row['NomFourn'] + "'>" + row['NomFourn'] + "</td>" +
