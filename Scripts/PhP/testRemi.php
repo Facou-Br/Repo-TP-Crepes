@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ajouter un stock</title>
+    <title>NO NAME</title>
     <link rel="stylesheet" type="text/css" href="../../HTML-CSS/style.css">
     <meta charset="utf-8">
     <?php
@@ -97,7 +97,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $CoutLiv = $_POST["CoutLiv"];
     $TotalTTC = $_POST["TotalTTC"];
     $DateArchiv = $_POST["DateArchiv"];
-    $Date = $_POST["Date"];
     $IdLivreu = $_POST["IdLivreu"];
 
 
@@ -105,6 +104,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
         $sqlDetail = "INSERT INTO `com_det` (`Num_OF`, `Quant`, `NumCom`) VALUES ('$Num_OF', '$Quant', '$NumCom');";
         $sqlCommande = "INSERT INTO `commande` (`NumCom`,`NomClient` ,`TelClient` ,`AdrClient` ,`CP_Client` ,`VilClient` ,`Date` ,`HeureDispo` ,`TypeEmbal` ,`A_Livrer` ,`EtatCde` ,`EtatLivraison` ,`CoutLiv` ,`TotalTTC` ,`DateArchiv` ,`Date` ,`IdLivreu`) VALUES ('$NumCom', '$NomClient', '$TelClient', '$AdrClient', '$CP_Client', '$VilClient', '$Date', '$HeureDispo', '$TypeEmbal', '$A_Livrer', '$EtatCde', '$EtatLivraison', '$CoutLiv', '$TotalTTC', '$DateArchiv', '$Date', '$IdLivreu');";
+
+        echo $sqlDetail;
+        echo $sqlCommande;
+
 
     } catch (PDOException $e) {
         echo 'Erreur : ' . $e->getMessage() . '<br />';
