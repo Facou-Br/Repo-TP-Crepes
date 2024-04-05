@@ -8,4 +8,5 @@
 
 /nbproject/private/
 /BaseDeDonnees/codesConnexion.php
-*.json
+*.json*
+Scripts/JavaScript/Fernando/ingredientsId.json
