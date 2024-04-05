@@ -147,14 +147,6 @@ label {
     color: #333333;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 6px;
-    margin-bottom: 10px;
-    border: 1px solid #CCCCCC;
-    border-radius: 3px;
-}
-
 button {
     background-color: #333333;
     color: white;

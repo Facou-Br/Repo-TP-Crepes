@@ -24,7 +24,6 @@ $("select.fournisseurs").change(function () {
           $("div").append(
             "<br> <input id='majStock' class='majStock' type='submit' value='Mettre à jour le stock'>"
           );
-          $(".majStock").css({"background-color": "#4CAF50", "color": "white", "width": "10%"});
         }
       );
     },

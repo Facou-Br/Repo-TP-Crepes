@@ -9,8 +9,9 @@
 </head>
 
 <body>
+    <div class="titre1" id="titreMiseJourStock">Mise à jour Stock</div>
     <fieldset>
-        <legend> Mise à jour Stock </legend>
+        <legend> Mise à jour Stock lors de la réception</legend>
         <form class="formulaireIngredients" id="formulaireIngredients">
 
             <label for="fournisseurs">Nom fournisseur:</label>
@@ -30,4 +31,5 @@
     <script src="../../../Scripts/JavaScript/Fernando/majStock/affichageDynamiqueFournisseurs.js"></script>
     <script src="../../../Scripts/JavaScript/Fernando/majStock/affichageDynamiqueIngredients.js"></script>
 </footer>
+
 </html>
