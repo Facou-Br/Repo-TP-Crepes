@@ -117,7 +117,7 @@ function miseAJourIngredients(idCommande) {
     $.ajax({
         type: "POST",
         url: "../../.././Scripts/PhP/Quentin/miseAJourStock.php",
-        data: JSON.stringify({ id: idCommande }),
+        data: { id: idCommande },
         contentType: "application/json",
         success: function(response) {
             console.log("Les stocks ont bien été mis à jour !");

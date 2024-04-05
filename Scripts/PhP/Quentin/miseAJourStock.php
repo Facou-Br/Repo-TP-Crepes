@@ -40,8 +40,9 @@
             }
         }
 
-        echo "Stocks mis à jour avec succès.";
+        echo "Stocks mis à jour avec succès." . $z . $idCommande;
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();
     }
+
 ?>
