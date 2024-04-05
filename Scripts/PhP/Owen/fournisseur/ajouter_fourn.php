@@ -1,5 +1,4 @@
-
-    <?php
+<?php
     require_once '../../../BaseDeDonnees/codesConnexion.php';
     try {
         $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE.';port='.PORT, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -8,11 +7,7 @@
         echo 'N° : ' . $e->getCode();
         die();
     }
-    ?>
 
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nomFourn = $_POST["nomFourn"];
     $adresse = $_POST["adresse"];
     $cp = $_POST["codePostal"];
@@ -33,6 +28,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Erreur : " . $sql . "<br>" . $connex->error;
     }*/
-}
 ?>
-
