@@ -24,6 +24,7 @@ $("select.fournisseurs").change(function () {
           $("div").append(
             "<br> <input id='majStock' class='majStock' type='submit' value='Mettre à jour le stock'>"
           );
+          $(".majStock").css({"background-color": "#4CAF50", "color": "white", "width": "10%"});
         }
       );
     },
@@ -48,8 +49,6 @@ $("#formulaireIngredients").on("submit", function (e) {
   for (let i = 0; i < idIngredients.length; i++) {
     ingredientsObj[idIngredients[i]] = ingredients[i];
   }
-
-  console.log(ingredientsObj);
 
   if (confirm("Are you sure you want to update the stock?")) {
     $.ajax({

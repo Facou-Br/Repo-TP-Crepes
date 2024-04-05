@@ -9,9 +9,6 @@
 </head>
 
 <body>
-
-    <
-
     <fieldset>
         <legend> Mise à jour Stock </legend>
         <form class="formulaireIngredients" id="formulaireIngredients">
