@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Ajouter un stock</title>
-    <link rel="stylesheet" type="text/css" href="../../../HTML-CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../../HTML-CSS/style.css">
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -23,6 +23,6 @@
 <br><br>
 <button type="button" value="Ajouter">Ajouter</button>
 </form>
-<script src="../../../Scripts/JavaScript/Owen/stocks_aj.js"></script>
+<script src="../../../../Scripts/JavaScript/Owen/stocks_aj.js"></script>
 </body>
 </html>

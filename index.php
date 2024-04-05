@@ -14,7 +14,7 @@
         <nav>
             <table>
                 <th><a href="#">Accueil</a></th>
-                <th><a href="Html/GestionInventaire_Owen/gestions_stocks.php">Gestion des stocks</a></th>
+                <th><a href="Html/Gerant/">Gestion des stocks</a></th>
                 <th><a href="Html/Commande_Remi/menu.html">Menu</a></th>
                 <th><a href="#">Réservation</a></th>
                 <th><a href="#">Contact</a></th>

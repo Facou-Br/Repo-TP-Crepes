@@ -2,11 +2,10 @@ let actionValue = $(".stocks").val();
 //$(".stocks").empty();
 
 $.ajax({
-  url: "../../../Scripts/PhP/Owen/stock/afficher_stock.php",
+  url: "../../../../Scripts/PhP/Owen/stock/afficher_stock.php",
   type: "POST",
   success: function (data) {
-    $.getJSON("../../../Scripts/JavaScript/Owen/stocks.json", function (data) {
-        alert("Erreur lors de la récupération des stocks.");
+    $.getJSON("../../../../Scripts/JavaScript/Owen/stocks.json", function (data) {
       $.each(data, function (index, row) {
         $(".stocks").append(
           "<tr>" +

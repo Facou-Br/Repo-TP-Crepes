@@ -2,11 +2,11 @@
 <html lang="fr">
   <head>
     <title>Interface de stockage</title>
-    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../../style.css" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../Css/Style_gestionStocks.css" /> 
+    <link rel="stylesheet" href="../../../../Css/Style_gestionStocks.css" />
   </head>
   <body class="gestionStocks">
     <div id="page" class="wrapper">
@@ -57,7 +57,7 @@
       <footer>
         <p>Interface de stockage</p>
         <script src="https://code.jquery.com/jquery-latest.js"></script>
-        <script src="../../../Scripts/JavaScript/Owen/stocks_aff.js"></script>
+        <script src="../../../../Scripts/JavaScript/Owen/stocks_aff.js"></script>
     </div>
   </body>
 </html>

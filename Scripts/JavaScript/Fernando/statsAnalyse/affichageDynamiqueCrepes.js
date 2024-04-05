@@ -1,8 +1,8 @@
 $.ajax({
-    url: "../../../Scripts/PhP/Fernando/selectCrepes.php",
+    url: "../../../../Scripts/PhP/Fernando/selectCrepes.php",
     success: function (data) {
       $.getJSON(
-        "../../../Scripts/JavaScript/Fernando/crepes.json",
+        "../../../../Scripts/JavaScript/Fernando/crepes.json",
         function (data) {
           $.each(data, function (key, val) {
             $(".crepes").append(

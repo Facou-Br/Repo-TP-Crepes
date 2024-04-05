@@ -18,7 +18,7 @@
 </body>
 
 <footer>
-    <script src="../../../Scripts/JavaScript/Fernando/statsAnalyse/affichageDynamiqueCrepes.js"></script>
+    <script src="../../../../Scripts/JavaScript/Fernando/statsAnalyse/affichageDynamiqueCrepes.js"></script>
 </footer>
 
 </html>
