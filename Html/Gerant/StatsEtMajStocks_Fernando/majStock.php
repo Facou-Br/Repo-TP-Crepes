@@ -9,21 +9,23 @@
 </head>
 
 <body>
-    <div class="titre1" id="titreMiseJourStock">Mise à jour Stock</div>
-    <fieldset>
-        <legend> Mise à jour Stock lors de la réception</legend>
-        <form class="formulaireIngredients" id="formulaireIngredients">
+    <div class="wrapper">
+        <div class="titre1" id="titreMiseJourStock">Mise à jour Stock</div>
+        <fieldset>
+            <legend> Mise à jour Stock lors de la réception</legend>
+            <form class="formulaireIngredients" id="formulaireIngredients">
 
-            <label for="fournisseurs">Nom fournisseur:</label>
+                <label for="fournisseurs">Nom fournisseur:</label>
 
-            <select id="fournisseurs" class="fournisseurs" name="fournisseurs" title="fournisseurs" required>
-                <option value="">Choissisez un fournisseur parmi la liste</option>
-            </select>
+                <select id="fournisseurs" class="fournisseurs" name="fournisseurs" title="fournisseurs" required>
+                    <option value="">Choissisez un fournisseur parmi la liste</option>
+                </select>
 
-            <div id="ingredients">
-            </div>
-        </form>
-    </fieldset>
+                <div id="ingredients">
+                </div>
+            </form>
+        </fieldset>
+    </div>
 </body>
 
 
