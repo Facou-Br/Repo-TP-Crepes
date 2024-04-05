@@ -18,11 +18,24 @@
         font-size: 1.5em;
         font-weight: bold;
         color: #000;
-        margin-bottom: 3px;}
+        margin-bottom: 3px;
+        display: flex;
+        align-items: flex-start;}
+    .titreContent img {
+        margin-left: auto;
+        max-width: 40px;
+    }
+    .titreContent h3 {
+        margin-right: 10px;
+    }
+
+
+
     .border {
         padding: 10px;
         margin-bottom: 30px;}
     section {
+        padding: 20px;
         align-content: center;
         box-sizing: border-box;}
 
@@ -37,6 +50,7 @@
     }
 
     section.splited {
+        padding: 20px;
         width: 49.5%;
         text-align: justify;}
     img {
@@ -44,10 +58,45 @@
         margin-right: 5px;
         height: auto;*/
         max-width: 170px;
-        border-radius: 3px;
+        border-radius: 3px;}
 
+    .input-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
+    button,
+    input {
+        outline: none;
+        border: none;
+        padding: 16px;
+        font-size: 18px;
+    }
 
+    input {
+        width: 100%;
+        text-align: center;
+    }
+
+    button {
+        cursor: pointer;
+        max-height: 25px;
+
+    }
+    #increment {
+        border-bottom-right-radius: 15px;
+        border-top-right-radius: 15px;
+
+    }
+    #decrement{
+        border-bottom-left-radius: 15px;
+        border-top-left-radius: 15px;
+
+    }
+
+    button:hover {
+        background-color: #c4c4c4;
     }
 </style>
 <div class="wrapper">
@@ -69,9 +118,32 @@
             <p>A CHANGER (REDIGER PAR CHAR GPT EN 10s) Bienvenue chez [Nom de votre crêperie] ! Découvrez notre univers gourmand où chaque crêpe est une délicieuse création artisanale, alliant tradition et innovation pour ravir vos papilles.</p>
         </section>
 
-        <section class="border">
+        <section>
             <div class="titreContent">
                 <h3>Crêpe of the day, La Crêpe Kebab : Une Fusion Culinaire Divine :</h3>
+
+                <div class="input-group">
+
+                    <button id="decrement">-</button>
+                    <input type="number" id="input" value="0" readonly>
+                    <button id="increment">+</button>
+
+                    <script>
+
+                        const decrement = document.getElementById('decrement');
+                        const increment = document.getElementById('increment');
+                        const input = document.getElementById('input');
+
+                        decrement.addEventListener('click', () => {
+                            input.value = parseInt(input.value) - 1;
+                        });
+
+                        increment.addEventListener('click', () => {
+                            input.value = parseInt(input.value) + 1;
+                        });
+                    </script>
+                </div>
+
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>La crêpe kebab est une fusion exquise entre la délicatesse d'une crêpe française et la richesse des saveurs d'un kebab traditionnel. Dorée et moelleuse, la crêpe enveloppe une farce généreuse composée de viande grillée, de légumes frais et d'une sauce blanche du chef bio. Cette symphonie de saveurs offre une expérience gustative incomparable, où la douceur de la crêpe se marie parfaitement avec le piquant du kebab. Présentée avec des frites croustillantes et une touche de salade fraîche, la crêpe kebab est un délice à déguster à tout moment de la journée. Que ce soit pour une pause déjeuner rapide ou une gourmandise nocturne, elle promet une satisfaction culinaire absolue.</p>
@@ -84,10 +156,13 @@
         <section class="border left splited">
             <div class="titreContent">
                 <h3><a href="#">La Crêpe Suzette Flambée</a></h3>
+                <samp>
+
+                </samp>
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>Un spectacle en soi, la crêpe Suzette est une fusion de saveurs et de flair culinaire. Lorsque cette délectable crêpe s'affiche sur la table, elle émet un arôme d'agrumes frais et de caramelisé alléchant. Sa base légère et moelleuse est imprégnée d'un mélange succulent d'orange et de Grand Marnier, qui embrase les papilles dès la première bouchée. Enveloppée dans une légère brume de flambée, chaque crêpe Suzette est une œuvre d'art culinaire. Sa garniture généreuse de zestes d'orange confits et de sauce onctueuse crée une symphonie de saveurs sucrées et acidulées qui dansent sur le palais, laissant une impression durable.</p>
-                <img src="../../Images/jpeg/breton.jpg">
+                <img src="../../Images/jpeg/breton.jpg" alt="Crêpe Suzette">
             </div> <!-- .box -->
 
         </section>
@@ -98,7 +173,7 @@
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>Une célébration de la fraîcheur et de la simplicité, cette crêpe met en valeur les meilleurs fruits de saison avec une touche de luxe. La pâte légère et dorée est garnie d'une généreuse couche de mascarpone crémeux, qui fond délicieusement au contact des fruits fraîchement coupés. Chaque bouchée offre une explosion de saveurs, alliant la douceur naturelle des fruits à la richesse veloutée du mascarpone. Que ce soit des fraises juteuses en été, des tranches de poire pochées en automne ou des quartiers d'orange sanguine en hiver, cette crêpe s'adapte à chaque saison, offrant ainsi une expérience gustative rafraîchissante et exquise à chaque dégustation.</p>
-                <img src="../../Images/jpeg/fruitsaison.jpg">
+                <img src="../../Images/jpeg/fruitsaison.jpg" alt="Crêpe aux Fruits de Saison">
             </div> <!-- .box -->
         </section>
 
@@ -109,7 +184,7 @@
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>Description : Une option salée ! Mélangez les fruits de mer cuits à la pâte à crêpes. Faites cuire et garnissez de crème fraîche et de persil frais.</p>
-                <img src="../../Images/jpeg/fruitdemer.jpg">
+                <img src="../../Images/jpeg/fruitdemer.jpg" alt="Crêpes aux Fruits de Mer">
             </div> <!-- .box -->
         </section>
 
@@ -119,8 +194,8 @@
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>Description : Parfaites pour un repas léger. Ajoutez des épinards cuits et du fromage râpé à la pâte à crêpes. Faites cuire et savourez avec une touche de sel.</p>
-                <img src="../../Images/jpeg/epinard.jpeg">
-                </div> <!-- .box -->
+                <img src="../../Images/jpeg/epinard.jpeg" alt="Crêpes aux Épinards et Fromage">
+            </div> <!-- .box -->
         </section>
 
         <br class="clear">
@@ -131,7 +206,7 @@
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>Description : Un délice sucré ! Faites sauter des tranches de pommes dans du beurre et du sucre brun jusqu'à ce qu'elles caramélisent. Ensuite, garnissez les crêpes avec les pommes caramélisées et saupoudrez de cannelle.</p>
-                <img src="../../Images/jpeg/pomme.jpg">
+                <img src="../../Images/jpeg/pomme.jpg" alt="Crêpes aux Pommes Caramélisées">
             </div> <!-- .box -->
         </section>
 
@@ -141,7 +216,7 @@
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>Description : Un régal rustique ! Faites revenir des champignons dans du beurre jusqu'à ce qu'ils soient dorés. Garnissez les crêpes avec les champignons et la crème fraîche. Saupoudrez de persil haché.</p>
-                <img src="../../Images/jpeg/champi.jpg">
+                <img src="../../Images/jpeg/champi.jpg" alt="Crêpes aux Champignons">
             </div> <!-- .box -->
         </section>
     </main>
