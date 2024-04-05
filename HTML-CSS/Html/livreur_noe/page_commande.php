@@ -36,10 +36,7 @@
     </header>
 
     <card style="display:flex; margin-left:auto; margin-right:auto; ">
-<<<<<<< HEAD
-        
         <button onclick="window.location.href='page_livreur.php'">Retour</button>
-=======
         <div class="card">
             <div id="map"></div>
         </div>
@@ -72,7 +69,6 @@
         </script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=VOTRE_CLE_API&callback=initMap" async defer></script>
->>>>>>> parent of a1041b3 (API maps livreurs à faire en dernier)
     </card>
     
     <footer>
