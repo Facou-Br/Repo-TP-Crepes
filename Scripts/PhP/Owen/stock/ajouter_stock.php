@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ajouter un stock</title>
-    <link rel="stylesheet" type="text/css" href="../../HTML-CSS/style.css">
-    <meta charset="utf-8">
-    <?php
+<?php
     require_once '../../BaseDeDonnees/codesConnexion.php';
     try {
         $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE.';port='.PORT, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -13,42 +7,8 @@
         echo 'N° : ' . $e->getCode();
         die();
     }
-    ?>
-</head>
-<body>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <label for="nomIngred">Nom de l'ingrédient :</label>
-    <input type="text" name="nomIngred" required><br><br>
-    <label for="seuilStock">Seuil de stock :</label>
-    <input type="number" name="seuilStock" required><br><br>
-    <label for="stockMin">Stock minimum :</label>
-    <input type="number" name="stockMin" required><br><br>
-    <label for="stockReel">Stock réel :</label>
-    <input type="number" name="stockReel" required><br><br>
-    <label for="prixUHTMoyen">Prix UHT Moyen :</label>
-    <input type="number" name="prixUHTMoyen" required><br><br>
-    <label for="fournisseur">Fournisseur :</label>
-    <?php
-    try {
-        $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-        $sql = "SELECT nomFourn FROM `FOURNISSEUR`;";
-        $ligne = $connex->query($sql);
-    } catch (PDOException $e) {
-        echo 'Erreur : ' . $e->getMessage() . '<br />';
-        echo 'N° : ' . $e->getCode();
-        die();
-    }
-    echo "<select name ='fournisseur'>";
-    foreach ($ligne as $row) {
-            echo "<option value ='" . $row['nomFourn']. "'>" . $row['nomFourn'] . "</option>";
-    }
-    echo "</select>";
-    ?>
-    <br><br>
-    <button type="submit" value="Ajouter">Ajouter</button>
-</form>
 
-    <?php
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nomIngred = $_POST["nomIngred"];
         $seuilStock = $_POST["seuilStock"];
@@ -85,6 +45,3 @@
         }
     }
     ?>
-    
-</body>
-</html>

@@ -14,38 +14,29 @@
     }
 
     try {
-        $rq = "SELECT cm.NumCom, cm.HeureDispo, cm.EtatCde, d.NomProd, p.IngBase1, p.IngBase2, p.IngBase3, p.IngBase4, p.IngBase5, p.IngOpt1, p.IngOpt2, p.IngOpt3, p.IngOpt4, p.IngOpt5 , p.IngOpt6 
+        $rq = "SELECT cm.NumCom, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, 
+                        d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4, co.Quant
                     FROM COMMANDE cm
                     INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
-                    INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
-                    INNER JOIN PRODUIT p ON d.IdProd = p.IdProd;";
+                    INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF;";
 
         $result = $connex->query($rq);
 
         $commandes_array = array();
 
         while ($ligne = $result->fetch(PDO::FETCH_ASSOC)) {
+            $ingredients_base = array_filter([$ligne["IngBase1"], $ligne["IngBase2"], $ligne["IngBase3"], $ligne["IngBase4"]]);
+            $ingredients_opt = array_filter([$ligne["IngOpt1"], $ligne["IngOpt2"], $ligne["IngOpt3"], $ligne["IngOpt4"]]);
+
             $commande = array(
                 "id" => $ligne["NumCom"],
+                "nombre" => $ligne["Quant"],
                 "nom" => $ligne["NomProd"],
                 "temps" => substr($ligne["HeureDispo"], 0, 5),
                 "statut" => $ligne["EtatCde"],
                 "ingredients" => array(
-                    "base" => array(
-                        $ligne["IngBase1"],
-                        $ligne["IngBase2"],
-                        $ligne["IngBase3"],
-                        $ligne["IngBase4"],
-                        $ligne["IngBase5"]
-                    ),
-                    "optionnels" => array(
-                        $ligne["IngOpt1"],
-                        $ligne["IngOpt2"],
-                        $ligne["IngOpt3"],
-                        $ligne["IngOpt4"],
-                        $ligne["IngOpt5"],
-                        $ligne["IngOpt6"]
-                    )
+                    "base" => $ingredients_base,
+                    "optionnels" => $ingredients_opt
                 )
             );
             $commandes_array[] = $commande;
@@ -55,7 +46,7 @@
         $commandes_array = array("commandes" => $commandes_array);
         $json_data = json_encode($commandes_array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
-        $filename = '.././JavaScript/GestionsCommandes/commandes.json';
+        $filename = '../.././JavaScript/GestionsCommandes/commandes.json';
 
         if (file_put_contents($filename, $json_data)) {
             echo "Le fichier JSON a été créé avec succès.";

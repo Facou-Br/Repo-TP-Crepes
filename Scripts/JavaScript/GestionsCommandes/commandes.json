@@ -2,29 +2,26 @@
     "commandes": [
         {
             "id": 1,
+            "nombre": 5,
             "nom": "CrepesSuzette",
             "temps": "11:11",
-            "statut": "Acceptée",
+            "statut": "Prête",
             "ingredients": {
                 "base": [
                     "Farine",
                     "Oeufs",
-                    "Lait",
-                    "Nutella",
-                    "Chocolat"
+                    "Lait"
                 ],
                 "optionnels": [
+                    "Chocolat",
                     "Fraise",
-                    "Banane",
-                    "Chantilly",
-                    "Jambon",
-                    "Bacon",
-                    "Emmental"
+                    "Banane"
                 ]
             }
         },
         {
             "id": 2,
+            "nombre": 10,
             "nom": "CrepesBretonnes",
             "temps": "00:00",
             "statut": "Acceptée",
@@ -33,21 +30,19 @@
                     "Farine",
                     "Oeufs",
                     "Lait",
-                    "Oeuf",
-                    "Jambom"
+                    "Oeuf"
                 ],
                 "optionnels": [
+                    "Jambom",
                     "Emental",
                     "Fraise",
-                    "Banane",
-                    "Chantilly",
-                    "Jambon",
-                    "Bacon"
+                    "Banane"
                 ]
             }
         },
         {
             "id": 3,
+            "nombre": 15,
             "nom": "Salade",
             "temps": "21:24",
             "statut": "Acceptée",
@@ -56,16 +51,76 @@
                     "Tomate",
                     "Salade",
                     "Pomme de terre",
-                    "Carotte",
-                    "Courgette"
+                    "Carotte"
                 ],
                 "optionnels": [
+                    "Courgette",
                     "Aubergine",
                     "Poivron",
-                    "Oignon",
-                    "Ail",
-                    "Huile",
-                    "Reblochon"
+                    "Oignon"
+                ]
+            }
+        },
+        {
+            "id": 10,
+            "nombre": 9,
+            "nom": "CrepesSuzette",
+            "temps": "10:00",
+            "statut": "Acceptée",
+            "ingredients": {
+                "base": [
+                    "Farine",
+                    "Oeufs",
+                    "Lait",
+                    "Nutella"
+                ],
+                "optionnels": [
+                    "Chocolat",
+                    "Fraise",
+                    "Banane",
+                    "Chantilly"
+                ]
+            }
+        },
+        {
+            "id": 11,
+            "nombre": 11,
+            "nom": "CrepesBretonnes",
+            "temps": "12:00",
+            "statut": "Acceptée",
+            "ingredients": {
+                "base": [
+                    "Farine",
+                    "Oeufs",
+                    "Lait",
+                    "Oeuf"
+                ],
+                "optionnels": [
+                    "Jambom",
+                    "Emental",
+                    "Fraise",
+                    "Banane"
+                ]
+            }
+        },
+        {
+            "id": 12,
+            "nombre": 14,
+            "nom": "Salade",
+            "temps": "12:00",
+            "statut": "Acceptée",
+            "ingredients": {
+                "base": [
+                    "Tomate",
+                    "Salade",
+                    "Pomme de terre",
+                    "Carotte"
+                ],
+                "optionnels": [
+                    "Courgette",
+                    "Aubergine",
+                    "Poivron",
+                    "Oignon"
                 ]
             }
         }
