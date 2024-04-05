@@ -5,3 +5,7 @@
 /httpRequests/
 # GitHub Copilot persisted chat sessions
 /copilot/chatSessions
+
+/nbproject/private/
+/BaseDeDonnees/codesConnexion.php
+*.json
