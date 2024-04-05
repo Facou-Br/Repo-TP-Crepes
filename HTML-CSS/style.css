@@ -114,7 +114,6 @@ body {
 
 #content {
   min-height: 100%;
-  /* dans un conteneur flex pour pousser le footer vers le bas */
   display: flex;
   flex-direction: column;
 }
@@ -122,16 +121,14 @@ body {
 footer {
   padding: 20px 0;
   width: 100%;
-  background-color: #007bff;
   color: white;
   text-align: center;
 }
 
 main {
   flex: 1;
-  /* Assurez-vous que main peut s'étendre pour pousser le footer vers le bas */
   padding: 20px;
-  padding-bottom: 70px; /* Ajustez cette valeur pour compenser la hauteur de votre footer */
+  padding-bottom: 70px;
 }
 
 body {
@@ -172,15 +169,6 @@ nav {
   background-image: url("Images/jpeg/darkwood.jpg");
   padding: 10px;
   text-align: center;
-}
-
-input,
-textarea {
-  width: 100%;
-  padding: 6px;
-  margin-bottom: 10px;
-  border: 1px solid #cccccc;
-  border-radius: 3px;
 }
 
 footer,
@@ -233,6 +221,15 @@ label {
   display: block;
   margin-bottom: 5px;
   color: #333333;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
 }
 
 button {
