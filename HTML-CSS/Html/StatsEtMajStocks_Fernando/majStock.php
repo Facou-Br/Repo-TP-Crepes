@@ -2,12 +2,16 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">>
-    
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css">
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
     <title>Mise à jour Stock</title>
 </head>
 
 <body>
+
+    <
+
     <fieldset>
         <legend> Mise à jour Stock </legend>
         <form class="formulaireIngredients" id="formulaireIngredients">
@@ -26,7 +30,6 @@
 
 
 <footer>
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script src="../../../Scripts/JavaScript/Fernando/majStock/affichageDynamiqueFournisseurs.js"></script>
     <script src="../../../Scripts/JavaScript/Fernando/majStock/affichageDynamiqueIngredients.js"></script>
 </footer>

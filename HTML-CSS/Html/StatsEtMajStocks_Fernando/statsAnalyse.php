@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mise à jour Stock</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
 </head>
 
 <body>
@@ -16,7 +18,6 @@
 </body>
 
 <footer>
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script src="../../../Scripts/JavaScript/Fernando/statsAnalyse/affichageDynamiqueCrepes.js"></script>
 </footer>
 
