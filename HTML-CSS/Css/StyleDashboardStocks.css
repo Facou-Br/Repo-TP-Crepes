@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.update-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.update-button:hover {
+    background-color: #45a049;
+}
+
+
+#chart-container {
+    margin-bottom: 20px; /* Assure un espace entre le graphique et la légende */
+}
+
+.legend {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#chart {
+    width: 100%;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+.threshold-input {
+    margin: 0 10px;
+}
+
+#main-content {
+    display: flex;
+}
+
+#chart-container {
+    width: 80%; /* Adjusted width */
+    margin-right: 20px; /* Add some space between chart and legend */
+}
+
+#legend {
+    width: 20%; /* Set width for the legend */
+    background-color: #f9f9f9; /* Optional: add background color for the legend */
+    padding: 10px;
+}

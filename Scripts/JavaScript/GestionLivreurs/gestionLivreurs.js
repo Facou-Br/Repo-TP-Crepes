@@ -8,6 +8,7 @@ function ajouterLivreur() {
     let prenom = document.getElementById('prenom').value;
     let tel = document.getElementById('tel').value;
     let numSS = document.getElementById('numSS').value;
+    let disponible = document.getElementById('disponible').value; 
 
     // Validation du téléphone
     let regexTel = /^(\+\d{1,3})?\d{8,10}$/;
@@ -23,10 +24,11 @@ function ajouterLivreur() {
         return;
     }
 
-    // Si tout est valide, procédez avec la création du FormData et l'appel AJAX
+    // Si tout est valide, création du FormData et appel AJAX
     let formData = new FormData(document.getElementById('formLivreur'));
     formData.append('action', 'ajouter'); // Ajouter une action pour le switch PHP
-
+    console.log(formData);
+    
     $.ajax({
        url: '../../../Scripts/PhP/gestionLivreurs.php',
        type: 'POST',
@@ -54,6 +56,7 @@ function afficherLivreurs() {
         dataType: 'json'
     })
     .done(function(data) {
+        console.log(data);
         const tbody = document.getElementById('listeLivreurs').getElementsByTagName('tbody')[0];
         tbody.innerHTML = ''; // Réinitialiser le contenu du tbody
         data.livreurs.forEach(function(livreur) {
@@ -135,28 +138,37 @@ function afficherLivreurs() {
         dataType: 'json'
     })
     .done(function(data) {
+        console.log(data);
         const tbody = document.getElementById('listeLivreurs').getElementsByTagName('tbody')[0];
         tbody.innerHTML = ''; // Réinitialiser le contenu du tbody
-        data.livreurs.forEach(function(livreur) {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td><input type="text" class="edit-nom" value="${livreur.Nom}" /></td>
-                <td><input type="text" class="edit-prenom" value="${livreur.Prenom}" /></td>
-                <td><input type="text" class="edit-tel" value="${livreur.Tel}" /></td>
-                <td><input type="text" class="edit-numSS" value="${livreur.NumSS}" /></td>
-                <td>
-                    <select class="edit-disponible">
-                        <option value="1" ${livreur.Disponible ? 'selected' : ''}>Oui</option>
-                        <option value="0" ${!livreur.Disponible ? 'selected' : ''}>Non</option>
-                    </select>
-                </td>
-                <td>
-                    <button onclick="enregistrerModification(${livreur.IdLivreur}, this.parentNode.parentNode)">Modifier</button>
-                    <button onclick="archiverLivreur(${livreur.IdLivreur})">Archiver</button>
-                </td>
-            `;
-            tbody.appendChild(tr);
-        });
+        if (data.livreurs)
+        {
+            data.livreurs.forEach(function(livreur) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><input type="text" class="edit-nom" value="${livreur.Nom}" /></td>
+                    <td><input type="text" class="edit-prenom" value="${livreur.Prenom}" /></td>
+                    <td><input type="text" class="edit-tel" value="${livreur.Tel}" /></td>
+                    <td><input type="text" class="edit-numSS" value="${livreur.NumSS}" /></td>
+                    <td>
+                        <select class="edit-disponible">
+                            <option value="1" ${livreur.Disponible === "1" ? 'selected' : ''}>Oui</option>
+                            <option value="0" ${livreur.Disponible === "0" ? 'selected' : ''}>Non</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button onclick="enregistrerModification(${livreur.IdLivreur}, this.parentNode.parentNode)">Modifier</button>
+                        <button onclick="archiverLivreur(${livreur.IdLivreur})">Archiver</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        else if (data.error)
+        {
+            console.error("php error : " + data.error); 
+            alert('Database Error');
+        }
     })
     .fail(function(jqXHR, textStatus) {
         console.error('Erreur lors de la récupération des livreurs:', textStatus);
@@ -172,6 +184,7 @@ function enregistrerModification(idLivreur, row) {
     formData.append('prenom', row.querySelector('.edit-prenom').value);
     formData.append('tel', row.querySelector('.edit-tel').value);
     formData.append('disponible', row.querySelector('.edit-disponible').value);
+    formData.append('numSS', row.querySelector('.edit-numSS').value);
 
     $.ajax({
         url: '../../../Scripts/PhP/gestionLivreurs.php',

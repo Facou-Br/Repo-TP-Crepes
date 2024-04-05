@@ -4,44 +4,32 @@
         <meta charset="UTF-8">
         <title>Gestion des fournisseurs</title>
         <link rel="stylesheet" href="../../style.css">
-        <style>
-            a {
-                color: white;
-                text-decoration: none;
-            }
-            footer{
-                position: fixed;
-                bottom:0
-            }
-        </style>
+        <link rel="stylesheet" href="../../Css/Style_gestionFourn.css">
     </head>
-    <body>
-        <div id="wrapper">
+    <body class="gestionFourn">
+        <div class="wrapper">
         <header>
             <h1>Gestion des Fournisseurs</h1>
             <nav>
-                <a href="gestions_stocks.php">Gestion des stocks</a>
+                <a href="gestions_stocks.html">Gestion des stocks</a>
             </nav>
         </header>
-            <div id="rechercher">
-                <div class="recherche"><input id="nom" placeholder="Nom"></input></div>
-                <button id="rechercher">Rechercher</button>
-            </div>
+
             <div id="resultat">
-                <h2>Gestion des fournisseurs</h2>
                 <table>
                     <tr>
                         <th>Nom</th>
                         <th>Adresse</th>
+                        <th>Ville</th>
+                        <th>Code Postal</th>
                         <th>Téléphone</th>
-                        <th>Email</th>
                     </tr>
                     <tr>
                         <?php
 
-                        require_once '../../../BaseDeDonnees/connexion_gerant.php';
+                        require_once '../../../BaseDeDonnees/codesConnexion.php';
                         try {
-                            $connex = new PDO('mysql:host=' . $host . ';charset=utf8;dbname=' . $bdd.';port='.$port, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                            $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE.';port='.PORT, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
                         }
                         catch (PDOException $e) {
                             echo 'Erreur : ' . $e->getMessage() . '<br />';
@@ -50,7 +38,7 @@
                         }
                         try{
                             $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-                            $requete1 = 'SELECT NomFourn, Adresse, CodePostal, Ville FROM `fournisseur`;';
+                            $requete1 = 'SELECT NomFourn, Adresse, CodePostal, Ville, Tel FROM `fournisseur`;';
                             $ligne = $connex->query($requete1);
                         }
                         catch (PDOException $e) {
@@ -63,9 +51,10 @@
                             echo "<tr>";
                             echo "<td value='".$row['NomFourn']."'>".$row['NomFourn']."</td>";
                             echo "<td value='".$row['Adresse']."'>".$row['Adresse']."</td>";
-                            echo "<td value='".$row['CodePostal']."'>".$row['CodePostal']."</td>";
                             echo "<td value='".$row['Ville']."'>".$row['Ville']."</td>";
-                            echo "<td><button><a href='../../../Scripts/Php/ajouter_fourn.php'>Modifier</a></button></td>";
+                            echo "<td value='".$row['CodePostal']."'>".$row['CodePostal']."</td>";
+                            echo "<td value='".$row['Tel']."'>".$row['Tel']."</td>";
+                            echo "<td><button><a href='../../../Scripts/Php/Owen/ajouter_fourn.php'>Modifier</a></button></td>";
                             echo "</tr>";
                         }
 

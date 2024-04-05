@@ -2,103 +2,141 @@
     "commandes": [
         {
             "id": 1,
-            "nom": "Crepe au Nutella",
-            "temps": "10:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Nutella"
+            "nom": "CrepesSuzette",
+            "temps": "11:11",
+            "statut": "Acceptée",
+            "ingredients": {
+                "base": [
+                    "Farine",
+                    "Oeufs",
+                    "Lait",
+                    "Nutella",
+                    "Chocolat"
+                ],
+                "optionnels": [
+                    "Fraise",
+                    "Banane",
+                    "Chantilly",
+                    "Jambon",
+                    "Bacon",
+                    "Emmental"
+                ]
+            }
         },
         {
             "id": 2,
-            "nom": "Crepe \u00e0 la confiture",
-            "temps": "10:30",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Confiture"
+            "nom": "CrepesBretonnes",
+            "temps": "00:00",
+            "statut": "Prête",
+            "ingredients": {
+                "base": [
+                    "Farine",
+                    "Oeufs",
+                    "Lait",
+                    "Oeuf",
+                    "Jambom"
+                ],
+                "optionnels": [
+                    "Emental",
+                    "Fraise",
+                    "Banane",
+                    "Chantilly",
+                    "Jambon",
+                    "Bacon"
+                ]
+            }
         },
         {
             "id": 3,
-            "nom": "Crepe au sucre",
-            "temps": "11:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Sucre"
-        },
-        {
-            "id": 4,
-            "nom": "Crepe au Nutella",
-            "temps": "10:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Nutella"
-        },
-        {
-            "id": 5,
-            "nom": "Crepe \u00e0 la confiture",
-            "temps": "10:30",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Confiture"
-        },
-        {
-            "id": 6,
-            "nom": "Crepe au sucre",
-            "temps": "15:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Sucre"
-        },
-        {
-            "id": 7,
-            "nom": "Crepe \u00e0 la confiture",
-            "temps": "14:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Confiture"
-        },
-        {
-            "id": 8,
-            "nom": "Crepe au Nutella",
-            "temps": "13:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Nutella"
-        },
-        {
-            "id": 9,
-            "nom": "Crepe au sucre",
-            "temps": "10:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Sucre"
+            "nom": "Salade",
+            "temps": "21:24",
+            "statut": "Acceptée",
+            "ingredients": {
+                "base": [
+                    "Tomate",
+                    "Salade",
+                    "Pomme de terre",
+                    "Carotte",
+                    "Courgette"
+                ],
+                "optionnels": [
+                    "Aubergine",
+                    "Poivron",
+                    "Oignon",
+                    "Ail",
+                    "Huile",
+                    "Reblochon"
+                ]
+            }
         },
         {
             "id": 10,
-            "nom": "Crepe \u00e0 la confiture",
-            "temps": "22:00",
-            "statut": "En attente",
-            "ingredient1": "Farine",
-            "ingredient2": "Oeuf",
-            "ingredient3": "Lait",
-            "ingredient4": "Confiture"
+            "nom": "CrepesSuzette",
+            "temps": "10:00",
+            "statut": "Acceptée",
+            "ingredients": {
+                "base": [
+                    "Farine",
+                    "Oeufs",
+                    "Lait",
+                    "Nutella",
+                    "Chocolat"
+                ],
+                "optionnels": [
+                    "Fraise",
+                    "Banane",
+                    "Chantilly",
+                    "Jambon",
+                    "Bacon",
+                    "Emmental"
+                ]
+            }
+        },
+        {
+            "id": 11,
+            "nom": "CrepesBretonnes",
+            "temps": "12:00",
+            "statut": "Acceptée",
+            "ingredients": {
+                "base": [
+                    "Farine",
+                    "Oeufs",
+                    "Lait",
+                    "Oeuf",
+                    "Jambom"
+                ],
+                "optionnels": [
+                    "Emental",
+                    "Fraise",
+                    "Banane",
+                    "Chantilly",
+                    "Jambon",
+                    "Bacon"
+                ]
+            }
+        },
+        {
+            "id": 12,
+            "nom": "Salade",
+            "temps": "12:00",
+            "statut": "Acceptée",
+            "ingredients": {
+                "base": [
+                    "Tomate",
+                    "Salade",
+                    "Pomme de terre",
+                    "Carotte",
+                    "Courgette"
+                ],
+                "optionnels": [
+                    "Aubergine",
+                    "Poivron",
+                    "Oignon",
+                    "Ail",
+                    "Huile",
+                    "Reblochon"
+                ]
+            }
         }
     ]
 }

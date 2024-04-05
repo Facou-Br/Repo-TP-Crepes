@@ -7,19 +7,20 @@
         <script src="https://code.jquery.com/jquery-latest.js"></script>
         <script src="../../.././Scripts/JavaScript/GestionsCommandes/script_cuisinier.js"></script>
         <style>
-            #commandesList {
+            #commandes {
                 display: grid;
                 margin: 30px;
                 grid-template-columns: repeat(4, 1fr);
                 grid-gap: 20px;
-            }
-
-            hr {
-                margin-right: 50px;
+                text-align: center;
             }
 
             p {
                 margin-bottom: 5px;
+            }
+
+            hr {
+                margin: 10px 0;
             }
         </style>
     </head>
@@ -28,15 +29,24 @@
             <header>
                 <h1>Crêpes - Liste des commandes</h1>
             </header>
-            <div>
-                <ul id="commandesList"></ul>
+            <div id="commandes">
                 <script type="text/javascript">
+                    actualiserCommandesBdD();
                     $(document).ready(function () {
                         chargerCommandes();
                     });
                 </script>
-            </div>
+            </div>  <!-- COMMANDES -->
         </div>  <!-- WRAPPER -->
     </body>
 </html>
 
+<!--
+
+    À faire :
+
+        Nouveau visuel pour une commande avec plusieurs produits commandés
+        Faire en sorte d'afficher la quantité pour chaque ingrédient
+        Quand une commande est terminée, mettre à jour le stock
+
+-->

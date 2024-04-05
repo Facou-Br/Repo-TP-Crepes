@@ -28,17 +28,46 @@ footer, header, hgroup, menu, nav, section {
 
 /* CSS Document */
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#content {
+    min-height: 100%;
+    /* dans un conteneur flex pour pousser le footer vers le bas */
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    padding: 20px 0;
+    width: 100%;
+}
+
+main {
+    flex: 1;
+    /* Assurez-vous que main peut s'étendre pour pousser le footer vers le bas */
+    padding: 20px;
+    padding-bottom: 70px; /* Ajustez cette valeur pour compenser la hauteur de votre footer */
+}
+
 body {
     background-color: #EEEEEE;
     color: black;
     font-family: Arial, sans-serif; /* A modifier à la fin */
     /* padding: 20px; */
+    display: flex;
+    flex-direction: column;
 }
 
 #wrapper {
     margin: 0 auto;
     max-width: 1160px;
     padding: 0 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -140,10 +169,10 @@ button:hover {
 }
 
 footer {
+    background-color: #007bff;
     color: white;
     text-align: center;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 20px 0;
 }
 
 .left{
@@ -162,7 +191,7 @@ footer {
 
 .tableLivreur {
     border: 1px solid black;
-    width: 100%; 
+    width: 100%;
 }
 
 .trLivreur {
@@ -202,3 +231,4 @@ footer {
         padding: 8px 16px;
     }
 }
+
