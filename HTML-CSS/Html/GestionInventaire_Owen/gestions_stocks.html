@@ -1,90 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <title>Interface de stockage</title>
-        <link rel="stylesheet" href="../../style.css">
-        <meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="../../Css/Style_gestionStocks.css">
-    </head>
-    <body class="gestionStocks">
-        <div id="page" class="wrapper">
-            <header>
-                <h1>Interface de stockage</h1>
-                <nav>
-                    <a href="gestion_fournisseurs.php">Fournisseurs</a>
-                </nav>
-            </header>
-            <br>
-            <div id="rechercher">
-                <div class="recherche"><input id="id" placeholder="ID"/></div>
-                <div class="recherche"><input id="nom" placeholder="Nom"/></div>
-                <div class="recherche"><input id="unite" placeholder="Nombre d'unité"/></div>
-                <div class="recherche"><input id="stockMin" placeholder="Stock minimum"/></div>
-                <div class="recherche"><input id="stockMax" placeholder="Stock maximum"/></div>
-                <div class="recherchton" id="button_rechercher"><button>Rechercher</button></div>
-            </div>
-            <br><br>
-            <div id="resultat">
-                <table>
-                    <div id="stocks">
-                        <tr>
-                            <th>Nom Ingrédient</th>
-                            <th>Fournisseur</th>
-                            <th>Seuil Stock</th>
-                            <th>Stock Min</th>
-                            <th>Stock Réel</th>
-                            <th>Prix UHT</th>
-
-                    </tr>
-                        <div class="aff_stock">
-                            <script>
-                                $(".aff_stock").change(function(){
-                                    var actionValue = $(this).val();
-                                    $("div.aff_stock").empty();
-                                    $.ajax({
-                                        url: "../../../Scripts/PhP/Owen/stock/afficher_stock.php",
-                                        type: "POST",
-                                        data: {action: actionValue},
-                                        success: function (data) {
-                                            $.getJSON("stocks.json", function(data) {
-                                                $.each(data, function(index, row) {
-                                                    $("div").append(
-                                                        "<tr>" +
-                                                        "<td value='" + row['NomIngred'] + "'>" + row['NomIngred'] + "</td>" +
-                                                        "<td value='" + row['NomFourn'] + "'>" + row['NomFourn'] + "</td>" +
-                                                        "<td value='" + row['SeuilStock'] + "'>" + row['SeuilStock'] + "</td>" +
-                                                        "<td value='" + row['StockMin'] + "'>" + row['StockMin'] + "</td>" +
-                                                        "<td value='" + row['StockReel'] + "'>" + row['StockReel'] + "</td>" +
-                                                        "<td value='" + row['PrixUHT_Moyen'] + "'>" + row['PrixUHT_Moyen'] + "</td>" +
-                                                        "<td><button type='button' class='modif_stock'>Modifier</button></td>" +
-                                                        "</tr>"
-                                                    );
-                                                });
-                                            });
-
-                                        }, // closing brace and parenthesis for success function
-                                        error: function () {
-                                            alert("Erreur lors de la récupération des stocks.");
-                                        },
-                                    });
-                                });s
-                            </script>
-                        </div>
-                    </div>
-                </table>
-
-            </div>
-            <br>
-            <div id="bas">
-                <p>Inventaire en date du : </p>
-                <input placeholder="Date"/>
-                <a href="#"><button id="rapport" class="bouton">Rapport</button></a>
-            </div>
-            <br><br>
-            <footer>
-                <p>Interface de stockage</p>
-            </footer>
+  <head>
+    <title>Interface de stockage</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../Css/Style_gestionStocks.css" /> 
+  </head>
+  <body class="gestionStocks">
+    <div id="page" class="wrapper">
+      <header>
+        <h1>Interface de stockage</h1>
+        <nav>
+          <a href="gestion_fournisseurs.php">Fournisseurs</a>
+        </nav>
+      </header>
+      <br />
+      <div id="rechercher">
+        <div class="recherche"><input id="id" placeholder="ID" /></div>
+        <div class="recherche"><input id="nom" placeholder="Nom" /></div>
+        <div class="recherche">
+          <input id="unite" placeholder="Nombre d'unité" />
         </div>
-    </body>
+        <div class="recherche">
+          <input id="stockMin" placeholder="Stock minimum" />
+        </div>
+        <div class="recherche">
+          <input id="stockMax" placeholder="Stock maximum" />
+        </div>
+        <div class="recherchton" id="button_rechercher">
+          <button>Rechercher</button>
+        </div>
+      </div>
+      <br><br>
+
+      <div id="resultat">
+        <table id="stocks" class="stocks">
+            <tr>
+              <th>Nom Ingrédient</th>
+              <th>Fournisseur</th>
+              <th>Seuil Stock</th>
+              <th>Stock Min</th>
+              <th>Stock Réel</th>
+              <th>Prix UHT</th>
+            </tr>
+        </table>
+      </div>
+      <br />
+      <div id="bas">
+        <p>Inventaire en date du :</p>
+        <input placeholder="Date" />
+        <a href="#"><button id="rapport" class="bouton">Rapport</button></a>
+      </div>
+      <br /><br />
+      <footer>
+        <p>Interface de stockage</p>
+        <script src="https://code.jquery.com/jquery-latest.js"></script>
+        <script src="../../../Scripts/JavaScript/Owen/stocks_aff.js"></script>
+    </div>
+  </body>
 </html>
