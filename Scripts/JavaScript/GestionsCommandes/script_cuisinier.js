@@ -87,9 +87,6 @@ function commencerCommande(idCommande) {
 }
 
 function terminerCommande(idCommande) {
-    // Quand une commande est terminée, mettre à jour le stock !!
-    // --> Dans la table INGREDIENT
-
     if (commandeEnCours !== idCommande) {
         alert("Cette commande ne peut pas être terminée car elle n'est pas en préparation.");
         return;
@@ -118,17 +115,21 @@ function miseAJourIngredients(idCommande) {
         type: "POST",
         url: "../../.././Scripts/PhP/Quentin/miseAJourStock.php",
         data: { id: idCommande },
-        contentType: "application/json",
         success: function(response) {
-            console.log("Les stocks ont bien été mis à jour !");
+            var data = JSON.parse(response);
+            if (data.success) {
+                console.log("Les stocks ont bien été mis à jour !");
+            } else {
+                console.error("Erreur lors de la mise à jour des stocks dans la base de données :", data.message);
+                alert("Une erreur s'est produite lors de la mise à jour des stocks dans la base de données.");
+            }
         },
         error: function(error) {
-            console.error("Erreur lors de la mise à jour des stocks dans la base de données :", error);
-            alert("Une erreur s'est produite lors de la mise à jour des stocks dans la base de données.");
+            console.error("Erreur lors de la requête AJAX :", error);
+            alert("Une erreur s'est produite lors de la requête AJAX.");
         }
     });
 }
-
 
 function afficherIngredients(id) {
     // Faire en sorte d'afficher la quantité pour chaque ingrédient
