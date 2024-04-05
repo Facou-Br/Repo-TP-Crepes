@@ -1,6 +1,11 @@
 <?php
 
 require_once '../../../../BaseDeDonnees/codesConnexion.php';
+
+if (file_exists("../../../JavaScript/Owen/stocks.json")) {
+    unlink("../../../JavaScript/Owen/stocks.json");
+}
+
 try {
     $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE.';port='.PORT, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
@@ -19,14 +24,11 @@ catch (PDOException $e) {
     echo 'N° : ' . $e->getCode();
     die();
 }
-$temp=array();
+$result=array();
 foreach ($ligne as $row) {
-    $temp[]=$row;
+    $result[]=$row;
 }
-$stocksJson = json_encode($temp);
-if (file_exists("../../../JavaScript/Owen/stocks.json")) {
-    unlink("../../../JavaScript/Owen/stocks.json");
-}
+$stocksJson = json_encode($result);
 file_put_contents("../../../JavaScript/Owen/stocks.json", $stocksJson);
 
 ?>
