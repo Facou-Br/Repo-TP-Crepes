@@ -1,11 +1,11 @@
 # Repo-Projet Crêpes
 
 Voici où trouver vos fichiers:
-  CSS : 
+  CSS:
     Style.css de base retrouvable sous ...
     Toute spécification doit être un sous dossier avec un commentaire explicant ses modifications et son apport au style de base.
 
-  HTML : 
+  HTML :
     Les pages HTML précises sont sous \HTML-CSS\HTML:
         Chacun aura un répositoire avec ses pages précises. Voir Fernando FERREIRA PIAIA pour les liaisons inter pages.
         Les pages gérants seront renvoyées immédiatement vers une page PhP de login et sont seulement accessibles si l'on a le lien.
@@ -14,4 +14,5 @@ Voici où trouver vos fichiers:
         Puis on aura des sous-styles pour des cas spéciaux que doivent être gardées à un minimum.
 
   PHP:
-    Connexion de la base de données sur "BaseDeDonnees\connexionBdB.php" 
+    Connexion de la base de données sur "BaseDeDonnees\connexionBdB.php"
+    [Lien vers la page gérant](http://localhost/Repo-TP-Crepes/Html/Gerant/)

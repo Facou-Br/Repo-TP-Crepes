@@ -13,8 +13,8 @@
         <h1>La Crêperie</h1>
         <nav>
             <table>
+                <caption hidden>Description of the table</caption>
                 <th><a href="#">Accueil</a></th>
-                <th><a href="Html/Gerant/">Gestion des stocks</a></th>
                 <th><a href="Html/Commande_Remi/menu.html">Menu</a></th>
                 <th><a href="#">Réservation</a></th>
                 <th><a href="#">Contact</a></th>
@@ -24,7 +24,8 @@
     <main>
         <section id="about">
             <h2>À propos de nous</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nunc id aliquet ultrices, velit nunc tincidunt nisl, vel lacinia nunc nunc id nunc.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nunc id aliquet
+                ultrices, velit nunc tincidunt nisl, vel lacinia nunc nunc id nunc.</p>
         </section>
 
         <section id="menu">
