@@ -10,7 +10,13 @@
 
 <body>
     <div class="wrapper">
-        <div class="titre1" id="titreMiseJourStock">Mise à jour Stock</div>
+        <header>
+            <h1>Mise à jour Stock<</h1>
+            <nav>
+                <a href="../">Retour</a>
+            </nav>
+        </header>
+
         <fieldset>
             <legend> Mise à jour Stock lors de la réception</legend>
             <form class="formulaireIngredients" id="formulaireIngredients">
