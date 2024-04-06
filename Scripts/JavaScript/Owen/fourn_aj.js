@@ -13,3 +13,25 @@ $("#Ajouter").click(function(){
     });
 });
 });
+
+
+// Trigger an event when the form is submitted
+const form = document.getElementById('form_fourn');
+form.addEventListener('submit', (event) => {
+
+    // Get form data
+    let nameFourn = document.getElementById('nomFourn').value;
+    let adresse = document.getElementById('adresse').value;
+    let codePostal = document.getElementById('codePostal').value;
+    let ville = document.getElementById('ville').value;
+    let telephone = document.getElementById('telephone').value;
+
+    // Ajax query
+    $.ajax('../../../../HTML')
+        .post({ "nameFourn": firstname, "nameFourn": lastname})
+        .then(function (response) { output.textContent = response })
+        .catch(function(failure) { alert ('Error') })
+
+    // Prevent HTML posting form
+    event.preventDefault();
+});

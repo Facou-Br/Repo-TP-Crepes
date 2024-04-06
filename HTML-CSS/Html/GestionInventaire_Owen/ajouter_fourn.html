@@ -6,41 +6,48 @@
         <meta charset="utf-8">
         <script src="https://code.jquery.com/jquery-latest.js"></script>
         <script src="../../../../HTML-CSS/Scripts/JavaScript/Owen/fourn_aj.js"></script>
+        <style>
+            input[type=text] {
+                width: 30%;
+            }
+        </style>
     </head>
     <body>
-        <header>
-            <h1>Ajouter un fournisseur</h1>
-            <nav>
-                <a href="gestion_fournisseurs.html">Retour</a>
-            </nav>
-        </header>
-        <div method="post" id="form_fourn"class="form_fourn">
-            <div id="nom">
-                <label id="nomFourn" for="nomFourn">Nom du fournisseur :</label>
-                <input type="text" name="nomFourn" required>
+        <div class="wrapper">
+            <header>
+                <h1>Ajouter un fournisseur</h1>
+                <nav>
+                    <a href="gestion_fournisseurs.html">Retour</a>
+                </nav>
+            </header>
+            <div method="post" id="form_fourn"class="form_fourn">
+                <div id="nom">
+                    <label id="nomFourn" for="nomFourn">Nom du fournisseur :</label>
+                    <input type="text" name="nomFourn" required>
+                </div>
+                <br><br>
+                <div id="adresseFourn">
+                    <label id="adresse" for="adresse">Adresse :</label>
+                    <input type="text" name="adresse" required>
+                </div>
+                <br><br>
+                <div id="codePostalFourn">
+                    <label id="codePostal" for="codePostal">Code postal :</label>
+                    <input type="text" name="codePostal" required>
+                </div>
+                <br><br>
+                <div id="villeFourn">
+                    <label id="ville" for="ville">Ville :</label>
+                    <input type="text" name="ville" required>
+                </div>
+                <br><br>
+                <div id="telephoneFourn">
+                   <label id="telephone" for="telephone">Téléphone :</label>
+                  <input type="text" name="telephone" required>
+                </div>
+                <br><br>
+                <button id="Ajouter" type="submit" value="Ajouter">Ajouter</button>
             </div>
-            <br><br>
-            <div id="adresseFourn">
-                <label id="adresse" for="adresse">Adresse :</label>
-                <input type="text" name="adresse" required>
-            </div>
-            <br><br>
-            <div id="codePostalFourn">
-                <label id="codePostal" for="codePostal">Code postal :</label>
-                <input type="text" name="codePostal" required>
-            </div>
-            <br><br>
-            <div id="villeFourn">
-                <label id="ville" for="ville">Ville :</label>
-                <input type="text" name="ville" required>
-            </div>
-            <br><br>
-            <div id="telephoneFourn">
-               <label id="telephone" for="telephone">Téléphone :</label>
-              <input type="text" name="telephone" required>
-            </div>
-            <br><br>
-            <button id="Ajouter" type="submit" value="Ajouter">Ajouter</button>
         </div>
     </body>
 </html>
