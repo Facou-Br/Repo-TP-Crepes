@@ -12,7 +12,7 @@ function chargerCommandes() {
                 let elementCommande = `
                     <div>
                         <h2>Numéro Commande : ${commande.id} </h2><br>
-                        <p>Nom : ${commande.nom}</p>
+                        <p>À faire : ${commande.nombre} ${commande.nom}</p>
                         <p>Heure de mise à disposition : ${commande.temps}</p>
                         <p>Statut : ${commande.statut}</p>
                         <button onclick="commencerCommande(${commande.id})">Commencer</button>
@@ -27,38 +27,6 @@ function chargerCommandes() {
     });
 }
 
-/*
-function chargerCommandes() {
-    // Faire en sorte de faire qu'une commande avec plusieurs produits, cela affiche qu'un rectangle
-
-    $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
-        data.commandes.sort((a, b) => {
-            return a.temps.localeCompare(b.temps);
-        });
-
-        let listeCommandes = $("#commandes");
-        listeCommandes.html("");
-
-        data.commandes.forEach(commande => {
-            if (commande.statut !== "Prête") {
-                let elementCommande = `
-                    <div>
-                        <h2>Numéro Commande : ${commande.id} </h2><br>
-                        <p>Nom : ${commande.nom}</p>
-                        <p>Heure de mise à disposition : ${commande.temps}</p>
-                        <p>Statut : ${commande.statut}</p>
-                        <button onclick="commencerCommande(${commande.id})">Commencer</button>
-                        <button onclick="terminerCommande(${commande.id})">Terminer</button>
-                        <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
-                        <hr>
-                    </div>
-                `;
-                listeCommandes.append(elementCommande);
-            }
-        });
-    });
-}
-*/
 function mettreAJourBDD(idCommande, nouveauStatut) {
     $.ajax({
         type: "POST",
@@ -119,9 +87,6 @@ function commencerCommande(idCommande) {
 }
 
 function terminerCommande(idCommande) {
-    // Quand une commande est terminée, mettre à jour le stock !!
-    // --> Dans la table INGREDIENT
-
     if (commandeEnCours !== idCommande) {
         alert("Cette commande ne peut pas être terminée car elle n'est pas en préparation.");
         return;
@@ -133,6 +98,7 @@ function terminerCommande(idCommande) {
         if (commande) {
             if (commande.statut === "En préparation") {
                 mettreAJourBDD(idCommande, "Prête");
+                miseAJourIngredients(idCommande);
                 commandeEnCours = null;
                 actualiserCommandesBdD();
             } else {
@@ -140,6 +106,27 @@ function terminerCommande(idCommande) {
             }
         } else {
             alert("Commande non trouvée.");
+        }
+    });
+}
+
+function miseAJourIngredients(idCommande) {
+    $.ajax({
+        type: "POST",
+        url: "../../.././Scripts/PhP/Quentin/miseAJourStock.php",
+        data: { id: idCommande },
+        success: function(response) {
+            var data = JSON.parse(response);
+            if (data.success) {
+                console.log("Les stocks ont bien été mis à jour !");
+            } else {
+                console.error("Erreur lors de la mise à jour des stocks dans la base de données :", data.message);
+                alert("Une erreur s'est produite lors de la mise à jour des stocks dans la base de données.");
+            }
+        },
+        error: function(error) {
+            console.error("Erreur lors de la requête AJAX :", error);
+            alert("Une erreur s'est produite lors de la requête AJAX.");
         }
     });
 }
