@@ -1,37 +1,28 @@
-$(document).ready(function (){
-$("#Ajouter").click(function(){
-    $.ajax({
-        type:'POST',
-        url:'../../../../PHP/Owen/fournisseur/ajouter_fournisseur.php',
-        data: $(".form_fourn").serialize(),
-        success: function(){
-            alert("Fournisseur ajouté avec succès.");
-        },
-        error: function (){
-            alert("Erreur lors de l'envoi du formulaire.");
-        }
+$(document).ready(function(){
+    $('#Ajouter').click(function(e){
+        e.preventDefault();
+        var nomFourn = $('#nomFourn').val();
+        var adresse = $('#adresse').val();
+        var codePostal = $('#codePostal').val();
+        var ville = $('#ville').val();
+        var telephone = $('#telephone').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '../../../Scripts/PHP/Owen/fournisseur/ajouter_fourn.php',
+            data: {
+                nomFourn: nomFourn,
+                adresse: adresse,
+                codePostal: codePostal,
+                ville: ville,
+                telephone: telephone
+            },
+            success: function(response){
+                alert(response);
+            },
+            fail: function () {
+                alert("Erreur");
+            }
+        });
     });
-});
-});
-
-
-// Trigger an event when the form is submitted
-const form = document.getElementById('form_fourn');
-form.addEventListener('submit', (event) => {
-
-    // Get form data
-    let nameFourn = document.getElementById('nomFourn').value;
-    let adresse = document.getElementById('adresse').value;
-    let codePostal = document.getElementById('codePostal').value;
-    let ville = document.getElementById('ville').value;
-    let telephone = document.getElementById('telephone').value;
-
-    // Ajax query
-    $.ajax('../../../../HTML')
-        .post({ "nameFourn": firstname, "nameFourn": lastname})
-        .then(function (response) { output.textContent = response })
-        .catch(function(failure) { alert ('Error') })
-
-    // Prevent HTML posting form
-    event.preventDefault();
 });
