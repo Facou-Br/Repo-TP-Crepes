@@ -13,7 +13,7 @@ $adresse = $form["adresse"];
 $cp = $form["codePostal"];
 $ville = $form["ville"];
 $tel = $form["telephone"];
-echo $form;
+var_dump($form);
 try {
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $sql = "INSERT INTO `fournisseur` (`NomFourn`, `Adresse`, `CodePostal`, `Ville`, `Tel`, `DateArchiv`) VALUES (?, ?, ?, ?, ?, NOW())";
