@@ -18,7 +18,7 @@ try {
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $sql = "INSERT INTO `fournisseur` (`NomFourn`, `Adresse`, `CodePostal`, `Ville`, `Tel`, `DateArchiv`) VALUES ($nomFourn, $adresse, $cp, $ville, $tel, NOW());";
     echo $sql."<br>";
-    $connex->exec($sql);
+    $connex->exec($sql); #essayer le query pour voir si ça marche regarder dans le cours
     echo "Fournisseur ajouté";
 } catch (PDOException $e) {
     echo 'Erreur : ' . $e->getMessage() . '<br />';
