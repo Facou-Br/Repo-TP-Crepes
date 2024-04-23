@@ -27,7 +27,7 @@
                     <option value="">Choissisez un fournisseur parmi la liste</option>
                 </select>
 
-                <div id="ingredients">
+                <div id="ingredients" class="ingredients">
                 </div>
             </form>
         </fieldset>
