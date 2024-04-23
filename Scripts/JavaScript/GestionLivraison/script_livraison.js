@@ -65,3 +65,4 @@ function afficherCommande(id) {
         url: "../../../Html/livreur_noe/page_commande.php"
     })
 }
+

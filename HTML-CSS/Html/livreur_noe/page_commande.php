@@ -30,6 +30,11 @@
 
     <card style="display:flex; margin-left:auto; margin-right:auto; ">
         
+        <button onclick="window.location.href='carte.php'">Carte</button>
+    </card>
+
+    <card style="display:flex; margin-left:auto; margin-right:auto; ">
+        
         <button onclick="window.location.href='page_livreur.php'">Retour</button>
     </card>
     
