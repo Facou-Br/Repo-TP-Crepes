@@ -1,72 +1,27 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
-
-    <style>
-
-        .input-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-            max-width: 200px;
-        }
-
-        button,
-        input {
-            outline: none;
-            border: none;
-            padding: 16px;
-            font-size: 18px;
-        }
-
-        input {
-            width: 100%;
-            text-align: center;
-        }
-
-        button {
-            cursor: pointer;
-        }
-        #increment {
-            border-bottom-right-radius: 15px;
-            border-top-right-radius: 15px;
-        }
-        #decrement{
-            border-bottom-left-radius: 15px;
-            border-top-left-radius: 15px;
-        }
-
-        button:hover {
-            background-color: #c4c4c4;
-        }
-
-    </style>
+    <title>Mon panier</title>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
-<div class="input-group">
-    <button id="decrement">-</button>
-    <input type="number" id="input" value="0" readonly>
-    <button id="increment">+</button>
-    <script>
+    <h1>Mon panier</h1>
+    <ul>
+        <li>Produit 1</li>
+        <li>Produit 2</li>
+        <li>Produit 3</li>
+    </ul>
+<button class="mon-bouton">Cliquez ici</button>
+<style>
+    .mon-bouton {
+        position: relative; /* Assurez-vous que le positionnement est relatif pour que les transformations affectent le texte par rapport au bouton */
+    }
 
-        const decrement = document.getElementById('decrement');
-        const increment = document.getElementById('increment');
-        const input = document.getElementById('input');
+    .mon-bouton span {
+        display: inline-block; /* Permet de cibler le texte */
+        transform: translateX(0px) translateY(px); /* Déplace le texte de 10px vers la droite et de 5px vers le bas */
+    }
 
-        decrement.addEventListener('click', () => {
-            input.value = parseInt(input.value) - 1;
-        });
-
-        increment.addEventListener('click', () => {
-            input.value = parseInt(input.value) + 1;
-        });
-    </script>
-</div>
-
-</body>
-</html>
+</style>

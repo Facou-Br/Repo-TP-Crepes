@@ -20,28 +20,33 @@
         color: #000;
         margin-bottom: 3px;
         display: flex;
-        align-items: flex-start;}
+        align-items: flex-start;
+    }
     .titreContent img {
         margin-left: auto;
         max-width: 40px;
     }
     .titreContent h3 {
         margin-right: 10px;
+        text-decoration: underline;
     }
 
 
 
     .border {
         padding: 10px;
-        margin-bottom: 30px;}
+        margin-bottom: 30px;
+    }
     section {
         padding: 20px;
         align-content: center;
-        box-sizing: border-box;}
+        box-sizing: border-box;
+    }
 
     .box {
         display: flex;
-        align-items: flex-start;}
+        align-items: flex-start;
+    }
     .box img {
         margin-left: auto;
     }
@@ -66,12 +71,13 @@
         align-items: center;
     }
 
-    button,
-    input {
+    button, input {
         outline: none;
         border: none;
-        padding: 16px;
+        padding: 3px 8px;
         font-size: 18px;
+        max-width: 70px;
+        min-width: 50px;
     }
 
     input {
@@ -81,19 +87,33 @@
 
     button {
         cursor: pointer;
-        height: 15px;
+    }
+    input[type="number"] {
+        appearance: none;
+    }
 
-        ;}
-    #increment {
+    input[type="number"] {
+        appearance: textfield; /* Cette ligne enlève les flèches verticales */
+        -webkit-appearance: textfield; /* Pour une compatibilité avec les navigateurs basés sur WebKit */
+    }
+
+
+
+    .increment {
         border-bottom-right-radius: 12px;
         border-top-right-radius: 12px;}
-    #decrement{
+    .decrement{
         border-bottom-left-radius: 12px;
         border-top-left-radius: 12px;}
 
     button:hover {
         background-color: #c4c4c4;
     }
+
+    .mon-bouton {
+        cursor: not-allowed;
+    }
+
 </style>
 <div class="wrapper">
     <header>
@@ -117,28 +137,13 @@
         <section>
             <div class="titreContent">
                 <h3>Crêpe of the day, La Crêpe Kebab : Une Fusion Culinaire Divine :</h3>
-
                 <div class="input-group">
+                    <button class="decrement">-</button>
+                    <input type="number" class="input" value="0" readonly>
+                    <button class="increment">+</button>
+                    <script src="../../../Scripts/JavaScript/remi/buttonCtrl.js"></script>
 
-                    <button id="decrement">-</button>
-                    <input type="number" id="input" value="0" readonly>
-                    <button id="increment">+</button>
-
-                    <script>
-
-                        const decrement = document.getElementById('decrement');
-                        const increment = document.getElementById('increment');
-                        const input = document.getElementById('input');
-
-                        decrement.addEventListener('click', () => {
-                            input.value = parseInt(input.value) - 1;
-                        });
-
-                        increment.addEventListener('click', () => {
-                            input.value = parseInt(input.value) + 1;
-                        });
-                    </script>
-                </div>
+                </div> <!-- .input-group -->
 
             </div> <!-- .titreContent -->
             <div class="box">
@@ -151,10 +156,15 @@
 
         <section class="border left splited">
             <div class="titreContent">
-                <h3><a href="#">La Crêpe Suzette Flambée</a></h3>
-                <samp>
+                <h3>La Crêpe Suzette Flambée</h3>
+                <div class="input-group">
+                    <button class="decrement">-</button>
+                    <input type="number" class="input" value="0" readonly>
+                    <button class="increment">+</button>
+                    <script src="../../../Scripts/JavaScript/remi/buttonCtrl.js"></script>
 
-                </samp>
+                </div> <!-- .input-group -->
+
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>Un spectacle en soi, la crêpe Suzette est une fusion de saveurs et de flair culinaire. Lorsque cette délectable crêpe s'affiche sur la table, elle émet un arôme d'agrumes frais et de caramelisé alléchant. Sa base légère et moelleuse est imprégnée d'un mélange succulent d'orange et de Grand Marnier, qui embrase les papilles dès la première bouchée. Enveloppée dans une légère brume de flambée, chaque crêpe Suzette est une œuvre d'art culinaire. Sa garniture généreuse de zestes d'orange confits et de sauce onctueuse crée une symphonie de saveurs sucrées et acidulées qui dansent sur le palais, laissant une impression durable.</p>
@@ -163,9 +173,26 @@
 
         </section>
 
+
         <section class="border right splited">
             <div class="titreContent">
-                <h3><a href="#">La Crêpe aux Fruits de Saison et au Mascarpone</a></h3>
+                <h3>La Crêpe aux Fruits de Saison et au Mascarpone</h3>
+
+
+                <div class="input-group">
+
+                    <button class="decrement">-</button>
+                    <input type="number" class="input" value="0" readonly>
+                    <button class="increment">+</button>
+                    <script src="../../../Scripts/JavaScript/remi/buttonCtrl.js"></script>
+                </div> <!-- .input-group -->
+
+
+
+
+
+
+
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>Une célébration de la fraîcheur et de la simplicité, cette crêpe met en valeur les meilleurs fruits de saison avec une touche de luxe. La pâte légère et dorée est garnie d'une généreuse couche de mascarpone crémeux, qui fond délicieusement au contact des fruits fraîchement coupés. Chaque bouchée offre une explosion de saveurs, alliant la douceur naturelle des fruits à la richesse veloutée du mascarpone. Que ce soit des fraises juteuses en été, des tranches de poire pochées en automne ou des quartiers d'orange sanguine en hiver, cette crêpe s'adapte à chaque saison, offrant ainsi une expérience gustative rafraîchissante et exquise à chaque dégustation.</p>
@@ -174,9 +201,22 @@
         </section>
 
 
+        <br class="clear">
         <section class="border left splited">
             <div class="titreContent">
-                <h3><a href="#">Crêpes aux Fruits de Mer</a></h3>
+                <h3>Crêpes aux Fruits de Mer</h3>
+
+
+
+                <div class="input-group">
+                    <button class="decrement">-</button>
+                    <input type="number" class="input" value="0" readonly>
+                    <button class="increment">+</button>
+                    <script src="../../../Scripts/JavaScript/remi/buttonCtrl.js"></script>
+                </div> <!-- .input-group -->
+
+
+
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>Description : Une option salée ! Mélangez les fruits de mer cuits à la pâte à crêpes. Faites cuire et garnissez de crème fraîche et de persil frais.</p>
@@ -186,7 +226,21 @@
 
         <section class="border right splited">
             <div class="titreContent">
-                <h3><a href="#">Crêpes aux Épinards et Fromage</a></h3>
+                <h3>Crêpes aux Épinards et Fromage</h3>
+
+
+
+
+                <div class="input-group">
+                    <button class="decrement">-</button>
+                    <input type="number" class="input" value="0" readonly>
+                    <button class="increment">+</button>
+                    <script src="../../../Scripts/JavaScript/remi/buttonCtrl.js"></script>
+                </div> <!-- .input-group -->
+
+
+
+
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>Description : Parfaites pour un repas léger. Ajoutez des épinards cuits et du fromage râpé à la pâte à crêpes. Faites cuire et savourez avec une touche de sel.</p>
@@ -198,7 +252,21 @@
 
         <section class="border left splited">
             <div class="titreContent">
-                <h3><a href="#">Crêpes aux Pommes Caramélisées</a></h3>
+                <h3>Crêpes aux Pommes Caramélisées</h3>
+
+
+
+
+                <div class="input-group">
+                    <button class="decrement">-</button>
+                    <input type="number" class="input" value="0" readonly>
+                    <button class="increment">+</button>
+                    <script src="../../../Scripts/JavaScript/remi/buttonCtrl.js"></script>
+                </div> <!-- .input-group -->
+
+
+
+
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>Description : Un délice sucré ! Faites sauter des tranches de pommes dans du beurre et du sucre brun jusqu'à ce qu'elles caramélisent. Ensuite, garnissez les crêpes avec les pommes caramélisées et saupoudrez de cannelle.</p>
@@ -208,7 +276,21 @@
 
         <section class="border right splited">
             <div class="titreContent">
-                <h3><a href="#">Crêpes aux Champignons et Crème</a></h3>
+                <h3>Crêpes aux Champignons et Crème</h3>
+
+
+
+
+                <div class="input-group">
+                    <button class="decrement">-</button>
+                    <input type="number" class="input" value="0" readonly>
+                    <button class="increment">+</button>
+                    <script src="../../../Scripts/JavaScript/remi/buttonCtrl.js"></script>
+                </div> <!-- .input-group -->
+
+
+
+
             </div> <!-- .titreContent -->
             <div class="box">
                 <p>Description : Un régal rustique ! Faites revenir des champignons dans du beurre jusqu'à ce qu'ils soient dorés. Garnissez les crêpes avec les champignons et la crème fraîche. Saupoudrez de persil haché.</p>
@@ -217,6 +299,14 @@
         </section>
     </main>
     <br class="clear">
+
+
+
+    <button class="mon-bouton">Cliquez ici</button>
+
+    <br class="clear">
+
+
     <footer>
         <p>&copy; 2024 La Crêperie. Tous droits réservés.</p>
     </footer>
