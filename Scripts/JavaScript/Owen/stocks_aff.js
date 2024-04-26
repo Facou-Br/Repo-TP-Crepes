@@ -20,7 +20,7 @@ $.ajax({
         );
       });
     });
-  }, // closing brace and parenthesis for success function
+  },
   error: function () {
     alert("Erreur lors de la récupération des stocks.");
   },
