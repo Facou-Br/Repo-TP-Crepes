@@ -15,6 +15,7 @@ function chargerCommandes() {
                         <p>À faire : ${commande.nombre} ${commande.nom}</p>
                         <p>Heure de mise à disposition : ${commande.temps}</p>
                         <p>Statut : ${commande.statut}</p>
+                        <br>
                         <button onclick="commencerCommande(${commande.id})">Commencer</button>
                         <button onclick="terminerCommande(${commande.id})">Terminer</button>
                         <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
@@ -132,8 +133,10 @@ function miseAJourIngredients(idCommande) {
 }
 
 function afficherIngredients(id) {
-    // Faire en sorte d'afficher la quantité pour chaque ingrédient
-    // --> Dans la table PROD_INGR
+    /*
+        Faire en sorte d'afficher la quantité pour chaque ingrédient
+        --> Dans la table PROD_INGR
+    */
 
     $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
         let commande = data.commandes.find(commande => commande.id === id);

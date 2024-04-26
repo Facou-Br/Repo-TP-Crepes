@@ -14,12 +14,10 @@
     }
 
     try {
-        $rq = "SELECT cm.NumCom, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, 
-                        d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4, co.Quant
+        $rq = "SELECT cm.NumCom, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4
                     FROM COMMANDE cm
                     INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
                     INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF;";
-
         $result = $connex->query($rq);
 
         $commandes_array = array();
@@ -37,8 +35,9 @@
                 "ingredients" => array(
                     "base" => $ingredients_base,
                     "optionnels" => $ingredients_opt
-                )
+                ),
             );
+
             $commandes_array[] = $commande;
         }
 
