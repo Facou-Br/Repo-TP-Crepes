@@ -3,7 +3,7 @@ a {
     text-decoration: none;
 }
 footer{
-    position: fixed;
+    position: absolute;
     bottom:0
 }
 table{

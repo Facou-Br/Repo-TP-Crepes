@@ -14,7 +14,7 @@ $.ajax({
                     "<td value='" + row["CodePostal"] + "'>" + row["CodePostal"] + "</td>" +
                     "<td value='" + row["Ville"] + "'>" + row["Ville"] + "</td>" +
                     "<td value='" + row["Tel"] + "'>" + row["Tel"] + "</td>" +
-                    "<td><a href='../../../HTML-CSS/Html/GestionInventaire_Owen/modifier_fourn.html'><button type='button' class='modif_stock'>Modifier</button></a></td>" +
+                    "<td><button type='button' class='modif_fourn'>Modifier</button></td>" +
                     "</tr>"
                 );
             });
