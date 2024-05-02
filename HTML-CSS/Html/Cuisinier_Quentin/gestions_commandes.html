@@ -50,11 +50,4 @@
 
 
         Aspect visuel à revoir
-
-
-        SELECT cm.NumCom, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, (SELECT pi.Quant FROM PROD_INGR pi WHERE pi.IdIngred = 3 AND pi.IdProd = 1), d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4
-                    FROM COMMANDE cm
-                    INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
-                    INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF;
-
 -->

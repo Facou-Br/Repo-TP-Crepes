@@ -132,26 +132,32 @@ function miseAJourIngredients(idCommande) {
     });
 }
 
+function chargerIngredients(data) {
+    $.ajax({
+        type: "POST",
+        url: "../../.././Scripts/PhP/Quentin/chargerIngredients.php",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function(response) {
+            console.log("!");
+        },
+        error: function(error) {
+            console.error(":", error);
+            alert(".");
+        }
+    });
+}
 function afficherIngredients(id) {
-    /*
-        Faire en sorte d'afficher la quantité pour chaque ingrédient
-        --> Dans la table PROD_INGR
-    */
+    chargerIngredients();
 
-    $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
+    $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/ingredients.json", function (data) {
         let commande = data.commandes.find(commande => commande.id === id);
 
         if (commande) {
-            let ingredientsText = "Ingrédients de " + commande.nom + " :\n\n";
+            let ingredientsText = "Ingrédients de la commande " + id + " :\n\n";
 
-            if (commande.ingredients.base.length > 0) {
-                ingredientsText += "Ingrédients de base :\n";
-                ingredientsText += "• " + commande.ingredients.base.join("\n• ") + "\n\n";
-            }
-
-            if (commande.ingredients.optionnels.length > 0) {
-                ingredientsText += "Ingrédients optionnels :\n";
-                ingredientsText += "• " + commande.ingredients.optionnels.join("\n• ");
+            for (const [nom, [quantite, unite]] of Object.entries(commande.ingredients)) {
+                ingredientsText += `• ${nom} : ${quantite} ${unite}\n`;
             }
 
             alert(ingredientsText);
@@ -161,21 +167,3 @@ function afficherIngredients(id) {
     });
 }
 
-/*
-function sauvegarderCommandes(data) {
-    $.ajax({
-        type: "POST",
-        url: "../../.././Scripts/PhP/sauvegarderCommandes.php",
-        data: JSON.stringify(data),
-        contentType: "application/json",
-        success: function(response) {
-            console.log("Commande terminée avec succès !");
-            chargerCommandes();
-        },
-        error: function(error) {
-            console.error("Erreur lors de la sauvegarde des commandes :", error);
-            alert("Une erreur s'est produite lors de la sauvegarde des commandes.");
-        }
-    });
-}
-*/
