@@ -1,6 +1,4 @@
 <?php
-    $idCommande = $_POST['id'];
-
     $host = "localhost";
     $user = "root";
     $pwd = "root";
@@ -10,40 +8,34 @@
     try {
         $connex = new PDO('mysql:host=' . $host . ';charset=utf8;dbname=' . $bdd . ';port=' . $port, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     } catch (Exception $e) {
-        echo json_encode(array('success' => false, 'message' => 'Erreur de connexion à la base de données.'));
+        $response = array('success' => false, 'message' => 'Erreur de connexion à la base de données.');
+        echo json_encode($response);
         die();
     }
 
-    try {
-        $rq = "SELECT d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4, co.Quant
-                    FROM COMMANDE cm
-                    INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
-                    INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
-                    WHERE cm.NumCom = :idCommande";
+    $jsonData = file_get_contents('php://input');
 
-        $stmt = $connex->prepare($rq);
-        $stmt->bindParam(':idCommande', $idCommande, PDO::PARAM_INT);
-        $stmt->execute();
+    if ($jsonData) {
+        $data = json_decode($jsonData, true);
 
-        $ingredients = array();
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $ingredients[] = $row;
+        $nomIngredient = $data['nomIngredient'];
+        $quantiteIngredient = $data['quantiteIngredient'];
+        $quantiteCrepe = $data['quantiteCrepe'];
+
+        try {
+            $stmt = $connex->prepare("UPDATE INGREDIENT SET StockReel = StockReel - (:quantiteCrepe * :quantiteIngredient) WHERE NomIngred = :ingredient");
+            $stmt->bindValue(':quantiteCrepe', $quantiteCrepe, PDO::PARAM_INT);
+            $stmt->bindValue(':quantiteIngredient', $quantiteIngredient, PDO::PARAM_INT);
+            $stmt->bindValue(':ingredient', $nomIngredient, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $response = array('success' => true, 'message' => 'Commande mise à jour dans la base de données avec succès.');
+            echo json_encode($response);
+
+        } catch (PDOException $e) {
+            print $e->getMessage();
         }
-
-        foreach ($ingredients as $ingredient) {
-            foreach ($ingredient as $key => $value) {
-                if (!empty($value)) {
-                    $updateStock = "UPDATE INGREDIENT SET StockReel = StockReel - (0.01 * :quantiteCrepes) WHERE NomIngred = :ingredient";
-                    $stmtUpdate = $connex->prepare($updateStock);
-                    $stmtUpdate->bindParam(':quantiteCrepes', $ingredient['Quant'], PDO::PARAM_STR);
-                    $stmtUpdate->bindParam(':ingredient', $value, PDO::PARAM_STR);
-                    $stmtUpdate->execute();
-                }
-            }
-        }
-
-        echo json_encode(array('success' => true, 'message' => 'Stocks mis à jour avec succès.'));
-    } catch (PDOException $e) {
-        echo json_encode(array('success' => false, 'message' => 'Erreur lors de la mise à jour des stocks : ' . $e->getMessage()));
     }
+
+    $connex = null;
 ?>

@@ -35,23 +35,18 @@ html, body {
 body {
     background-color: #EEEEEE;
     color: black;
-    font-family: Arial, sans-serif; /* A modifier à la fin */
-    /* padding: 20px; */
-    display: flex;
-    flex-direction: column;
+    font-family: Arial, sans-serif;
 }
 
 #wrapper {
     margin: 0 auto;
     max-width: 1160px;
     padding: 0 10px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
 }
 
 #commandes {
     display: grid;
+    margin: 30px;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
     text-align: center;
@@ -67,10 +62,6 @@ body {
 #commandes div:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-#commandes h2 {
-    margin-top: 0;
 }
 
 #commandes p {
@@ -106,48 +97,48 @@ h1 {
     font-size: 50px;
 }
 
-h2 {
+#commandes h2 {
     font-size: 25px;
     font-weight: bold;
 }
 
-p {
+#commandes p {
+    margin-bottom: 5px;
     font-size: 18px;
 }
 
-footer, header {
+header {
     color: white;
     background-image: url('../Images/jpeg/wood.jpg');
 }
 
-main {
-    padding: 20px;
+/********** M E D I A  Q U E R Y **********/
+@media only screen and (max-width: 1300px) {
+    #commandes {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
-/********** M E D I A  Q U E R Y **********/
-@media (max-width: 768px) {
-    header {
-        padding: 20px;
+@media only screen and (max-width: 1024px) {
+    #commandes {
+        grid-template-columns: repeat(2, 1fr);
     }
-
-    nav {
-        padding: 10px 0;
-    }
-
-    nav a,
-    nav a:active {
-        margin: 0 5px;
-    }
-
-    main {
+    .wrapper {
         padding: 10px;
     }
+}
 
-    section {
+@media only screen and (max-width: 740px) {
+    #commandes {
+        grid-template-columns: 1fr;
+    }
+    #commandes div {
         padding: 15px;
     }
-
-    button {
-        padding: 8px 16px;
+    #commandes p {
+        font-size: 16px;
+    }
+    #commandes button {
+        padding: 8px 15px;
     }
 }

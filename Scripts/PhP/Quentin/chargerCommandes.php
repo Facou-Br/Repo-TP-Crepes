@@ -14,10 +14,15 @@
     }
 
     try {
-        $rq = "SELECT cm.NumCom, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4
-                    FROM COMMANDE cm
-                    INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
-                    INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF;";
+        $rq = "SELECT cm.NumCom, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4,
+                GROUP_CONCAT(i.NomIngred, ':', pi.Quant, ':', i.Unite SEPARATOR ';') AS Ingredients
+                FROM COMMANDE cm
+                INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
+                INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
+                INNER JOIN PROD_INGR pi ON d.IdProd = pi.IdProd
+                INNER JOIN INGREDIENT i ON pi.IdIngred = i.IdIngred
+                WHERE cm.EtatCde = 'Acceptée' OR cm.EtatCde = 'En préparation'
+                GROUP BY cm.NumCom, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4;";
         $result = $connex->query($rq);
 
         $commandes_array = array();
@@ -25,6 +30,12 @@
         while ($ligne = $result->fetch(PDO::FETCH_ASSOC)) {
             $ingredients_base = array_filter([$ligne["IngBase1"], $ligne["IngBase2"], $ligne["IngBase3"], $ligne["IngBase4"]]);
             $ingredients_opt = array_filter([$ligne["IngOpt1"], $ligne["IngOpt2"], $ligne["IngOpt3"], $ligne["IngOpt4"]]);
+            $ingredients_array = explode(';', $ligne["Ingredients"]);
+            $ingredients = array();
+            foreach ($ingredients_array as $ing) {
+                list($ingredient, $quantite, $unite) = explode(':', $ing);
+                $ingredients[$ingredient] = array((int)$quantite, $unite);
+            }
 
             $commande = array(
                 "id" => $ligne["NumCom"],
@@ -32,10 +43,9 @@
                 "nom" => $ligne["NomProd"],
                 "temps" => substr($ligne["HeureDispo"], 0, 5),
                 "statut" => $ligne["EtatCde"],
-                "ingredients" => array(
-                    "base" => $ingredients_base,
-                    "optionnels" => $ingredients_opt
-                ),
+                "ingredients" =>
+                 $ingredients
+                ,
             );
 
             $commandes_array[] = $commande;

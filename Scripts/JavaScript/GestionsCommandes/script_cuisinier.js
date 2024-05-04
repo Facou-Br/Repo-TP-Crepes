@@ -8,22 +8,20 @@ function chargerCommandes() {
         listeCommandes.html("");
 
         data.commandes.forEach(commande => {
-            if (commande.statut !== "Prête") {
-                let elementCommande = `
-                    <div>
-                        <h2>Numéro Commande : ${commande.id} </h2><br>
-                        <p>À faire : ${commande.nombre} ${commande.nom}</p>
-                        <p>Heure de mise à disposition : ${commande.temps}</p>
-                        <p>Statut : ${commande.statut}</p>
-                        <br>
-                        <button onclick="commencerCommande(${commande.id})">Commencer</button>
-                        <button onclick="terminerCommande(${commande.id})">Terminer</button>
-                        <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
-                        <hr>
-                    </div>
-                `;
-                listeCommandes.append(elementCommande);
-            }
+            let elementCommande = `
+                <div>
+                    <h2>Numéro Commande : ${commande.id} </h2><br>
+                    <p>À faire : ${commande.nombre} ${commande.nom}</p>
+                    <p>Heure de mise à disposition : ${commande.temps}</p>
+                    <p>Statut : ${commande.statut}</p>
+                    <br>
+                    <button onclick="commencerCommande(${commande.id})">Commencer</button>
+                    <button onclick="terminerCommande(${commande.id})">Terminer</button>
+                    <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
+                    <hr>
+                </div>
+            `;
+            listeCommandes.append(elementCommande);
         });
     });
 }
@@ -111,46 +109,32 @@ function terminerCommande(idCommande) {
     });
 }
 
-function miseAJourIngredients(idCommande) {
-    $.ajax({
-        type: "POST",
-        url: "../../.././Scripts/PhP/Quentin/miseAJourStock.php",
-        data: { id: idCommande },
-        success: function(response) {
-            var data = JSON.parse(response);
-            if (data.success) {
-                console.log("Les stocks ont bien été mis à jour !");
-            } else {
-                console.error("Erreur lors de la mise à jour des stocks dans la base de données :", data.message);
-                alert("Une erreur s'est produite lors de la mise à jour des stocks dans la base de données.");
-            }
-        },
-        error: function(error) {
-            console.error("Erreur lors de la requête AJAX :", error);
-            alert("Une erreur s'est produite lors de la requête AJAX.");
+function miseAJourIngredients(id) {
+    $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
+        let commande = data.commandes.find(commande => commande.id === id);
+        let quantiteCrepe = commande.nombre;
+
+        for (const [nom, [quantite, unite]] of Object.entries(commande.ingredients)) {
+            $.ajax({
+                type: "POST",
+                url: "../../.././Scripts/PhP/Quentin/miseAJourStock.php",
+                data: JSON.stringify({ nomIngredient: nom, quantiteIngredient: quantite, quantiteCrepe: quantiteCrepe}),
+                contentType: "application/json",
+                success: function(response) {
+                    console.log("Stock mis à jour avec succès !");
+                },
+                error: function(error) {
+                    console.error("Erreur lors de la mise à jour du stock :", error);
+                    alert("Une erreur s'est produite lors de la mise à jour du stock.");
+                }
+            });
         }
     });
 }
 
-function chargerIngredients(data) {
-    $.ajax({
-        type: "POST",
-        url: "../../.././Scripts/PhP/Quentin/chargerIngredients.php",
-        data: JSON.stringify(data),
-        contentType: "application/json",
-        success: function(response) {
-            console.log("!");
-        },
-        error: function(error) {
-            console.error(":", error);
-            alert(".");
-        }
-    });
-}
+
 function afficherIngredients(id) {
-    chargerIngredients();
-
-    $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/ingredients.json", function (data) {
+    $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
         let commande = data.commandes.find(commande => commande.id === id);
 
         if (commande) {
@@ -162,7 +146,7 @@ function afficherIngredients(id) {
 
             alert(ingredientsText);
         } else {
-            alert("Commande non trouvée.");
+            alert("Ingrédients non trouvés.");
         }
     });
 }

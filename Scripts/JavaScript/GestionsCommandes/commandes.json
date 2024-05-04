@@ -7,15 +7,21 @@
             "temps": "11:11",
             "statut": "Acceptée",
             "ingredients": {
-                "base": [
-                    "Farine",
-                    "Oeufs",
-                    "Lait"
+                "Oeufs": [
+                    2,
+                    "unite"
                 ],
-                "optionnels": [
-                    "Chocolat",
-                    "Fraise",
-                    "Banane"
+                "Farine": [
+                    1,
+                    "kg"
+                ],
+                "Chocolat": [
+                    1,
+                    "kg"
+                ],
+                "Lait": [
+                    1,
+                    "l"
                 ]
             }
         },
@@ -26,17 +32,9 @@
             "temps": "11:18",
             "statut": "Acceptée",
             "ingredients": {
-                "base": [
-                    "Farine",
-                    "Oeufs",
-                    "Lait",
-                    "Oeuf"
-                ],
-                "optionnels": [
-                    "Jambom",
-                    "Emental",
-                    "Fraise",
-                    "Banane"
+                "Oeufs": [
+                    1,
+                    "unite"
                 ]
             }
         },
@@ -47,17 +45,9 @@
             "temps": "11:24",
             "statut": "Acceptée",
             "ingredients": {
-                "base": [
-                    "Tomate",
-                    "Salade",
-                    "Pomme de terre",
-                    "Carotte"
-                ],
-                "optionnels": [
-                    "Courgette",
-                    "Aubergine",
-                    "Poivron",
-                    "Oignon"
+                "Lait": [
+                    1,
+                    "l"
                 ]
             }
         },
@@ -66,15 +56,11 @@
             "nombre": 2,
             "nom": "Crepe Bretonne",
             "temps": "10:24",
-            "statut": "Prête",
+            "statut": "Acceptée",
             "ingredients": {
-                "base": [
-                    "Farine",
-                    "Oeuf",
-                    "Lait"
-                ],
-                "optionnels": [
-                    "Champignons"
+                "Oeufs": [
+                    1,
+                    "unite"
                 ]
             }
         },
@@ -85,13 +71,9 @@
             "temps": "12:00",
             "statut": "Acceptée",
             "ingredients": {
-                "base": [
-                    "Farine",
-                    "Oeuf",
-                    "Lait"
-                ],
-                "optionnels": [
-                    "Champignons"
+                "Oeufs": [
+                    1,
+                    "unite"
                 ]
             }
         },
@@ -102,13 +84,9 @@
             "temps": "13:39",
             "statut": "Acceptée",
             "ingredients": {
-                "base": [
-                    "Farine",
-                    "Oeuf",
-                    "Lait"
-                ],
-                "optionnels": [
-                    "Sucre"
+                "Lait": [
+                    1,
+                    "l"
                 ]
             }
         },
@@ -119,13 +97,9 @@
             "temps": "12:20",
             "statut": "Acceptée",
             "ingredients": {
-                "base": [
-                    "Farine",
-                    "Oeuf",
-                    "Lait"
-                ],
-                "optionnels": [
-                    "Sucrz"
+                "Lait": [
+                    1,
+                    "l"
                 ]
             }
         },
@@ -136,13 +110,9 @@
             "temps": "14:30",
             "statut": "Acceptée",
             "ingredients": {
-                "base": [
-                    "Farine",
-                    "Oeuf",
-                    "Lait"
-                ],
-                "optionnels": [
-                    "Sucrz"
+                "Lait": [
+                    1,
+                    "l"
                 ]
             }
         },
@@ -153,13 +123,9 @@
             "temps": "12:00",
             "statut": "Acceptée",
             "ingredients": {
-                "base": [
-                    "Farine",
-                    "Oeuf",
-                    "Lait"
-                ],
-                "optionnels": [
-                    "Sucrz"
+                "Lait": [
+                    1,
+                    "l"
                 ]
             }
         },
@@ -170,17 +136,21 @@
             "temps": "10:00",
             "statut": "Acceptée",
             "ingredients": {
-                "base": [
-                    "Farine",
-                    "Oeufs",
-                    "Lait",
-                    "Nutella"
+                "Farine": [
+                    1,
+                    "kg"
                 ],
-                "optionnels": [
-                    "Chocolat",
-                    "Fraise",
-                    "Banane",
-                    "Chantilly"
+                "Chocolat": [
+                    1,
+                    "kg"
+                ],
+                "Lait": [
+                    1,
+                    "l"
+                ],
+                "Oeufs": [
+                    2,
+                    "unite"
                 ]
             }
         },
@@ -191,17 +161,9 @@
             "temps": "12:00",
             "statut": "Acceptée",
             "ingredients": {
-                "base": [
-                    "Farine",
-                    "Oeufs",
-                    "Lait",
-                    "Oeuf"
-                ],
-                "optionnels": [
-                    "Jambom",
-                    "Emental",
-                    "Fraise",
-                    "Banane"
+                "Oeufs": [
+                    1,
+                    "unite"
                 ]
             }
         },
@@ -212,36 +174,9 @@
             "temps": "12:00",
             "statut": "Acceptée",
             "ingredients": {
-                "base": [
-                    "Tomate",
-                    "Salade",
-                    "Pomme de terre",
-                    "Carotte"
-                ],
-                "optionnels": [
-                    "Courgette",
-                    "Aubergine",
-                    "Poivron",
-                    "Oignon"
-                ]
-            }
-        },
-        {
-            "id": 13,
-            "nombre": 2,
-            "nom": "Pizza Margherita",
-            "temps": "12:00",
-            "statut": "Acceptée",
-            "ingredients": {
-                "base": [
-                    "Farine",
-                    "Lait",
-                    "Oeuf",
-                    "Tomate"
-                ],
-                "optionnels": [
-                    "Fromage",
-                    "Olive"
+                "Lait": [
+                    1,
+                    "l"
                 ]
             }
         }
