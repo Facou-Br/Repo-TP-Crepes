@@ -25,8 +25,8 @@ footer, header, hgroup, menu, nav, section {
 }
 /*--- FIN RESET ---*/
 
-/* CSS Document */
 
+/* CSS Document */
 html, body {
     height: 100%;
     margin: 0;
@@ -38,12 +38,27 @@ body {
     font-family: Arial, sans-serif;
 }
 
+header {
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background-image: url('../Images/jpeg/wood.jpg');
+}
+
+h1 {
+    font-size: 50px;
+}
+
 #wrapper {
     margin: 0 auto;
     max-width: 1160px;
     padding: 0 10px;
 }
 
+
+/********** STYLE COMMANDES  **********/
 #commandes {
     display: grid;
     margin: 30px;
@@ -86,17 +101,6 @@ body {
     margin: 10px 0;
 }
 
-header {
-    color: white;
-    padding: 10px;
-    text-align: center;
-    font-weight: bold;
-}
-
-h1 {
-    font-size: 50px;
-}
-
 #commandes h2 {
     font-size: 25px;
     font-weight: bold;
@@ -107,10 +111,6 @@ h1 {
     font-size: 18px;
 }
 
-header {
-    color: white;
-    background-image: url('../Images/jpeg/wood.jpg');
-}
 
 /********** M E D I A  Q U E R Y **********/
 @media only screen and (max-width: 1300px) {

@@ -1,5 +1,5 @@
 function chargerCommandes() {
-    $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
+    $.getJSON("../../.././Scripts/JavaScript/Quentin/commandes.json", function (data) {
         data.commandes.sort((a, b) => {
             return a.temps.localeCompare(b.temps);
         });
@@ -68,7 +68,7 @@ function commencerCommande(idCommande) {
         return;
     }
 
-    $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
+    $.getJSON("../../.././Scripts/JavaScript/Quentin/commandes.json", function (data) {
         let commande = data.commandes.find(commande => commande.id === idCommande);
 
         if (commande) {
@@ -91,7 +91,7 @@ function terminerCommande(idCommande) {
         return;
     }
 
-    $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
+    $.getJSON("../../.././Scripts/JavaScript/Quentin/commandes.json", function (data) {
         let commande = data.commandes.find(commande => commande.id === idCommande);
 
         if (commande) {
@@ -110,7 +110,7 @@ function terminerCommande(idCommande) {
 }
 
 function miseAJourIngredients(id) {
-    $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
+    $.getJSON("../../.././Scripts/JavaScript/Quentin/commandes.json", function (data) {
         let commande = data.commandes.find(commande => commande.id === id);
         let quantiteCrepe = commande.nombre;
 
@@ -132,9 +132,8 @@ function miseAJourIngredients(id) {
     });
 }
 
-
 function afficherIngredients(id) {
-    $.getJSON("../../.././Scripts/JavaScript/GestionsCommandes/commandes.json", function (data) {
+    $.getJSON("../../.././Scripts/JavaScript/Quentin/commandes.json", function (data) {
         let commande = data.commandes.find(commande => commande.id === id);
 
         if (commande) {

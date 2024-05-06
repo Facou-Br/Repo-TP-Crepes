@@ -1,15 +1,14 @@
 <?php
-    $host = "localhost";
-    $user = "root";
-    $pwd = "root";
-    $bdd = "crespesco_test";
-    $port = "8889";
+    const PASSWORD = "root";
+    const PORT = "8889";
+
+    require_once '../../../BaseDeDonnees/codesConnexion.php';
 
     try {
-        $connex = new PDO('mysql:host=' . $host . ';charset=utf8;dbname=' . $bdd . ';port=' . $port, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE .';port=' . PORT, ADMIN_USER, PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     } catch (Exception $e) {
-        $response = array('success' => false, 'message' => 'Erreur de connexion à la base de données.');
-        echo json_encode($response);
+        echo 'Erreur : ' . $e->getMessage() . '<br/>';
+        echo 'N° : ' . $e->getCode();
         die();
     }
 
@@ -22,13 +21,13 @@
         $nouveauStatut = $data['statut'];
 
         try {
-            $stmt = $connex->prepare("UPDATE COMMANDE SET EtatCde = :nouveauStatut WHERE NumCom = :idCommande");
-            $stmt->bindValue(':nouveauStatut', $nouveauStatut, PDO::PARAM_STR);
-            $stmt->bindValue(':idCommande', $idCommande, PDO::PARAM_INT);
-            $stmt->execute();
+            $rq = $connex->prepare("UPDATE COMMANDE SET EtatCde = :nouveauStatut WHERE NumCom = :idCommande");
+            $rq->bindValue(':nouveauStatut', $nouveauStatut, PDO::PARAM_STR);
+            $rq->bindValue(':idCommande', $idCommande, PDO::PARAM_INT);
+            $rq->execute();
 
-            $response = array('success' => true, 'message' => 'Commande mise à jour dans la base de données avec succès.');
-            echo json_encode($response);
+            $result = array('success' => true, 'message' => 'Commande mise à jour dans la base de données avec succès.');
+            echo json_encode($result);
 
         } catch (PDOException $e) {
             print $e->getMessage();
