@@ -26,7 +26,6 @@ function saveValueInSession(inputId) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/Scripts/PhP/Remi/addToCart.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("value=" + value);
-    console.log("value=" + value);
-
+    xhr.send("id=" + inputId + "&value=" + value);
+    console.log("id=" + inputId + ", value=" + value);
 }
