@@ -252,7 +252,7 @@ CREATE TABLE `LIVREUR` (
 --
 
 INSERT INTO `LIVREUR` (`IdLivreur`, `Nom`, `Prenom`, `Tel`, `NumSS`, `Disponible`, `DateArchiv`) VALUES
-                                                                                                     (1, 'ROULLET', 'Rémi', '01 02 03 04 06', '1 04 07 71 014', '1', '2024-03-13'),
+                                                                                                     (1, 'ROULLET', 'Remi', '01 02 03 04 06', '1 04 07 71 014', '1', '2024-03-13'),
                                                                                                      (2, 'DUPONT', 'Jean', '01 02 03 04 07', '1 04 07 71 014', '1', '2024-03-13'),
                                                                                                      (3, 'DURAND', 'Pierre', '01 02 03 04 08', '1 04 07 71 014', '1', '2024-03-13'),
                                                                                                      (4, 'MARTIN', 'Paul', '01 02 03 04 09', '1 04 07 71 014', '1', '2024-03-13'),

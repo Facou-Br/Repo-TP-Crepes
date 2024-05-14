@@ -1,17 +1,32 @@
-const decrement = document.getElementsByClassName('decrement');
-const increment = document.getElementsByClassName('increment');
-const inputs = document.getElementsByClassName('input');
+window.onload = function() {
+    const decrement = document.getElementsByClassName('decrement');
+    const increment = document.getElementsByClassName('increment');
+    const inputs = document.getElementsByClassName('input');
 
-for(let i = 0; i < decrement.length; i++) {
-    decrement[i].addEventListener('click', () => {
-        inputs[i].value = parseInt(inputs[i].value) - 1;
-        if (inputs[i].value < 0) inputs[i].value = 0;
+    for(let i = 0; i < decrement.length; i++) {
+        decrement[i].addEventListener('click', () => {
+            inputs[i].value = parseInt(inputs[i].value) - 1;
+            if (inputs[i].value < 0) inputs[i].value = 0;
+            saveValueInSession('input' + i);
+        });
+    }
 
-    });
+    for(let i = 0; i < increment.length; i++) {
+        increment[i].addEventListener('click', () => {
+            inputs[i].value = parseInt(inputs[i].value) + 1;
+            saveValueInSession('input' + i);
+        });
+    }
 }
 
-for(let i = 0; i < increment.length; i++) {
-    increment[i].addEventListener('click', () => {
-        inputs[i].value = parseInt(inputs[i].value) + 1;
-    });
+
+function saveValueInSession(inputId) {
+    var value = document.getElementById(inputId).value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/Scripts/PhP/Remi/addToCart.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("value=" + value);
+    console.log("value=" + value);
+
 }
