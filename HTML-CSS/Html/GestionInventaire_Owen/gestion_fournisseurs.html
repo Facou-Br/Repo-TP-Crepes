@@ -54,7 +54,11 @@
             <script src="https://code.jquery.com/jquery-latest.js"></script>
             <script src="../../../Scripts/JavaScript/Owen/fourn_aff.js"></script>
             <script>
-                function formulaire(event){
+                const buttons = document.getElementsByClassName("modif_fourn");
+                for(let i = 0; i < buttons.length; i++) {
+                    buttons[i].addEventListener("click", (event) => {
+                        console.log("click");
+
                     var footer = document.getElementById("footer");
                     footer.style.position = "page";
                     document.getElementById('modif_stocks').style.display = 'block';
@@ -78,7 +82,6 @@
                         "<td><input type='text' value='" + tel + "'></td>" +
                         "<td><button type='button' class='envoyer_modif'>Envoyer</button></td>"
                     );
-                };
 
                 // Ajoute un gestionnaire d'événements au bouton "Envoyer" de chaque ligne
                 $(document).on('click', '.envoyer_modif', function() {
@@ -106,10 +109,9 @@
 
 
                 });
-                const buttons = document.getElementsByClassName("modif_fourn");
-                for(let i = 0; i < buttons.length; i++) {
-                buttons[i].addEventListener("click", formulaire);
+                });
                 }
+
 
 
             </script>
