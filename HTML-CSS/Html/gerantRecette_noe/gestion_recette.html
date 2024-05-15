@@ -3,42 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une Commande</title>
+    <title>Ajouter une recette</title>
 </head>
 <body>
-    <h1>Ajouter une Commande</h1>
-    <form id="ajouterCommandeForm">
-        <label for="id">ID de la Commande:</label><br>
-        <input type="text" id="id" name="id" required><br>
+    <h1>Ajouter une recette</h1>
+    <form id="ajouterRecetteForm">
+        <label for="NomProd">Nom de la recette:</label><br>
+        <input type="text" id="NomProd" name="NomProd" required><br>
         
-        <label for="nom">Nom de la Commande:</label><br>
-        <input type="text" id="nom" name="nom" required><br>
+        <label for="Taille">Taille de la recette:</label><br>
+        <input type="text" id="Taille" name="Taille" required><br>
         
-        <label for="temps">Heure de Mise à Disposition:</label><br>
-        <input type="datetime-local" id="temps" name="temps" required><br>
-        
-        <label for="statut">Statut:</label><br>
-        <select id="statut" name="statut" required>
-            <option value="En attente">En attente</option>
-            <option value="Acceptée">Acceptée</option>
-            <!-- Ajoutez d'autres options de statut au besoin -->
-        </select><br><br>
+        <label for="NbIngBase">Nombre d'ingrédients de base:</label><br>
+        <input type="number" id="NbIngBase" name="NbIngBase" required><br>
 
-        <!-- Ajoutez les champs supplémentaires ici -->
-        <label for="nomProd">Nom du Produit:</label><br>
-        <input type="text" id="nomProd" name="nomProd" required><br>
-
-        <label for="taille">Taille:</label><br>
-        <input type="text" id="taille" name="taille" required><br>
-
-        <label for="nbIngBase">Nombre d'Ingrédients de Base:</label><br>
-        <input type="number" id="nbIngBase" name="nbIngBase" required><br>
+        <label for="Image">Image de la recette<label><br>
+        <input type="text" id="Image" name="Image" ><br>
 
         <label for="prixUHT">Prix Unitaire HT:</label><br>
         <input type="number" id="prixUHT" name="prixUHT" step="0.01" required><br>
 
-        <label for="image">Chemin de l'Image:</label><br>
-        <input type="text" id="image" name="image" required><br>
+        <label for="nbIngBase">Nombre d'Ingrédients de base:</label><br>
+        <input type="number" id="nbIngBase" name="nbIngBase" required><br>
+
+        <label for="IngBase1">Ingrédient de base 1:</label><br>
+        <input type="text" id="IngBase" name="IngBase1"><br>
+
+        <label for="IngBase2">Ingrédient de base 2:</label><br>
+        <input type="text" id="IngBase" name="IngBase2"><br>
+
+        <label for="IngBase3">Ingrédient de base 3:</label><br>
+        <input type="text" id="IngBase" name="IngBase3" ><br>
+
+        <label for="IngBase4">Ingrédient de base 4:</label><br>
+        <input type="text" id="IngBase" name="IngBase4" ><br>
+
+        <label for="IngBase5">Ingrédient de base 5:</label><br>
+        <input type="text" id="IngBase" name="IngBase5" ><br>
+
+        <label for="IngOpt1">Ingrédient optionnel 1:</label><br>
+        <input type="text" id="IngOpt" name="IngOpt1" ><br>
+
+        <label for="IngOpt2">Ingrédient optionnel 2:</label><br>
+        <input type="text" id="IngOpt" name="IngOpt2" ><br>
+
+        <label for="IngOpt3">Ingrédient optionnel 3:</label><br>
+        <input type="text" id="IngOpt" name="IngOpt3" ><br>
+
+        <label for="IngOpt4">Ingrédient optionnel 4:</label><br>
+        <input type="text" id="IngOpt" name="IngOpt4" ><br>
+
+        <label for="IngOpt5">Ingrédient optionnel 5:</label><br>
+        <input type="text" id="IngOpt" name="IngOpt5" ><br>
+
+        <label for="IngOpt6">Ingrédient optionnel 6:</label><br>
+        <input type="text" id="IngOpt" name="IngOpt6" ><br>
+
+        <label for="NbOptMax">Nombre d'ingrédient optionnel maximum:</label><br>
+        <input type="text" id="NbOptMax" name="NbOptMax" required><br>
 
         <!-- Ajoutez d'autres champs supplémentaires si nécessaire -->
 
@@ -57,7 +79,6 @@
                     NomProd: $('#NomProd').val(),
                     Taille: $('#Taille').val(),
                     NbIngBase: $('#NbIngBase').val(),
-                    PrixUHT: $('#PrixUHT').val(),
                     Image: $('#Image').val(),
                     PrixUHT: $('#PrixUHT').val(),
                     IngBase1: $('#IngBase1').val(),
