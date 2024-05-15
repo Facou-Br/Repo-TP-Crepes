@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Gestion des fournisseurs</title>
+        <link rel="stylesheet" href="../../style.css">
+        <link rel="stylesheet" href="../../Css/Style_gestionFourn.css">
+        <script src="https://code.jquery.com/jquery-latest.js"></script>
 
-</body>
+    </head>
+    <body>
+        <header>
+            <h1>Gestion des Fournisseurs</h1>
+            <nav>
+                <a href="gestion_fournisseurs.html">Retour</a>
+            </nav>
+        </header>
+        <div class="wrapper">
+            <select id="fournisseur-select">
+                <option value=#>Choisir un fournisseur</option>
+            </select>
+
+            <form id="fournisseur-form">
+                <input type="text" id="nom" name="nom" placeholder="Nom" required>
+                <input type="text" id="adresse" name="adresse" placeholder="Adresse" required>
+                <input type="text" id="ville" name="ville" placeholder="Ville" required>
+                <input type="text" id="codePostal" name="codePostal" placeholder="Code Postal" required>
+                <input type="text" id="tel" name="tel" placeholder="Téléphone" required>
+                <button type="submit">Envoyer</button>
+            </form>
+
+        </div>
+    <footer>
+        <script src="../../../Scripts/JavaScript/Owen/modifs_fourn.js"></script>
+    </footer>
+    </body>
 </html>
