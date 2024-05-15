@@ -1,15 +1,14 @@
 $.ajax({
-  url: "../../../Scripts/PhP/Fernando/selectFournisseurs.php",
+  url: "../../../Scripts/PhP/Fernando/majStock/selectFournisseurs.php",
+  type: "GET",
+  datatype: "json",
   success: function (data) {
-    $.getJSON(
-      "../../../Scripts/JavaScript/Fernando/fournisseurs.json",
-      function (data) {
-        $.each(data, function (key, val) {
-          $(".fournisseurs").append(
-            "<option value='" + val + "'>" + val + "</option>"
-          );
-        });
-      }
+    let arrayFournisseurs = JSON.parse(data);
+    $.each(arrayFournisseurs, function (key, val) {
+      $(".fournisseurs").append(
+        "<option value='" + val + "'>" + val + "</option>"
+      );
+    }
     );
   },
   error: function () {

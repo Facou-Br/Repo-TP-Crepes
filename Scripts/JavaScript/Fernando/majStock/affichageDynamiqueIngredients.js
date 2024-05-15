@@ -1,32 +1,31 @@
 $("select.fournisseurs").change(function () {
   $(".ingredients").empty();
   $.ajax({
-    url: "../../../Scripts/PhP/Fernando/selectIngredients.php",
-    type: "POST",
+    url: "../../../../Scripts/PhP/Fernando/majStock/selectIngredients.php",
+    type: "GET",
     data: {
       fournisseurs: $("#fournisseurs").val(),
     },
+    datatype: "json",
     success: function (data) {
-      $.getJSON(
-        "../../../Scripts/JavaScript/Fernando/ingredientsId.json",
-        function (data) {
-          $(".ingredients").append("<br>");
-          $.each(data, function (key, val) {
-            $(".ingredients").append(
-              "<label for=" + key + ">" + val + " : </label>"
-            );
-            $(".ingredients").append(
-              "<input type='number' name=" +
-                key +
-                " required value=0 id=" +
-                key +
-                " class='produit'><br>"
-            );
-          });
-          $(".ingredients").append(
-            "<br> <input id='majStock' class='majStock' type='submit' value='Mettre à jour le stock'>"
-          );
-        }
+      console.log(data);
+      let arrayFournisseurs = JSON.parse(data);
+      console.log(arrayFournisseurs);
+      $(".ingredients").append("<br>");
+      $.each(arrayFournisseurs, function (key, val) {
+        $(".ingredients").append(
+          "<label for=" + key + ">" + val + " : </label>"
+        );
+        $(".ingredients").append(
+          "<input type='number' name=" +
+          key +
+          " required value=0 id=" +
+          key +
+          " class='produit'><br>"
+        );
+      });
+      $(".ingredients").append(
+        "<br> <input id='majStock' class='majStock' type='submit' value='Mettre à jour le stock'>"
       );
     },
     error: function () {
@@ -41,7 +40,7 @@ $("#formulaireIngredients").on("submit", function (e) {
   let idIngredients = [];
   let ingredients = [];
 
-  $(".ingredient").each(function () {
+  $(".produit").each(function () {
     idIngredients.push($(this).attr("id"));
     ingredients.push($(this).val());
   });
@@ -61,6 +60,7 @@ $("#formulaireIngredients").on("submit", function (e) {
         ingredientsObj: JSON.stringify(ingredientsObj),
       },
       success: function (data) {
+        console.log(data);
         alert("Stock mis à jour.");
       },
       error: function () {
