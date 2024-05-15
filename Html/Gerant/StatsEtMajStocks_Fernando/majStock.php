@@ -22,6 +22,8 @@
             <form class="formulaireIngredients" id="formulaireIngredients">
 
                 <label for="fournisseurs">Nom fournisseur:</label>
+
+<<<<<<< Updated upstream
                 <select id="fournisseurs" class="fournisseurs" name="fournisseurs" title="fournisseurs" required>
                     <option value="">Choissisez un fournisseur parmi la liste</option>
                 </select>
@@ -31,6 +33,12 @@
             </form>
         </fieldset>
     </div>
+=======
+            <div id="ingredients" class="ingredients">
+            </div>
+        </form>
+    </fieldset>
+>>>>>>> Stashed changes
 </body>
 
 
