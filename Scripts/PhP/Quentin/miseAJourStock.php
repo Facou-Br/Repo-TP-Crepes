@@ -1,11 +1,8 @@
 <?php
-    const PASSWORD = "root";
-    const PORT = "8889";
-
     require_once '../../../BaseDeDonnees/codesConnexion.php';
 
     try {
-        $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE .';port=' . PORT, ADMIN_USER, PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     } catch (Exception $e) {
         echo 'Erreur : ' . $e->getMessage() . '<br/>';
         echo 'N° : ' . $e->getCode();
