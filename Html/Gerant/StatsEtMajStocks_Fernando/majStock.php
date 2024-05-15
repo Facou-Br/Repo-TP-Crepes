@@ -28,7 +28,6 @@
 
                 <div id="ingredients" class="ingredients">
                 </div>
-                
             </form>
         </fieldset>
     </div>
