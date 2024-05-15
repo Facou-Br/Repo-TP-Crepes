@@ -33,7 +33,7 @@
 
                 </table>
             </div>
-            <form id="modif_stocks" class="form">
+            <form id="modif_fourn" class="form">
                 <label>Nom</label>
                 <input type="text" id="nom" name="nom" required>
                 <label>Adresse</label>
@@ -56,11 +56,11 @@
             <script>
                 function formulaire(event){
                     var footer = document.getElementById("footer");
-                    // var footer = document.getElementById("footer");
                     footer.style.position = "page";
                     document.getElementById('modif_stocks').style.display = 'block';
                     // Récupère la ligne du tableau contenant le bouton qui a été cliqué
                     var row = $(this).closest('tr');
+                    console.log(row);
 
                     // Récupère les valeurs actuelles des cellules de la ligne
                     var nomFourn = row.find('td:eq(0)').text();
@@ -108,7 +108,7 @@
                 });
                 const buttons = document.getElementsByClassName("modif_fourn");
                 for(let i = 0; i < buttons.length; i++) {
-                    buttons[i].addEventListener("click", formulaire);
+                buttons[i].addEventListener("click", formulaire);
                 }
 
 
