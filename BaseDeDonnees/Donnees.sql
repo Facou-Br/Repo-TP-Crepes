@@ -171,22 +171,35 @@ VALUES
 
 INSERT INTO DETAIL (`NomProd`, `IngBase1`, `IngBase2`, `IngBase3`, `IngBase4`, `IngOpt1`, `IngOpt2`, `IngOpt3`, `IngOpt4`, `DateArchiv`, `IdProd`)
 VALUES
-('CrepesSuzette', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', NOW(), 0),
-('CrepesBretonnes', 'Farine', 'Oeufs', 'Lait', 'Oeuf', 'Jambom', 'Emental', 'Fraise', 'Banane', NOW(), 1),
-('Salade', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', NOW(), 2);
+('CrepesSuzette', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', NOW(), 1),
+('CrepesBretonnes', 'Farine', 'Oeufs', 'Lait', 'Oeuf', 'Jambom', 'Emental', 'Fraise', 'Banane', NOW(), 2),
+('Salade', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', NOW(), 3),
+('CrepesSuzette', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', NOW(), 4),
+('CrepesBretonnes', 'Farine', 'Oeufs', 'Lait', 'Oeuf', 'Jambom', 'Emental', 'Fraise', 'Banane', NOW(), 5),
+('Salade', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', NOW(), 6),
+('CrepesSuzette', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', NOW(), 7),
+('CrepesBretonnes', 'Farine', 'Oeufs', 'Lait', 'Oeuf', 'Jambom', 'Emental', 'Fraise', 'Banane', NOW(), 8),
+('Salade', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', NOW(), 9),
+('CrepesSuzette', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', NOW(), 10),
+('CrepesBretonnes', 'Farine', 'Oeufs', 'Lait', 'Oeuf', 'Jambom', 'Emental', 'Fraise', 'Banane', NOW(), 11),
+('Salade', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', NOW(), 12),
+('CrepesSuzette', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', NOW(), 13);
 
 INSERT INTO COM_DET (`Num_OF`, `Quant`, `NumCom`)
 VALUES
-    (4, 8, 4),
-    (5, 12, 5),
-    (6, 20, 6),
-    (7, 15, 7),
-    (8, 6, 8),
-    (9, 18, 9),
-    (10, 9, 10),
-    (11, 11, 11),
-    (12, 14, 12),
-    (13, 7, 13);
+    (1, 2, 1),
+    (2, 2, 2),
+    (3, 2, 3),
+    (4, 5, 4),
+    (5, 3, 5),
+    (6, 4, 6),
+    (7, 1, 7),
+    (8, 2, 8),
+    (9, 4, 9),
+    (10, 2, 10),
+    (11, 2, 11),
+    (12, 6, 12),
+    (13, 4, 13);
 
 
 INSERT INTO DET_INGR (`Num_OF`, `IdIngred`)
@@ -219,16 +232,17 @@ VALUES
 
 INSERT INTO PROD_INGR (`IdIngred`, `IdProd`, `Quant`)
 VALUES
-    (4, 2, 8),
-    (5, 2, 12),
-    (6, 3, 20),
-    (7, 3, 15),
-    (8, 4, 6),
-    (9, 4, 18),
-    (10, 5, 9),
-    (11, 5, 11),
-    (12, 6, 14),
-    (13, 6, 7);
+    (1, 1, 1),
+    (1, 2, 1),
+    (2, 1, 2),
+    (2, 2, 1),
+    (3, 1, 1),
+    (3, 3, 2),
+    (5, 1, 1),
+    (6, 1, 1),
+    (7, 1, 3),
+    (8, 1, 4),
+    (9, 1, 1);
 
 
 
