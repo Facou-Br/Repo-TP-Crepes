@@ -245,7 +245,6 @@ VALUES
     (9, 1, 1);
 
 
-
 INSERT INTO RESPONSABLE (`Nom`, `Prenom`, `Tel`)
 VALUES
 ('Boudon', 'Owen', '0638045422');
