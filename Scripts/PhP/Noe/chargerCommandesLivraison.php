@@ -1,20 +1,21 @@
-<?php
-    $host = "localhost";
-    $user = "root";
-    $pwd = "";
-    $bdd = "repo-tp-crepes";
-    $port = "8889";
+<!DOCTYPE>
+<html>
 
+<body>
+<?php
+    require_once '..\..\..\BaseDeDonnees\codesConnexion.php';
     try {
-        $connex = new PDO('mysql:host=' . $host . ';charset=utf8;dbname=' . $bdd . ';port=' . $port, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    } catch (Exception $e) {
-        echo 'Erreur : ' . $e->getMessage() . '<br/>';
+        $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname='
+            . DATABASE . ';port=' . PORT, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    } catch (PDOException $e) {
+        echo 'Erreur : ' . $e->getMessage() . '<br />';
         echo 'N° : ' . $e->getCode();
         die();
     }
+    
 
     try {
-        $rq = "SELECT NumCom, NomClient, AdrClient, CP_Client, VilClient, HeureDispo, EtatLivraison 
+        $rq = "SELECT NumCom, NomClient, AdrClient,TelClient, CP_Client, VilClient, HeureDispo, EtatLivraison 
                     FROM commande
                     ";
 
@@ -35,6 +36,7 @@
                 );
             $commandes_array[] = $commande;
         }
+        var_dump($commandes_array);
 
         $connex = null;
         $commandes_array = array("commandes" => $commandes_array);
@@ -51,3 +53,5 @@
         print $e->getMessage();
     }
 ?>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une Commande</title>
+</head>
+<body>
+    <h1>Ajouter une Commande</h1>
+    <form id="ajouterCommandeForm">
+        <label for="id">ID de la Commande:</label><br>
+        <input type="text" id="id" name="id" required><br>
+        
+        <label for="nom">Nom de la Commande:</label><br>
+        <input type="text" id="nom" name="nom" required><br>
+        
+        <label for="temps">Heure de Mise à Disposition:</label><br>
+        <input type="datetime-local" id="temps" name="temps" required><br>
+        
+        <label for="statut">Statut:</label><br>
+        <select id="statut" name="statut" required>
+            <option value="En attente">En attente</option>
+            <option value="Acceptée">Acceptée</option>
+            <!-- Ajoutez d'autres options de statut au besoin -->
+        </select><br><br>
+
+        <!-- Ajoutez les champs supplémentaires ici -->
+        <label for="nomProd">Nom du Produit:</label><br>
+        <input type="text" id="nomProd" name="nomProd" required><br>
+
+        <label for="taille">Taille:</label><br>
+        <input type="text" id="taille" name="taille" required><br>
+
+        <label for="nbIngBase">Nombre d'Ingrédients de Base:</label><br>
+        <input type="number" id="nbIngBase" name="nbIngBase" required><br>
+
+        <label for="prixUHT">Prix Unitaire HT:</label><br>
+        <input type="number" id="prixUHT" name="prixUHT" step="0.01" required><br>
+
+        <label for="image">Chemin de l'Image:</label><br>
+        <input type="text" id="image" name="image" required><br>
+
+        <!-- Ajoutez d'autres champs supplémentaires si nécessaire -->
+
+        <button type="submit">Ajouter Commande</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#ajouterCommandeForm').submit(function (event) {
+                event.preventDefault(); // Empêcher la soumission du formulaire par défaut
+
+                // Récupérer les données du formulaire
+                let formData = {
+                    id: $('#id').val(),
+                    NomProd: $('#NomProd').val(),
+                    Taille: $('#Taille').val(),
+                    NbIngBase: $('#NbIngBase').val(),
+                    PrixUHT: $('#PrixUHT').val(),
+                    Image: $('#Image').val(),
+                    PrixUHT: $('#PrixUHT').val(),
+                    IngBase1: $('#IngBase1').val(),
+                    IngBase2: $('#IngBase2').val(),
+                    IngBase3: $('#IngBase3').val(),
+                    IngBase4: $('#IngBase4').val(),
+                    IngBase5: $('#IngBase5').val(),
+                    IngOpt1: $('#IngOpt1').val(),
+                    IngOpt2: $('#IngOpt2').val(),
+                    IngOpt3: $('#IngOpt3').val(),
+                    IngOpt4: $('#IngOpt4').val(),
+                    IngOpt5: $('#IngOpt5').val(),
+                    IngOpt6: $('#IngOpt6').val(),
+                    NbOptMax: $('#NbOptMax').val(),
+                    DateArchiv: $('#DateArchiv').val()
+                };
+
+                // Envoyer les données du formulaire à votre script PHP via AJAX
+                $.ajax({
+                    type: "POST",
+                    url: "../../../Script/JavaScript/GestionsRecettes/script_recettes.php", 
+                    data: JSON.stringify(formData),
+                    contentType: "application/json",
+                    success: function(response) {
+                        console.log("Nouvelle commande ajoutée avec succès !");
+                        $('#ajouterCommandeForm')[0].reset();
+                    },
+                    error: function(error) {
+                        console.error("Erreur lors de l'ajout de la nouvelle commande :", error);
+                        alert("Une erreur s'est produite lors de l'ajout de la nouvelle commande.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
