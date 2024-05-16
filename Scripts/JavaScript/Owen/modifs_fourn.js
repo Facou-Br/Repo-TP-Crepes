@@ -30,3 +30,33 @@ $("#fournisseur-select").change(function() {
         }
     });
 });
+
+$(document).ready(function(){
+    $('#modifier').click(function(e){
+        e.preventDefault();
+        var nomFourn = $('#fournisseur-select').val();
+        var adresse = $('#adresse').val();
+        var codePostal = $('#codePostal').val();
+        var ville = $('#ville').val();
+        var telephone = $('#telephone').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '../../../Scripts/PHP/Owen/fournisseur/modifier_fourn.php',
+            data: {
+                nomFourn: nomFourn,
+                adresse: adresse,
+                codePostal: codePostal,
+                ville: ville,
+                telephone: telephone
+            },
+            success: function(response){
+                alert("Fournisseur modifié avec succès");
+
+            },
+            fail: function () {
+                alert("Erreur");
+            }
+        });
+    });
+});
