@@ -59,8 +59,7 @@ $("#formulaireIngredients").on("submit", function (e) {
       data: {
         ingredientsObj: JSON.stringify(ingredientsObj),
       },
-      success: function (data) {
-        console.log(data);
+      success: function () {
         alert("Stock mis à jour.");
       },
       error: function () {

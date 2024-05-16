@@ -14,7 +14,7 @@ try {
             array_push($tableauFournisseurs, $nomFournisseur);
         }
     }
-}catch (Exception $e) {
+} catch (Exception $e) {
     echo 'Erreur : ' . $e->getMessage() . '<br />';
     echo 'N° : ' . $e->getCode();
     die();
