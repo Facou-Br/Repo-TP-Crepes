@@ -51,7 +51,7 @@ $(document).ready(function(){
                 telephone: telephone
             },
             success: function(response){
-                alert("Fournisseur modifié avec succès");
+                alert("Fournisseur modifié avec succès"); //Popup au lieu d'alerte
 
             },
             fail: function () {
