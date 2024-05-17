@@ -17,7 +17,6 @@ $tel = $_POST["telephone"];
 try {
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $sql = "UPDATE `fournisseur` SET `Adresse` = '".$adresse."', `CodePostal` = '".$cp."', `Ville` = '".$ville."', `Tel` = '".$tel."' WHERE `fournisseur`.`NomFourn` = '".$nomFourn."';";
-    echo($sql);
     $connex->exec($sql); #essayer le query pour voir si ça marche regarder dans le cours
     $connex->commit();
     echo "Fournisseur modifié";

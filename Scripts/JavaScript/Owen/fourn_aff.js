@@ -11,7 +11,6 @@ $.ajax({
                     "<td value='" + row["CodePostal"] + "'>" + row["CodePostal"] + "</td>" +
                     "<td value='" + row["Ville"] + "'>" + row["Ville"] + "</td>" +
                     "<td value='" + row["Tel"] + "'>" + row["Tel"] + "</td>" +
-                    "<td><button type='button' class='modif_fourn'>Modifier</button></td>" +
                     "</tr>"
                 );
             });

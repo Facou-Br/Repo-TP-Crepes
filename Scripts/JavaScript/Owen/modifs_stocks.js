@@ -1,27 +1,27 @@
 $.ajax({
-    url: "../../../Scripts/PhP/Owen/fournisseur/afficher_fourn.php",
+    url: "../../../Scripts/PhP/Owen/stock/afficher_stock.php",
     type: "POST",
     success: function (data) {
-        $.getJSON("../../../Scripts/JavaScript/Owen/fournisseurs.json", function (data) {
+        $.getJSON("../../../Scripts/JavaScript/Owen/stocks.json", function (data) {
             $.each(data, function (index, fournisseur) {
-                $("#fournisseur-select").append(
-                    $("<option></option>").val(fournisseur["NomFourn"]).text(fournisseur["NomFourn"])
+                $("#stocks-select").append(
+                    $("<option></option>").val(stocks["NomIngred"]).text(stocks["NomIngred"])
                 );
             });
         });
-        }, // closing brace and parenthesis for success function
+    }, // closing brace and parenthesis for success function
 
     error: function () {
-        alert("Erreur lors de la récupération des fournisseurs.");
+        alert("Erreur lors de la récupération des stocks.");
     }
 });
-$("#fournisseur-select").change(function() {
-    var selectedFournisseur = $(this).val();
+$("#stocks-select").change(function() {
+    var selectedStocks = $(this).val();
 
-    $.getJSON("../../../Scripts/JavaScript/Owen/fournisseurs.json", function(data) {
-        var fournisseur = data.find(f => f.NomFourn === selectedFournisseur);
+    $.getJSON("../../../Scripts/JavaScript/Owen/stocks.json", function(data) {
+        var stocks = data.find(f => f.NomIngred === selectedStocks);
 
-        if (fournisseur) {
+        if (stocks) {
             $("#nom").val(fournisseur.NomFourn);
             $("#adresse").val(fournisseur.Adresse);
             $("#ville").val(fournisseur.Ville);

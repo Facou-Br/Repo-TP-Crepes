@@ -11,11 +11,8 @@ $.ajax({
           "<tr>" +
             "<td value='" + row["NomIngred"] + "'>" + row["NomIngred"] + "</td>" +
             "<td value='" + row["NomFourn"] + "'>" + row["NomFourn"] + "</td>" +
-            "<td value='" + row["SeuilStock"] + "'>" + row["SeuilStock"] + "</td>" +
-            "<td value='" + row["StockMin"] + "'>" + row["StockMin"] + "</td>" +
             "<td value='" + row["StockReel"] + "'>" + row["StockReel"] + "</td>" +
             "<td value='" + row["PrixUHT_Moyen"] + "'>" + row["PrixUHT_Moyen"] + "</td>" +
-            "<td><button type='button' class='modif_stock'>Modifier</button></td>" +
             "</tr>"
         );
       });
