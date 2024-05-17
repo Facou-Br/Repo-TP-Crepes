@@ -25,6 +25,5 @@ foreach ($ligne as $row) {
     $result[]=$row;
 }
 $stocksJson = json_encode($result);
-file_put_contents("../../../JavaScript/Owen/fournisseurs.json", $stocksJson);
-
+echo $stocksJson;
 ?>

@@ -2,10 +2,6 @@
 
 require_once '../../../../BaseDeDonnees/codesConnexion.php';
 
-if (file_exists("../../../JavaScript/Owen/stocks.json")) {
-    unlink("../../../JavaScript/Owen/stocks.json");
-}
-
 try {
     $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE.';port='.PORT, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
@@ -29,6 +25,7 @@ foreach ($ligne as $row) {
     $result[]=$row;
 }
 $stocksJson = json_encode($result);
-file_put_contents("../../../JavaScript/Owen/stocks.json", $stocksJson);
+echo $stocksJson;
+
 
 ?>

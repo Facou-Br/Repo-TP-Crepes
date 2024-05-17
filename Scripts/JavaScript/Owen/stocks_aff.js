@@ -5,7 +5,7 @@ $.ajax({
   url: "../../../Scripts/PhP/Owen/stock/afficher_stock.php",
   type: "POST",
   success: function (data) {
-    $.getJSON("../../../Scripts/JavaScript/Owen/stocks.json", function (data) {
+    data = JSON.parse(data);
       $.each(data, function (index, row) {
         $(".stocks").append(
           "<tr>" +
@@ -16,7 +16,6 @@ $.ajax({
             "</tr>"
         );
       });
-    });
   },
   error: function () {
     alert("Erreur lors de la récupération des stocks.");
