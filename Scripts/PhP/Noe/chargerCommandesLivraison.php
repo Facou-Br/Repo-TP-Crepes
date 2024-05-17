@@ -16,7 +16,7 @@
 
     try {
         $rq = "SELECT NumCom, NomClient, AdrClient,TelClient, CP_Client, VilClient, HeureDispo, EtatLivraison 
-                    FROM commande
+                    FROM commande WHERE commande.EtatLivraison = 'fin_preparation'
                     ";
 
         $result = $connex->query($rq);

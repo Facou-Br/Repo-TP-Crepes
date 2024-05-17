@@ -7,21 +7,27 @@
 </head>
 <body>
     <h1>Ajouter une recette</h1>
-    <form id="ajouterRecetteForm">
+    <form id="ajouterRecetteForm" action="../../../Scripts//PhP/Noe/ajoutRecette.php">
         <label for="NomProd">Nom de la recette:</label><br>
         <input type="text" id="NomProd" name="NomProd" required><br>
+        
+        <label for="Active">Activation de la recette (Oui:1 - Non:0) :</label><br>
+        <input type="number" id="Active" name="Active" required><br>
         
         <label for="Taille">Taille de la recette:</label><br>
         <input type="text" id="Taille" name="Taille" required><br>
         
         <label for="NbIngBase">Nombre d'ingrédients de base:</label><br>
         <input type="number" id="NbIngBase" name="NbIngBase" required><br>
+        
+        <label for="NbIngOpt">Nombre d'ingrédients optionnel:</label><br>
+        <input type="number" id="NbIngOpt" name="NbIngOpt" required><br>
 
         <label for="Image">Image de la recette<label><br>
         <input type="text" id="Image" name="Image" ><br>
 
-        <label for="prixUHT">Prix Unitaire HT:</label><br>
-        <input type="number" id="prixUHT" name="prixUHT" step="0.01" required><br>
+        <label for="PrixUHT">Prix Unitaire HT:</label><br>
+        <input type="number" id="PrixUHT" name="PrixUHT" step="0.01" required><br>
 
         <label for="nbIngBase">Nombre d'Ingrédients de base:</label><br>
         <input type="number" id="nbIngBase" name="nbIngBase" required><br>
@@ -64,7 +70,7 @@
 
         <!-- Ajoutez d'autres champs supplémentaires si nécessaire -->
 
-        <button type="submit">Ajouter Commande</button>
+        <button type="submit">Ajouter recette</button>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -96,21 +102,6 @@
                     DateArchiv: $('#DateArchiv').val()
                 };
 
-                // Envoyer les données du formulaire à votre script PHP via AJAX
-                $.ajax({
-                    type: "POST",
-                    url: "../../../Script/JavaScript/GestionsRecettes/script_recettes.php", 
-                    data: JSON.stringify(formData),
-                    contentType: "application/json",
-                    success: function(response) {
-                        console.log("Nouvelle commande ajoutée avec succès !");
-                        $('#ajouterCommandeForm')[0].reset();
-                    },
-                    error: function(error) {
-                        console.error("Erreur lors de l'ajout de la nouvelle commande :", error);
-                        alert("Une erreur s'est produite lors de l'ajout de la nouvelle commande.");
-                    }
-                });
             });
         });
     </script>

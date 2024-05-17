@@ -15,50 +15,42 @@
     
 
     try {
-        $rq = "INSERT NomProd, Taille, NbIngBase, PrixUHT, Image, IngBase1, IngBase2, IngBase3, IngBase4, IngBase5,
-        IngOpt1, IngOpt2, IngOpt3, IngOpt4, IngOpt5, IngOpt6, NbOptMax
-                    FROM produit
-                    ";
+        $NomProd = $connex->quote($_GET['NomProd'], PDO::PARAM_STR);
+        $Active = $_GET['Active'];
+        $Taille = $connex->quote($_GET['Taille'], PDO::PARAM_STR);
+        $NbIngBase = $_GET['NbIngBase'];
+        $NbIngOpt = $_GET['NbIngOpt'];
+        $PrixUHT = $_GET['PrixUHT'];
+        $Image = $connex->quote($_GET['Image'], PDO::PARAM_STR);
+        $IngBase1 = $connex->quote($_GET['IngBase1'], PDO::PARAM_STR);
+        $IngBase2 = $connex->quote($_GET['IngBase2'], PDO::PARAM_STR);
+        $IngBase3 = $connex->quote($_GET['IngBase3'], PDO::PARAM_STR);
+        $IngBase4 = $connex->quote($_GET['IngBase4'], PDO::PARAM_STR);
+        $IngBase5 = $connex->quote($_GET['IngBase5'], PDO::PARAM_STR);
+        $IngOpt1 = $connex->quote($_GET['IngOpt1'], PDO::PARAM_STR);
+        $IngOpt2 = $connex->quote($_GET['IngOpt2'], PDO::PARAM_STR);
+        $IngOpt3 = $connex->quote($_GET['IngOpt3'], PDO::PARAM_STR);
+        $IngOpt4 = $connex->quote($_GET['IngOpt4'], PDO::PARAM_STR);
+        $IngOpt5 = $connex->quote($_GET['IngOpt5'], PDO::PARAM_STR);
+        $IngOpt6 = $connex->quote($_GET['IngOpt6'], PDO::PARAM_STR);
+        $NbOptMax = $_GET['NbOptMax'];
 
-        $result = $connex->query($rq);
+        $rq = "INSERT INTO `produit` (NomProd, Active, Taille, NbIngBase, NbIngOpt,
+            PrixUHT, Image, IngBase1, IngBase2, IngBase3, IngBase4, IngBase5, IngOpt1, IngOpt2, IngOpt3,
+            IngOpt4, IngOpt5, IngOpt6, NbOptMax) VALUES ($NomProd, $Active, $Taille, $NbIngBase, $NbIngOpt,
+            $PrixUHT, $Image, $IngBase1, $IngBase2, $IngBase3, $IngBase4, $IngBase5, $IngOpt1, $IngOpt2, $IngOpt3,
+            $IngOpt4, $IngOpt5, $IngOpt6, $NbOptMax)";
 
-        $commandes_array = array();
+        echo $rq."<br/>";
 
-        while ($ligne = $result->fetch(PDO::FETCH_ASSOC)) {
-            $commande = array(
-                "NomProd" => $ligne["NomProd"],
-                "Taille" => $ligne["Taille"],
-                "NbIngBase" => $ligne["NbIngBase"],
-                "PrixUHT" => $ligne["PrixUHT"],
-                "Image" => $ligne["Image"],
-                "IngBase1" => $ligne["IngBase1"],
-                "IngBase2" => substr($ligne["IngBase2"], 0, 5),
-                "IngBase3" => $ligne["IngBase3"],
-                "IngBase4" => $ligne["IngBase4"],
-                "IngBase5" => $ligne["IngBase5"],
-                "IngOpt1" => $ligne["IngOpt1"],
-                "IngOpt2" => $ligne["IngOpt2"],
-                "IngOpt3" => $ligne["IngOpt3"],
-                "IngOpt4" => $ligne["IngOpt4"],
-                "IngOpt5" => $ligne["IngOpt5"],
-                "IngOpt6" => $ligne["IngOpt6"],
-                "NbOptMax" => $ligne["NbOptMax"],
-                );
-            $commandes_array[] = $commande;
-        }
-        var_dump($commandes_array);
 
-        $connex = null;
-        $commandes_array = array("commandes" => $commandes_array);
-        $json_data = json_encode($commandes_array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        $connex->query($rq);
 
-        $filename = '.././JavaScript/Gestions/commandes.json';
-
-        if (file_put_contents($filename, $json_data)) {
-            echo "Le fichier JSON a été créé avec succès.";
-        } else {
-            echo "Erreur lors de la création du fichier JSON.";
-        }
+        // if (file_put_contents($filename, $json_data)) {
+        //     echo "Le fichier JSON a été créé avec succès.";
+        // } else {
+        //     echo "Erreur lors de la création du fichier JSON.";
+        // }
     } catch (PDOException $e) {
         print $e->getMessage();
     }
