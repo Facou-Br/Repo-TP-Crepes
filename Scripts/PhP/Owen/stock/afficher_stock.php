@@ -12,7 +12,7 @@ catch (PDOException $e) {
 }
 try{
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-    $sql = "SELECT I.NomIngred, F.NomFourn, I.SeuilStock, I.StockMin, I.StockReel, I.PrixUHT_Moyen FROM INGREDIENT I JOIN fourn_ingr FI ON I.IdIngred=FI.IdIngred JOIN fournisseur F ON FI.NomFourn=F.NomFourn;";
+    $sql = "SELECT I.NomIngred, F.NomFourn, I.StockReel, FI.PrixUHT FROM INGREDIENT I JOIN fourn_ingr FI ON I.IdIngred=FI.IdIngred JOIN fournisseur F ON FI.NomFourn=F.NomFourn;";
     $ligne = $connex->query($sql);
 }
 catch (PDOException $e) {
