@@ -11,7 +11,7 @@
 <body>
     <div class="wrapper">
         <header>
-            <h1>Mise à jour Stock<</h1>
+            <h1>Mise à jour Stock</h1>
             <nav>
                 <a href="../">Retour</a>
             </nav>
