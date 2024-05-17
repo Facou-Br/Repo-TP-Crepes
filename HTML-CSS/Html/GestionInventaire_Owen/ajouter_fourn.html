@@ -1,37 +1,74 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Ajouter un fournisseur</title>
-        <link rel="stylesheet" type="text/css" href="../../../../HTML-CSS/Css/styleFormulaire.css">
-        <meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <div class="wrapper">
-            <header>
-                <h1>Ajouter un fournisseur</h1>
-            </header>
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
-                <label id="nomFourn" for="nomFourn">Nom du fournisseur :</label>
-                <input type="text" name="nomFourn" required><br><br>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un fournisseur</title>
+    <link rel="stylesheet" type="text/css" href="../../../HTML-CSS/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#Ajouter').click(function(e){
+                e.preventDefault();
+                var nomFourn = $('#nomFourn').val();
+                var adresse = $('#adresse').val();
+                var codePostal = $('#codePostal').val();
+                var ville = $('#ville').val();
+                var telephone = $('#telephone').val();
 
-                <label id="adresse" for="adresse">Adresse :</label>
-                <input type="text" name="adresse" required><br><br>
-
-                <label id="codePostal" for="codePostal">Code postal :</label>
-                <input type="text" name="codePostal" required><br><br>
-
-                <label id="ville" for="ville">Ville :</label>
-                <input type="text" name="ville" required><br><br>
-
-                <label id="telephone" for="telephone">Téléphone :</label>
-                <input type="text" name="telephone" required><br><br>
-
-                <button type="button" value="Ajouter">Ajouter</button>
-            </form>
-            <footer>
-                <p>&copy; 2022 La Crêperie. Tous droits réservés.</p>
-            </footer>
+                $.ajax({
+                    type: 'POST',
+                    url: '../../../Scripts/PHP/Owen/fournisseur/ajouter_fourn.php',
+                    data: {
+                        nomFourn: nomFourn,
+                        adresse: adresse,
+                        codePostal: codePostal,
+                        ville: ville,
+                        telephone: telephone
+                    },
+                    success: function(response){
+                        alert(response);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1>Ajouter un fournisseur</h1>
+        <nav>
+            <a href="gestion_fournisseurs.html">Retour</a>
+        </nav>
+    </header>
+    <div id="form_fourn" class="form_fourn">
+        <div id="nom">
+            <label id="nomFournL" for="nomFourn">Nom du fournisseur :</label>
+            <input type="text" id="nomFourn" name="nomFourn" required>
         </div>
-    </body>
-</html>
+        <br><br>
+        <div id="adresseFourn">
+            <label id="adresseL" for="adresse">Adresse :</label>
+            <input type="text" id="adresse" name="adresse" required>
+        </div>
+        <br><br>
+        <div id="codePostalFourn">
+            <label id="codePostalL" for="codePostal">Code postal :</label>
+            <input type="text" id="codePostal" name="codePostal" required>
+        </div>
+        <br><br>
+        <div id="villeFourn">
+            <label id="villeL" for="ville">Ville :</label>
+            <input type="text" id="ville" name="ville" required>
+        </div>
+        <br><br>
+        <div id="telephoneFourn">
+            <label id="telephoneL" for="telephone">Téléphone :</label>
+            <input type="text" id="telephone" name="telephone" required>
+        </div>
+        <br><br>
+        <button id="Ajouter" type="submit" value="Ajouter">Ajouter</button>
+        <button id="Annuler" type="reset" value="Annuler">Annuler</button>
+        <a href="gestion_fournisseurs.html"><button id="Retour" type="button" value="Retour">Retour</button></a>
+    </div>
+</div>
+</body>
