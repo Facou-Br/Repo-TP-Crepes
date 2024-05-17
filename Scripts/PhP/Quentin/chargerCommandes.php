@@ -50,7 +50,8 @@
         $connex = null;
         $tabCommandes = array("commandes" => $tabCommandes);
         $jsonData = json_encode($tabCommandes, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-
+        echo $jsonData;
+/*
         $filename = '../.././JavaScript/Quentin/commandes.json';
 
         if (file_put_contents($filename, $jsonData)) {
@@ -58,6 +59,7 @@
         } else {
             echo "Erreur lors de la création du fichier JSON.";
         }
+*/
     } catch (PDOException $e) {
         print $e->getMessage();
     }

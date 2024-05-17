@@ -14,9 +14,9 @@
             </header>
             <div id="commandes">
                 <script type="text/javascript">
-                    actualiserCommandesBdD();
+                    chargerCommandesBdD();
                     $(document).ready(function () {
-                        chargerCommandes();
+                        afficherCommandes(listeCommandes);
                     });
                 </script>
             </div>  <!-- COMMANDES -->
@@ -25,10 +25,6 @@
 </html>
 
 <!--
-
     À faire :
-
-        Pour charger les commandes, faire un echo au lieu de passer par un format JSON
         Revoir tout le code
-
 -->

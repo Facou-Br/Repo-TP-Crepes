@@ -1,28 +1,22 @@
-function chargerCommandes() {
-    $.getJSON("../../.././Scripts/JavaScript/Quentin/commandes.json", function (data) {
-        data.commandes.sort((a, b) => {
-            return a.temps.localeCompare(b.temps);
-        });
+function afficherCommandes(data) {
+    let listeCommandes = $("#commandes");
+    listeCommandes.html("");
 
-        let listeCommandes = $("#commandes");
-        listeCommandes.html("");
-
-        data.commandes.forEach(commande => {
-            let elementCommande = `
-                <div>
-                    <h2>Numéro Commande : ${commande.id} </h2><br>
-                    <p>À faire : ${commande.nombre} ${commande.nom}</p>
-                    <p>Heure de mise à disposition : ${commande.temps}</p>
-                    <p>Statut : ${commande.statut}</p>
-                    <br>
-                    <button onclick="commencerCommande(${commande.id})">Commencer</button>
-                    <button onclick="terminerCommande(${commande.id})">Terminer</button>
-                    <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
-                    <hr>
-                </div>
-            `;
-            listeCommandes.append(elementCommande);
-        });
+    data.commandes.forEach(commande => {
+        let elementCommande = `
+            <div>
+                <h2>Numéro Commande : ${commande.id} </h2><br>
+                <p>À faire : ${commande.nombre} ${commande.nom}</p>
+                <p>Heure de mise à disposition : ${commande.temps}</p>
+                <p>Statut : ${commande.statut}</p>
+                <br>
+                <button onclick="commencerCommande(${commande.id})">Commencer</button>
+                <button onclick="terminerCommande(${commande.id})">Terminer</button>
+                <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
+                <hr>
+            </div>
+        `;
+        listeCommandes.append(elementCommande);
     });
 }
 
@@ -43,15 +37,15 @@ function mettreAJourBDD(idCommande, nouveauStatut) {
 }
 
 
-function actualiserCommandesBdD(data) {
+function chargerCommandesBdD(data) {
     $.ajax({
         type: "POST",
         url: "../../.././Scripts/PhP/Quentin/chargerCommandes.php",
         data: JSON.stringify(data),
         contentType: "application/json",
         success: function(response) {
-            console.log("Commandes chargées dans la BdD avec succès !");
-            chargerCommandes();
+            listeCommandes = JSON.parse(response);
+            afficherCommandes(listeCommandes)
         },
         error: function(error) {
             console.error("Erreur lors de la sauvegarde des commandes :", error);
@@ -68,21 +62,19 @@ function commencerCommande(idCommande) {
         return;
     }
 
-    $.getJSON("../../.././Scripts/JavaScript/Quentin/commandes.json", function (data) {
-        let commande = data.commandes.find(commande => commande.id === idCommande);
+    let commande = listeCommandes.commandes.find(commande => commande.id === idCommande);
 
-        if (commande) {
-            if (commande.statut === "Acceptée") {
-                commandeEnCours = idCommande;
-                mettreAJourBDD(idCommande, "En préparation");
-                actualiserCommandesBdD();
-            } else {
-                alert("Cette commande ne peut pas être commencée car elle n'est pas acceptée.");
-            }
+    if (commande) {
+        if (commande.statut === "Acceptée") {
+            commandeEnCours = idCommande;
+            mettreAJourBDD(idCommande, "En préparation");
+            chargerCommandesBdD();
         } else {
-            alert("Commande non trouvée.");
+            alert("Cette commande ne peut pas être commencée car elle n'est pas acceptée.");
         }
-    });
+    } else {
+        alert("Commande non trouvée.");
+    }
 }
 
 function terminerCommande(idCommande) {
@@ -91,62 +83,56 @@ function terminerCommande(idCommande) {
         return;
     }
 
-    $.getJSON("../../.././Scripts/JavaScript/Quentin/commandes.json", function (data) {
-        let commande = data.commandes.find(commande => commande.id === idCommande);
+    let commande = listeCommandes.commandes.find(commande => commande.id === idCommande);
 
-        if (commande) {
-            if (commande.statut === "En préparation") {
-                mettreAJourBDD(idCommande, "Prête");
-                miseAJourIngredients(idCommande);
-                commandeEnCours = null;
-                actualiserCommandesBdD();
-            } else {
-                alert("Cette commande ne peut pas être terminée car elle n'est pas en cours.");
-            }
+    if (commande) {
+        if (commande.statut === "En préparation") {
+            mettreAJourBDD(idCommande, "Prête");
+            miseAJourIngredients(idCommande);
+            commandeEnCours = null;
+            chargerCommandesBdD();
         } else {
-            alert("Commande non trouvée.");
+            alert("Cette commande ne peut pas être terminée car elle n'est pas en cours.");
         }
-    });
+    } else {
+        alert("Commande non trouvée.");
+    }
 }
 
 function miseAJourIngredients(id) {
-    $.getJSON("../../.././Scripts/JavaScript/Quentin/commandes.json", function (data) {
-        let commande = data.commandes.find(commande => commande.id === id);
-        let quantiteCrepe = commande.nombre;
+    let commande = listeCommandes.commandes.find(commande => commande.id === id);
+    let quantiteCrepe = commande.nombre;
 
-        for (const [nom, [quantite, unite]] of Object.entries(commande.ingredients)) {
-            $.ajax({
-                type: "POST",
-                url: "../../.././Scripts/PhP/Quentin/miseAJourStock.php",
-                data: JSON.stringify({ nomIngredient: nom, quantiteIngredient: quantite, quantiteCrepe: quantiteCrepe}),
-                contentType: "application/json",
-                success: function(response) {
-                    console.log("Stock mis à jour avec succès !");
-                },
-                error: function(error) {
-                    console.error("Erreur lors de la mise à jour du stock :", error);
-                    alert("Une erreur s'est produite lors de la mise à jour du stock.");
-                }
-            });
-        }
-    });
+    for (const [nom, [quantite, unite]] of Object.entries(commande.ingredients)) {
+        $.ajax({
+            type: "POST",
+            url: "../../.././Scripts/PhP/Quentin/miseAJourStock.php",
+            data: JSON.stringify({ nomIngredient: nom, quantiteIngredient: quantite, quantiteCrepe: quantiteCrepe}),
+            contentType: "application/json",
+            success: function(response) {
+                console.log("Stock mis à jour avec succès !");
+            },
+            error: function(error) {
+                console.error("Erreur lors de la mise à jour du stock :", error);
+                alert("Une erreur s'est produite lors de la mise à jour du stock.");
+            }
+        });
+    }
 }
 
 function afficherIngredients(id) {
-    $.getJSON("../../.././Scripts/JavaScript/Quentin/commandes.json", function (data) {
-        let commande = data.commandes.find(commande => commande.id === id);
+    let commande = listeCommandes.commandes.find(commande => commande.id === id);
 
-        if (commande) {
-            let ingredientsText = "Ingrédients de la commande " + id + " :\n\n";
+    if (commande) {
+        let ingredientsText = "Ingrédients de la commande " + id + " :\n\n";
 
-            for (const [nom, [quantite, unite]] of Object.entries(commande.ingredients)) {
-                ingredientsText += `• ${nom} : ${quantite} ${unite}\n`;
-            }
-
-            alert(ingredientsText);
-        } else {
-            alert("Ingrédients non trouvés.");
+        for (const [nom, [quantite, unite]] of Object.entries(commande.ingredients)) {
+            ingredientsText += `• ${nom} : ${quantite} ${unite}\n`;
         }
-    });
+
+        alert(ingredientsText);
+    } else {
+        alert("Ingrédients non trouvés.");
+    }
 }
 
