@@ -41,16 +41,11 @@
             $PrixUHT, $Image, $IngBase1, $IngBase2, $IngBase3, $IngBase4, $IngBase5, $IngOpt1, $IngOpt2, $IngOpt3,
             $IngOpt4, $IngOpt5, $IngOpt6, $NbOptMax)";
 
-        echo $rq."<br/>";
 
 
         $connex->query($rq);
 
-        // if (file_put_contents($filename, $json_data)) {
-        //     echo "Le fichier JSON a été créé avec succès.";
-        // } else {
-        //     echo "Erreur lors de la création du fichier JSON.";
-        // }
+        echo "Le formulaire à été envoyé avec succès.";
     } catch (PDOException $e) {
         print $e->getMessage();
     }
