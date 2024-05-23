@@ -1,41 +1,5 @@
-function afficherCommandes(data) {
-    let listeCommandes = $("#commandes");
-    listeCommandes.html("");
-
-    data.commandes.forEach(commande => {
-        let elementCommande = `
-            <div>
-                <h2>Numéro Commande : ${commande.id} </h2><br>
-                <p>À faire : ${commande.nombre} ${commande.nom}</p>
-                <p>Heure de mise à disposition : ${commande.temps}</p>
-                <p>Statut : ${commande.statut}</p>
-                <br>
-                <button onclick="commencerCommande(${commande.id})">Commencer</button>
-                <button onclick="terminerCommande(${commande.id})">Terminer</button>
-                <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
-                <hr>
-            </div>
-        `;
-        listeCommandes.append(elementCommande);
-    });
-}
-
-function mettreAJourBDD(idCommande, nouveauStatut) {
-    $.ajax({
-        type: "POST",
-        url: "../../.././Scripts/PhP/Quentin/modifierCommande.php",
-        data: JSON.stringify({ id: idCommande, statut: nouveauStatut }),
-        contentType: "application/json",
-        success: function(response) {
-            console.log("Commande mise à jour dans la base de données avec succès !");
-        },
-        error: function(error) {
-            console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error);
-            alert("Une erreur s'est produite lors de la mise à jour de la commande dans la base de données.");
-        }
-    });
-}
-
+listeCommandes = null;
+let commandeEnCours = null;
 
 function chargerCommandesBdD(data) {
     $.ajax({
@@ -54,7 +18,45 @@ function chargerCommandesBdD(data) {
     });
 }
 
-let commandeEnCours = null;
+function afficherCommandes(data) {
+    let listeCommandes = $("#commandes");
+    listeCommandes.html("");
+
+    data.commandes.forEach(commande => {
+        if (commande.statut === "Acceptée" || commande.statut === "En préparation") {
+            let elementCommande = `
+                <div>
+                    <h2>Numéro Commande : ${commande.id} </h2><br>
+                    <p>À faire : ${commande.nombre} ${commande.nom}</p>
+                    <p>Heure de mise à disposition : ${commande.temps}</p>
+                    <p>Statut : ${commande.statut}</p>
+                    <br>
+                    <button onclick="commencerCommande(${commande.id})">Commencer</button>
+                    <button onclick="terminerCommande(${commande.id})">Terminer</button>
+                    <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
+                    <hr>
+                </div>
+            `;
+            listeCommandes.append(elementCommande);
+        }
+    });
+}
+
+function mettreAJourBDD(idCommande, nouveauStatut) {
+    $.ajax({
+        type: "POST",
+        url: "../../.././Scripts/PhP/Quentin/modifierCommande.php",
+        data: JSON.stringify({ id: idCommande, statut: nouveauStatut }),
+        contentType: "application/json",
+        success: function(response) {
+            console.log("Commande mise à jour dans la base de données avec succès ! : " + idCommande + " -> " + nouveauStatut);
+        },
+        error: function(error) {
+            console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error);
+            alert("Une erreur s'est produite lors de la mise à jour de la commande dans la base de données.");
+        }
+    });
+}
 
 function commencerCommande(idCommande) {
     if (commandeEnCours !== null) {
@@ -68,13 +70,14 @@ function commencerCommande(idCommande) {
         if (commande.statut === "Acceptée") {
             commandeEnCours = idCommande;
             mettreAJourBDD(idCommande, "En préparation");
-            chargerCommandesBdD();
+            listeCommandes = null;
         } else {
             alert("Cette commande ne peut pas être commencée car elle n'est pas acceptée.");
         }
     } else {
         alert("Commande non trouvée.");
     }
+    chargerCommandesBdD();
 }
 
 function terminerCommande(idCommande) {
@@ -90,13 +93,14 @@ function terminerCommande(idCommande) {
             mettreAJourBDD(idCommande, "Prête");
             miseAJourIngredients(idCommande);
             commandeEnCours = null;
-            chargerCommandesBdD();
+            listeCommandes = null;
         } else {
             alert("Cette commande ne peut pas être terminée car elle n'est pas en cours.");
         }
     } else {
         alert("Commande non trouvée.");
     }
+    chargerCommandesBdD();
 }
 
 function miseAJourIngredients(id) {
@@ -135,4 +139,3 @@ function afficherIngredients(id) {
         alert("Ingrédients non trouvés.");
     }
 }
-

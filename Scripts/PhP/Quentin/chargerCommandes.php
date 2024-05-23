@@ -17,7 +17,6 @@
                 INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
                 INNER JOIN PROD_INGR pi ON d.IdProd = pi.IdProd
                 INNER JOIN INGREDIENT i ON pi.IdIngred = i.IdIngred
-                WHERE cm.EtatCde = 'Acceptée' OR cm.EtatCde = 'En préparation'
                 GROUP BY cm.NumCom, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4;";
         $result = $connex->query($rq);
 
@@ -51,15 +50,7 @@
         $tabCommandes = array("commandes" => $tabCommandes);
         $jsonData = json_encode($tabCommandes, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         echo $jsonData;
-/*
-        $filename = '../.././JavaScript/Quentin/commandes.json';
 
-        if (file_put_contents($filename, $jsonData)) {
-            echo "Le fichier JSON a été créé avec succès.";
-        } else {
-            echo "Erreur lors de la création du fichier JSON.";
-        }
-*/
     } catch (PDOException $e) {
         print $e->getMessage();
     }
