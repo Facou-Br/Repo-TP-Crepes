@@ -1,5 +1,9 @@
 listeCommandes = null;
 let commandeEnCours = null;
+chargerCommandesBdD();
+$(document).ready(function () {
+    afficherCommandes(listeCommandes);
+});
 
 function chargerCommandesBdD(data) {
     $.ajax({
