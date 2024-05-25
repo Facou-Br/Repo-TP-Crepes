@@ -11,6 +11,7 @@ $(document).ready(function() {
             success: function(response) {
                 var ingredients = JSON.parse(response);
                 selectElement.empty();
+                selectElement.append('<option value="" disabled selected>Choisir un ingrédient</option>');
                 ingredients.forEach(function(ingredient) {
                     var option = $('<option></option>').attr('value', ingredient.NomIngred).text(ingredient.NomIngred);
                     selectElement.append(option);
@@ -67,7 +68,7 @@ $(document).ready(function() {
             nouveauGroupeIngredient.find('input').val('');
             nouveauGroupeIngredient.find('.btn-ajouter-ingredient').remove();
             nouveauGroupeIngredient.append('<button type="button" class="btn-supprimer-ingredient">-</button>');
-            $('#conteneur-ingredients').append(nouveauGroupeIngredient);
+            $('#ingredients').append(nouveauGroupeIngredient);
 
             var fournisseur = $('#fournisseur').val();  // On récupère le fournisseur
             chargerIngredients(nouveauGroupeIngredient.find('select'), fournisseur);    // Puis on recharge les ingrédients

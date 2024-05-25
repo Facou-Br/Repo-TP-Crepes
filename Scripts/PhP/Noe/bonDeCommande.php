@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="styleBonDeCommande.css">
         <title>Bon de commande</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="afficherIngredient.js" defer></script>
     </head>
     <body>
         <div class="wrapper">
@@ -51,6 +52,7 @@
                         <label for="ingredients">Ingrédient</label>
 
                         <select class="ingredients" name="ingredients[]" required>
+                            <option value="" disabled selected>Choisir un ingrédient</option>
                             <!-- Affichage des ingrédients de façon dynamique -->
                         </select>
 
