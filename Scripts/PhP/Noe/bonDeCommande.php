@@ -8,6 +8,9 @@
     </head>
     <body>
         <div class="wrapper">
+            <header>
+                <h1>Bon de commande</h1>
+            </header>
             <form action="generationPDF.php" method="post" target="_blank">
                 <div class="groupe-formulaire">
                     <label for="fournisseur">Fournisseur :</label>
@@ -31,110 +34,34 @@
                             }
                         ?>
                     </select>
-                </div>
+                </div>  <!-- GROUPE-FOURMULAIRE -->
 
                 <div class="groupe-formulaire">
                     <label for="nom">Nom :</label>
                     <input type="text" id="nom" name="nom" required>
-                </div>
+                </div>  <!-- GROUPE-FOURMULAIRE -->
 
                 <div class="groupe-formulaire">
                     <label for="date">Date de livraison :</label>
                     <input type="date" id="date" name="date" required>
-                </div>
+                </div>  <!-- GROUPE-FOURMULAIRE -->
 
-                <div id="conteneur-ingredients">
+                <div id="ingredients">
                     <div class="groupe-formulaire ingredient">
                         <label for="ingredients">Ingrédient</label>
+
                         <select class="ingredients" name="ingredients[]" required>
-                            <!-- Affichage des ingrédients -->
+                            <!-- Affichage des ingrédients de façon dynamique -->
                         </select>
+
                         <label for="quantite">Quantité</label>
                         <input type="number" class="quantite" name="quantite[]" min="1" required>
                         <button type="button" class="btn-ajouter-ingredient">+</button>
-                    </div>
-                </div>
+                    </div>  <!-- GROUPE-FOURMULAIRE  INGREDIENT-->
+                </div>  <!-- CONTENEUR-INGREDIENTS -->
 
-                <input type="submit" value="Envoyer">
+                <input type="submit" value="Générer le bon de commande">
             </form>
-        </div>
-
-        <!-- Affichage dynamique des ingrédients -->
-        <script>
-            $(document).ready(function() {
-                var maxIngredients = 10;
-
-                function chargerIngredients(selectElement, fournisseur) {
-                    $.ajax({
-                        type: "POST",
-                        url: "chargerIngredients.php",
-                        data: JSON.stringify({ fournisseur: fournisseur }),
-                        contentType: "application/json",
-                        success: function(response) {
-                            var ingredients = JSON.parse(response);
-                            selectElement.empty();
-                            ingredients.forEach(function(ingredient) {
-                                var option = $('<option></option>').attr('value', ingredient.NomIngred).text(ingredient.NomIngred);
-                                selectElement.append(option);
-                            });
-                            mettreAJourOptionsIngredients();
-                        },
-                        error: function(error) {
-                            console.error("Erreur : ", error);
-                        }
-                    });
-                }
-
-                function mettreAJourOptionsIngredients() {
-                    var ingredientsSelectionnes = [];
-                    $('.ingredients').each(function() {
-                        var valeurSelectionnee = $(this).val();
-                        if (valeurSelectionnee) {
-                            ingredientsSelectionnes.push(valeurSelectionnee);
-                        }
-                    });
-
-                    $('.ingredients').each(function() {
-                        var selectActuel = $(this);
-                        selectActuel.find('option').each(function() {
-                            if (ingredientsSelectionnes.includes($(this).attr('value')) && $(this).attr('value') !== selectActuel.val()) {
-                                $(this).hide();
-                            } else {
-                                $(this).show();
-                            }
-                        });
-                    });
-                }
-
-                $('#fournisseur').on('change', function() {
-                    var fournisseur = $(this).val();
-                    $('.ingredients').each(function() {
-                        chargerIngredients($(this), fournisseur);
-                    });
-                });
-
-                $(document).on('change', '.ingredients', function() {
-                    mettreAJourOptionsIngredients();
-                });
-
-                $(document).on('click', '.btn-ajouter-ingredient', function() {
-                    if ($('.ingredient').length < maxIngredients) {
-                        var nouveauGroupeIngredient = $('.ingredient:first').clone();
-                        nouveauGroupeIngredient.find('select').empty();
-                        nouveauGroupeIngredient.find('input').val('');
-                        nouveauGroupeIngredient.find('.btn-ajouter-ingredient').remove();
-                        nouveauGroupeIngredient.append('<button type="button" class="btn-supprimer-ingredient">-</button>');
-                        $('#conteneur-ingredients').append(nouveauGroupeIngredient);
-                        var fournisseur = $('#fournisseur').val();
-                        chargerIngredients(nouveauGroupeIngredient.find('select'), fournisseur);
-                    }
-                });
-
-                $(document).on('click', '.btn-supprimer-ingredient', function() {
-                    $(this).closest('.ingredient').remove();
-                    mettreAJourOptionsIngredients();
-                });
-            });
-        </script>
+        </div>  <!-- WRAPPER -->
     </body>
 </html>

@@ -8,44 +8,50 @@
         $ingredients = $_POST['ingredients'];
         $quantites = $_POST['quantite'];
 
-        class PDF extends tFPDF {
-            function Header() {
-                $this->SetFont('Arial', 'B', 14);
-                $this->Cell(0, 10, 'Bon de commande : ' . $_POST['fournisseur'], 0, 1, 'C');
-                $this->Ln(10);
-            }
-
-            function Footer() {
-                $this->SetY(-15);
-                $this->SetFont('Arial', 'I', 8);
-                $this->Cell(0, 10, 'Page ' . $this->PageNo(), 0, 0, 'C');
-            }
-        }
-
-        $pdf = new PDF();
+        $pdf = new tFPDF();
         $pdf->AddPage();
 
+        // Titre de la page
+        $pdf->SetFont('Arial', 'B', 14);
+        $pdf->Cell(0, 10, 'Bon de commande : ' . $fournisseur, 0, 1, 'C');
+        $pdf->Ln(10);
+
+        // Informations de la commande : Nom et Date de livraison
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(0, 10, 'Informations de la commande', 0, 1);
         $pdf->SetFont('Arial', '', 12);
-        $pdf->Cell(50, 10, 'Nom : ', 0, 0);
+        $pdf->Cell(12, 10, 'Nom : ', 0, 0);
         $pdf->Cell(0, 10, $nom, 0, 1);
-        $pdf->Cell(50, 10, 'Date de livraison : ', 0, 0);
+        $pdf->Cell(35, 10, 'Date de livraison : ', 0, 0);
         $pdf->Cell(0, 10, $date, 0, 1);
         $pdf->Ln(10);
 
+        // Détails de la commande : Ingrédient + Quantité
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0, 10, 'Détails de la commande', 0, 1);
+        $pdf->Cell(0, 10, 'Details de la commande', 0, 1);
         $pdf->SetFont('Arial', '', 12);
 
         for ($i = 0; $i < count($ingredients); $i++) {
-            $pdf->Cell(50, 10, 'Ingrédient : ', 0, 0);
+            $pdf->Cell(22, 10, 'Ingredient : ', 0, 0);
             $pdf->Cell(0, 10, $ingredients[$i], 0, 1);
-            $pdf->Cell(50, 10, 'Quantité : ', 0, 0);
+            $pdf->Cell(19, 10, 'Quantite : ', 0, 0);
             $pdf->Cell(0, 10, $quantites[$i], 0, 1);
             $pdf->Ln(5);
         }
 
-        $pdf->Output('bonDeCommande.pdf', 'D');
+        // Date dans le titre du document
+        $dateObj = DateTime::createFromFormat('Y-m-d', $date);
+        if ($dateObj) {
+            $formattedDate = $dateObj->format('d-m-Y');
+        } else {
+            $formattedDate = $date;
+        }
+
+        // Nom du document
+        $fournisseurSanitized = preg_replace('/[^a-zA-Z0-9_-]/', ' ', $fournisseur);
+        $filename = 'Bon de commande ' . $fournisseurSanitized . ' (' . $formattedDate . ').pdf';
+
+        // PDF téléchargé
+        $pdf->Output($filename, 'D');
     }
 ?>
