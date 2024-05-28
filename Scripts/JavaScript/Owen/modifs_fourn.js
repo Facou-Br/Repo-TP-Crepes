@@ -1,4 +1,3 @@
-
 $.ajax({
     url: "../../../Scripts/PhP/Owen/fournisseur/afficher_fourn.php",
     type: "POST",

@@ -10,20 +10,16 @@ catch (PDOException $e) {
     die();
 }
 try{
+    $nomFourn = $_POST["nomFourn"];
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-    $requete1 = 'SELECT NomFourn, Adresse, CodePostal, Ville, Tel FROM `fournisseur` WHERE DateArchiv = 0000-00-00;';
-    $ligne = $connex->query($requete1);
+    $sql = "UPDATE `fournisseur` SET `DateArchiv`=CAST(NOW() AS DATE) WHERE `NomFourn` = ".$nomFourn.";";
+
+    $connex->exec($sql); #essayer le query pour voir si ça marche regarder dans le cours
+    $connex->commit();
+    echo "Fournisseur archivé";
 }
 catch (PDOException $e) {
     echo 'Erreur : ' . $e->getMessage() . '<br />';
     echo 'N° : ' . $e->getCode();
     die();
 }
-
-$result=array();
-foreach ($ligne as $row) {
-    $result[]=$row;
-}
-$stocksJson = json_encode($result);
-echo $stocksJson;
-?>
