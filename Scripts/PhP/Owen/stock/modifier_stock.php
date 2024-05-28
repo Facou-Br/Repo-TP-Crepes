@@ -1,14 +1,7 @@
 <?php
+require_once '..\..\..\..\BaseDeDonnees\codesConnexion.php';
+$connex = BaseDeDonnees::connecterBDD('admin');
 
-require_once '../../../../BaseDeDonnees/codesConnexion.php';
-try {
-    $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE . ';port=' . PORT, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-} catch (PDOException $e) {
-    echo 'Erreur : ' . $e->getMessage() . '<br />';
-    echo 'N° : ' . $e->getCode();
-    die();
-}
-;
 $nomIngred = $_POST["nomIngred"];
 $stockReel = $_POST["StockReel"];
 $prixUHTMoyen = $_POST["prixUHTMoyen"];
