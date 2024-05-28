@@ -58,7 +58,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-
 #wrapper {
     margin: 0 auto;
     max-width: 1160px;
