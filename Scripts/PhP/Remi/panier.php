@@ -8,3 +8,6 @@ foreach ($sessionData as $id => $value) {
     echo "<p>ID: " . $id . ", Value: " . $value . "</p>";
 }
 ?>
+
+
+<button type="button" onclick="location.href='validation.php'">Valider</button>
