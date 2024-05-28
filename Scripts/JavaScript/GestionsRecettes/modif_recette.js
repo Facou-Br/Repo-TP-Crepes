@@ -1,5 +1,5 @@
 $.ajax({
-    url: "../../PhP/Noe/affich_recette.php",
+    url: "../../../Scripts/PhP/Noe/affich_recette.php",
     type: "POST",
     success: function (data) {
         data = JSON.parse(data);
