@@ -10,15 +10,9 @@
         die();
     }
 
-    // Lecture des données JSON reçues dans la requête POST
-    $jsonData = file_get_contents('php://input');
-
-    if ($jsonData) {
-        $data = json_decode($jsonData, true);
-
-        // On récupère les données envoyées avec AJAX
-        $idCommande = $data['id'];
-        $nouveauStatut = $data['statut'];
+    if (isset($_POST['id']) && isset($_POST['statut'])) {
+        $idCommande = $_POST['id'];
+        $nouveauStatut = $_POST['statut'];
 
         try {
             // Requête SQL pour mettre à jour le statut de la commande
@@ -32,7 +26,8 @@
             echo json_encode($result);
 
         } catch (PDOException $e) {
-            print $e->getMessage();
+            $result = array('success' => false, 'message' => 'Erreur lors de la mise à jour de la commande.');
+            echo json_encode($result);
         }
     }
 

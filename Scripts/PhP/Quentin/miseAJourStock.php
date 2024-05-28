@@ -10,16 +10,10 @@
         die();
     }
 
-    // Lecture des données JSON reçues dans la requête POST
-    $jsonData = file_get_contents('php://input');
-
-    if ($jsonData) {
-        $data = json_decode($jsonData, true);
-
-        // On récupère les données envoyées avec AJAX
-        $nomIngredient = $data['nomIngredient'];
-        $quantiteIngredient = $data['quantiteIngredient'];
-        $quantiteCrepe = $data['quantiteCrepe'];
+    if (isset($_POST['nomIngredient']) && isset($_POST['quantiteIngredient']) && isset($_POST['quantiteCrepe'])) {
+        $nomIngredient = $_POST['nomIngredient'];
+        $quantiteIngredient = $_POST['quantiteIngredient'];
+        $quantiteCrepe = $_POST['quantiteCrepe'];
 
         try {
             // Requête SQL pour mettre à jour le stock des ingrédients
@@ -36,8 +30,6 @@
         } catch (PDOException $e) {
             echo json_encode(['success' => false, 'message' => 'Erreur lors de la mise à jour du stock : ' . $e->getMessage()]);
         }
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Aucune donnée reçue.']);
     }
 
     $connex = null;
