@@ -5,59 +5,38 @@
     <link rel="stylesheet" href="../../style.css" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../Css/Style_gestionStocks.css" />
+    <!--<script src="../../../Scripts/JavaScript/GestionLivreurs/gestionDisponibiliteSoir.js"></script>-->
   </head>
   <body class="gestionStocks">
     <div id="page" class="wrapper">
       <header>
         <h1>Interface de stockage</h1>
         <nav>
-          <a href="gestion_fournisseurs.php">Fournisseurs</a>
+          <a href="gestion_fournisseurs.html">Fournisseurs</a>
+          <a href="modifier_stocks.html">Modifier un stock</a>
         </nav>
       </header>
-      <br />
-      <div id="rechercher">
-        <div class="recherche"><input id="id" placeholder="ID" /></div>
-        <div class="recherche"><input id="nom" placeholder="Nom" /></div>
-        <div class="recherche">
-          <input id="unite" placeholder="Nombre d'unité" />
-        </div>
-        <div class="recherche">
-          <input id="stockMin" placeholder="Stock minimum" />
-        </div>
-        <div class="recherche">
-          <input id="stockMax" placeholder="Stock maximum" />
-        </div>
-        <div class="recherchton" id="button_rechercher">
-          <button>Rechercher</button>
-        </div>
-      </div>
-      <br><br>
-
+      <br/>
       <div id="resultat">
         <table id="stocks" class="stocks">
             <tr>
               <th>Nom Ingrédient</th>
               <th>Fournisseur</th>
-              <th>Seuil Stock</th>
-              <th>Stock Min</th>
-              <th>Stock Réel</th>
+              <th>Quantité</th>
               <th>Prix UHT</th>
             </tr>
         </table>
       </div>
-      <br />
+      <br>
       <div id="bas">
-        <p>Inventaire en date du :</p>
-        <input placeholder="Date" />
-        <a href="#"><button id="rapport" class="bouton">Rapport</button></a>
+        <a href="ajouter_stock.html"><button id="ajouter" class="bouton">Ajouter</button></a>
       </div>
       <br /><br />
       <footer>
         <p>Interface de stockage</p>
         <script src="https://code.jquery.com/jquery-latest.js"></script>
-        <script src="../../../Scripts/JavaScript/Owen/stocks_aff.js"></script>
+        <script src="../../../Scripts/JavaScript/Owen/stock/stocks_aff.js"></script>
       </footer>
     </div>
   </body>

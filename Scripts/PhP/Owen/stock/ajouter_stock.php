@@ -11,11 +11,11 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nomIngred = $_POST["nomIngred"];
-        $seuilStock = $_POST["seuilStock"];
-        $stockMin = $_POST["stockMin"];
         $stockReel = $_POST["stockReel"];
         $prixUHTMoyen = $_POST["prixUHTMoyen"];
         $nomFourn = $_POST["fournisseur"];
+        $seuilStock = 1;
+        $stockMin = 0;
 
         try {
             $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
