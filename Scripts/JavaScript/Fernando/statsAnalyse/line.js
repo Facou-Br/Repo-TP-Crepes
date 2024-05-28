@@ -1,4 +1,4 @@
-const labels = [
+let labels = [
     'January',
     'February',
     'March',
@@ -6,10 +6,11 @@ const labels = [
     'May',
     'June',
     'July'];
+
 const data = {
     labels: labels,
     datasets: [{
-        label: 'My First Dataset',
+        label: 'Ventes des crêpes au chocolat',
         data: [65, 59, 80, 81, 56, 55, 40],
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
