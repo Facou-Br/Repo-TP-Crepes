@@ -1,14 +1,6 @@
 <?php
     require_once '../../../BaseDeDonnees/codesConnexion.php';
-
-    try {
-        // Connexion à la base de données
-        $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    } catch (Exception $e) {
-        echo 'Erreur : ' . $e->getMessage() . '<br/>';
-        echo 'N° : ' . $e->getCode();
-        die();
-    }
+    $connex = BaseDeDonnees::connecterBDD('adminQuentin');
 
     try {
         // Requête SQL pour charger les commandes avec les détails
