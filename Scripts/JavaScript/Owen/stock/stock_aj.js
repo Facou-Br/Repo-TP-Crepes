@@ -11,10 +11,9 @@ $(document).ready(function(){
             url: '../../../Scripts/PHP/Owen/stock/ajouter_stock.php',
             data: {
                 nomFourn: nomFourn,
-                adresse: adresse,
-                codePostal: codePostal,
-                ville: ville,
-                telephone: telephone
+                nomIngred: nomIngred,
+                seuilStock: seuilStock,
+                prix: prix
             },
             success: function(response){
                 alert(response);

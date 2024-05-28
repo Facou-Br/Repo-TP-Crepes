@@ -24,6 +24,6 @@ $result=array();
 foreach ($ligne as $row) {
     $result[]=$row;
 }
-$stocksJson = json_encode($result);
-echo $stocksJson;
+$fournJson = json_encode($result);
+echo $fournJson;
 ?>

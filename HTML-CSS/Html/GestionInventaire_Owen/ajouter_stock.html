@@ -9,14 +9,14 @@
     <body>
         <div class="wrapper">
             <header>
-                <h1>Ajouter un fournisseur</h1>
+                <h1>Ajouter un ingrédient</h1>
             </header>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>
                 <label id="nomIngred" for="nomIngred">Nom de l'ingrédient :</label>
                 <input type="text" name="nomIngred" required><br><br>
 
-                <label id="seuilStock" for="seuilStock">Nombre en stocks :</label>
-                <input type="number" name="seuilStock" required><br><br>
+                <label id="stockReel" for="stockReel">Nombre en stocks :</label>
+                <input type="number" name="stockReel" required><br><br>
 
                 <label id="prixUHTMoyen" for="prixUHTMoyen">Prix UHT Moyen :</label>
                 <input type="number" name="prixUHTMoyen" required><br><br>

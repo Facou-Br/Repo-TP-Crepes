@@ -47,7 +47,7 @@ $(document).ready(function(){
         e.preventDefault();
         var nomIngred = $('#stocks-select').val();
         var nomFourn = $('#fournisseur-select').val();
-        var seuilStock = $('#seuilStock').val();
+        var StockReel = $('#StockReel').val();
         var prix = $('#prix').val();
 
         $.ajax({
@@ -56,7 +56,7 @@ $(document).ready(function(){
             data: {
                 nomIngred : nomIngred,
                 nomFourn: nomFourn,
-                seuilStock: seuilStock,
+                StockReel: StockReel,
                 prix: prix
             },
             success: function(response){

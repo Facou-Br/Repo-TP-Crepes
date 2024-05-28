@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Gestion des fournisseurs</title>
+  <title>Gestion des stocks</title>
   <link rel="stylesheet" href="../../style.css">
   <link rel="stylesheet" href="../../Css/Style_gestionFourn.css">
   <script src="https://code.jquery.com/jquery-latest.js"></script>
@@ -24,7 +24,7 @@
     </select>
 
   <form id="stocks-form">
-    <input type="number" id="seuilStock" name="seuilStock" placeholder="Quantité" required>
+    <input type="number" id="stockReel" name="stockReel" placeholder="Quantité" required>
     <input type="text" id="prix" name="prix" placeholder="Prix UHT" required>
     <button id="modifier" type="submit">Envoyer</button>
     <button id="supprimer" type="submit">Supprimer</button>
@@ -34,6 +34,7 @@
 </div>
 <footer>
   <script src="../../../Scripts/JavaScript/Owen/stock/modifs_stocks.js"></script>
+  <script src="../../../Scripts/JavaScript/Owen/stock/suppr_stock.js"></script>
 </footer>
 </body>
 </html>
