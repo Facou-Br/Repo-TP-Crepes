@@ -27,7 +27,7 @@ class BaseDeDonnees
 
 /*
 DirectAdmin Login : https://panel.freehosting.com:2222/ ou https://panel.freehosting.com/phpMyAdmin/ pour accès à la BDB en tant que dev
-Username: crepesco 
+Username: crepesco
 Password: 4s2P7R2nmm
 
 Php MYADMIN : https://panel.freehosting.com/phpMyAdmin/
@@ -45,5 +45,4 @@ $host = "localhost";
 $user = "crepesco_admin";
 $pwd = "Cnam2024_crepes";
 $bdd = "crepesco_test";
-
 */
