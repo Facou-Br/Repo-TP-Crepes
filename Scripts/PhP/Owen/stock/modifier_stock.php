@@ -9,7 +9,7 @@ $prixUHTMoyen = $_POST["prixUHTMoyen"];
 
 try {
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-    $sql = "UPDATE `ingredient` SET `StockReel` = '".$stockReel."', `PrixUHT_Moyen` = '".$prixUHTMoyen."' WHERE `ingredient`.`NomIngred ` = '".$nomIngred."';";
+    $sql = "UPDATE `ingredient` SET `StockReel` = '" . $stockReel . "', `PrixUHT_Moyen` = '" . $prixUHTMoyen . "' WHERE `ingredient`.`NomIngred ` = '" . $nomIngred . "';";
     $connex->exec($sql); #essayer le query pour voir si ça marche regarder dans le cours
     $connex->commit();
     echo "Stock modifié";
