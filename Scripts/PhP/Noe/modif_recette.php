@@ -31,7 +31,13 @@ $DateArchiv = $_POST["DateArchiv"];
 
 try {
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-    $sql = "UPDATE recette SET NomProd = '".$NomProd."', Taille = '".$Taille."', Active = '".$Active."', NbIngBase = '".$NbIngBase."' NbIngOpt = '".$NbIngOpt."', Image = '".$Image."', IngBase1 = '".$IngBase1."', IngBase2 = '".$IngBase2."', IngBase3 = '".$IngBase3."', IngBase4 = '".$IngBase4."', IngBase5 = '".$IngBase5."', IngOpt1 = '".$IngOpt1."', IngOpt2 = '".$IngOpt2."', IngOpt3 = '".$IngOpt3."', IngOpt4 = '".$IngOpt4."', IngOpt5 = '".$IngOpt5."', IngOpt6 = '".$IngOpt6."', NbOptMax = '".$NbOptMax."', DateArchiv = '".$DateArchiv."', WHERE recette.NomProd = '".$nomProd."';";
+    $sql = "UPDATE recette SET NomProd = '".$NomProd."', Taille = '".$Taille."',
+    Active = '".$Active."', NbIngBase = '".$NbIngBase."' NbIngOpt = '".$NbIngOpt."',
+    Image = '".$Image."', IngBase1 = '".$IngBase1."', IngBase2 = '".$IngBase2."',
+    IngBase3 = '".$IngBase3."', IngBase4 = '".$IngBase4."', IngBase5 = '".$IngBase5."',
+    IngOpt1 = '".$IngOpt1."', IngOpt2 = '".$IngOpt2."', IngOpt3 = '".$IngOpt3."', IngOpt4 = '".$IngOpt4."',
+    IngOpt5 = '".$IngOpt5."', IngOpt6 = '".$IngOpt6."', NbOptMax = '".$NbOptMax."', DateArchiv = '".$DateArchiv."',
+    WHERE recette.NomProd = '".$nomProd."';";
     var_dump($sql);
     echo($sql);
     $connex->exec($sql);
