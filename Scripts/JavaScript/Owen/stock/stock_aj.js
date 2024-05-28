@@ -1,3 +1,21 @@
+$.ajax({
+    url: "../../../../Scripts/PhP/Owen/fournisseur/afficher_fourn.php",
+    type: "POST",
+    success: function (data) {
+        data = JSON.parse(data);
+        $.each(data, function (index, fournisseur) {
+            $("#fournisseur-select").append(
+                $("<option></option>").val(fournisseur["NomFourn"]).text(fournisseur["NomFourn"])
+            );
+        });
+    }, // closing brace and parenthesis for success function
+
+    error: function () {
+        alert("Erreur lors de la récupération des fournisseurs.");
+    }
+});
+
+
 $(document).ready(function(){
     $('#Ajouter').click(function(e){
         e.preventDefault();
