@@ -10,6 +10,8 @@ class BaseDeDonnees
     //Identifiants de connexion à la base de données en admin
     private const ADMIN_USER = "root";
     private const ADMIN_PASSWORD = "";
+    private const ADMIN_USER_QUENTIN = "crepesco_admin";
+    private const ADMIN_PASSWORD_QUENTIN = "Cnam2024_crepes";
 
     //Identifiants de connexion à la base de données en viewOnly
     private const VIEW_ONLY_USER = "crepesco_connec";
@@ -19,6 +21,8 @@ class BaseDeDonnees
     {
         if ($user == "admin") {
             return new PDO('mysql:host=' . self::HOST . ';charset=utf8;dbname=' . self::DATABASE . ';port=' . self::PORT, self::ADMIN_USER, self::ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        } elseif ($user == "adminQuentin") {
+            return new PDO('mysql:host=' . self::HOST . ';charset=utf8;dbname=' . self::DATABASE, self::ADMIN_USER_QUENTIN, self::ADMIN_PASSWORD_QUENTIN, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         } elseif ($user == "viewOnly") {
             return new PDO('mysql:host=' . self::HOST . ';charset=utf8;dbname=' . self::DATABASE . ';port=' . self::PORT, self::VIEW_ONLY_USER, self::VIEW_ONLY_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
