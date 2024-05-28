@@ -68,6 +68,7 @@ function mettreAJourBDD(idCommande, nouveauStatut) {
         data: JSON.stringify({ id: idCommande, statut: nouveauStatut }), // On envoie les données nécéssaires pour l'update
         contentType: "application/json",
         success: function(response) {
+            chargerCommandesBdD();
             console.log("Commande mise à jour dans la base de données avec succès ! : " + idCommande + " -> " + nouveauStatut);
         },
         error: function(error) {
@@ -99,7 +100,6 @@ function commencerCommande(idCommande) {
     } else {
         alert("Commande non trouvée.");
     }
-    chargerCommandesBdD(); // On recharge les commandes après la mise à jour
 }
 
 
@@ -125,7 +125,6 @@ function terminerCommande(idCommande) {
     } else {
         alert("Commande non trouvée.");
     }
-    chargerCommandesBdD(); // On recharge les commandes après la mise à jour
 }
 
 
