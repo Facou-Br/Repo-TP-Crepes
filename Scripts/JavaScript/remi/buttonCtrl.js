@@ -28,4 +28,5 @@ function saveValueInSession(inputId) {
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("id=" + inputId + "&value=" + value);
     console.log("id=" + inputId + ", value=" + value);
+
 }
