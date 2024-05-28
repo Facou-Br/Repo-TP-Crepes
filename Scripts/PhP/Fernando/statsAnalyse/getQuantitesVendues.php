@@ -5,12 +5,15 @@ $connexionPDO = BaseDeDonnees::connecterBDD('admin');
 
 $tableauProduit = array();
 try {
-    $commandeSQL = "SELECT IdProd, NomProd FROM produit";
+    $commandeSQL = "SELECT IdProd, COUNT(*) FROM `detail` GROUP BY IdProd ORDER BY count(*) DESC";
     $listeProduits = $connexionPDO->query($commandeSQL);
     $listeProduits = $listeProduits->fetchAll(PDO::FETCH_ASSOC);
 
+    var_dump($commandeSQL);
+    var_dump($listeProduits);
+
     foreach ($listeProduits as $produits) {
-            $tableauProduit[$produits["IdProd"]] = $produits["NomProd"];
+            $tableauProduit[$produits["IdProd"]] = $produits["COUNT(*)"];
     }
 } catch (Exception $e) {
     echo 'Erreur : ' . $e->getMessage() . '<br />';

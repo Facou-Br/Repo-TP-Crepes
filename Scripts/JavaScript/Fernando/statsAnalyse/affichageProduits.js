@@ -16,3 +16,21 @@ $.ajax({
         alert("Erreur lors de la récupération des fournisseurs.");
     },
 });
+
+$(document).ready(function () {
+    let dateDebut = $('#dateDebut').val();
+    let dateFin = $('#dateFin').val();
+
+    $('#dateDebut').change(function () {
+        dateDebut = $('#dateDebut').val();
+        if (dateDebut != null) {
+            $('#dateFin').attr('min', dateDebut);
+        }
+    });
+    $('#dateFin').change(function () {
+        dateFin = $('#dateFin').val();
+        if (dateFin != null) {
+            $('#dateDebut').attr('max', dateFin);
+        }
+    });
+});
