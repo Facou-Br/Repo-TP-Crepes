@@ -1,52 +1,11 @@
-$.ajax({
-    url: "../../../Scripts/PhP/Noe/affich_recette.php",
-    type: "POST",
-    success: function (data) {
-        data = JSON.parse(data);
-            $.each(data, function (index, recette) {
-                $("#recette-select").append(
-                    $("<option></option>").val(recette["NomProd"]).text(recette["NomProd"])
-                );
-            });
-        $("#recette-select").change(function() {
-            var selectedRecette = $(this).val();
-            var recette = data.find(r => r.NomProd === selectedRecette);
-
-            if (recette) {
-                $("#NomProd").val(recette.NomProd);
-                $("#Taille").val(recette.Taille);
-                $("#NbIngBase").val(recette.NbIngBase);
-                $("#Image").val(recette.Image);
-                $("#PrixUHT").val(recette.PrixUHT);
-                $("#IngBase1").val(recette.IngBase1);
-                $("#IngBase2").val(recette.IngBase2);
-                $("#IngBase3").val(recette.IngBase3);
-                $("#IngBase4").val(recette.IngBase4);
-                $("#IngBase5").val(recette.IngBase5);
-                $("#IngOpt1").val(recette.IngOpt1);
-                $("#IngOpt2").val(recette.IngOpt2);
-                $("#IngOpt3").val(recette.IngOpt3);
-                $("#IngOpt4").val(recette.IngOpt4);
-                $("#IngOpt5").val(recette.IngOpt5);
-                $("#IngOpt6").val(recette.IngOpt6);
-                $("#NbOptMax").val(recette.NbOptMax);
-                $("#DateArchiv").val(recette.DateArchiv);
-            }
-        });
-        },
-
-    error: function () {
-        alert("Erreur lors de la récupération des recettes.");
-    }
-});
-
-
 $(document).ready(function(){
     $('#modifier').click(function(e){
         e.preventDefault();
         var NomProd = $('#recette-select').val();
         var Taille = $('#Taille').val();
+        var Active = $('#Active').val();
         var NbIngBase = $('#NbIngBase').val();
+        var NbIngOpt = $('#NbIngOpt').val();
         var Image = $('#Image').val();
         var IngBase1 = $('#IngBase1').val();
         var IngBase2 = $('#IngBase2').val();
@@ -68,7 +27,9 @@ $(document).ready(function(){
             data: {
                 NomProd: NomProd,
                 Taille: Taille,
+                Active: Active,
                 NbIngBase: NbIngBase,
+                NbIngOpt: NbIngOpt,
                 Image: Image,
                 IngBase1: IngBase1,
                 IngBase2: IngBase2,
@@ -92,7 +53,9 @@ $(document).ready(function(){
                 if (recette) {
                     $('#nomProd').val("");
                     $('#Taille').val("");
+                    $('#Active').val("");
                     $('#NbIngBase').val("");
+                    $('#NbIngOpt').val("");
                     $('#Image').val("");
                     $('#IngBase1').val("");
                     $('#IngBase2').val("");
