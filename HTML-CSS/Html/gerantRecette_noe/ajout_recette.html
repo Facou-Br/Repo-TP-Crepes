@@ -7,16 +7,17 @@
 </head>
 <body>
     <h1>Ajouter une recette</h1>
+            <!-- Formulaire pour ajouter une recette -->
     <form id="ajouterRecetteForm" action="../../../Scripts//PhP/Noe/ajoutRecette.php">
         <label for="NomProd">Nom de la recette:</label><br>
         <input type="text" id="NomProd" name="NomProd" required><br>
         
         <label for="Active">Activation de la recette (Oui:1 - Non:0) :</label><br>
         <input type="number" id="Active" name="Active" required><br>
-        
+
         <label for="Taille">Taille de la recette:</label><br>
         <input type="text" id="Taille" name="Taille" required><br>
-        
+
         <label for="NbIngBase">Nombre d'ingrédients de base:</label><br>
         <input type="number" id="NbIngBase" name="NbIngBase" required><br>
         
@@ -63,9 +64,7 @@
         <input type="text" id="IngOpt" name="IngOpt6" ><br>
 
         <label for="NbOptMax">Nombre d'ingrédient optionnel maximum:</label><br>
-        <input type="text" id="NbOptMax" name="NbOptMax" required><br>
-
-        <!-- Ajoutez d'autres champs supplémentaires si nécessaire -->
+        <input type="number" id="NbOptMax" name="NbOptMax" required><br>
 
         <button type="submit">Ajouter recette</button>
     </form>
@@ -74,9 +73,8 @@
     <script>
         $(document).ready(function () {
             $('#ajouterCommandeForm').submit(function (event) {
-                event.preventDefault(); // Empêcher la soumission du formulaire par défaut
+                event.preventDefault(); 
 
-                // Récupérer les données du formulaire
                 let formData = {
                     id: $('#id').val(),
                     NomProd: $('#NomProd').val(),
