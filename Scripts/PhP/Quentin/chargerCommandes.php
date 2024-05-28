@@ -2,6 +2,7 @@
     require_once '../../../BaseDeDonnees/codesConnexion.php';
 
     try {
+        // Connexion à la base de données
         $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     } catch (Exception $e) {
         echo 'Erreur : ' . $e->getMessage() . '<br/>';
@@ -10,22 +11,25 @@
     }
 
     try {
+        // Requête SQL pour charger les commandes avec les détails
         $rq = "SELECT cm.NumCom, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4,
-                GROUP_CONCAT(i.NomIngred, ':', pi.Quant, ':', i.Unite SEPARATOR ';') AS Ingredients
-                FROM COMMANDE cm
-                INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
-                INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
-                INNER JOIN PROD_INGR pi ON d.IdProd = pi.IdProd
-                INNER JOIN INGREDIENT i ON pi.IdIngred = i.IdIngred
-                GROUP BY cm.NumCom, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4;";
-        $result = $connex->query($rq);
+                    GROUP_CONCAT(i.NomIngred, ':', pi.Quant, ':', i.Unite SEPARATOR ';') AS Ingredients
+                    FROM COMMANDE cm
+                    INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
+                    INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
+                    INNER JOIN PROD_INGR pi ON d.IdProd = pi.IdProd
+                    INNER JOIN INGREDIENT i ON pi.IdIngred = i.IdIngred
+                    GROUP BY cm.NumCom, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4;";
 
+        $result = $connex->query($rq);
         $tabCommandes = array();
 
+        // On enregistre les commandes dans un tableau
         while ($ligne = $result->fetch(PDO::FETCH_ASSOC)) {
+            // On filtre les éléments des ingrédients, pour ne plus avoir de null
             $ingredientsBase = array_filter([$ligne["IngBase1"], $ligne["IngBase2"], $ligne["IngBase3"], $ligne["IngBase4"]]);
             $ingredientsOption = array_filter([$ligne["IngOpt1"], $ligne["IngOpt2"], $ligne["IngOpt3"], $ligne["IngOpt4"]]);
-            $tabIngredient = explode(';', $ligne["Ingredients"]);
+            $tabIngredient = explode(';', $ligne["Ingredients"]);   // On retourne un tableau des ingrédients avec ; comme séparateur
             $ingredients = array();
 
             foreach ($tabIngredient as $ing) {
@@ -39,14 +43,14 @@
                 "nom" => $ligne["NomProd"],
                 "temps" => substr($ligne["HeureDispo"], 0, 5),
                 "statut" => $ligne["EtatCde"],
-                "ingredients" =>
-                 $ingredients
+                "ingredients" => $ingredients
             );
-
             $tabCommandes[] = $commande;
         }
 
         $connex = null;
+
+        // On l'encode en JSON, puis on echo la chaine de caractères, pour ne pas passer par un fichier JSON
         $tabCommandes = array("commandes" => $tabCommandes);
         $jsonData = json_encode($tabCommandes, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         echo $jsonData;
