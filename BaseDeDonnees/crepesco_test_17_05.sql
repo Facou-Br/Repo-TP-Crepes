@@ -325,7 +325,17 @@ INSERT INTO `produit` (`NomProd`, `Active`, `Taille`, `NbIngBase`, `NbIngOpt`, `
 `IngOpt3`, `IngOpt4`, `IngOpt5`, `IngOpt6`, `NbOptMax`, `DateArchiv`) VALUES
 ('CrepesSuzette', '1', 'M', 3, 2, 2, 'crepes.jpg', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', 'Jambon', 'Bacon', 'Emmental', 2, '0000-00-00'),
 ('CrepesBretonnes', '1', 'M', 3, 2, 2, 'crepes.jpg', 'Farine', 'Oeufs', 'Lait', 'Oeuf', 'Jambom', 'Emental', 'Fraise', 'Banane', 'Chantilly', 'Jambon', 'Bacon', 2, '0000-00-00'),
-('Salade', '1', 'M', 3, 2, 2, 'salade.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00');
+('Salade', '1', 'M', 3, 2, 2, 'salade.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
+('CrêpeKebab', '1', 'M', 3, 2, 2, 'crepes.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
+('CrêpeauxFruits', '1', 'M', 3, 2, 2, 'crepes.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
+('CrêpesauxFruits de Mer', '1', 'M', 3, 2, 2, 'crepes.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
+('CrêpesauxEpinards', '1', 'M', 3, 2, 2, 'crepes.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
+('CrêpesauxPommes', '1', 'M', 3, 2, 2, 'crepes.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
+('CrêpesauxChampignons', '1', 'M', 3, 2, 2, 'crepes.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00');
+
+
+
+
 
 --
 -- Déchargement des données de la table `fournisseur`

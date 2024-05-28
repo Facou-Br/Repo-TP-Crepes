@@ -65,8 +65,7 @@ function mettreAJourBDD(idCommande, nouveauStatut) {
     $.ajax({
         type: "POST",
         url: "../../.././Scripts/PhP/Quentin/modifierCommande.php",
-        data: JSON.stringify({ id: idCommande, statut: nouveauStatut }), // On envoie les données nécéssaires pour l'update
-        contentType: "application/json",
+        data: { id: idCommande, statut: nouveauStatut }, // On envoie les données nécéssaires pour l'update
         success: function(response) {
             chargerCommandesBdD();
             console.log("Commande mise à jour dans la base de données avec succès ! : " + idCommande + " -> " + nouveauStatut);
@@ -77,6 +76,7 @@ function mettreAJourBDD(idCommande, nouveauStatut) {
         }
     });
 }
+
 
 
 /*
@@ -139,8 +139,7 @@ function miseAJourIngredients(id) {
         $.ajax({
             type: "POST",
             url: "../../.././Scripts/PhP/Quentin/miseAJourStock.php",
-            data: JSON.stringify({ nomIngredient: nom, quantiteIngredient: quantite, quantiteCrepe: quantiteCrepe}),    // On envoie les données nécéssaires pour l'update
-            contentType: "application/json",
+            data: { nomIngredient: nom, quantiteIngredient: quantite, quantiteCrepe: quantiteCrepe },    // On envoie les données nécessaires pour l'update
             success: function(response) {
                 console.log("Stock mis à jour avec succès !");
             },
