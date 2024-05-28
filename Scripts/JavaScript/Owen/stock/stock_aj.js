@@ -1,20 +1,27 @@
-require("https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js");
 $(document).ready(function(){
-    $("button").click(function(){
+    $('#Ajouter').click(function(e){
+        e.preventDefault();
+        var nomIngred = $('#nomIngred').val();
+        var seuilStock = $('#seuilStock').val();
+        var prix = $('#prix').val();
+        var nomFourn = $('#fournisseur-select').val();
 
         $.ajax({
-            type:'POST',
-            url:'ajouter_stock.php',
-            data: $("#Form1").serialize(),
-
-        })
-            .done(function(data){
-                $("#madiv").html(data);
-            })
-            .fail(function() {
-                alert( "Erreur lors de l'envoi du formulaire." );
-            });
-
-
+            type: 'POST',
+            url: '../../../Scripts/PHP/Owen/stock/ajouter_stock.php',
+            data: {
+                nomFourn: nomFourn,
+                adresse: adresse,
+                codePostal: codePostal,
+                ville: ville,
+                telephone: telephone
+            },
+            success: function(response){
+                alert(response);
+            },
+            fail: function () {
+                alert("Erreur");
+            }
+        });
     });
 });

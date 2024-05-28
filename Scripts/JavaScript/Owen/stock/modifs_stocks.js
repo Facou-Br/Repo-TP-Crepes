@@ -45,33 +45,28 @@ $.ajax({
 $(document).ready(function(){
     $('#modifier').click(function(e){
         e.preventDefault();
+        var nomIngred = $('#stocks-select').val();
         var nomFourn = $('#fournisseur-select').val();
-        var adresse = $('#adresse').val();
-        var codePostal = $('#codePostal').val();
-        var ville = $('#ville').val();
-        var telephone = $('#telephone').val();
+        var seuilStock = $('#seuilStock').val();
+        var prix = $('#prix').val();
 
         $.ajax({
             type: 'POST',
-            url: '../../../Scripts/PHP/Owen/fournisseur/modifier_fourn.php',
+            url: '../../../Scripts/PHP/Owen/stock/modifier_stock.php',
             data: {
+                nomIngred : nomIngred,
                 nomFourn: nomFourn,
-                adresse: adresse,
-                codePostal: codePostal,
-                ville: ville,
-                telephone: telephone
+                seuilStock: seuilStock,
+                prix: prix
             },
             success: function(response){
-                alert("Fournisseur modifié avec succès"); //Popup au lieu d'alerte
+                alert("Ingrédient modifié avec succès"); //Popup au lieu d'alerte
                 $("#resultat").append(response);
-                var fournisseur = data.find(f => f.NomFourn === selectedFournisseur);
+                var ingredient = data.find(i => i.nom === selectedIngredient);
 
-                if (fournisseur) {
-                    $("#nom").val("");
-                    $("#adresse").val("");
-                    $("#ville").val("");
-                    $("#codePostal").val("");
-                    $("#tel").val("");
+                if (ingredient) {
+                    $("#quantite").val("");
+                    $("#unite").val("");
                 }
             },
             fail: function () {
