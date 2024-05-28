@@ -1,19 +1,24 @@
-listeCommandes = null;
-let commandeEnCours = null;
-chargerCommandesBdD();
+listeCommandes = null;  // On initialise la liste des commandes à null
+let commandeEnCours = null; // On initialise la commande en cours à null
+chargerCommandesBdD();  // On charge les commandes depuis la base de données
+
 $(document).ready(function () {
-    afficherCommandes(listeCommandes);
+    afficherCommandes(listeCommandes); // On affiche les commandes avec AJAX
 });
 
-function chargerCommandesBdD(data) {
+
+/*
+    Permet de charger les commandes depuis la base de données avec AJAX
+    On enregistre la liste des commandes en récupérant la chaine de caractères
+*/
+function chargerCommandesBdD() {
     $.ajax({
         type: "POST",
         url: "../../.././Scripts/PhP/Quentin/chargerCommandes.php",
-        data: JSON.stringify(data),
         contentType: "application/json",
         success: function(response) {
-            listeCommandes = JSON.parse(response);
-            afficherCommandes(listeCommandes)
+            listeCommandes = JSON.parse(response);  // On enregistre la réponse JSON dans listeCommandes
+            afficherCommandes(listeCommandes); // On affiche les commandes avec les données chargées
         },
         error: function(error) {
             console.error("Erreur lors de la sauvegarde des commandes :", error);
@@ -22,12 +27,17 @@ function chargerCommandesBdD(data) {
     });
 }
 
+
+/*
+    Permet d'afficher les commandes, avec un statut qui est égal à 'Acceptée' ou 'En préparation'
+*/
 function afficherCommandes(data) {
-    let listeCommandes = $("#commandes");
-    listeCommandes.html("");
+    let listeCommandes = $("#commandes");   // On donne le style de la class 'commandes' à la liste des commandes
+    listeCommandes.html("");    // On réinitialise le contenu affiché de la liste des commandes
 
     data.commandes.forEach(commande => {
-        if (commande.statut === "Acceptée" || commande.statut === "En préparation") {
+        if (commande.statut === "Acceptée" || commande.statut === "En préparation") {   // Si le statut est 'Acceptée' ou 'En préparation', alors on affiche la commande
+            // Toutes les infos regroupées dans la div
             let elementCommande = `
                 <div>
                     <h2>Numéro Commande : ${commande.id} </h2><br>
@@ -41,16 +51,21 @@ function afficherCommandes(data) {
                     <hr>
                 </div>
             `;
-            listeCommandes.append(elementCommande);
+            listeCommandes.append(elementCommande); // On ajoute l'élément de commande à la liste
         }
     });
 }
 
+
+/*
+    Permet de mettre à jour le statut d'une commande dans la base de données
+    On modifie le statut d'une commande avec son id, et le nouveauStatut
+*/
 function mettreAJourBDD(idCommande, nouveauStatut) {
     $.ajax({
         type: "POST",
         url: "../../.././Scripts/PhP/Quentin/modifierCommande.php",
-        data: JSON.stringify({ id: idCommande, statut: nouveauStatut }),
+        data: JSON.stringify({ id: idCommande, statut: nouveauStatut }), // On envoie les données nécéssaires pour l'update
         contentType: "application/json",
         success: function(response) {
             console.log("Commande mise à jour dans la base de données avec succès ! : " + idCommande + " -> " + nouveauStatut);
@@ -62,60 +77,70 @@ function mettreAJourBDD(idCommande, nouveauStatut) {
     });
 }
 
+
+/*
+    Permet de commencer une commande
+*/
 function commencerCommande(idCommande) {
     if (commandeEnCours !== null) {
-        alert("Une commande est déjà en préparation. Terminez-la d'abord.");
+        alert("Une commande est déjà en préparation. Terminez-la d'abord."); // On vérifie si une commande est déjà en cours
         return;
     }
 
-    let commande = listeCommandes.commandes.find(commande => commande.id === idCommande);
+    let commande = listeCommandes.commandes.find(commande => commande.id === idCommande);   // Sinon on récupère la commande grâce à l'id
 
     if (commande) {
-        if (commande.statut === "Acceptée") {
-            commandeEnCours = idCommande;
-            mettreAJourBDD(idCommande, "En préparation");
-            listeCommandes = null;
+        if (commande.statut === "Acceptée") {   // On vérifie que la commande est 'Acceptée'
+            commandeEnCours = idCommande;   // On met à jour l'id de la commande en cours, pour ne pas pouvoir en commencer une autre
+            mettreAJourBDD(idCommande, "En préparation");   // On met à jour le statut de la commande dans la base de données
         } else {
             alert("Cette commande ne peut pas être commencée car elle n'est pas acceptée.");
         }
     } else {
         alert("Commande non trouvée.");
     }
-    chargerCommandesBdD();
+    chargerCommandesBdD(); // On recharge les commandes après la mise à jour
 }
 
+
+/*
+    Permet de terminer une commande
+*/
 function terminerCommande(idCommande) {
-    if (commandeEnCours !== idCommande) {
+    if (commandeEnCours !== idCommande) {   // On vérifie si la commande est en cours
         alert("Cette commande ne peut pas être terminée car elle n'est pas en préparation.");
         return;
     }
 
-    let commande = listeCommandes.commandes.find(commande => commande.id === idCommande);
+    let commande = listeCommandes.commandes.find(commande => commande.id === idCommande);   // On récupère la commande grâce à l'id
 
     if (commande) {
-        if (commande.statut === "En préparation") {
-            mettreAJourBDD(idCommande, "Prête");
-            miseAJourIngredients(idCommande);
-            commandeEnCours = null;
-            listeCommandes = null;
+        if (commande.statut === "En préparation") {   // On vérifie que la commande est 'En préparation'
+            mettreAJourBDD(idCommande, "Prête");    // On met à jour le statut de la commande dans la base de données
+            miseAJourIngredients(idCommande);   // On met à jour le stocks des ingrédients dans la base de données
+            commandeEnCours = null; // On réinitialise la commande en cours, afin de pouvoir commencer une autre commande
         } else {
             alert("Cette commande ne peut pas être terminée car elle n'est pas en cours.");
         }
     } else {
         alert("Commande non trouvée.");
     }
-    chargerCommandesBdD();
+    chargerCommandesBdD(); // On recharge les commandes après la mise à jour
 }
 
+
+/*
+    Permet de mettre à jour les stocks d'ingrédients
+*/
 function miseAJourIngredients(id) {
-    let commande = listeCommandes.commandes.find(commande => commande.id === id);
-    let quantiteCrepe = commande.nombre;
+    let commande = listeCommandes.commandes.find(commande => commande.id === id);   // On récupère la commande grâce à l'id
+    let quantiteCrepe = commande.nombre;    // On récupère le nombre de crêpes commandées
 
     for (const [nom, [quantite, unite]] of Object.entries(commande.ingredients)) {
         $.ajax({
             type: "POST",
             url: "../../.././Scripts/PhP/Quentin/miseAJourStock.php",
-            data: JSON.stringify({ nomIngredient: nom, quantiteIngredient: quantite, quantiteCrepe: quantiteCrepe}),
+            data: JSON.stringify({ nomIngredient: nom, quantiteIngredient: quantite, quantiteCrepe: quantiteCrepe}),    // On envoie les données nécéssaires pour l'update
             contentType: "application/json",
             success: function(response) {
                 console.log("Stock mis à jour avec succès !");
@@ -128,10 +153,15 @@ function miseAJourIngredients(id) {
     }
 }
 
+
+/*
+    Permet d'afficher les détails des ingrédients d'une commande
+*/
 function afficherIngredients(id) {
-    let commande = listeCommandes.commandes.find(commande => commande.id === id);
+    let commande = listeCommandes.commandes.find(commande => commande.id === id);   // On récupère la commande grâce à l'id
 
     if (commande) {
+        // On affiche avec une alert les ingrédients avec la quantité
         let ingredientsText = "Ingrédients de la commande " + id + " :\n\n";
 
         for (const [nom, [quantite, unite]] of Object.entries(commande.ingredients)) {
