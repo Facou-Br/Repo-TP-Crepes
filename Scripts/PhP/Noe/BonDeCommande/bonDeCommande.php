@@ -12,12 +12,12 @@
             <header>
                 <h1>Bon de commande</h1>
             </header>
-            <form action="generationPDF.php" method="post" target="_blank">
+            <form id="commandeForm" action="generationPDF.php" method="post">
                 <div class="groupe-formulaire">
                     <label for="fournisseur">Fournisseur :</label>
                     <select id="fournisseur" name="fournisseur" required>
                         <?php
-                            require_once '../../../BaseDeDonnees/codesConnexion.php';
+                            require_once '../../../../BaseDeDonnees/codesConnexion.php';
 
                             try {
                                 $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -50,7 +50,6 @@
                 <div id="ingredients">
                     <div class="groupe-formulaire ingredient">
                         <label for="ingredients">Ingrédient</label>
-
                         <select class="ingredients" name="ingredients[]" required>
                             <option value="" disabled selected>Choisir un ingrédient</option>
                             <!-- Affichage des ingrédients de façon dynamique -->
@@ -65,5 +64,13 @@
                 <input type="submit" value="Générer le bon de commande">
             </form>
         </div>  <!-- WRAPPER -->
+
+        <script>
+            document.getElementById('commandeForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                alert('Bon de commande créé avec succès!');
+                this.submit();
+            });
+        </script>
     </body>
 </html>

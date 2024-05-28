@@ -39,19 +39,13 @@
             $pdf->Ln(5);
         }
 
-        // Date dans le titre du document
-        $dateObj = DateTime::createFromFormat('Y-m-d', $date);
-        if ($dateObj) {
-            $formattedDate = $dateObj->format('d-m-Y');
-        } else {
-            $formattedDate = $date;
-        }
+        $nomFichier = 'Bon de commande ' . $fournisseur . ' (' . $date . ').pdf';
+        $repertoire = 'HistoriqueBonDeCommande/';
+        $fichier = $repertoire . $nomFichier;
 
-        // Nom du document
-        $fournisseurSanitized = preg_replace('/[^a-zA-Z0-9_-]/', ' ', $fournisseur);
-        $filename = 'Bon de commande ' . $fournisseurSanitized . ' (' . $formattedDate . ').pdf';
+        $pdf->Output($fichier, 'F');    // On enregistre le PDF dans le répertoire spécifié
 
-        // PDF téléchargé
-        $pdf->Output($filename, 'D');
+        header("Location: bonDeCommande.php");
+        exit();
     }
 ?>
