@@ -5,7 +5,7 @@ $connexionPDO = BaseDeDonnees::connecterBDD('admin');
 
 $tableauFournisseurs = array();
 try {
-    $commandeSQL = "SELECT NomFourn FROM fourn_ingr";
+    $commandeSQL = "SELECT NomFourn FROM fournisseur GROUP BY NomFourn ORDER BY NomFourn ASC;";
     $fournisseurs = $connexionPDO->query($commandeSQL);
     $fournisseurs = $fournisseurs->fetchAll(PDO::FETCH_ASSOC);
 
