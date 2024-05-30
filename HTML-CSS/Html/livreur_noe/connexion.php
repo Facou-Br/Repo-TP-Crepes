@@ -11,8 +11,9 @@ try {
     echo 'N° : ' . $e->getCode();
     die();
 }
+
 /*
-* Ne plus utiliser ce script, il est obsolète. 
+* Ne plus utiliser ce script, il est obsolète.
 * Une classe pour une connexion à la base de données est disponible pour une utilisation plus simple et plus sécurisée aussi qu'homogène.
 * Utiliser la classe dans /BaseDeDonnees/codesConnexion.php
 * @Facou-Br

@@ -17,7 +17,7 @@
             width: 800px;
             max-width: 600px
         }
-    </style>
+    </style> <!-- This style is temporary and should be moved to the CSS file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 

@@ -3,7 +3,9 @@ a {
     text-decoration: none;
 }
 .recherche, #bas{
+    height: -moz-fit-content;
     height: fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     float: left;
     padding: 0 10px;
