@@ -20,13 +20,13 @@ class BaseDeDonnees
     public static function connecterBDD($user)
     {
         if ($user == "admin") {
-            return new PDO('mysql:host=' . self::HOST . ';charset=utf8;dbname=' . self::DATABASE . ';port=' . self::PORT, 
+            return new PDO('mysql:host=' . self::HOST . ';charset=utf8;dbname=' . self::DATABASE . ';port=' . self::PORT,
             self::ADMIN_USER, self::ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         } elseif ($user == "adminQuentin") {
-            return new PDO('mysql:host=' . self::HOST . ';charset=utf8;dbname=' . self::DATABASE, self::ADMIN_USER_QUENTIN, 
+            return new PDO('mysql:host=' . self::HOST . ';charset=utf8;dbname=' . self::DATABASE, self::ADMIN_USER_QUENTIN,
             self::ADMIN_PASSWORD_QUENTIN, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         } elseif ($user == "viewOnly") {
-            return new PDO('mysql:host=' . self::HOST . ';charset=utf8;dbname=' . self::DATABASE . ';port=' . self::PORT, 
+            return new PDO('mysql:host=' . self::HOST . ';charset=utf8;dbname=' . self::DATABASE . ';port=' . self::PORT,
             self::VIEW_ONLY_USER, self::VIEW_ONLY_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
     }
