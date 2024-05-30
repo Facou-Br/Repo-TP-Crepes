@@ -38,10 +38,14 @@ $("select.fournisseurs").change(function () {
 });
 
 /**
- * Event handler for the submit event on #formulaireIngredients element.
- * Collects the ingredient data from the UI and sends it to the server to update the stock.
- * Displays success or error messages based on the server response.
- * @param {Event} e - The submit event object.
+ * Evenement qui écoute le clic sur le bouton de mise à jour du stock.
+ * Envoie les données des ingrédients à un script PHP pour mettre à jour le stock dans la base de données.
+ * 
+ * Demande confirmation à l'utilisateur avant de mettre à jour le stock.
+ * Affiche un message de succès ou d'erreur en fonction de la réponse du serveur.
+ * 
+ * @Facou-Br
+ * @param {Event} e - Retire l'événement par défaut du formulaire.
  */
 $("#formulaireIngredients").on("submit", function (e) {
   e.preventDefault();
@@ -61,7 +65,7 @@ $("#formulaireIngredients").on("submit", function (e) {
 
   console.log(ingredientsObj);
 
-  if (confirm("Are you sure you want to update the stock?")) {
+  if (confirm("Êtes vous sûr de vouloir mettre à jour le stock ?")) {
     $.ajax({
       url: "../../../Scripts/PhP/Fernando/majStock_Fournisseur.php",
       type: "POST",
