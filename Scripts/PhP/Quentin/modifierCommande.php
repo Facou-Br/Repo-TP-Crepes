@@ -1,4 +1,5 @@
 <?php
+    // Connexion à la BdD
     require_once '../../../BaseDeDonnees/codesConnexion.php';
     $connex = BaseDeDonnees::connecterBDD('adminQuentin');
 
@@ -13,13 +14,14 @@
             $rq->bindValue(':idCommande', $idCommande, PDO::PARAM_INT);
             $rq->execute();
 
-            // Réponse JSON en cas de succès
-            $result = array('success' => true, 'message' => 'Commande mise à jour dans la base de données avec succès.');
-            echo json_encode($result);
+            if ($nouveauStatut == "Prête") {
+                $rq = $connex->prepare("UPDATE COMMANDE SET EtatLivraison = 'fin_preparation' WHERE NumCom = :idCommande");
+                $rq->bindValue(':idCommande', $idCommande, PDO::PARAM_INT);
+                $rq->execute();
+            }
 
         } catch (PDOException $e) {
-            $result = array('success' => false, 'message' => 'Erreur lors de la mise à jour de la commande.');
-            echo json_encode($result);
+            print $e->getMessage();
         }
     }
 
