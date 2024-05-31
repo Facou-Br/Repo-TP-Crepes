@@ -3,7 +3,7 @@ let commandeEnCours = null; // On initialise la commande en cours à null
 chargerCommandesBdD();  // On charge les commandes depuis la base de données
 
 $(document).ready(function () {
-    afficherCommandes(listeCommandes); // On affiche les commandes avec AJAX
+    afficherCommandes(listeCommandes);  // On affiche les commandes avec AJAX
 });
 
 
@@ -18,41 +18,39 @@ function chargerCommandesBdD() {
         contentType: "application/json",
         success: function(response) {
             listeCommandes = JSON.parse(response);  // On enregistre la réponse JSON dans listeCommandes
-            afficherCommandes(listeCommandes); // On affiche les commandes avec les données chargées
+            afficherCommandes(listeCommandes);  // On affiche les commandes avec les données chargées
         },
         error: function(error) {
-            console.error("Erreur lors de la sauvegarde des commandes :", error);
-            alert("Une erreur s'est produite lors de la sauvegarde des commandes.");
+            console.log("Erreur lors du chargement des commandes :", error);
+            alert("Une erreur s'est produite lors du chargement des commandes.");
         }
     });
 }
 
 
 /*
-    Permet d'afficher les commandes, avec un statut qui est égal à 'Acceptée' ou 'En préparation'
+    Permet d'afficher les commandes à faire
 */
 function afficherCommandes(data) {
     let listeCommandes = $("#commandes");   // On donne le style de la class 'commandes' à la liste des commandes
     listeCommandes.html("");    // On réinitialise le contenu affiché de la liste des commandes
 
     data.commandes.forEach(commande => {
-        if (commande.statut === "Acceptée" || commande.statut === "En préparation") {   // Si le statut est 'Acceptée' ou 'En préparation', alors on affiche la commande
-            // Toutes les infos regroupées dans la div
-            let elementCommande = `
-                <div>
-                    <h2>Numéro Commande : ${commande.id} </h2><br>
-                    <p>À faire : ${commande.nombre} ${commande.nom}</p>
-                    <p>Heure de mise à disposition : ${commande.temps}</p>
-                    <p>Statut : ${commande.statut}</p>
-                    <br>
-                    <button onclick="commencerCommande(${commande.id})">Commencer</button>
-                    <button onclick="terminerCommande(${commande.id})">Terminer</button>
-                    <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
-                    <hr>
-                </div>
-            `;
-            listeCommandes.append(elementCommande); // On ajoute l'élément de commande à la liste
-        }
+        // Toutes les infos regroupées dans la div
+        let elementCommande = `
+            <div>
+                <h2>Numéro Commande : ${commande.id} </h2><br>
+                <p>À faire : ${commande.nombre} ${commande.nom}</p>
+                <p>Heure de mise à disposition : ${commande.temps}</p>
+                <p>Statut : ${commande.statut}</p>
+                <br>
+                <button onclick="commencerCommande(${commande.id})">Commencer</button>
+                <button onclick="terminerCommande(${commande.id})">Terminer</button>
+                <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
+                <hr>
+            </div>
+        `;
+        listeCommandes.append(elementCommande); // On ajoute l'élément de commande à la liste
     });
 }
 
@@ -65,18 +63,17 @@ function mettreAJourBDD(idCommande, nouveauStatut) {
     $.ajax({
         type: "POST",
         url: "../../.././Scripts/PhP/Quentin/modifierCommande.php",
-        data: { id: idCommande, statut: nouveauStatut }, // On envoie les données nécéssaires pour l'update
+        data: { id: idCommande, statut: nouveauStatut },    // On envoie les données nécéssaires pour l'update
         success: function(response) {
             chargerCommandesBdD();
             console.log("Commande mise à jour dans la base de données avec succès ! : " + idCommande + " -> " + nouveauStatut);
         },
         error: function(error) {
-            console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error);
+            console.log("Erreur lors de la mise à jour de la commande dans la base de données :", error);
             alert("Une erreur s'est produite lors de la mise à jour de la commande dans la base de données.");
         }
     });
 }
-
 
 
 /*
@@ -84,7 +81,7 @@ function mettreAJourBDD(idCommande, nouveauStatut) {
 */
 function commencerCommande(idCommande) {
     if (commandeEnCours !== null) {
-        alert("Une commande est déjà en préparation. Terminez-la d'abord."); // On vérifie si une commande est déjà en cours
+        alert("Une commande est déjà en préparation. Terminez-la d'abord.");    // On vérifie si une commande est déjà en cours
         return;
     }
 
@@ -133,19 +130,20 @@ function terminerCommande(idCommande) {
 */
 function miseAJourIngredients(id) {
     let commande = listeCommandes.commandes.find(commande => commande.id === id);   // On récupère la commande grâce à l'id
-    let quantiteCrepe = commande.nombre;    // On récupère le nombre de crêpes commandées
+    let quantiteCrepe = commande.nombre;    // On récupère la quantité de crêpe commandée
 
     for (const [nom, [quantite, unite]] of Object.entries(commande.ingredients)) {
         $.ajax({
             type: "POST",
-            url: "../../.././Scripts/PhP/Quentin/miseAJourStock.php",
-            data: { nomIngredient: nom, quantiteIngredient: quantite, quantiteCrepe: quantiteCrepe },    // On envoie les données nécessaires pour l'update
+            url: "../../../Scripts/PhP/Quentin/miseAJourStock.php",
+            data: { nomIngredient: nom, quantiteIngredient: quantite, quantiteCrepe: quantiteCrepe },   // On envoie les données nécéssaires pour l'update
             success: function(response) {
                 console.log("Stock mis à jour avec succès !");
+                console.log("OK : " + quantite + " " +  unite + " " + nom);
             },
-            error: function(error) {
-                console.error("Erreur lors de la mise à jour du stock :", error);
-                alert("Une erreur s'est produite lors de la mise à jour du stock.");
+            error: function(xhr, status, error) {
+                console.log("Erreur lors de la mise à jour du stock ingrédient :", error);
+                console.log("NOP : " + quantite + " " +  unite + " " + nom);
             }
         });
     }

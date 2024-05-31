@@ -1,4 +1,5 @@
 <?php
+    // Connexion à la BdD
     require_once '../../../BaseDeDonnees/codesConnexion.php';
     $connex = BaseDeDonnees::connecterBDD('adminQuentin');
 
@@ -15,12 +16,8 @@
             $rq->bindValue(':ingredient', $nomIngredient, PDO::PARAM_STR);
             $rq->execute();
 
-            // Réponse JSON en cas de succès
-            $result = array('success' => true, 'message' => 'Stock mis à jour avec succès.');
-            echo json_encode($result);
-
         } catch (PDOException $e) {
-            echo json_encode(['success' => false, 'message' => 'Erreur lors de la mise à jour du stock : ' . $e->getMessage()]);
+            print $e->getMessage();
         }
     }
 
