@@ -5,11 +5,11 @@ $connexionPDO = BaseDeDonnees::connecterBDD('admin');
 
 $tableauNomProduits= array();
 try {
-    $commandeSQL = "SELECT NomProd 'Nom Produit', COUNT(IdProd) 'Numero Ventes' FROM `detail` GROUP BY IdProd ORDER BY COUNT(IdProd) DESC LIMIT 5;";
-    $produits = $connexionPDO->query($commandeSQL);
-    $produits = $produits->fetchAll(PDO::FETCH_ASSOC);
+    $commandeSQL = "SELECT NomProd 'Nom Produit', COUNT(IdProd) 'Numero Ventes', DateArchiv 'Date vente' FROM `detail` GROUP BY IdProd, DateArchiv ORDER BY COUNT(IdProd) DESC LIMIT 5;";
+    $topFiveProduitsVendus = $topFiveProduitsVendus->query($commandeSQL);
+    $topFiveProduitsVendus = $topFiveProduitsVendus->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach ($produits as $produit) {
+    foreach ($topFiveProduitsVendus as $produit) {
         foreach ($produit as $nomProduit) {
             array_push($tableauNomProduits, $nomProduit);
         }
