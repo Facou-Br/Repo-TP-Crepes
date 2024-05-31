@@ -1,8 +1,12 @@
 <?php
-    require_once '../../../BaseDeDonnees/codesConnexion.php';
+    $host = "localhost";
+    $user = "root";
+    $pwd = "root";
+    $bdd = "crespesco_test";
+    $port = "8889";
 
     try {
-        $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $connex = new PDO('mysql:host=' . $host . ';charset=utf8;dbname=' . $bdd . ';port=' . $port, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     } catch (Exception $e) {
         echo 'Erreur : ' . $e->getMessage() . '<br/>';
         echo 'N° : ' . $e->getCode();
@@ -10,46 +14,42 @@
     }
 
     try {
-        $rq = "SELECT cm.NumCom, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4,
-                    GROUP_CONCAT(i.NomIngred, ':', pi.Quant, ':', i.Unite SEPARATOR ';') AS Ingredients
+        $rq = "SELECT cm.HeureDispo, cm.EtatCde, cm.EtatLivraison, d.NomProd, cm.NomClient, cm.TelClient, cm.AdrClient, cm.CP_Client, cm.VilClient 
                     FROM COMMANDE cm
                     INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
                     INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
-                    INNER JOIN PROD_INGR pi ON d.IdProd = pi.IdProd
-                    INNER JOIN INGREDIENT i ON pi.IdIngred = i.IdIngred
-                    GROUP BY cm.NumCom, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4;";
+                    INNER JOIN PRODUIT p ON d.IdProd = p.IdProd;";
 
         $result = $connex->query($rq);
-        $tabCommandes = array();
+
+        $commandes_array = array();
 
         while ($ligne = $result->fetch(PDO::FETCH_ASSOC)) {
-            $ingredientsBase = array_filter([$ligne["IngBase1"], $ligne["IngBase2"], $ligne["IngBase3"], $ligne["IngBase4"]]);
-            $ingredientsOption = array_filter([$ligne["IngOpt1"], $ligne["IngOpt2"], $ligne["IngOpt3"], $ligne["IngOpt4"]]);
-            $tabIngredient = explode(';', $ligne["Ingredients"]); 
-            $ingredients = array();
-
-            foreach ($tabIngredient as $ing) {
-                list($ingredient, $quantite, $unite) = explode(':', $ing);
-                $ingredients[$ingredient] = array((int)$quantite, $unite);
-            }
-
             $commande = array(
-                "id" => $ligne["NumCom"],
-                "nombre" => $ligne["Quant"],
+                "nomClient" => $ligne["NomClient"],
                 "nom" => $ligne["NomProd"],
                 "temps" => substr($ligne["HeureDispo"], 0, 5),
-                "statut" => $ligne["EtatCde"],
-                "ingredients" => $ingredients
+                "statutCde" => $ligne["EtatCde"],
+                "statutLivraison" => $ligne["EtatLivraison"],
+                "tel" => $ligne["TelClient"],
+                "adrClient" => $ligne["AdrClient"],
+                "cpClient" => substr($ligne["CP_Client"], 0, 5),
+                "vilClient" => $ligne["VilClient"],
             );
-            $tabCommandes[] = $commande;
+            $commandes_array[] = $commande;
         }
 
         $connex = null;
+        $commandes_array = array("commandes" => $commandes_array);
+        $json_data = json_encode($commandes_array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
-        $tabCommandes = array("commandes" => $tabCommandes);
-        $jsonData = json_encode($tabCommandes, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-        echo $jsonData;
+        $filename = '../.././JavaScript/GestionLivraison/commandes.json';
 
+        if (file_put_contents($filename, $json_data)) {
+            echo "Le fichier JSON a été créé avec succès.";
+        } else {
+            echo "Erreur lors de la création du fichier JSON.";
+        }
     } catch (PDOException $e) {
         print $e->getMessage();
     }
