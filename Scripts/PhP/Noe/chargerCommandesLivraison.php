@@ -1,9 +1,9 @@
 <?php
     $host = "localhost";
     $user = "root";
-    $pwd = "root";
-    $bdd = "crespesco_test";
-    $port = "8889";
+    $pwd = "";
+    $bdd = "crepesco_test";
+    $port = "3306";
 
     try {
         $connex = new PDO('mysql:host=' . $host . ';charset=utf8;dbname=' . $bdd . ';port=' . $port, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -15,14 +15,15 @@
 
     try {
         $rq = "SELECT cm.HeureDispo, cm.EtatCde, cm.EtatLivraison, d.NomProd, cm.NomClient, cm.TelClient, cm.AdrClient, cm.CP_Client, cm.VilClient 
-                    FROM COMMANDE cm
-                    INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
-                    INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
-                    INNER JOIN PRODUIT p ON d.IdProd = p.IdProd;";
+        FROM COMMANDE cm
+        INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
+        INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
+        INNER JOIN PRODUIT p ON d.IdProd = p.IdProd
+        WHERE cm.A_Livrer = 1 AND cm.EtatCde = 'Acceptée';";
 
-        $result = $connex->query($rq);
+$result = $connex->query($rq);
 
-        $commandes_array = array();
+$commandes_array = array();
 
         while ($ligne = $result->fetch(PDO::FETCH_ASSOC)) {
             $commande = array(
@@ -44,7 +45,6 @@
         $json_data = json_encode($commandes_array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
         $filename = '../.././JavaScript/GestionLivraison/commandes.json';
-
         if (file_put_contents($filename, $json_data)) {
             echo "Le fichier JSON a été créé avec succès.";
         } else {

@@ -8,15 +8,17 @@ function chargerCommandes() {
         listeCommandes.html("");
 
         data.commandes.forEach(commande => {
-            if (commande.statut !== "Prête") {
+            if (commande.statutLivraison === "fin_preparation") {
                 let elementCommande = `
                     <div>
-                        <h2>Nom : ${commande}</h2>
+                        <h2>Nom : ${commande.nomClient}</h2>
                         <p>Heure de mise à disposition : ${commande.temps}</p>
-                        <p>Statut : ${commande.statut}</p>
-                        <button onclick="commencerCommande(${commande.id})">Commencer</button>
-                        <button onclick="terminerCommande(${commande.id})">Terminer</button>
-                        <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
+                        <p>Statut : ${commande.statutLivraison}</p>
+                        <p>Téléphone : ${commande.tel}</p>
+                        <a href="${commande.adrClient} ${commande.cpClient} ${commande.vilClient}">Adresse de la commande : ${commande.adrClient} ${commande.cpClient} ${commande.vilClient}</a>
+                        <p>Statut : ${commande.statutLivraison}</p>
+                        <button onclick="prendreCommande(${commande.id})">Prendre la commande</button>
+                        <button onclick="terminerCommande(${commande.id})">Commande livrée</button>
                         <hr>
                     </div>
                 `;
