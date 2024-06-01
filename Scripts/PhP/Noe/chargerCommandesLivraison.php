@@ -14,11 +14,12 @@
     }
 
     try {
-        $rq = "SELECT cm.HeureDispo, cm.EtatCde, cm.EtatLivraison, d.NomProd, cm.NomClient, cm.TelClient, cm.AdrClient, cm.CP_Client, cm.VilClient 
+        $rq = "SELECT cm.HeureDispo, cm.EtatCde, cm.EtatLivraison, d.NomProd, cm.NomClient, cm.TelClient, cm.AdrClient, cm.CP_Client, cm.VilClient, l.nom, l.prenom
         FROM COMMANDE cm
         INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
         INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
         INNER JOIN PRODUIT p ON d.IdProd = p.IdProd
+        INNER JOIN LIVREUR l ON l.IdLivreur = cm.IdLivreur
         WHERE cm.A_Livrer = 1 AND cm.EtatCde = 'Acceptée';";
 
 $result = $connex->query($rq);
@@ -34,8 +35,10 @@ $commandes_array = array();
                 "statutLivraison" => $ligne["EtatLivraison"],
                 "tel" => $ligne["TelClient"],
                 "adrClient" => $ligne["AdrClient"],
-                "cpClient" => substr($ligne["CP_Client"], 0, 5),
+                "cpClient" => $ligne["CP_Client"],
                 "vilClient" => $ligne["VilClient"],
+                "nomLivreur" => $ligne["nom"],
+                "prenomLivreur" => $ligne["prenom"],
             );
             $commandes_array[] = $commande;
         }

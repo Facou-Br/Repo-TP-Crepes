@@ -1,9 +1,9 @@
 <?php
     $host = "localhost";
     $user = "root";
-    $pwd = "root";
-    $bdd = "crespesco_test";
-    $port = "8889";
+    $pwd = "";
+    $bdd = "crepesco_test";
+    $port = "3306";
 
     try {
         $connex = new PDO('mysql:host=' . $host . ';charset=utf8;dbname=' . $bdd . ';port=' . $port, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -22,7 +22,7 @@
         $nouveauStatut = $data['statut'];
 
         try {
-            $stmt = $connex->prepare("UPDATE COMMANDE SET EtatCde = :nouveauStatut WHERE NumCom = :idCommande");
+            $stmt = $connex->prepare("UPDATE COMMANDE SET EtatLivraison = :nouveauStatut WHERE NumCom = :idCommande");
             $stmt->bindValue(':nouveauStatut', $nouveauStatut, PDO::PARAM_STR);
             $stmt->bindValue(':idCommande', $idCommande, PDO::PARAM_INT);
             $stmt->execute();
