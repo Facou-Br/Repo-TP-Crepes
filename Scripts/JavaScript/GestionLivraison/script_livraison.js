@@ -19,7 +19,7 @@ function chargerCommandes() {
                         <h2>Nom : ${commande.nomClient}</h2>
                         <p>Nom du livreur : ${commande.nomLivreur} ${commande.prenomLivreur}</p>
                         <p>Heure de mise à disposition : ${commande.temps}</p>
-                        <p>Statut : ${commande.statutLivraison}</p>
+                        <p>Statut de livraison: ${commande.statutLivraison}</p>
                         <p>Téléphone : ${commande.tel}</p>
                         <p>Adresse de la commande : </p><a href="https://www.google.fr/maps/search/${commande.adrClient}+${commande.cpClient}+${commande.vilClient}">
                             ${commande.adrClient} ${commande.cpClient} ${commande.vilClient}
@@ -68,51 +68,40 @@ function actualiserCommandesBdD(data) {
         }
     });
 }
-let commandeEnCours = null
 
 function prendreCommande(idCommande) {
 
-    $.getJSON("../../.././Scripts/JavaScript/GestionLivraison/commandes.json", function (data) {
-        let commande = data.commandes.find(commande => commande.id === idCommande);
-        
-        if (commande) {
-            if (commande.statutCde === "Acceptée") {
-                alert("commande: " +  commande
-                + "\ncommande.statutLivraison: " +  commande.statutLivraison
-                + "\ncommande.statutCde: " +  commande.statutCde
-                + "\ncommandeEnCours: " +  commandeEnCours)
-                commandeEnCours = idCommande;
-                mettreAJourBDD(idCommande, "en_livraison");
-                actualiserCommandesBdD();
-            } else {
-                alert("Cette commande ne peut pas être prise car elle n'est pas fini de préparer.");
-            }
+    alert(idCommande)
+    let commande = listeCommandes.commandes.find(commande => commande.id === idCommande);
+        alert(commande)
+    if (commande) {
+        if (commande.statutCde === "Acceptée") {
+            mettreAJourBDD(idCommande, "en_livraison");
+            actualiserCommandesBdD();
         } else {
-            alert("Commande non trouvée.");
+            alert("Cette commande ne peut pas être prise car elle n'est pas fini de préparer.");
         }
-    });
+    } else {
+        alert("Commande non trouvée.");
+    }
 }
 
 function terminerCommande(idCommande) {
-
-    //if (commandeEnCours !== idCommande) {
-    //    alert("Cette commande ne peut pas être livrée car elle n'est pas en en cours de livraison.");
-    //    return;
-    //}
-
-    $.getJSON("../../.././Scripts/JavaScript/GestionLivraison/commandes.json", function (data) {
-        let commande = data.commandes.find(commande => commande.id === idCommande);
-
-        if (commande) {
-            if (commande.statutLivraison === "en_livraison") {
-                mettreAJourBDD(idCommande, "livree");
-                commandeEnCours = null;
-                actualiserCommandesBdD();
-            } else {
-                alert("Cette commande ne peut pas être livrée car elle n'est pas en cours de livraison.");
-            }
+alert(idCommande)
+    let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
+alert(commande)
+    if (commande) {
+        alert("Statut de livraison: " + commande.statutLivraison )
+        if (commande.statutLivraison === "en_livraison") {
+            mettreAJourBDD(idCommande, "livree");
+            commandeEnCours = null;
+            actualiserCommandesBdD();
+        } else if (commande.statutLivraison === "preparation"){
+            alert("toto")
         } else {
-            alert("Commande non trouvée.");
+            alert("Cette commande ne peut pas être livrée car elle n'est pas en cours de livraison.");
         }
-    });
+    } else {
+        alert("Commande non trouvée.");
+    }
 }
