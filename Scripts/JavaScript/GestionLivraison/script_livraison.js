@@ -1,39 +1,36 @@
 function chargerCommandes() {
-    $.getJSON("../../.././Scripts/JavaScript/GestionLivraison/commandes.json", function (data) {
-        data.commandes.sort((a, b) => {
-            return a.temps.localeCompare(b.temps);
-        });
+    let listeCommandes = $("#commandes");
+    listeCommandes.html("");
 
-        let listeCommandes = $("#commandes");
-        listeCommandes.html("");
-        data.commandes.forEach(commande => {
-            if (commande.statutLivraison === "fin_preparation" || commande.statutLivraison === "en_livraison") {
-                let buttons = '';
-                if (commande.statutLivraison === 'fin_preparation') {
-                    buttons = `<button onclick="prendreCommande(${commande.id})">Prendre la commande</button>`;
-                } else if (commande.statutLivraison === 'en_livraison') {
-                    buttons = `<button onclick="terminerCommande(${commande.id})">Commande livrée</button>`;
-                }
-                let elementCommande = `
-                    <div>
-                        <h2>Nom : ${commande.nomClient}</h2>
-                        <p>Nom du livreur : ${commande.nomLivreur} ${commande.prenomLivreur}</p>
-                        <p>Heure de mise à disposition : ${commande.temps}</p>
-                        <p>Statut de livraison: ${commande.statutLivraison}</p>
-                        <p>Téléphone : ${commande.tel}</p>
-                        <p>Adresse de la commande : </p><a href="https://www.google.fr/maps/search/${commande.adrClient}+${commande.cpClient}+${commande.vilClient}">
-                            ${commande.adrClient} ${commande.cpClient} ${commande.vilClient}
-                        </a>
-                        <br/><br/>
-                        ${buttons}
-                        <hr>
-                    </div>
-                `;
-                listeCommandes.append(elementCommande);
+    data.commandes.forEach(commande => {
+        alert("commande.id: "+ commande.id)
+        if (commande.statutLivraison === "fin_preparation" || commande.statutLivraison === "en_livraison") {
+            let buttons = '';
+            if (commande.statutLivraison === 'fin_preparation') {
+                buttons = `<button onclick="prendreCommande(${commande.id})">Prendre la commande</button>`;
+            } else if (commande.statutLivraison === 'en_livraison') {
+                buttons = `<button onclick="terminerCommande(${commande.id})">Commande livrée</button>`;
             }
-        });
+            let elementCommande = `
+                <div>
+                    <h2>Nom : ${commande.nomClient}</h2>
+                    <p>Nom du livreur : ${commande.nomLivreur} ${commande.prenomLivreur}</p>
+                    <p>Heure de mise à disposition : ${commande.temps}</p>
+                    <p>Statut de livraison: ${commande.statutLivraison}</p>
+                    <p>Téléphone : ${commande.tel}</p>
+                    <p>Adresse de la commande : </p><a href="https://www.google.fr/maps/search/${commande.adrClient}+${commande.cpClient}+${commande.vilClient}">
+                        ${commande.adrClient} ${commande.cpClient} ${commande.vilClient}
+                    </a>
+                    <br/><br/>
+                    ${buttons}
+                    <hr>
+                </div>
+            `;
+            listeCommandes.append(elementCommande);
+        }
     });
 }
+
 
 function mettreAJourBDD(idCommande, nouveauStatut) {
     $.ajax({
@@ -71,7 +68,7 @@ function actualiserCommandesBdD(data) {
 
 function prendreCommande(idCommande) {
 
-    alert(idCommande)
+    alert("idCommande prendreCommande: "+idCommande)
     let commande = listeCommandes.commandes.find(commande => commande.id === idCommande);
         alert(commande)
     if (commande) {
@@ -87,7 +84,7 @@ function prendreCommande(idCommande) {
 }
 
 function terminerCommande(idCommande) {
-alert(idCommande)
+    alert("idCommande terminerCommande: "+idCommande)
     let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
 alert(commande)
     if (commande) {

@@ -5,7 +5,7 @@
 
     if (isset($_POST['id']) && isset($_POST['statut'])) {
         $idCommande = $_POST['id'];
-        $nouveauStatut = $_POST['statut'];
+        $nouveauStatut = $_POST['statutLivraison'];
 
         try {
             $rq = $connex->prepare("UPDATE COMMANDE SET EtatCde = :nouveauStatut WHERE NumCom = :idCommande");
