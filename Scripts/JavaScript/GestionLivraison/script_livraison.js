@@ -39,9 +39,9 @@ function mettreAJourBDD(idCommande, nouveauStatut) {
     $.ajax({
         type: "POST",
         url: "../../.././Scripts/PhP/Noe/modification_commande.php",
-        data: JSON.stringify({ id: idCommande, statutLivraison: nouveauStatut }),
-        contentType: "application/json",
+        data: { id: idCommande, statutLivraison: nouveauStatut },
         success: function(response) {
+            chargerCommandes()
             console.log("Commande mise à jour dans la base de données avec succès !");
         },
         error: function(error) {
