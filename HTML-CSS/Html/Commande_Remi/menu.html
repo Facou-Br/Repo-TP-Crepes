@@ -36,7 +36,7 @@
         <h1>La Crêperie</h1>
         <nav>
             <table>
-                <th><a href="../../index.html">Accueil</a></th>
+                <th><a href="index.html">Accueil</a></th>
                 <th><a href="Html/GestionInventaire_Owen/gestions_stocks.html">Gestion des stocks</a></th>
                 <th><a href="#">Menu</a></th>
                 <th><a href="#">Réservation</a></th>
@@ -50,13 +50,22 @@
             <p>A CHANGER (REDIGER PAR CHAR GPT EN 10s) Bienvenue chez [Nom de votre crêperie] ! Découvrez notre univers gourmand où chaque crêpe est une délicieuse création artisanale, alliant tradition et innovation pour ravir vos papilles.</p>
         </section>
 
+        <!--    TODO BOUGER LA DATABASE
+                ALTER TABLE produit
+                ADD COLUMN description TEXT;
+
+
+        -->
+
+
+
         <form action="../../../Scripts/PhP/Remi/addToCart.php" method="post">
             <section>
                 <div class="titreContent">
                     <h3>Crêpe of the day, La Crêpe Kebab : Une Fusion Culinaire Divine :</h3>
                     <div class="input-group">
                         <button type="button" class="decrement">-</button>
-                        <input type="number" id="input0" name="crepes[0]" class="input" value="0" readonly>
+                        <input type="number" id="input0" name="crepes[Crêpe Kebab]" class="input" value="0" readonly>
                         <button type="button" class="increment">+</button>
                     </div>
                 </div>
@@ -71,7 +80,7 @@
                     <h3>La Crêpe Suzette Flambée</h3>
                     <div class="input-group">
                         <button type="button" class="decrement">-</button>
-                        <input type="number" id="input1" name="crepes[1]" class="input" value="0">
+                        <input type="number" id="input1" name="crepes[Crêpe Suzette Flambée]" class="input" value="0">
                         <button type="button" class="increment">+</button>
                     </div>
                 </div>
@@ -86,7 +95,7 @@
                     <h3>La Crêpe aux Fruits de Saison et au Mascarpone</h3>
                     <div class="input-group">
                         <button type="button" class="decrement">-</button>
-                        <input type="number" id="input2" name="crepes[2]" class="input" value="0" readonly>
+                        <input type="number" id="input2" name="crepes[Crêpe aux Fruits]" class="input" value="0" readonly>
                         <button type="button" class="increment">+</button>
                     </div>
                 </div>
@@ -101,7 +110,7 @@
                     <h3>Crêpes aux Fruits de Mer</h3>
                     <div class="input-group">
                         <button type="button" class="decrement">-</button>
-                        <input type="number" id="input3" name="crepes[3]" class="input" value="0" readonly>
+                        <input type="number" id="input3" name="crepes[Crêpes aux Fruits de Mer]" class="input" value="0" readonly>
                         <button type="button" class="increment">+</button>
                     </div>
                 </div>
@@ -116,7 +125,7 @@
                     <h3>Crêpes aux Épinards et Fromage</h3>
                     <div class="input-group">
                         <button type="button" class="decrement">-</button>
-                        <input type="number" id="input4" name="crepes[4]" class="input" value="0" readonly>
+                        <input type="number" id="input4" name="crepes[Crêpes aux Épinards et Fromage]" class="input" value="0" readonly>
                         <button type="button" class="increment">+</button>
                     </div>
                 </div>
@@ -131,7 +140,7 @@
                     <h3>Crêpes aux Pommes Caramélisées</h3>
                     <div class="input-group">
                         <button type="button" class="decrement">-</button>
-                        <input type="number" id="input5" name="crepes[5]" class="input" value="0" readonly>
+                        <input type="number" id="input5" name="crepes[Crêpes aux Pommes Caramélisées]" class="input" value="0" readonly>
                         <button type="button" class="increment">+</button>
                     </div>
                 </div>
@@ -146,7 +155,7 @@
                     <h3>Crêpes aux Champignons et Crème</h3>
                     <div class="input-group">
                         <button type="button" class="decrement">-</button>
-                        <input type="number" id="input6" name="crepes[6]" class="input" value="0" readonly>
+                        <input type="number" id="input6" name="crepes[Crêpes aux Champignons et Crème]" class="input" value="0" readonly>
                         <button type="button" class="increment">+</button>
                     </div>
                 </div>
