@@ -1,6 +1,6 @@
 <?php
     require_once '../../../BaseDeDonnees/codesConnexion.php';
-    $connex = BaseDeDonnees::connecterBDD('adminQuentin')
+    $connex = BaseDeDonnees::connecterBDD('admin');
 
     try {
         $rq = "SELECT cm.NumCom, cm.HeureDispo, cm.EtatCde, cm.EtatLivraison, d.NomProd, cm.NomClient, cm.TelClient, cm.AdrClient, cm.CP_Client, cm.VilClient, l.nom, l.prenom

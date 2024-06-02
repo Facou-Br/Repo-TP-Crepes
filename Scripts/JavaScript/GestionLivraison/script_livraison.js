@@ -1,15 +1,41 @@
-function chargerCommandes() {
-    let listeCommandes = $("#commandes");
-    listeCommandes.html("");
+listeCommandes = null
+chargerCommandes()
 
+$(document).ready(function () {
+    afficherCommandes(listeCommandes)
+})
+
+function chargerCommandes() {
+    $.ajax({
+        type: "POST",
+        url: "../../.././Scripts/PhP/Noe/chargerCommandesLivraison.php",
+        contentType: "application/json",
+        success: function(response) {
+            alert("1")
+            listeCommandes = JSON.parse(response);
+            alert("2")
+            afficherCommandes(listeCommandes);
+        },
+        error: function(error) {
+            console.log("Erreur lors du chargement des commandes :", error);
+            alert("Une erreur s'est produite lors du chargement des commandes.");
+        }
+    });
+}
+
+
+function afficherCommandes(data) {
+    let listeCommandes = $("#commandes")
+    listeCommandes.html("")
+    
     data.commandes.forEach(commande => {
         alert("commande.id: "+ commande.id)
         if (commande.statutLivraison === "fin_preparation" || commande.statutLivraison === "en_livraison") {
-            let buttons = '';
+            let buttons = ''
             if (commande.statutLivraison === 'fin_preparation') {
-                buttons = `<button onclick="prendreCommande(${commande.id})">Prendre la commande</button>`;
+                buttons = `<button onclick="prendreCommande(${commande.id})">Prendre la commande</button>`
             } else if (commande.statutLivraison === 'en_livraison') {
-                buttons = `<button onclick="terminerCommande(${commande.id})">Commande livrée</button>`;
+                buttons = `<button onclick="terminerCommande(${commande.id})">Commande livrée</button>`
             }
             let elementCommande = `
                 <div>
@@ -25,10 +51,10 @@ function chargerCommandes() {
                     ${buttons}
                     <hr>
                 </div>
-            `;
-            listeCommandes.append(elementCommande);
+            `
+            listeCommandes.append(elementCommande)
         }
-    });
+    })
 }
 
 
@@ -39,13 +65,13 @@ function mettreAJourBDD(idCommande, nouveauStatut) {
         data: { id: idCommande, statutLivraison: nouveauStatut },
         success: function(response) {
             chargerCommandes()
-            console.log("Commande mise à jour dans la base de données avec succès !");
+            console.log("Commande mise à jour dans la base de données avec succès !")
         },
         error: function(error) {
-            console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error);
-            alert("Une erreur s'est produite lors de la mise à jour de la commande dans la base de données.");
+            console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error)
+            alert("Une erreur s'est produite lors de la mise à jour de la commande dans la base de données.")
         }
-    });
+    })
 }
 
 
@@ -56,30 +82,30 @@ function actualiserCommandesBdD(data) {
         data: JSON.stringify(data),
         contentType: "application/json",
         success: function(response) {
-            console.log("Commandes chargées dans la BdD avec succès !");
-            chargerCommandes();
+            console.log("Commandes chargées dans la BdD avec succès !")
+            chargerCommandes()
         },
         error: function(error) {
-            console.error("Erreur lors de la sauvegarde des commandes :", error);
-            alert("Une erreur s'est produite lors de la sauvegarde des commandes sorry.");
+            console.error("Erreur lors de la sauvegarde des commandes :", error)
+            alert("Une erreur s'est produite lors de la sauvegarde des commandes sorry.")
         }
-    });
+    })
 }
 
 function prendreCommande(idCommande) {
 
     alert("idCommande prendreCommande: "+idCommande)
-    let commande = listeCommandes.commandes.find(commande => commande.id === idCommande);
+    let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
         alert(commande)
     if (commande) {
         if (commande.statutCde === "Acceptée") {
-            mettreAJourBDD(idCommande, "en_livraison");
-            actualiserCommandesBdD();
+            mettreAJourBDD(idCommande, "en_livraison")
+            actualiserCommandesBdD()
         } else {
-            alert("Cette commande ne peut pas être prise car elle n'est pas fini de préparer.");
+            alert("Cette commande ne peut pas être prise car elle n'est pas fini de préparer.")
         }
     } else {
-        alert("Commande non trouvée.");
+        alert("Commande non trouvée.")
     }
 }
 
@@ -90,15 +116,15 @@ alert(commande)
     if (commande) {
         alert("Statut de livraison: " + commande.statutLivraison )
         if (commande.statutLivraison === "en_livraison") {
-            mettreAJourBDD(idCommande, "livree");
-            commandeEnCours = null;
-            actualiserCommandesBdD();
+            mettreAJourBDD(idCommande, "livree")
+            commandeEnCours = null
+            actualiserCommandesBdD()
         } else if (commande.statutLivraison === "preparation"){
             alert("toto")
         } else {
-            alert("Cette commande ne peut pas être livrée car elle n'est pas en cours de livraison.");
+            alert("Cette commande ne peut pas être livrée car elle n'est pas en cours de livraison.")
         }
     } else {
-        alert("Commande non trouvée.");
+        alert("Commande non trouvée.")
     }
 }
