@@ -11,9 +11,7 @@ function chargerCommandes() {
         url: "../../.././Scripts/PhP/Noe/chargerCommandesLivraison.php",
         contentType: "application/json",
         success: function(response) {
-            alert("1")
             listeCommandes = JSON.parse(response);
-            alert("2")
             afficherCommandes(listeCommandes);
         },
         error: function(error) {
@@ -29,13 +27,18 @@ function afficherCommandes(data) {
     listeCommandes.html("")
     
     data.commandes.forEach(commande => {
-        alert("commande.id: "+ commande.id)
         if (commande.statutLivraison === "fin_preparation" || commande.statutLivraison === "en_livraison") {
             let buttons = ''
             if (commande.statutLivraison === 'fin_preparation') {
                 buttons = `<button onclick="prendreCommande(${commande.id})">Prendre la commande</button>`
             } else if (commande.statutLivraison === 'en_livraison') {
                 buttons = `<button onclick="terminerCommande(${commande.id})">Commande livrée</button>`
+            }
+            let livreur = ''
+            if (commande.livreur === null) {
+                livreur = `<select>Choisir un livreur</select>`
+            } else {
+                livreur = `<p>Nom du livreur : ${commande.nomLivreur} ${commande.prenomLivreur}</p>`
             }
             let elementCommande = `
                 <div>
@@ -93,10 +96,9 @@ function actualiserCommandesBdD(data) {
 }
 
 function prendreCommande(idCommande) {
-
-    alert("idCommande prendreCommande: "+idCommande)
+    alert("prendreCommande\n"+ "idCommande : "+idCommande)
     let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
-        alert(commande)
+    alert(commande.statutLivraison)
     if (commande) {
         if (commande.statutCde === "Acceptée") {
             mettreAJourBDD(idCommande, "en_livraison")
@@ -110,17 +112,14 @@ function prendreCommande(idCommande) {
 }
 
 function terminerCommande(idCommande) {
-    alert("idCommande terminerCommande: "+idCommande)
     let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
-alert(commande)
+    alert("terminerCommande\n"+ "idCommande : "+idCommande+"\n"+ commande.statutLivraison)
     if (commande) {
-        alert("Statut de livraison: " + commande.statutLivraison )
         if (commande.statutLivraison === "en_livraison") {
             mettreAJourBDD(idCommande, "livree")
             commandeEnCours = null
             actualiserCommandesBdD()
-        } else if (commande.statutLivraison === "preparation"){
-            alert("toto")
+            alert("terminerCommande\n"+ "idCommande : "+idCommande+"\n"+ commande.statutLivraison)
         } else {
             alert("Cette commande ne peut pas être livrée car elle n'est pas en cours de livraison.")
         }
