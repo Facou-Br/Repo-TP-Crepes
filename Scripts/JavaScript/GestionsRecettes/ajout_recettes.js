@@ -6,12 +6,12 @@ function ajouterCommande(nouvelleCommande) {
         data: JSON.stringify(nouvelleCommande),
         contentType: "application/json",
         success: function(response) {
-            console.log("Nouvelle commande ajoutée à la base de données avec succès !");
-            chargerCommandes();
+            console.log("Nouvelle commande ajoutée à la base de données avec succès !")
+            chargerCommandes()
         },
         error: function(error) {
-            console.error("Erreur lors de l'ajout de la nouvelle commande dans la base de données :", error);
-            alert("Une erreur s'est produite lors de l'ajout de la nouvelle commande dans la base de données.");
+            console.error("Erreur lors de l'ajout de la nouvelle commande dans la base de données :", error)
+            alert("Une erreur s'est produite lors de l'ajout de la nouvelle commande dans la base de données.")
         }
-    });
+    })
 }
