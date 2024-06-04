@@ -8,7 +8,7 @@ class BaseDeDonnees
     private const PORT = "3306";
 
     //Identifiants de connexion à la base de données en admin
-    private const ADMIN_USER = "root";
+    private const ADMIN_USER = "Root";
     private const ADMIN_PASSWORD = "";
     private const ADMIN_USER_QUENTIN = "crepesco_admin";
     private const ADMIN_PASSWORD_QUENTIN = "Cnam2024_crepes";

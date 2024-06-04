@@ -4,7 +4,9 @@ img {
     margin-right: auto;
     width: 100%;
     height: auto;
+    border-radius: 5px;
 }
+
 
 .flex-container {
     display: flex;
@@ -24,5 +26,10 @@ footer a {
     text-decoration: none;
     float : left;
 padding: 0 20px;
+}
+
+section p {
+color: black;
+margin-top: 12px;
 }
 

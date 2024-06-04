@@ -229,6 +229,12 @@ textarea {
   border: 1px solid #cccccc;
   border-radius: 3px;
 }
+/* by remi to modif le header*/
+.panier {
+  float: right;
+  max-width: 40px;
+
+}
 
 button {
   background-color: #333333;
@@ -237,6 +243,7 @@ button {
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  transition: background-color 0.5s ease;
 }
 
 button:hover {
