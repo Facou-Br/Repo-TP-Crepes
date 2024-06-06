@@ -11,12 +11,7 @@ $.ajax({
         $("#fournisseur-select").append(
             $("<option></option>").val(data["NomFourn"]).text(data["NomFourn"])
         );
-        $.ajax({
-            url: "../../../Scripts/PhP/Owen/fournisseur/afficher_fourn.php",
-            type: "POST",
-            success: function (data){
-                data2 = JSON.parse(data);
-                $.each(data2, function (index, fournisseur) {
+        $("#fournisseur-select").change(function() {
                     $("#fournisseur-select").append(
                         $("<option></option>").val(fournisseur["NomFourn"]).text(fournisseur["NomFourn"])
                     );

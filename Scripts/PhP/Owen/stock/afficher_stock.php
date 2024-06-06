@@ -4,7 +4,7 @@ $connex = BaseDeDonnees::connecterBDD('admin');
 
 try {
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-    $sql = "SELECT I.NomIngred, F.NomFourn, I.StockReel, FI.PrixUHT FROM INGREDIENT I JOIN fourn_ingr FI ON I.IdIngred=FI.IdIngred JOIN fournisseur F ON FI.NomFourn=F.NomFourn;";
+    $sql = "SELECT I.NomIngred, F.NomFourn, I.StockReel, FI.PrixUHT FROM INGREDIENT I JOIN fourn_ingr FI ON I.IdIngred=FI.IdIngred JOIN fournisseur F ON FI.NomFourn=F.NomFourn WHERE I.DateArchiv = 0000-00-00;";
     $ligne = $connex->query($sql);
 } catch (PDOException $e) {
     echo 'Erreur : ' . $e->getMessage() . '<br />';
