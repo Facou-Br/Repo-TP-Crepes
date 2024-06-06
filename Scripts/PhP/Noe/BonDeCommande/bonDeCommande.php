@@ -17,15 +17,9 @@
                     <label for="fournisseur">Fournisseur :</label>
                     <select id="fournisseur" name="fournisseur" required>
                         <?php
+                            // Connexion à la BdD
                             require_once '../../../../BaseDeDonnees/codesConnexion.php';
-
-                            try {
-                                $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-                            } catch (Exception $e) {
-                                echo 'Erreur : ' . $e->getMessage() . '<br/>';
-                                echo 'N° : ' . $e->getCode();
-                                die();
-                            }
+                            $connex = BaseDeDonnees::connecterBDD('admin');
 
                             $rq = "SELECT NomFourn FROM FOURNISSEUR ORDER BY NomFourn ASC";
                             $resultat = $connex->query($rq);
