@@ -35,12 +35,14 @@ function afficherCommandes(data) {
             } else if (commande.statutLivraison === 'en_livraison') {
                 buttons = `<button onclick="termineCommande(${commande.id})">Commande livrée</button>`
             }
-            let livreur = ''
-            if (commande.idLivreur === null) {
-                livreur = `<select>Choisir un livreur</select>`
-            } else {
-                livreur = `<p>Nom du livreur : ${commande.nomLivreur} ${commande.prenomLivreur}</p>`
-            }
+            //let livreur = ''
+            //if (commande.idLivreur === null) {
+                 let livreur = `<select id="livreur-select">
+                 <option value=#>Choisir un livreur</option>
+             </select>`
+            //} else {
+            //    livreur = `<p>Nom du livreur : ${commande.nomLivreur} ${commande.prenomLivreur}</p>`
+            //}
             let elementCommande = `
                 <div>
                     <h2>Nom : ${commande.nomClient}</h2>
@@ -52,6 +54,7 @@ function afficherCommandes(data) {
                         ${commande.adrClient} ${commande.cpClient} ${commande.vilClient}
                     </a>
                     <br/><br/>
+                    ${livreur}
                     ${buttons}
                     <hr>
                 </div>
