@@ -4,7 +4,7 @@
 
     try {
         //Prépare une requête sql pour le chargement de la commande
-        $rq = "SELECT cm.NumCom, cm.HeureDispo, cm.EtatCde, cm.EtatLivraison, d.NomProd, cm.NomClient, cm.TelClient, cm.AdrClient, cm.CP_Client, cm.VilClient, l.nom, l.prenom
+        $rq = "SELECT cm.NumCom, cm.HeureDispo, cm.EtatCde, cm.EtatLivraison, d.NomProd, cm.NomClient, cm.TelClient, cm.AdrClient, cm.CP_Client, cm.VilClient, l.nom, l.prenom, cm.IdLivreur
         FROM COMMANDE cm
         INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
         INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
@@ -30,6 +30,7 @@
                 "vilClient" => $ligne["VilClient"],
                 "nomLivreur" => $ligne["nom"],
                 "prenomLivreur" => $ligne["prenom"],
+                "idLivreur" => $ligne["IdLivreur"]
             );
             $commandes_array[] = $commande;
         }

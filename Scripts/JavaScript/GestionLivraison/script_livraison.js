@@ -33,11 +33,12 @@ function afficherCommandes(data) {
             if (commande.statutLivraison === 'fin_preparation') {
                 buttons = `<button onclick="prendreCommande(${commande.id})">Prendre la commande</button>`
             } else if (commande.statutLivraison === 'en_livraison') {
-                buttons = `<button onclick="termineCommande(${commande.id})">Commande livrée rierihrh</button>`
+                buttons = `<button onclick="termineCommande(${commande.id})">Commande livrée</button>`
             }
             let livreur = ''
-            if (commande.livreur === null) {
-                livreur = `<select>Choisir un livreur</select>`
+            if (commande.idLivreur === null) {
+//                livreur = `<select>Choisir un livreur</select>`
+                livreur = `<p>NIQUE TA GRAND MERE</p>`
             } else {
                 livreur = `<p>Nom du livreur : ${commande.nomLivreur} ${commande.prenomLivreur}</p>`
             }
@@ -65,11 +66,11 @@ function afficherCommandes(data) {
 function mettreAJourBDD(idCommande, nouveauStatut) {
     $.ajax({
         type: "POST",
-        url: "../../.././Scripts/PhP/Noe/modification_commande.php",
+        url: "../../../Scripts/PHP/Noe/modification_commande.php",
         data: { id: idCommande, statutLivraison: nouveauStatut },
         success: function(response) {
-            chargerCommandes()
             console.log("Commande mise à jour dans la base de données avec succès !")
+            chargerCommandes()
         },
         error: function(error) {
             console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error)
@@ -99,12 +100,9 @@ function actualiserCommandesBdD(data) {
 
 // Fonction pour prendre une commande
 function prendreCommande(idCommande) {
-    alert("non")
-    //alert("prendreCommande\n"+ "idCommande : "+idCommande)
     let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
-    //alert(commande.statutLivraison)
     if (commande) {
-        if (commande.statutCde === "Acceptée") {
+        if (commande.statutLivraison === "fin_preparation") {
             mettreAJourBDD(idCommande, "en_livraison")
             actualiserCommandesBdD()
         } else {
@@ -118,16 +116,11 @@ function prendreCommande(idCommande) {
 // Fonction pour terminer une commande
 function termineCommande(idCommande) {
     let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
-    alert("1")
-//    alert("terminerCommande\n"+ "idCommande : "+idCommande+"\n"+ commande.statutLivraison)
     if (commande) {
-        alert("grbifzbvdsbu")
         if (commande.statutLivraison === "en_livraison") {
-            alert("toto")
             mettreAJourBDD(idCommande, "livree")
             commandeEnCours = null
             actualiserCommandesBdD()
-            //alert("terminerCommande\n"+ "idCommande : "+idCommande+"\n"+ commande.statutLivraison)
         } else {
             alert("Cette commande ne peut pas être livrée car elle n'est pas en cours de livraison.")
         }
