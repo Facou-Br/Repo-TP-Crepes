@@ -37,8 +37,7 @@ function afficherCommandes(data) {
             }
             let livreur = ''
             if (commande.idLivreur === null) {
-//                livreur = `<select>Choisir un livreur</select>`
-                livreur = `<p>NIQUE TA GRAND MERE</p>`
+                livreur = `<select>Choisir un livreur</select>`
             } else {
                 livreur = `<p>Nom du livreur : ${commande.nomLivreur} ${commande.prenomLivreur}</p>`
             }
