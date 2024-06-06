@@ -1,17 +1,32 @@
 # Repo-Projet Crêpes
 
-Voici où trouver vos fichiers:
-  CSS : 
-    Style.css de base retrouvable sous ...
-    Toute spécification doit être un sous dossier avec un commentaire explicant ses modifications et son apport au style de base.
+## Description
 
-  HTML : 
-    Les pages HTML précises sont sous \HTML-CSS\HTML:
-        Chacun aura un répositoire avec ses pages précises. Voir Fernando FERREIRA PIAIA pour les liaisons inter pages.
-        Les pages gérants seront renvoyées immédiatement vers une page PhP de login et sont seulement accessibles si l'on a le lien.
-    Les styles CSS doivent être gardées de la façon suivante:
-        L'on aura le style.css de base et GLOBAL que doit agir sur le maximum de pages
-        Puis on aura des sous-styles pour des cas spéciaux que doivent être gardées à un minimum.
+This is a project for managing a crepe restaurant. It includes features for managing orders, inventory, and staff.
 
-  PHP:
-    Connexion de la base de données sur "BaseDeDonnees\connexionBdB.php" 
+## Project Structure
+
+- `BaseDeDonnees/`: Contains the database connection files and SQL scripts.
+- `HTML-CSS/`: Contains the HTML and CSS files for the project.
+  - `Css/`: Contains the CSS files for the project.
+  - `Html/`: Contains the HTML files for the project.
+  - `Images/`: Contains the images used in the project.
+- `Scripts/`: Contains JavaScript and PHP scripts for the project.
+  - `JavaScript/`: Contains JavaScript files.
+  - `PhP/`: Contains PHP files.
+- `index.php`: The main entry point for the project.
+
+## Setup
+
+1. Clone the repository.
+2. Set up the database using the SQL script in `BaseDeDonnees/crepesco_test_17_05.sql`.
+3. Update the database connection details in `BaseDeDonnees/codesConnexion.php`.
+4. Open `index.php` in your browser to start using the application.
+
+## Contributing
+
+Please follow the existing coding style and comment your code. If you make changes to the CSS, please update the relevant subfolder and add a comment explaining your changes.
+
+## Version Control
+
+This project uses Git for version control. The project settings for the Git integration in JetBrains IDEs can be found in the `.idea/vcs.xml` file.

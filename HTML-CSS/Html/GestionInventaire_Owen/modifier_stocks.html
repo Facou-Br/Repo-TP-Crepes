@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Gestion des stocks</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../Css/Style_gestionFourn.css">
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+
+</head>
+<body>
+<header>
+  <h1>Modifier un élément</h1>
+  <nav>
+    <a href="gestions_stocks.html">Retour</a>
+  </nav>
+</header>
+<div class="wrapper">
+  <select id="stocks-select">
+    <option value=#>Choisir un élément</option>
+  </select>
+  <select id="fournisseur-select">
+    <option value=#>Choisir un fournisseur</option>
+    </select>
+
+  <form id="stocks-form">
+    <input type="number" id="stockReel" name="stockReel" placeholder="Quantité" required>
+    <input type="text" id="prix" name="prix" placeholder="Prix UHT" required>
+    <button id="modifier" type="submit">Envoyer</button>
+    <button id="supprimer" type="submit">Supprimer</button>
+  </form>
+  <a id="resultat"></a>
+
+</div>
+<footer>
+  <script src="../../../Scripts/JavaScript/Owen/stock/modifs_stocks.js"></script>
+  <script src="../../../Scripts/JavaScript/Owen/stock/suppr_stock.js"></script>
+</footer>
+</body>
+</html>

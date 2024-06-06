@@ -1,0 +1,143 @@
+/*--- RESET ---*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    vertical-align: baseline;
+    background: transparent;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+/*--- FIN RESET ---*/
+
+
+/* CSS Document */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: #EEEEEE;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    background-image: url('../Images/jpeg/wood.jpg');
+}
+
+h1 {
+    font-size: 50px;
+}
+
+#wrapper {
+    margin: 0 auto;
+    max-width: 1160px;
+    padding: 0 10px;
+}
+
+
+/********** STYLE COMMANDES  **********/
+#commandes {
+    display: grid;
+    margin: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    text-align: center;
+}
+
+#commandes div {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+#commandes div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+#commandes p {
+    margin-bottom: 5px;
+}
+
+#commandes button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#commandes button:hover {
+    background-color: #0056b3;
+}
+
+#commandes hr {
+    margin: 10px 0;
+}
+
+#commandes h2 {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#commandes p {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+
+/********** M E D I A  Q U E R Y **********/
+@media only screen and (max-width: 1300px) {
+    #commandes {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    #commandes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .wrapper {
+        padding: 10px;
+    }
+}
+
+@media only screen and (max-width: 740px) {
+    #commandes {
+        grid-template-columns: 1fr;
+    }
+    #commandes div {
+        padding: 15px;
+    }
+    #commandes p {
+        font-size: 16px;
+    }
+    #commandes button {
+        padding: 8px 15px;
+    }
+}

@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="fr">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Mon panier</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <style>
+      .mon-bouton {
+        position: relative; /* Assurez-vous que le positionnement est relatif pour que les transformations affectent le texte par rapport au bouton */
+      }
 
-</body>
+      .mon-bouton span {
+        display: inline-block; /* Permet de cibler le texte */
+        transform: translateX(0px) translateY(px); /* Déplace le texte de 10px vers la droite et de 5px vers le bas */
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Mon panier</h1>
+    <ul>
+      <li>Produit 1</li>
+      <li>Produit 2</li>
+      <li>Produit 3</li>
+    </ul>
+    <button class="mon-bouton">Cliquez ici</button>
+  </body>
+
 </html>
