@@ -3,6 +3,7 @@
     $connex = BaseDeDonnees::connecterBDD('admin');
 
     try {
+        //Prépare une requête sql pour le chargement de la commande
         $rq = "SELECT cm.NumCom, cm.HeureDispo, cm.EtatCde, cm.EtatLivraison, d.NomProd, cm.NomClient, cm.TelClient, cm.AdrClient, cm.CP_Client, cm.VilClient, l.nom, l.prenom
         FROM COMMANDE cm
         INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
