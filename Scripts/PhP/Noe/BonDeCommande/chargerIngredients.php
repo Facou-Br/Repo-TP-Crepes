@@ -5,12 +5,7 @@
         $data = json_decode(file_get_contents('php://input'), true);
         $fournisseur = $data['fournisseur'];
 
-        try {
-            $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        } catch (Exception $e) {
-            echo json_encode(['error' => 'Erreur de connexion : ' . $e->getMessage()]);
-            die();
-        }
+        $connex = BaseDeDonnees::connecterBDD('admin');
 
         $rq = "SELECT i.NomIngred
                FROM INGREDIENT i

@@ -1,4 +1,19 @@
 $.ajax({
+    url: "../../../Scripts/PhP/Owen/fournisseur/afficher_fourn.php",
+    type: "POST",
+    success: function (data) {
+        data = JSON.parse(data);
+        console.log(data);
+        $.each(data, function (index, fourn) {
+                $("#fournisseur-select").append(
+                    $("<option></option>").val(fourn["NomFourn"]).text(fourn["NomFourn"])
+                );
+            }
+        );
+    }
+});
+
+$.ajax({
     url: "../../../Scripts/PhP/Owen/stock/afficher_stock.php",
     type: "POST",
     success: function (data){
@@ -8,32 +23,19 @@ $.ajax({
                 $("<option></option>").val(stocks["NomIngred"]).text(stocks["NomIngred"])
             );
         });
-        $("#fournisseur-select").append(
-            $("<option></option>").val(data["NomFourn"]).text(data["NomFourn"])
-        );
-        $.ajax({
-            url: "../../../Scripts/PhP/Owen/fournisseur/afficher_fourn.php",
-            type: "POST",
-            success: function (data){
-                data2 = JSON.parse(data);
-                $.each(data2, function (index, fournisseur) {
-                    $("#fournisseur-select").append(
-                        $("<option></option>").val(fournisseur["NomFourn"]).text(fournisseur["NomFourn"])
-                    );
-                });
-            },
-        });
-
         $("#stocks-select").change(function() {
             var selectedStocks = $(this).val();
-
             var stocks = data.find(f => f.NomIngred === selectedStocks);
 
             if (stocks) {
-                $("#seuilStock").val(stocks.StockReel);
-                $("#prix").val(stocks.PrixUHT_Moyen);
+                $("#stockReel").val(stocks.StockReel);
+                $("#prix").val(stocks.PrixUHT);
+                $("#fournisseur-select").val(stocks["NomFourn"]);
+
+
             }
         });
+         // closing brace and parenthesis for success function;
     }, // closing brace and parenthesis for success function
 
     error: function () {
@@ -42,12 +44,14 @@ $.ajax({
 });
 
 
+
+
 $(document).ready(function(){
     $('#modifier').click(function(e){
         e.preventDefault();
         var nomIngred = $('#stocks-select').val();
         var nomFourn = $('#fournisseur-select').val();
-        var StockReel = $('#StockReel').val();
+        var StockReel = $('#stockReel').val();
         var prix = $('#prix').val();
 
         $.ajax({
@@ -67,6 +71,7 @@ $(document).ready(function(){
                 if (ingredient) {
                     $("#quantite").val("");
                     $("#unite").val("");
+
                 }
             },
             fail: function () {

@@ -12,7 +12,7 @@ $.ajax({
             "<td value='" + row["NomIngred"] + "'>" + row["NomIngred"] + "</td>" +
             "<td value='" + row["NomFourn"] + "'>" + row["NomFourn"] + "</td>" +
             "<td value='" + row["StockReel"] + "'>" + row["StockReel"] + "</td>" +
-            "<td value='" + row["PrixUHT_Moyen"] + "'>" + row["PrixUHT_Moyen"] + "</td>" +
+            "<td value='" + row["PrixUHT"] + "'>" + row["PrixUHT"] + "€</td>" +
             "</tr>"
         );
       });
