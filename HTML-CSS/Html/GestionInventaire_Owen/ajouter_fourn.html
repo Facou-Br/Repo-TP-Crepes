@@ -4,34 +4,9 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un fournisseur</title>
     <link rel="stylesheet" type="text/css" href="../../../HTML-CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../HTML-CSS/Css/styleFormulaire.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#Ajouter').click(function(e){
-                e.preventDefault();
-                var nomFourn = $('#nomFourn').val();
-                var adresse = $('#adresse').val();
-                var codePostal = $('#codePostal').val();
-                var ville = $('#ville').val();
-                var telephone = $('#telephone').val();
 
-                $.ajax({
-                    type: 'POST',
-                    url: '../../../Scripts/PHP/Owen/fournisseur/ajouter_fourn.php',
-                    data: {
-                        nomFourn: nomFourn,
-                        adresse: adresse,
-                        codePostal: codePostal,
-                        ville: ville,
-                        telephone: telephone
-                    },
-                    success: function(response){
-                        alert(response);
-                    }
-                });
-            });
-        });
-    </script>
 </head>
 <body>
 <div class="wrapper">
@@ -72,4 +47,8 @@
         <a href="gestion_fournisseurs.html"><button id="Retour" type="button" value="Retour">Retour</button></a>
     </div>
 </div>
+<footer>
+    <script src="../../../Scripts/JavaScript/Owen/fournisseur/fourn_aj.js"></script>
+</footer>
 </body>
+</html>
