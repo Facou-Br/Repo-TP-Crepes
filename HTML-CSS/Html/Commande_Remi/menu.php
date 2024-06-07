@@ -7,34 +7,16 @@
     <meta name="description" content="Équipe Crêpe" />
     <meta name="robots" content="all" />
     <meta name="copyright" content="Équipe Crêpe" />
+    <link rel="stylesheet" href="../../Css/StylePanier.css">
     <link rel="stylesheet" href="../../style.css">
     <title>Équipe Crêpe</title>
-    <style>
-        .titreContent { padding: 0px 8px; font-size: 1.5em; font-weight: bold; color: #000; margin-bottom: 3px; display: flex; align-items: flex-start; }
-        .titreContent img { margin-left: auto; max-width: 40px; }
-        .titreContent h3 { margin-right: 10px; text-decoration: underline; }
-        .border { padding: 10px; margin-bottom: 30px; }
-        section { padding: 20px; align-content: center; box-sizing: border-box; }
-        .box { display: flex; align-items: flex-start; }
-        .box img { margin-left: auto; }
-        .box p { margin-right: 10px; }
-        section.splited { padding: 20px; width: 49.5%; text-align: justify; }
-        img { max-width: 170px; border-radius: 3px; }
-        .input-group { display: flex; justify-content: center; align-items: center; }
-        button, input { outline: none; border: none; padding: 3px 8px; font-size: 18px; max-width: 70px; min-width: 50px; }
-        input { width: 100%; text-align: center; }
-        button { cursor: pointer; }
-        input[type="number"] { appearance: none; -webkit-appearance: textfield; }
-        .increment { border-bottom-right-radius: 12px; border-top-right-radius: 12px; }
-        .decrement { border-bottom-left-radius: 12px; border-top-left-radius: 12px; }
-        button:hover { background-color: #c4c4c4; }
-    </style>
-</head>
+    </head>
 <body>
 <div class="wrapper">
     <header>
+        <input type="number" class="panier input" value="0" readonly >
         <img class="panier" src="../../Images/png/panier.png">
-        <input type="number" class="panier input" value="0" readonly>
+
         <h1>La Crêperie</h1>
         <nav>
             <table>
