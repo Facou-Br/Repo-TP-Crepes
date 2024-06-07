@@ -11,8 +11,7 @@ $prixUHTMoyen = $_POST["prix"];
 try {
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $sql = "UPDATE `ingredient` SET `StockReel` = " . $stockReel . ", `PrixUHT_Moyen` = " . $prixUHTMoyen . " WHERE `NomIngred` = '" . $nomIngred . "';";
-    $sql2= "UPDATE `fourn_ingr` SET `NomFourn` = ".$nomFourn.", `PrixUHT` = ".$prixUHTMoyen." WHERE `IdIngred` = (SELECT `IdIngred` FROM `ingredient` WHERE `NomIngred` = '".$nomIngred."');";
-    var_dump($sql2);
+    $sql2= "UPDATE `fourn_ingr` SET `NomFourn` = '".$nomFourn."', `PrixUHT` = ".$prixUHTMoyen." WHERE `IdIngred` = (SELECT `IdIngred` FROM `ingredient` WHERE `NomIngred` = '".$nomIngred."');";
     $connex->exec($sql); #essayer le query pour voir si ça marche regarder dans le cours
     $connex->commit();
     $connex->exec($sql2);
