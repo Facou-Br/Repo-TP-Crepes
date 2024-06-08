@@ -1,23 +1,14 @@
-<!DOCTYPE>
-<html>
-
-<body>
 <?php
     require_once '..\..\..\BaseDeDonnees\codesConnexion.php';
     try {
-        $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname='
-            . DATABASE . ';port=' . PORT, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    } catch (PDOException $e) {
-        echo 'Erreur : ' . $e->getMessage() . '<br />';
-        echo 'N° : ' . $e->getCode();
-        die();
-    }
-    
-
-    try {
-        $rq = "SELECT NumCom, NomClient, AdrClient,TelClient, CP_Client, VilClient, HeureDispo, EtatLivraison 
-                    FROM commande WHERE commande.EtatLivraison = 'fin_preparation'
-                    ";
+        //Prépare une requête sql pour le chargement de la commande
+        $rq = "SELECT cm.NumCom, cm.HeureDispo, cm.EtatCde, cm.EtatLivraison, d.NomProd, cm.NomClient, cm.TelClient, cm.AdrClient, cm.CP_Client, cm.VilClient, l.nom, l.prenom, cm.IdLivreur
+        FROM COMMANDE cm
+        INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
+        INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
+        INNER JOIN PRODUIT p ON d.IdProd = p.IdProd
+        INNER JOIN LIVREUR l ON l.IdLivreur = cm.IdLivreur
+        WHERE cm.A_Livrer = 1 AND cm.EtatCde = 'Acceptée';";
 
         $result = $connex->query($rq);
 
