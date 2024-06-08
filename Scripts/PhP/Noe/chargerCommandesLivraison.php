@@ -19,29 +19,29 @@
         while ($ligne = $result->fetch(PDO::FETCH_ASSOC)) {
             $commande = array(
                 "id" => $ligne["NumCom"],
-                "nom" => $ligne["NomClient"],
-                "tel" => $ligne["TelClient"],
-                "adresse" => $ligne["AdrClient"],
-                "cp" => $ligne["CP_Client"],
-                "ville" => $ligne["VilClient"],
+                "nomClient" => $ligne["NomClient"],
+                "nom" => $ligne["NomProd"],
                 "temps" => substr($ligne["HeureDispo"], 0, 5),
-                "statut" => $ligne["EtatLivraison"],
-                );
+                "statutCde" => $ligne["EtatCde"],
+                "statutLivraison" => $ligne["EtatLivraison"],
+                "tel" => $ligne["TelClient"],
+                "adrClient" => $ligne["AdrClient"],
+                "cpClient" => $ligne["CP_Client"],
+                "vilClient" => $ligne["VilClient"],
+                "nomLivreur" => $ligne["nom"],
+                "prenomLivreur" => $ligne["prenom"],
+                "idLivreur" => $ligne["IdLivreur"]
+            );
             $commandes_array[] = $commande;
         }
         var_dump($commandes_array);
 
         $connex = null;
+
         $commandes_array = array("commandes" => $commandes_array);
-        $json_data = json_encode($commandes_array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        $jsonData = json_encode($commandes_array);
+        echo $jsonData;
 
-        $filename = '.././JavaScript/Gestions/commandes.json';
-
-        if (file_put_contents($filename, $json_data)) {
-            echo "Le fichier JSON a été créé avec succès.";
-        } else {
-            echo "Erreur lors de la création du fichier JSON.";
-        }
     } catch (PDOException $e) {
         print $e->getMessage();
     }

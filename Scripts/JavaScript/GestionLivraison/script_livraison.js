@@ -1,68 +1,132 @@
+listeCommandes = null
+chargerCommandes()
+
+$(document).ready(function () {
+    afficherCommandes(listeCommandes)
+})
+
+// Fonction pour charger les commandes
 function chargerCommandes() {
-    $.getJSON("../../.././Scripts/JavaScript/GestionLivraison/commandes.json", function (data) {
-        data.commandes.sort((a, b) => {
-            return a.temps.localeCompare(b.temps);
-        });
-
-        let listeCommandes = $("#commandesList");
-        listeCommandes.html("");
-
-        data.commandes.forEach(commande => {
-            if (commande.statut !== "Prête") {
-                let elementCommande = `
-                    <div>
-                        <p>Nom du client : ${commande.NomClient}</p>
-                        <p>Heure de mise à disposition : ${commande.temps}</p>
-                        <p>Téléphone du client : ${commande.statut}</p>
-                        <button onclick="afficherCommande(${commande.id})">Voir la commande</button>
-                        <hr>
-                    </div>
-                `;
-                listeCommandes.append(elementCommande);
-            }
-        });
-    });
-}
-
-function mettreAJourBDD(idCommande, nouveauStatut) {
-    $.ajax({
-        type: "POST",
-        url: "../../.././Scripts/PhP/Noe/modifierCommandeLivraison.php",
-        data: JSON.stringify({ id: idCommande, statut: nouveauStatut }),
-        contentType: "application/json",
-        success: function(response) {
-            console.log("Commande mise à jour dans la base de données avec succès !");
-        },
-        error: function(error) {
-            console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error);
-            alert("Une erreur s'est produite lors de la mise à jour de la commande dans la base de données.");
-        }
-    });
-}
-
-
-function actualiserCommandesBdD(data) {
     $.ajax({
         type: "POST",
         url: "../../.././Scripts/PhP/Noe/chargerCommandesLivraison.php",
-        data: JSON.stringify(data),
         contentType: "application/json",
         success: function(response) {
-            console.log("Commandes chargées dans la BdD avec succès !");
-            chargerCommandes();
+            listeCommandes = JSON.parse(response);
+            afficherCommandes(listeCommandes);
         },
         error: function(error) {
-            console.error("Erreur lors de la récupération des commandes :", error);
-            alert("Une erreur s'est produite lors de la récupération des commandes.");
+            console.log("Erreur lors du chargement des commandes :", error);
+            alert("Une erreur s'est produite lors du chargement des commandes.");
         }
     });
 }
 
-
-function afficherCommande(id) {
-    // Faire en sorte d'afficher la commande dans la page page_commande
-    $.ajax({
-        url: "../../../Html/livreur_noe/page_commande.php"
+// Fonction pour afficher les commandes sur la page
+function afficherCommandes(data) {
+    let listeCommandes = $("#commandes")
+    listeCommandes.html("")
+    
+    data.commandes.forEach(commande => {
+        if (commande.statutLivraison === "fin_preparation" || commande.statutLivraison === "en_livraison") {
+            let buttons = ''
+            if (commande.statutLivraison === 'fin_preparation') {
+                buttons = `<button onclick="prendreCommande(${commande.id})">Prendre la commande</button>`
+            } else if (commande.statutLivraison === 'en_livraison') {
+                buttons = `<button onclick="termineCommande(${commande.id})">Commande livrée</button>`
+            }
+            //let livreur = ''
+            //if (commande.idLivreur === null) {
+                 let livreur = `<select id="livreur-select">
+                 <option value=#>Choisir un livreur</option>
+             </select>`
+            //} else {
+            //    livreur = `<p>Nom du livreur : ${commande.nomLivreur} ${commande.prenomLivreur}</p>`
+            //}
+            let elementCommande = `
+                <div>
+                    <h2>Nom : ${commande.nomClient}</h2>
+                    <p>Nom du livreur : ${commande.nomLivreur} ${commande.prenomLivreur}</p>
+                    <p>Heure de mise à disposition : ${commande.temps}</p>
+                    <p>Statut de livraison: ${commande.statutLivraison}</p>
+                    <p>Téléphone : ${commande.tel}</p>
+                    <p>Adresse de la commande : </p><a href="https://www.google.fr/maps/search/${commande.adrClient}+${commande.cpClient}+${commande.vilClient}">
+                        ${commande.adrClient} ${commande.cpClient} ${commande.vilClient}
+                    </a>
+                    <br/><br/>
+                    ${livreur}
+                    ${buttons}
+                    <hr>
+                </div>
+            `
+            listeCommandes.append(elementCommande)
+        }
     })
 }
 
+// Fonction pour mettre à jour le statut de la commande dans la base de données
+function mettreAJourBDD(idCommande, nouveauStatut) {
+    $.ajax({
+        type: "POST",
+        url: "../../../Scripts/PHP/Noe/modification_commande.php",
+        data: { id: idCommande, statutLivraison: nouveauStatut },
+        success: function(response) {
+            console.log("Commande mise à jour dans la base de données avec succès !")
+            chargerCommandes()
+        },
+        error: function(error) {
+            console.error("Erreur lors de la mise à jour de la commande dans la base de données :", error)
+            alert("Une erreur s'est produite lors de la mise à jour de la commande dans la base de données.")
+        }
+    })
+}
+
+
+// Fonction pour mettre à jour le statut de la commande dans la base de données
+function actualiserCommandesBdD(data) {
+    $.ajax({
+        type: "POST",
+        url: "../../../Scripts/PhP/Noe/chargerCommandesLivraison.php",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function(response) {
+            console.log("Commandes chargées dans la BdD avec succès !")
+            chargerCommandes()
+        },
+        error: function(error) {
+            console.error("Erreur lors de la sauvegarde des commandes :", error)
+            alert("Une erreur s'est produite lors de la sauvegarde des commandes sorry.")
+        }
+    })
+}
+
+// Fonction pour prendre une commande
+function prendreCommande(idCommande) {
+    let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
+    if (commande) {
+        if (commande.statutLivraison === "fin_preparation") {
+            mettreAJourBDD(idCommande, "en_livraison")
+            actualiserCommandesBdD()
+        } else {
+            alert("Cette commande ne peut pas être prise car elle n'est pas fini de préparer.")
+        }
+    } else {
+        alert("Commande non trouvée.")
+    }
+}
+
+// Fonction pour terminer une commande
+function termineCommande(idCommande) {
+    let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
+    if (commande) {
+        if (commande.statutLivraison === "en_livraison") {
+            mettreAJourBDD(idCommande, "livree")
+            commandeEnCours = null
+            actualiserCommandesBdD()
+        } else {
+            alert("Cette commande ne peut pas être livrée car elle n'est pas en cours de livraison.")
+        }
+    } else {
+        alert("Commande non trouvée.")
+    }
+}
