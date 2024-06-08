@@ -80,6 +80,11 @@ nav {
     text-align: center;
 }
 
+nav a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+}
 
 footer, header {
     color: white;
@@ -87,8 +92,7 @@ footer, header {
 }
 
 form {
-    margin: 0 auto; /* Center the form */
-    width: fit-content; /* Fit the width to the content */
+    margin: 25px 200px;
 }
 
 label {
@@ -102,6 +106,16 @@ input, textarea {
     padding: 6px;
     border: 1px solid #CCCCCC;
     border-radius: 3px;
+    margin-top: 10px;
+}
+
+.select-centre {
+    display: block;
+    margin: 20px auto;
+}
+
+.select .select-centre {
+    margin: 10px;
 }
 
 button {
@@ -116,6 +130,17 @@ button {
 
 button:hover {
     background-color: #555555;
+}
+
+.bouton, .select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.bouton button {
+    margin: 0 5px;
 }
 
 footer {
