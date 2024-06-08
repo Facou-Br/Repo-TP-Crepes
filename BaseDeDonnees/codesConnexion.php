@@ -1,5 +1,6 @@
 <?php
 
+
 class BaseDeDonnees
 {
     //Informations de connexion à la base de données
