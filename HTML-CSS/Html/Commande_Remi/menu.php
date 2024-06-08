@@ -7,8 +7,9 @@
     <meta name="description" content="Équipe Crêpe" />
     <meta name="robots" content="all" />
     <meta name="copyright" content="Équipe Crêpe" />
-    <link rel="stylesheet" href="../../Css/StylePanier.css">
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../Css/StylePanier.css">
+
     <title>Équipe Crêpe</title>
     </head>
 <body>

@@ -30,4 +30,3 @@ if (isset($_POST['annulerCommande'])) {
 <form method="post">
     <button type="submit" name="annulerCommande">Annuler la commande</button>
 </form>
-<img src="../../../HTML-CSS/Images/jpeg/breton.jpg">
