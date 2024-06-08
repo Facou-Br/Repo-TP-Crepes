@@ -9,7 +9,6 @@ try {
 
     $connex->exec($sql); #essayer le query pour voir si ça marche regarder dans le cours
     $connex->commit();
-    echo "Fournisseur archivé";
 } catch (PDOException $e) {
     echo 'Erreur : ' . $e->getMessage() . '<br />';
     echo 'N° : ' . $e->getCode();

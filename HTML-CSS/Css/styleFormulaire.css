@@ -87,7 +87,8 @@ footer, header {
 }
 
 form {
-    margin: 25px 200px;
+    margin: 0 auto; /* Center the form */
+    width: fit-content; /* Fit the width to the content */
 }
 
 label {

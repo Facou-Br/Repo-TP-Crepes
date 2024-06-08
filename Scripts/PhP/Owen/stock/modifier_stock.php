@@ -16,7 +16,6 @@ try {
     $connex->commit();
     $connex->exec($sql2);
     $connex->commit();
-    echo "Stock modifié";
 } catch (PDOException $e) {
     echo 'Erreur : ' . $e->getMessage() . '<br />';
     echo 'N° : ' . $e->getCode();

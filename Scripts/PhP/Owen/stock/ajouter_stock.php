@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die();
     }
     if ($test1 === true && $test2 === true) {
-        echo "Le stock a été ajouté avec succès.";
+        echo "";
     } else {
         echo "Erreur";
     }
