@@ -1,5 +1,5 @@
 $.ajax({
-    url: "../../../../Scripts/PhP/Owen/fournisseur/afficher_fourn.php",
+    url: "../../../Script/PhP/Owen/fournisseur/afficher_fournisseur.php",
     type: "POST",
     success: function (data) {
         data = JSON.parse(data);
