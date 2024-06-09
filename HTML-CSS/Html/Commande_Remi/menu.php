@@ -22,7 +22,6 @@
         <nav>
             <table>
                 <th><a href="index.html">Accueil</a></th>
-                <th><a href="Html/GestionInventaire_Owen/gestions_stocks.html">Gestion des stocks</a></th>
                 <th><a href="#">Menu</a></th>
                 <th><a href="#">Réservation</a></th>
                 <th><a href="#">Contact</a></th>
