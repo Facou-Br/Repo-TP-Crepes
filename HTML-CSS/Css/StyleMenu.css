@@ -6,7 +6,8 @@
     margin-bottom: 3px;}
 .titreContent img {
     margin-left: auto;
-    max-width: 40px; }
+    max-width: 50%;
+float : right;}
 .titreContent h3 {
     margin-right: 10px;
     text-decoration: underline; }

@@ -18,7 +18,10 @@ try {
         echo "<div class='titreContent'>
             <h3>" . $row['NomProd'] . "</h3> 
             <p id='prix'>" . $row['PrixUHT'] . "€</p>
-        <p>Ingredients: <ul>";
+        <p>Ingredients: <ul>
+        <img src='../../../HTML-CSS/Images/" . $row['Image'] . "' alt='" . $row['NomProd'] . "'>
+        ";
+
         for ($i = 1; $i <= 6; $i++) {
             if (!empty($row['IngBase'.$i])) {
                 echo "<li>" . $row['IngBase'.$i] . "</li>";
@@ -28,7 +31,6 @@ try {
             }
         }
         echo "</ul></p>
-                <img src='../../../HTML-CSS/Images/" . $row['Image'] . "' alt='" . $row['NomProd'] . "'>
             
             <div class='input-group'>
                 <button type='button' class='decrement'>-</button>
@@ -47,17 +49,23 @@ try {
 
     // si la derniere ligne a moims  de 3 div on en met une vide pour aligner les flexbox
     while ($counter % 3 != 0) {
-        echo "<div></div>";
-        $counter++;
-    }
+        if ($counter-$counter % 3 == 2) {
+            echo "fils de pute";
+            echo "<div style='padding: 40px 20px; position: relative; border-radius: 5px; margin: 12px;'>
+<a><button type=\"submit\" class=\"menu-button\">Go to Cart</button></a></div>";
+        } else {
+            echo "<div style=\"padding: 40px 20px; position: relative; border-radius: 5px;  margin: 12px;\"></div>";
 
-    // ferme les dif si il en reste ouvert
-    if ($counter % 3 != 0) {
-        echo "</div>";
-    }
+            $counter++;
+        }
 
-} catch (Exception $e) {
-    echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
+        // ferme les dif si il en reste ouvert
+        if ($counter % 3 != 0) {
+            echo "</div>";
+        }
+    }
+    } catch (Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }
 echo "<script src='../../JavaScript/remi/buttonCtrl.js'></script>";
 ?>

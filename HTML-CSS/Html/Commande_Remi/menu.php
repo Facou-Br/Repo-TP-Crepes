@@ -41,8 +41,7 @@
         include '../../../Scripts/PhP/Remi/afficherMenu.php';
     ?>
 
-        <div class="clear"></div>
-            <button type="submit" class="menu-button">Go to Cart</button>
+
         </form>
     </main>
 
