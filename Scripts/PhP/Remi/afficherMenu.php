@@ -2,7 +2,7 @@
 // Connexion à la BdD
 require_once '../../../BaseDeDonnees/codesConnexion.php';
 $connex = BaseDeDonnees::connecterBDD('admin');
-echo "<link rel='stylesheet' href='../../style.css'>";
+echo "<link rel='stylesheet' href='../../../HTML-CSS/style.css'>";
 echo "<link rel='stylesheet' href='../../../HTML-CSS/Css/StyleMenu.css'>";
 
 try {
@@ -17,7 +17,7 @@ try {
         // on affiche les produits
         echo "<div class='titreContent'>
             <h3>" . $row['NomProd'] . "</h3> 
-            <p id='prix'>" . $row['PrixUHT'] . "€</p>
+            <p class='prix'>" . $row['PrixUHT'] . "€</p>
         <p>Ingredients: <ul>
         <img src='../../../HTML-CSS/Images/" . $row['Image'] . "' alt='" . $row['NomProd'] . "'>
         ";
