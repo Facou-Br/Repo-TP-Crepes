@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>La Creperie 🥞</title>
   <link rel="stylesheet" href="../../style.css" />
-  <link rel="stylesheet" href="../../styleIndex.css" />
+  <link rel="stylesheet" href="../../Css/StylePanier.css" />
 </head>
 <body>
 <div class="wrapper">
@@ -15,7 +15,6 @@
       <table>
         <th><a href="#">Accueil</a></th>
         <th><a href="menu.php">Menu</a></th>
-        <th><a href="#">Réservation</a></th>
         <th><a href="#">Contact</a></th>
       </table>
     </nav>
@@ -42,31 +41,7 @@
       </a>
     </section>
 
-    <section>
-      <h2>Réservez votre table en avance :</h2>
-      <form action="../../../Scripts/PhP/Remi/reservation.php" method="post">
-        <label for="name">Nom:</label>
-        <input type="text" id="name" name="name" required />
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required />
-
-        <label for="time">Heure:</label>
-        <input type="time" id="time" name="time" required />
-
-        <label for="people">Nombre de personnes:</label>
-        <input type="number" id="people" name="people" min="1" required />
-
-        <label for="comments">Commentaires:</label>
-        <textarea id="comments" name="comments"></textarea>
-
-        <button type="submit">Réserver</button>
-      </form>
-
-    </section>
   </main>
 
   <footer>

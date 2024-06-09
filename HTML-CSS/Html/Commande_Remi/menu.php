@@ -22,9 +22,7 @@
         <nav>
             <table>
                 <th><a href="index.html">Accueil</a></th>
-                <th><a href="Html/GestionInventaire_Owen/gestions_stocks.html">Gestion des stocks</a></th>
-                <th><a href="#">Menu</a></th>
-                <th><a href="#">Réservation</a></th>
+                <th><a href="#">Menu</a></th>v
                 <th><a href="#">Contact</a></th>
             </table>
         </nav>
@@ -34,14 +32,6 @@
             <h2>Notre menu</h2>
             <p>A CHANGER (REDIGER PAR CHAR GPT EN 10s) Bienvenue chez [Nom de votre crêperie] ! Découvrez notre univers gourmand où chaque crêpe est une délicieuse création artisanale, alliant tradition et innovation pour ravir vos papilles.</p>
         </section>
-
-        <!--    TODO BOUGER LA DATABASE
-                ALTER TABLE produit
-                ADD COLUMN description TEXT;
-
-
-        -->
-
 
 
         <form action="../../../Scripts/PhP/Remi/addToCart.php" method="post">

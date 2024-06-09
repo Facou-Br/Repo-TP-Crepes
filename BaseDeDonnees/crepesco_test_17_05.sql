@@ -323,14 +323,14 @@ ALTER TABLE `prod_ingr`
 
 INSERT INTO `produit` (`NomProd`, `Active`, `Taille`, `NbIngBase`, `NbIngOpt`, `PrixUHT`, `Image`, `IngBase1`, `IngBase2`, `IngBase3`, `IngBase4`, `IngBase5`, `IngOpt1`, `IngOpt2`, 
 `IngOpt3`, `IngOpt4`, `IngOpt5`, `IngOpt6`, `NbOptMax`, `DateArchiv`) VALUES
-('CrepesSuzette', '1', 'M', 3, 2, 2, '/jpeg/breton.jpg', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', 'Jambon', 'Bacon', 'Emmental', 2, '0000-00-00'),
-('Salade', '1', 'M', 3, 2, 2, 'salade.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
+('Crepes Suzette', '1', 'M', 3, 2, 2, '/jpeg/breton.jpg', 'Farine', 'Oeufs', 'Lait', 'Nutella', 'Chocolat', 'Fraise', 'Banane', 'Chantilly', 'Jambon', 'Bacon', 'Emmental', 2, '0000-00-00'),
 ('Crêpe Kebab', '1', 'M', 3, 2, 2, '/jpeg/kebab.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
 ('Crêpe aux fruits de saison', '1', 'M', 3, 2, 2, 'jpeg/fruitsaison.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
 ('Crêpe aux fruits de mer', '1', 'M', 3, 2, 2, 'jpeg/fruitdemer.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
 ('Crêpe aux épinards', '1', 'M', 3, 2, 2, 'jpeg/epinard.jpeg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
 ('Crêpe aux pommes caramélisées', '1', 'M', 3, 2, 2, 'jpeg/pomme.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
-('Crêpe aux champignons', '1', 'M', 3, 2, 2, 'jpeg/champi.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00');
+('Crêpe aux champignons', '1', 'M', 3, 2, 2, 'jpeg/champi.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00'),
+('Salade', '1', 'M', 3, 2, 2, '/jpeg/salade.jpg', 'Tomate', 'Salade', 'Pomme de terre', 'Carotte', 'Courgette', 'Aubergine', 'Poivron', 'Oignon', 'Ail', 'Huile', 'Reblochon', 2, '0000-00-00');
 
 
 
