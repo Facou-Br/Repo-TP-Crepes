@@ -1,7 +1,8 @@
 $.ajax({
-    url: "../../../Script/PhP/Owen/fournisseur/afficher_fournisseur.php",
+    url: "../../../PhP/Owen/fournisseur/afficher_fournisseur.php",
     type: "POST",
     success: function (data) {
+        alert(data);
         data = JSON.parse(data);
         $.each(data, function (index, fournisseur) {
             $("#fournisseur-select").append(
