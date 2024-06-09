@@ -1,30 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Remi Roullet" />
-    <meta name="description" content="Équipe Crêpe" />
-    <meta name="robots" content="all" />
-    <meta name="copyright" content="Équipe Crêpe" />
-    <link rel="stylesheet" href="../../style.css">
-    <link rel="stylesheet" href="../../Css/StyleMenu.css">
-
-    <title>Équipe Crêpe</title>
-    </head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Creperie 🥞</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../Css/StyleMenu.css" />
+</head>
 <body>
 <div class="wrapper">
     <header>
-        <input type="number" class="panier input" value="0" readonly >
-        <img class="panier" src="../../Images/png/panier.png">
-
         <h1>La Crêperie</h1>
         <nav>
             <table>
                 <th><a href="index.html">Accueil</a></th>
                 <th><a href="#">Menu</a></th>
-                <th><a href="#">Réservation</a></th>
-                <th><a href="#">Contact</a></th>
+                <th><a href="contactUs.html">Contact</a></th>
             </table>
         </nav>
     </header>
