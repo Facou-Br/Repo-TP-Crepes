@@ -49,7 +49,8 @@ try {
             }
         }
 
-        echo "<tr><td>Total</td><td>$totalQuantity</td><td>" . $total . "€</td></tr>";
+        echo "<tr><td>Livraison</td><td>1</td><td>" . 5 . "€</td></tr>";
+        echo "<tr><td>Total</td><td>$totalQuantity</td><td>" . $total+5 . "€</td></tr>";
 
         echo "Le total est : " . $total;
 
@@ -73,15 +74,18 @@ if (isset($_POST['annulerCommande'])) {
 ?>
 <form method="post" action="validation.php">
     <label for="nom">Nom:</label><br>
-    <input type="text" id="nom" name="nom"><br>
+    <input type="text" id="nom" name="nom" required><br>
     <label for="tel">Téléphone:</label><br>
-    <input type="tel" id="tel" name="tel"><br>
+    <input type="tel" id="tel" name="tel" required><br>
     <label for="adresse">Adresse:</label><br>
-    <input type="text" id="adresse" name="adresse"><br>
+    <input type="text" id="adresse" name="adresse" required><br>
     <label for="cp">Code Postal:</label><br>
-    <input type="text" id="cp" name="cp"><br>
+    <input type="text" id="cp" name="cp" required><br>
     <label for="ville">Ville:</label><br>
-    <input type="text" id="ville" name="ville"><br>
+    <input type="text" id="ville" name="ville" required><br>
+    <input type="hidden" id="total" name="total" value=$total>
+    <input type="hidden" id="date" name="date" value="<?php echo date('Y-m-d'); ?>">
+    <input type="hidden" id="heure" name="heure" value="<?php echo date('H:i:s'); ?>">
     <button type="submit" name="valider">Valider</button>
 </form>
 <form method="post">
