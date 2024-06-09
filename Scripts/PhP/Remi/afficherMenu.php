@@ -3,10 +3,10 @@
 require_once '../../../BaseDeDonnees/codesConnexion.php';
 $connex = BaseDeDonnees::connecterBDD('admin');
 echo "<link rel='stylesheet' href='../../style.css'>";
-echo "<link rel='stylesheet' href='../../../HTML-CSS/Css/StylePanier.css'>";
+echo "<link rel='stylesheet' href='../../../HTML-CSS/Css/StyleMenu.css'>";
 
 try {
-    $rq = "SELECT NomProd, Image, IngBase1, IngBase2, IngBase3, IngBase4, IngBase5, IngOpt1, IngOpt2, IngOpt3, IngOpt4, IngOpt5, IngOpt6 FROM produit";
+    $rq = "SELECT NomProd, 	PrixUHT, Image, IngBase1, IngBase2, IngBase3, IngBase4, IngBase5, IngOpt1, IngOpt2, IngOpt3, IngOpt4, IngOpt5, IngOpt6 FROM produit";
     $result = $connex->query($rq);
 
     $counter = 0;
@@ -17,6 +17,7 @@ try {
         // on affiche les produits
         echo "<div class='titreContent'>
             <h3>" . $row['NomProd'] . "</h3> 
+            <p id='prix'>" . $row['PrixUHT'] . "€</p>
         <p>Ingredients: <ul>";
         for ($i = 1; $i <= 6; $i++) {
             if (!empty($row['IngBase'.$i])) {
@@ -46,7 +47,7 @@ try {
 
     // si la derniere ligne a moims  de 3 div on en met une vide pour aligner les flexbox
     while ($counter % 3 != 0) {
-        echo "<div class='titreContent'></div>";
+        echo "<div></div>";
         $counter++;
     }
 
