@@ -1,4 +1,4 @@
-<?php
+
 session_start();
 
 // Vérifiez si la session est valide et contient les données du panier

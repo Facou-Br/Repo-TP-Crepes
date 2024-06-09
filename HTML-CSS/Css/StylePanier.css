@@ -14,12 +14,6 @@
     padding : 40px 20px;
     border : solid 1px #000;
 }
-.title-and-input-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .border { padding: 10px;
     margin-bottom: 30px; }
 section {
@@ -37,12 +31,13 @@ section.splited {
     padding: 20px;
     width: 49.5%;
     text-align: justify; }
-img { max-width: 170px;
+img .titreContent { max-width: 170px;
     border-radius: 3px; }
 .input-group {
     display: flex;
     justify-content: center;
     align-items: center; }
+
 button, input {
     outline: none;
     border: none;
@@ -68,3 +63,37 @@ input[type="number"] {
     border-top-left-radius: 12px; }
 button:hover {
     background-color: #c4c4c4;}
+
+
+#banniere {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+.flex-container {
+    display: flex;
+}
+
+.flex-container div {
+
+    width: 33%;
+}
+
+
+footer a {
+    color: white;
+    text-decoration: none;
+    float : left;
+    padding: 0 20px;
+}
+
+section p {
+    color: black;
+    margin-top: 12px;
+}
+
