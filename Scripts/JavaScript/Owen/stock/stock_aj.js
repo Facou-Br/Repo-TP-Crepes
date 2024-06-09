@@ -1,8 +1,7 @@
 $.ajax({
-    url: "../../../PhP/Owen/fournisseur/afficher_fourn.php",
+    url: "../../../Scripts/PHP/Owen/fournisseur/afficher_fourn.php",
     type: "POST",
     success: function (data) {
-        alert(data);
         data = JSON.parse(data);
         $.each(data, function (index, fournisseur) {
             $("#fournisseur-select").append(
@@ -21,8 +20,8 @@ $(document).ready(function(){
     $('#Ajouter').click(function(e){
         e.preventDefault();
         var nomIngred = $('#nomIngred').val();
-        var seuilStock = $('#seuilStock').val();
-        var prix = $('#prix').val();
+        var stockReel = $('#stockReel').val();
+        var prixUHTMoyen = $('#prixUHTMoyen').val();
         var nomFourn = $('#fournisseur-select').val();
 
         $.ajax({
@@ -31,8 +30,8 @@ $(document).ready(function(){
             data: {
                 nomFourn: nomFourn,
                 nomIngred: nomIngred,
-                seuilStock: seuilStock,
-                prix: prix
+                stockReel: stockReel,
+                prixUHTMoyen: prixUHTMoyen
             },
             success: function(response){
                 alert(response);

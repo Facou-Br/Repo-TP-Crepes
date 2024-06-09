@@ -14,7 +14,7 @@
                     <a href="gestions_stocks.html">Retour</a>
                 </nav>
             </header>
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+            <form method="post">
                 <label id="nomIngred" for="nomIngred">Nom de l'ingrédient :</label>
                 <input type="text" name="nomIngred" required><br><br>
 
@@ -30,7 +30,7 @@
 
                 <br><br>
                 <div class="bouton">
-                    <button type="submit" value="Ajouter">Ajouter</button>
+                    <button id="Ajouter" type="submit" value="Ajouter">Ajouter</button>
                 </div>
             </form>
             <footer>

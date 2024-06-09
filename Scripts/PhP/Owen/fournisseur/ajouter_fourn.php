@@ -7,8 +7,7 @@ $adresse = $_POST["adresse"];
 $cp = $_POST["codePostal"];
 $ville = $_POST["ville"];
 $tel = $_POST["telephone"];
-echo $nomFourn . " + " . $adresse . " " . $cp . " " . $ville . " " . $tel;
-var_dump("test1");
+
 try {
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $sql = "INSERT INTO `fournisseur` (`NomFourn`, `Adresse`, `CodePostal`, `Ville`, `Tel`) VALUES ($nomFourn, $adresse, $cp, $ville, $tel);";
