@@ -1,7 +1,7 @@
 <?php
     // Connexion à la BdD
     require_once '../../../BaseDeDonnees/codesConnexion.php';
-    $connex = BaseDeDonnees::connecterBDD('adminQuentin');
+    $connex = BaseDeDonnees::connecterBDD('crepesco_admin');
 
     if (isset($_POST['nomIngredient']) && isset($_POST['quantiteIngredient']) && isset($_POST['quantiteCrepe'])) {
         $nomIngredient = $_POST['nomIngredient'];
