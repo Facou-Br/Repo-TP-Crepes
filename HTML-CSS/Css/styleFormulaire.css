@@ -29,7 +29,7 @@ footer, header, hgroup, menu, nav, section {
 /* CSS Document */
 footer {
     padding: 20px 0;
-    position: relative;
+    position: absolute;
     width: 100%;
     bottom: 0
 }

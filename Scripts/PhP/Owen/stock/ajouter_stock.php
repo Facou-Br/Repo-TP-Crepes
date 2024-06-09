@@ -9,7 +9,6 @@ $prixUHTMoyen = $_POST["prixUHTMoyen"];
 $nomFourn = $_POST["nomFourn"];
 $seuilStock = 1;
 $stockMin = 0;
-var_dump($nomIngred);
     try {
         $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
         $sql = "INSERT INTO `ingredient` (NomIngred, SeuilStock, StockMin, StockReel, PrixUHT_Moyen) VALUES ('".$nomIngred."', $seuilStock, $stockMin, $stockReel, $prixUHTMoyen);";

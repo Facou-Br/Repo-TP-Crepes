@@ -24,9 +24,10 @@ $(document).ready(function(){
         var prixUHTMoyen = $('#prixUHTMoyen').val();
         var nomFourn = $('#fournisseur-select').val();
 
+        alert(nomIngred)
         $.ajax({
             type: 'POST',
-            url: '../../../Scripts/PHP/Owen/stock/ajouter_stock.php',
+            url: '..\..\..\Scripts\PHP\Owen\stock\ajouter_stock.php',
             data: {
                 nomFourn: nomFourn,
                 nomIngred: nomIngred,
