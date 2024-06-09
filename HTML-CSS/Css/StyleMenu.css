@@ -13,7 +13,6 @@ float : right;}
     text-decoration: underline; }
 .titreContent {
     padding : 40px 20px;
-    border : solid 1px #000;
     position: relative;
     border-radius: 5px;
     background: white;
@@ -40,7 +39,8 @@ img .titreContent { max-width: 170px;
 .input-group {
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+margin: 0 25px}
 
 button, input {
     outline: none;
@@ -101,7 +101,7 @@ section p {
     margin-top: 12px;
 }
 
-#prix {
+.prix {
     color: #333333;
     font-size: 20px;
     font-weight: bold;
