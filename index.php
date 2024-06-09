@@ -1,2 +1,3 @@
 <?php
-    header("Location: ./HTML-CSS/index.html");
+    header("Location: \HTML-CSS\Html\Commande_Remi\index.html");
+    
