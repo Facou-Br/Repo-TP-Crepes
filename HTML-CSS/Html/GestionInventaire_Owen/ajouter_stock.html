@@ -14,15 +14,15 @@
                     <a href="gestions_stocks.html">Retour</a>
                 </nav>
             </header>
-            <form method="post">
-                <label id="nomIngred" for="nomIngred">Nom de l'ingrédient :</label>
-                <input type="text" name="nomIngred" required><br><br>
+            <form>
+                <label for="nomIngred">Nom de l'ingrédient :</label>
+                <input type="text" id="nomIngred" name="nomIngred" required><br><br>
 
-                <label id="stockReel" for="stockReel">Nombre en stocks :</label>
-                <input type="number" name="stockReel" required><br><br>
+                <label for="stockReel">Nombre en stocks :</label>
+                <input type="number" id="stockReel" name="stockReel" required><br><br>
 
-                <label id="prixUHTMoyen" for="prixUHTMoyen">Prix UHT Moyen :</label>
-                <input type="number" name="prixUHTMoyen" required><br><br>
+                <label for="prixUHTMoyen">Prix UHT Moyen :</label>
+                <input type="number" id="prixUHTMoyen" name="prixUHTMoyen" required><br><br>
 
                 <select id="fournisseur-select" class="select-centre">
                     <option value=#>Choisir un fournisseur</option>
@@ -35,8 +35,9 @@
             </form>
             <footer>
                 <p>&copy; 2022 La Crêperie. Tous droits réservés.</p>
+                <script src="../../../Scripts/JavaScript/Owen/stock/stock_aj.js"></script>
             </footer>
-            <script src="../../../Scripts/JavaScript/Owen/stock/stock_aj.js"></script>
+
         </div>
     </body>
 </html>

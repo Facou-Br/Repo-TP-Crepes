@@ -15,7 +15,6 @@ $.ajax({
     }
 });
 
-
 $(document).ready(function(){
     $('#Ajouter').click(function(e){
         e.preventDefault();
@@ -23,11 +22,9 @@ $(document).ready(function(){
         var stockReel = $('#stockReel').val();
         var prixUHTMoyen = $('#prixUHTMoyen').val();
         var nomFourn = $('#fournisseur-select').val();
-
-        alert(nomIngred)
         $.ajax({
             type: 'POST',
-            url: '..\..\..\Scripts\PHP\Owen\stock\ajouter_stock.php',
+            url: '../../../Scripts/PHP/Owen/stock/ajouter_stock.php',
             data: {
                 nomFourn: nomFourn,
                 nomIngred: nomIngred,
@@ -35,9 +32,11 @@ $(document).ready(function(){
                 prixUHTMoyen: prixUHTMoyen
             },
             success: function(response){
+                console.log("response");
                 alert(response);
-            },
+                },
             fail: function () {
+                console.log("fail");
                 alert("Erreur");
             }
         });
