@@ -49,20 +49,14 @@ try {
 
     // si la derniere ligne a moims  de 3 div on en met une vide pour aligner les flexbox
     while ($counter % 3 != 0) {
-        if ($counter % 3 == 2) {
-            echo "fils de pute";
-            echo "<div style='padding: 40px 20px; position: relative; border-radius: 5px; margin: 12px;'>
-<a><button type=\"submit\" class=\"menu-button\">Go to Cart</button></a></div>";
+        if ($counter %3 == 2) {
+            echo "<div style='padding: 40px 20px; position: relative; border-radius: 5px; margin: 12px;'> <a><button type=\"submit\" class=\"menu-button\">Go to Cart</button></a></div>";
         } else {
-            echo "<div style=\"padding: 40px 20px; position: relative; border-radius: 5px;  margin: 12px;\"></div>";
-
+            echo "<div style=\"padding: 40px 20px; position: relative; border-radius: 5px;  margin: 12px;\"></div>";}
             $counter++;
-        }
 
-        // ferme les dif si il en reste ouvert
-        if ($counter % 3 != 0) {
-            echo "</div>";
-        }
+
+
     }
     } catch (Exception $e) {
         echo 'Caught exception: ',  $e->getMessage(), "\n";
