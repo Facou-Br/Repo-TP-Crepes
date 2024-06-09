@@ -6,13 +6,13 @@
 
 }
 
-td{
+#tabCrepes td{
     text-align: center;
 
 }
 
 
-th, table td {
+#tabCrepes th, table td {
     border-bottom: 1px solid darkgray;
 }
-tr:hover {background-color: moccasin;}
+#tabCrepes tr:hover {background-color: moccasin;}
