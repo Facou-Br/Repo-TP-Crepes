@@ -14,7 +14,7 @@
                     <a href="gestions_stocks.html">Retour</a>
                 </nav>
             </header>
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+            <form method="post">
                 <label id="nomIngred" for="nomIngred">Nom de l'ingrédient :</label>
                 <input type="text" name="nomIngred" required><br><br>
 
@@ -30,13 +30,13 @@
 
                 <br><br>
                 <div class="bouton">
-                    <button type="submit" value="Ajouter">Ajouter</button>
+                    <button id="Ajouter" type="submit" value="Ajouter">Ajouter</button>
                 </div>
             </form>
             <footer>
                 <p>&copy; 2022 La Crêperie. Tous droits réservés.</p>
             </footer>
-            <script src="../../../Scripts/JavaScript/Owen/stocks_aj.js"></script>
+            <script src="../../../Scripts/JavaScript/Owen/stock/stock_aj.js"></script>
         </div>
     </body>
 </html>
