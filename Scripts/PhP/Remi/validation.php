@@ -46,16 +46,16 @@ if (isset($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $crepe => $quantity) {
         $requete4 = "INSERT INTO `detail` (`NomProd`, `IngBase1`, `IngBase2`, `IngBase3`, `IngBase4`, `IngOpt1`, `IngOpt2`, `IngOpt3`, `IngOpt4`, `DateArchiv`, `IdProd`)
                      VALUES ('$crepe', 'Base6661', 'Base2', 'Base3', 'Base4', 'Option1', 'Option2', 'Option3', 'Option4', $date_actuelle, $IdProd);";
-
+        $pdo->exec($requete4);
         echo "$requete4";
         $pdo->exec($requete4);
         echo "Records inserted successfully for $crepe.";
         echo "<br>";
 
-        $requete5 = "SELECT Num_OF FROM detail WHERE NomProd = :crepe AND IngBase1 = 'Base6661' AND IngBase2 = 'Base2' AND IngBase3 = 'Base3' AND IngBase4 = 'Base4' AND IngOpt1 = 'Option1' AND IngOpt2 = 'Option2' AND IngOpt3 = 'Option3' AND IngOpt4 = 'Option4' AND DateArchiv = :dateArchiv AND IdProd = :idProd;";
-        $stmt = $pdo->prepare($requete5);
-        $stmt->execute(['crepe' => $crepe, 'dateArchiv' => date('Y-m-d'), 'idProd' => $IdProd]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $requete5 = "SELECT Num_OF FROM detail WHERE NomProd = '$crepe' AND IngBase1 = 'Base6661' AND IngBase2 = 'Base2' AND IngBase3 = 'Base3' AND IngBase4 = 'Base4' AND IngOpt1 = 'Option1' AND IngOpt2 = 'Option2' AND IngOpt3 = 'Option3' AND IngOpt4 = 'Option4' AND DateArchiv = '0000-00-00' AND IdProd = $IdProd;";
+        $pdo->exec($requete5);
+
+
         $Num_OF = $row['Num_OF']; // 654687
         echo $Num_OF;
         echo "<br>";
