@@ -40,7 +40,8 @@ img .titreContent { max-width: 170px;
 .input-group {
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+margin: 0 25px}
 
 button, input {
     outline: none;
@@ -101,7 +102,7 @@ section p {
     margin-top: 12px;
 }
 
-#prix {
+.prix {
     color: #333333;
     font-size: 20px;
     font-weight: bold;
