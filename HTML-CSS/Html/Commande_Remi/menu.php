@@ -31,7 +31,7 @@
     <main>
         <section id="about">
             <h2>Notre menu</h2>
-            <p>A CHANGER (REDIGER PAR CHAR GPT EN 10s) Bienvenue chez [Nom de votre crêperie] ! Découvrez notre univers gourmand où chaque crêpe est une délicieuse création artisanale, alliant tradition et innovation pour ravir vos papilles.</p>
+            <p>Bienvenu a La Creperie ! Découvrez notre univers gourmand où chaque crêpe est une délicieuse création artisanale, alliant tradition et innovation pour ravir vos papilles.</p>
         </section>
 
 
