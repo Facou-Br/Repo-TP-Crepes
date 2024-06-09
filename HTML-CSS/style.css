@@ -221,15 +221,13 @@ label {
   color: #333333;
 }
 
-input,
-textarea {
+input,textarea {
   width: 100%;
   padding: 6px;
   margin-bottom: 10px;
   border: 1px solid #cccccc;
   border-radius: 3px;
 }
-/* by remi to modif le header*/
 .panier {
   float: right;
   max-width: 40px;

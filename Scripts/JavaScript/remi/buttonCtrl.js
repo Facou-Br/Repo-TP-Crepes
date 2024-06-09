@@ -3,9 +3,6 @@ function incrementTotal(change) {
     if (cartInput) {
         let currentCount = parseInt(cartInput.value);
         cartInput.value = currentCount + change;
-        console.log(cartInput.value);
-    } else {
-        console.error('Element with classes "panier" and "input" not found');
     }
 }
 
