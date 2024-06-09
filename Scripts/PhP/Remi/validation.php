@@ -1,10 +1,21 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les informations du formulaire
+    $nom = $_POST['nom'];
+    $tel = $_POST['tel'];
+    $adresse = $_POST['adresse'];
+    $cp = $_POST['cp'];
+    $ville = $_POST['ville'];}
+
+$date_actuelle = date("Y-m-d");
+$heure_actuelle = date("H:i:s"); // HH:MM:SS
+
 require_once '..\..\..\BaseDeDonnees\codesConnexion.php';
 $pdo = BaseDeDonnees::connecterBDD('admin');
 
 try {
     $requete1 = "INSERT INTO commande (NomClient, TelClient, AdrClient, CP_Client, VilClient, Date, HeureDispo, TypeEmbal, A_Livrer, EtatCde, EtatLivraison, CoutLiv, TotalTTC, IdLivreur)
-                            VALUES ('aylay00000000000aya', '0123456789', 'Adresse Client', '75001', 'Paris', '2024-06-08', '13:00:00', 'C', 1, 'Acceptée', 'preparation', 5.00, 25.00, 1);";
+                            VALUES ('$nom', '$tel', '$adresse', '$cp', '$ville', '$date_actuelle', '$heure_actuelle', 'Sac', 1, 'Acceptée', 'preparation', 5.00, 25.00, 1);";
     $pdo->exec($requete1);
     echo "Records inserted successfully.";
     echo "<br>";
