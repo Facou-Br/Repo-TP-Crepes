@@ -1,0 +1,110 @@
+.titreContent h3 {
+    padding: 0 8px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 3px;}
+.titreContent img {
+    margin-left: auto;
+    max-width: 40px; }
+.titreContent h3 {
+    margin-right: 10px;
+    text-decoration: underline; }
+.titreContent {
+    padding : 40px 20px;
+    border : solid 1px #000;
+    position: relative;
+    border-radius: 5px;
+    background: white;
+margin: 12px;}
+.border { padding: 10px;
+    margin-bottom: 30px; }
+section {
+    padding: 20px;
+    align-content: center;
+    box-sizing: border-box;}
+.box {
+    display: flex;
+    align-items: flex-start; }
+.box img {
+    margin-left: auto; }
+.box p {
+    margin-right: 10px; }
+section.splited {
+    padding: 20px;
+    width: 49.5%;
+    text-align: justify; }
+img .titreContent { max-width: 170px;
+    border-radius: 3px; }
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+
+button, input {
+    outline: none;
+    border: none;
+    padding: 3px 8px;
+    font-size: 18px;
+    max-width: 70px;
+    min-width: 50px; }
+input { width: 100%;
+    text-align: center;
+    background: transparent;
+    display: block;
+    border: none;}
+button {
+    cursor: pointer; }
+input[type="number"] {
+    appearance: none;
+    -webkit-appearance: textfield; } /* pour remouve les fleches pas belles*/
+.increment {
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px; }
+.decrement {
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px; }
+button:hover {
+    background-color: #c4c4c4;}
+
+
+#banniere {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+.flex-container {
+    display: flex;
+}
+
+.flex-container div {
+
+    width: 33%;
+}
+
+
+footer a {
+    color: white;
+    text-decoration: none;
+    float : left;
+    padding: 0 20px;
+}
+
+section p {
+    color: black;
+    margin-top: 12px;
+}
+
+#prix {
+    color: #333333;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
