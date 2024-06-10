@@ -16,8 +16,8 @@ $stockMin = 0;
         $connex->commit();
 
         $sqlId = "SELECT IdIngred FROM `ingredient` WHERE NomIngred='".$nomIngred."';";
-        $result = $connex->exec($sqlId);
-        $idIngred = $result->fetch(PDO::FETCH_ASSOC);
+        $result = $connex->query($sqlId);
+        $idIngred = $result->fetchAll();
         $connex->commit();
 
         $sql2 = "INSERT INTO `fourn_ingr` (NomFourn, IdIngred) VALUES ('".$nomFourn."', $idIngred);";
