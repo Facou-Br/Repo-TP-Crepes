@@ -12,18 +12,15 @@ $stockMin = 0;
     try {
         $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
         $sql = "INSERT INTO `ingredient` (NomIngred, SeuilStock, StockMin, StockReel, PrixUHT_Moyen) VALUES ('".$nomIngred."', $seuilStock, $stockMin, $stockReel, $prixUHTMoyen);";
-        echo $sql;
         $connex->exec($sql);
         $connex->commit();
 
         $sqlId = "SELECT IdIngred FROM `ingredient` WHERE NomIngred='".$nomIngred."';";
-        echo $sqlId;
-        $result = $connex->exec($sqlId);
-        $idIngred = $result->fetch(PDO::FETCH_ASSOC);
+        $result = $connex->query($sqlId);
+        $idIngred = $result->fetchAll();
         $connex->commit();
 
         $sql2 = "INSERT INTO `fourn_ingr` (NomFourn, IdIngred) VALUES ('".$nomFourn."', $idIngred);";
-        echo $sql2;
         $connex->exec($sql2);
         $connex->commit();
 
