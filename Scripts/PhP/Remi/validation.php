@@ -74,3 +74,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<script>alert('Votre commande a été passée avec succès.'); window.location.href='../../../HTML-CSS/Html/Commande_Remi/index.html';</script>";
     exit();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*		⊂(◉‿◉)つ      */
+/*		⊂(◉‿◉)つ      */
+/*		⊂(◉‿◉)つ      */
+/*		⊂(◉‿◉)つ      */
+/*		⊂(◉‿◉)つ      */
+/*		⊂(◉‿◉)つ      */
