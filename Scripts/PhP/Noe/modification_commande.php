@@ -1,6 +1,6 @@
 <?php
     require_once '../../../BaseDeDonnees/codesConnexion.php';
-    $connex = BaseDeDonnees::connecterBDD('adminQuentin');
+    $connex = BaseDeDonnees::connecterBDD('admin');
 
         $idCommande = $_POST['id'];
         $nouveauStatut = $_POST['statutLivraison'];
