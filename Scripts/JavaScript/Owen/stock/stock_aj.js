@@ -22,6 +22,7 @@ $(document).ready(function(){
         var stockReel = $('#stockReel').val();
         var prixUHTMoyen = $('#prixUHTMoyen').val();
         var nomFourn = $('#fournisseur-select').val();
+        var categorie = $('#categorie-select').val();
         $.ajax({
             type: 'POST',
             url: '../../../Scripts/PHP/Owen/stock/ajouter_stock.php',
@@ -29,7 +30,8 @@ $(document).ready(function(){
                 nomFourn: nomFourn,
                 nomIngred: nomIngred,
                 stockReel: stockReel,
-                prixUHTMoyen: prixUHTMoyen
+                prixUHTMoyen: prixUHTMoyen,
+                categorie: categorie
             },
             success: function(response){
                 console.log("response");
