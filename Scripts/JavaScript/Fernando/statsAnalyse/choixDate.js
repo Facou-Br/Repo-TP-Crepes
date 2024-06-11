@@ -42,10 +42,21 @@ $(".spaceChoixDate").on('change', 'input[type="month"],input[type="week"],input[
             let dateFin = new Date($(this).val());
             let moisDebut = dateDebut.getMonth();
             let moisFin = dateFin.getMonth();
-            console.log(moisDebut);
-            console.log(moisFin);
-            creerLignePoints(moisDebut, moisFin);
-            creerStackedBars(moisDebut, moisFin);
+            let str = $("#debut").val();
+            let jourDebut = str.slice(-2);
+
+            console.log("Date jour de début : " + jourDebut);
+
+            if ($("#ChoixTypeDate").val() === "annee") {
+                console.log(moisDebut);
+                console.log(moisFin);
+                creerLignePoints(moisDebut, moisFin, jourDebut, jourFin, 'annee');
+                creerStackedBars(moisDebut, moisFin, jourDebut, jourFin, 'annee');
+            } else {
+                creerLignePoints(moisDebut, moisFin, jourDebut, jourFin, 'mois');
+                creerStackedBars(moisDebut, moisFin, jourDebut, jourFin, 'mois');
+            }
+
         }
     }
     if ($(this).attr("id") === "semaine") {
