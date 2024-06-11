@@ -35,18 +35,19 @@ function afficherCommandes(data) {
             } else if (commande.statutLivraison === 'en_livraison') {
                 buttons = `<button onclick="termineCommande(${commande.id})">Commande livrée</button>`
             }
-            //let livreur = ''
-            //if (commande.idLivreur === null) {
-                 let livreur = `<select id="livreur-select">
-                 <option value=#>Choisir un livreur</option>
-             </select>`
-            //} else {
-            //    livreur = `<p>Nom du livreur : ${commande.nomLivreur} ${commande.prenomLivreur}</p>`
-            //}
+            let livreur = ''
+            if (commande.nomLivreur === null && commande.prenomLivreur === null) {
+                livreur = "toto"
+                livreur = `<select id="livreur-select">
+                                <option value=#>Choisir un livreur</option>
+                           </select>`
+            } else {
+                livreur = `${commande.nomLivreur} ${commande.prenomLivreur}`
+            }
             let elementCommande = `
                 <div>
                     <h2>Nom : ${commande.nomClient}</h2>
-                    <p>Nom du livreur : ${commande.nomLivreur} ${commande.prenomLivreur}</p>
+                    <p>Nom du livreur : ${livreur} </p>
                     <p>Heure de mise à disposition : ${commande.temps}</p>
                     <p>Statut de livraison: ${commande.statutLivraison}</p>
                     <p>Téléphone : ${commande.tel}</p>
@@ -54,7 +55,6 @@ function afficherCommandes(data) {
                         ${commande.adrClient} ${commande.cpClient} ${commande.vilClient}
                     </a>
                     <br/><br/>
-                    ${livreur}
                     ${buttons}
                     <hr>
                 </div>
@@ -103,6 +103,10 @@ function actualiserCommandesBdD(data) {
 // Fonction pour prendre une commande
 function prendreCommande(idCommande) {
     let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
+    if (commande.nomLivreur === null && commande.prenomLivreur === null) {
+        alert("Vous n'avez choisi aucun livreur")
+        return
+    }
     if (commande) {
         if (commande.statutLivraison === "fin_preparation") {
             mettreAJourBDD(idCommande, "en_livraison")
@@ -118,6 +122,10 @@ function prendreCommande(idCommande) {
 // Fonction pour terminer une commande
 function termineCommande(idCommande) {
     let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
+    if (commande.nomLivreur === null && commande.prenomLivreur === null) {
+        alert("Vous n'avez choisi aucun livreur")
+        return
+    }
     if (commande) {
         if (commande.statutLivraison === "en_livraison") {
             mettreAJourBDD(idCommande, "livree")

@@ -2,13 +2,14 @@
 
 require_once '../../../BaseDeDonnees/codesConnexion.php';
 
-try {
-    $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE . ';port=' . PORT, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-} catch (PDOException $e) {
-    echo 'Erreur : ' . $e->getMessage() . '<br />';
-    echo 'N° : ' . $e->getCode();
-    die();
-}
+#try {
+#    $connex = new PDO('mysql:host=' . HOST . ';charset=utf8;dbname=' . DATABASE . ';port=' . PORT, ADMIN_USER, ADMIN_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+#} catch (PDOException $e) {
+#    echo 'Erreur : ' . $e->getMessage() . '<br />';
+#    echo 'N° : ' . $e->getCode();
+#    die();
+#}
+$connex = BaseDeDonnees::connecterBDD('admin');
 
 $NomProd = $_POST["NomProd"];
 $Taille = $_POST["Taille"];

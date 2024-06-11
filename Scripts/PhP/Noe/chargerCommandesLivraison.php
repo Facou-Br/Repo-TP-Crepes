@@ -9,7 +9,7 @@
         INNER JOIN COM_DET co ON cm.NumCom = co.NumCom
         INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
         INNER JOIN PRODUIT p ON d.IdProd = p.IdProd
-        INNER JOIN LIVREUR l ON l.IdLivreur = cm.IdLivreur
+        LEFT JOIN LIVREUR l ON l.IdLivreur = cm.IdLivreur
         WHERE cm.A_Livrer = 1 AND cm.EtatCde = 'Acceptée';";
 
         $result = $connex->query($rq);
@@ -18,23 +18,22 @@
 
         while ($ligne = $result->fetch(PDO::FETCH_ASSOC)) {
             $commande = array(
-                "id" => $ligne["NumCom"],
-                "nomClient" => $ligne["NomClient"],
-                "nom" => $ligne["NomProd"],
-                "temps" => substr($ligne["HeureDispo"], 0, 5),
-                "statutCde" => $ligne["EtatCde"],
-                "statutLivraison" => $ligne["EtatLivraison"],
-                "tel" => $ligne["TelClient"],
-                "adrClient" => $ligne["AdrClient"],
-                "cpClient" => $ligne["CP_Client"],
-                "vilClient" => $ligne["VilClient"],
-                "nomLivreur" => $ligne["nom"],
-                "prenomLivreur" => $ligne["prenom"],
+                "id"                => $ligne["NumCom"],
+                "nomClient"         => $ligne["NomClient"],
+                "nom"               => $ligne["NomProd"],
+                "temps"             => substr($ligne["HeureDispo"], 0, 5),
+                "statutCde"         => $ligne["EtatCde"],
+                "statutLivraison"   => $ligne["EtatLivraison"],
+                "tel"               => $ligne["TelClient"],
+                "adrClient"         => $ligne["AdrClient"],
+                "cpClient"          => $ligne["CP_Client"],
+                "vilClient"         => $ligne["VilClient"],
+                "nomLivreur"        => $ligne["nom"],
+                "prenomLivreur"     => $ligne["prenom"],
                 "idLivreur" => $ligne["IdLivreur"]
             );
             $commandes_array[] = $commande;
         }
-        var_dump($commandes_array);
 
         $connex = null;
 
