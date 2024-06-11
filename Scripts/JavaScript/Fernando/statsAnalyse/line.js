@@ -1,16 +1,23 @@
-function creerLignePoints(dateDebut, dateFin) {
+function creerLignePoints(dateDebut, dateFin, jourDebut, jourFin, type) {
+    let anneeLabel = [];
     const nomsMois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet",
         "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
 
-    let moisLabel = [];
-
-    for(let i = dateDebut; i <= dateFin; i++) {
-        moisLabel.push(nomsMois[i]);
+    if (type === "annee") {
+        for (let i = dateDebut; i <= dateFin; i++) {
+            anneeLabel.push(nomsMois[i]);
+        }
     }
-    console.log(moisLabel);
+    else if (type === 'mois') {
+        for (let i = dateDebut; i <= dateFin; i++) {
+            for (let j = jourDebut; j <= jourFin; j++) {
+                anneeLabel.push(j + "/" + nomsMois[i]);
+            }
+        }
+    }
 
     const data = {
-        labels: moisLabel,
+        labels: anneeLabel,
         datasets: [{
             label: 'Ventes des crêpes au chocolat',
             data: [65, 59, 80, 81, 56, 55, 40],
