@@ -1,7 +1,7 @@
 <?php
     // Connexion à la BdD
     require_once '../../../BaseDeDonnees/codesConnexion.php';
-    $connex = BaseDeDonnees::connecterBDD('adminQuentin');
+    $connex = BaseDeDonnees::connecterBDD('admin');
 
     if (isset($_POST['id']) && isset($_POST['statut'])) {
         $idCommande = $_POST['id'];

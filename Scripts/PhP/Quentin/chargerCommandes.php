@@ -1,7 +1,7 @@
 <?php
     // Connexion à la BdD
     require_once '../../../BaseDeDonnees/codesConnexion.php';
-    $connex = BaseDeDonnees::connecterBDD('adminQuentin');
+    $connex = BaseDeDonnees::connecterBDD('admin');
 
     try {
         // Requête SQL pour charger les commandes avec les détails
