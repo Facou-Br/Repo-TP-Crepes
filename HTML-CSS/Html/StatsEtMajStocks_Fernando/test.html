@@ -29,25 +29,12 @@
         const control = document.getElementById("floating-panel");
 
         map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
-
-        const onChangeHandler = function () {
-          calculateAndDisplayRoute(directionsService, directionsRenderer);
-        };
-
-        document
-          .getElementById("start")
-          .addEventListener("change", onChangeHandler);
-        document
-          .getElementById("end")
-          .addEventListener("change", onChangeHandler);
-        document
-          .getElementById("mode")
-          .addEventListener("change", onChangeHandler);
+        calculateAndDisplayRoute(directionsService, directionsRenderer);
       }
 
       function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-        const start = document.getElementById("start").value;
-        const end = document.getElementById("end").value;
+        const start = "l'Usinerie, 11 Rue Georges Maugey, 71100 Chalon-sur-Saône";
+        const end = "30 Quai Saint-Cosme, 71100 Chalon-sur-Saône";
         const selectedMode = document.getElementById("mode").value;
 
         directionsService
@@ -148,34 +135,12 @@
     <div id="floating-panel">
       <strong>Start:</strong>
       <select id="start">
-        <option value="chalon-sur-saône, france">chalon-sur-saône, france"</option>
-        <option value="Lyon, france">Lyon, france</option>
-        <option value="joplin, mo">Joplin, MO</option>
-        <option value="oklahoma city, ok">Oklahoma City</option>
-        <option value="amarillo, tx">Amarillo</option>
-        <option value="gallup, nm">Gallup, NM</option>
-        <option value="flagstaff, az">Flagstaff, AZ</option>
-        <option value="winona, az">Winona</option>
-        <option value="kingman, az">Kingman</option>
-        <option value="barstow, ca">Barstow</option>
-        <option value="san bernardino, ca">San Bernardino</option>
-        <option value="los angeles, ca">Los Angeles</option>
+        <option value="l'Usinerie, 11 Rue Georges Maugey, 71100 Chalon-sur-Saône">Cnam Usinerie, France</option>
       </select>
       <br />
       <strong>End:</strong>
       <select id="end">
-        <option value="chalon-sur-saône, france">chalon-sur-saône, france"</option>
-        <option value="Lyon, france">Lyon, france</option>
-        <option value="joplin, mo">Joplin, MO</option>
-        <option value="oklahoma city, ok">Oklahoma City</option>
-        <option value="amarillo, tx">Amarillo</option>
-        <option value="gallup, nm">Gallup, NM</option>
-        <option value="flagstaff, az">Flagstaff, AZ</option>
-        <option value="winona, az">Winona</option>
-        <option value="kingman, az">Kingman</option>
-        <option value="barstow, ca">Barstow</option>
-        <option value="san bernardino, ca">San Bernardino</option>
-        <option value="los angeles, ca">Los Angeles</option>
+        <option value="30 Quai Saint-Cosme, 71100 Chalon-sur-Saône">La Sucrerie, France</option>
       </select>
       <br />
       <b>Mode of Travel: </b>
@@ -194,34 +159,12 @@
       <div id="floating-panel">
         <strong>Start:</strong>
         <select id="start">
-          <option value="chalon-sur-saône, france">chalon-sur-saône, france"</option>
-          <option value="Lyon, france">Lyon, france</option>
-          <option value="joplin, mo">Joplin, MO</option>
-          <option value="oklahoma city, ok">Oklahoma City</option>
-          <option value="amarillo, tx">Amarillo</option>
-          <option value="gallup, nm">Gallup, NM</option>
-          <option value="flagstaff, az">Flagstaff, AZ</option>
-          <option value="winona, az">Winona</option>
-          <option value="kingman, az">Kingman</option>
-          <option value="barstow, ca">Barstow</option>
-          <option value="san bernardino, ca">San Bernardino</option>
-          <option value="los angeles, ca">Los Angeles</option>
+          <option value="l'Usinerie, 11 Rue Georges Maugey, 71100 Chalon-sur-Saône">Cnam Usinerie, France</option>
         </select>
         <br />
         <strong>End:</strong>
         <select id="end">
-          <option value="chalon-sur-saône, france">chalon-sur-saône, france"</option>
-          <option value="Lyon, france">Lyon, france</option>
-          <option value="joplin, mo">Joplin, MO</option>
-          <option value="oklahoma city, ok">Oklahoma City</option>
-          <option value="amarillo, tx">Amarillo</option>
-          <option value="gallup, nm">Gallup, NM</option>
-          <option value="flagstaff, az">Flagstaff, AZ</option>
-          <option value="winona, az">Winona</option>
-          <option value="kingman, az">Kingman</option>
-          <option value="barstow, ca">Barstow</option>
-          <option value="san bernardino, ca">San Bernardino</option>
-          <option value="los angeles, ca">Los Angeles</option>
+          <option value="30 Quai Saint-Cosme, 71100 Chalon-sur-Saône">La Sucrerie, France</option>
         </select>
       </div>
     </div>
