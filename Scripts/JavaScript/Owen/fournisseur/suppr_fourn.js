@@ -1,7 +1,11 @@
 $(document).ready(function(){
+    // Attache une fonction de clic au bouton avec l'ID 'supprimer'
     $('#supprimer').click(function(e){
+        // Empêche le comportement par défaut du bouton (soumission du formulaire)
         e.preventDefault();
-        var nomFourn = $('#fournisseur-select').val();
+
+        // Récupère la valeur du fournisseur sélectionné
+        let nomFourn = $('#fournisseur-select').val();
 
         $.ajax({
             type: 'POST',

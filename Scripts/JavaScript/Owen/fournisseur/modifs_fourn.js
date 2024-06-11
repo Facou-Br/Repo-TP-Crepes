@@ -3,15 +3,20 @@ $.ajax({
     type: "POST",
     success: function (data) {
         data = JSON.parse(data);
-            $.each(data, function (index, fournisseur) {
-                $("#fournisseur-select").append(
-                    $("<option></option>").val(fournisseur["NomFourn"]).text(fournisseur["NomFourn"])
-                );
-            });
-        $("#fournisseur-select").change(function() {
-            var selectedFournisseur = $(this).val();
-            var fournisseur = data.find(f => f.NomFourn === selectedFournisseur);
+        $.each(data, function (index, fournisseur) {
+            // Ajoute une option dans le select avec les informations du fournisseur
+            $("#fournisseur-select").append(
+                $("<option></option>").val(fournisseur["NomFourn"]).text(fournisseur["NomFourn"])
+            );
+        });
 
+        $("#fournisseur-select").change(function() {
+            // Récupère le fournisseur sélectionné
+            let selectedFournisseur = $(this).val();
+            // Trouve les informations du fournisseur sélectionné
+            let fournisseur = data.find(f => f.NomFourn === selectedFournisseur);
+
+            // Remplit les champs de saisie avec les informations du fournisseur
             if (fournisseur) {
                 $("#nom").val(fournisseur.NomFourn);
                 $("#adresse").val(fournisseur.Adresse);
@@ -20,22 +25,24 @@ $.ajax({
                 $("#telephone").val(fournisseur.Tel);
             }
         });
-        }, // closing brace and parenthesis for success function
-
+    },
     error: function () {
         alert("Erreur lors de la récupération des fournisseurs.");
     }
 });
 
-
 $(document).ready(function(){
+    // Attache une fonction de clic au bouton avec l'ID 'modifier'
     $('#modifier').click(function(e){
+        // Empêche le comportement par défaut du bouton (soumission du formulaire)
         e.preventDefault();
-        var nomFourn = $('#fournisseur-select').val();
-        var adresse = $('#adresse').val();
-        var codePostal = $('#codePostal').val();
-        var ville = $('#ville').val();
-        var telephone = $('#telephone').val();
+
+        // Récupère les valeurs des champs de saisie
+        let nomFourn = $('#fournisseur-select').val();
+        let adresse = $('#adresse').val();
+        let codePostal = $('#codePostal').val();
+        let ville = $('#ville').val();
+        let telephone = $('#telephone').val();
 
         $.ajax({
             type: 'POST',
@@ -48,10 +55,11 @@ $(document).ready(function(){
                 telephone: telephone
             },
             success: function(response){
-                alert("Fournisseur modifié avec succès"); //Popup au lieu d'alerte
+                alert("Fournisseur modifié avec succès");
+                // Ajoute la réponse au résultat
                 $("#resultat").append(response);
-                var fournisseur = data.find(f => f.NomFourn === selectedFournisseur);
-
+                // Réinitialise les champs de saisie
+                let fournisseur = data.find(f => f.NomFourn === selectedFournisseur);
                 if (fournisseur) {
                     $("#nom").val("");
                     $("#adresse").val("");

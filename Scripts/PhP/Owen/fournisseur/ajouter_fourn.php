@@ -11,7 +11,6 @@ $tel = $_POST["telephone"];
 try {
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $sql = "INSERT INTO `fournisseur` (`NomFourn`, `Adresse`, `CodePostal`, `Ville`, `Tel`) VALUES ($nomFourn, $adresse, $cp, $ville, $tel);";
-    var_dump($sql . "<br>");
     $connex->exec($sql); #essayer le query pour voir si ça marche regarder dans le cours
     $connex->commit();
 } catch (PDOException $e) {
