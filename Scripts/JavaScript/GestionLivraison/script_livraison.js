@@ -103,6 +103,10 @@ function actualiserCommandesBdD(data) {
 // Fonction pour prendre une commande
 function prendreCommande(idCommande) {
     let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
+    if (commande.nomLivreur === null && commande.prenomLivreur === null) {
+        alert("Vous n'avez choisi aucun livreur")
+        return
+    }
     if (commande) {
         if (commande.statutLivraison === "fin_preparation") {
             mettreAJourBDD(idCommande, "en_livraison")
@@ -118,6 +122,10 @@ function prendreCommande(idCommande) {
 // Fonction pour terminer une commande
 function termineCommande(idCommande) {
     let commande = listeCommandes.commandes.find(commande => commande.id === idCommande)
+    if (commande.nomLivreur === null && commande.prenomLivreur === null) {
+        alert("Vous n'avez choisi aucun livreur")
+        return
+    }
     if (commande) {
         if (commande.statutLivraison === "en_livraison") {
             mettreAJourBDD(idCommande, "livree")
