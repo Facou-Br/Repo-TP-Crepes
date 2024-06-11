@@ -32,12 +32,21 @@ $("select.ChoixTypeDate").change(function () {
 });
 
 $(".spaceChoixDate").on('change', 'input[type="month"],input[type="week"],input[type="date"]', function () {
-    console.log("Date selected: " + $(this).val() + " || Id : " + $(this).attr("id"));
     if ($(this).attr("id") === "debut") {
         document.getElementById("fin").min = $(this).val();
     }
     if ($(this).attr("id") === "fin") {
         document.getElementById("debut").max = $(this).val();
+        if (document.getElementById("debut").value != "") {
+            let dateDebut = new Date($("#debut").val());
+            let dateFin = new Date($(this).val());
+            let moisDebut = dateDebut.getMonth();
+            let moisFin = dateFin.getMonth();
+            console.log(moisDebut);
+            console.log(moisFin);
+            creerLignePoints(moisDebut, moisFin);
+            creerStackedBars(moisDebut, moisFin);
+        }
     }
     if ($(this).attr("id") === "semaine") {
         let semaine = $(this).val();

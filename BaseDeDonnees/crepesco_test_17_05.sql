@@ -330,7 +330,7 @@ INSERT INTO `produit` (`NomProd`, `Active`, `Taille`, `NbIngBase`, `NbIngOpt`, `
                                                                                                  ('Crêpe aux épinards', '1', 'M', 3, 2, 6, 'jpeg/epinard.jpeg', 'Epinards', 'Tomate', 'Oignon', 'Ail', 'Huile', 'Persil', 'Basilic', 'Ciboulette', 'Fromage', 'Lait', 'Reblochon', 2, '0000-00-00'),
                                                                                                  ('Crêpe aux pommes caramélisées', '1', 'M', 3, 2, 5, 'jpeg/pomme.jpg', 'Pomme', 'Sucre', 'Beurre', 'Cannelle', 'Lait', 'Chantilly', 'Curry', 'Paprika', 'Ciboulette', 'Ail', 'Reblochon', 2, '0000-00-00'),
                                                                                                  ('Crêpe aux champignons', '1', 'M', 3, 2, 6, 'jpeg/champi.jpg', 'Oeufs','Champignons', 'Oignon', 'Ail', 'Beurre', 'Lait', 'Persil', 'Basilic', 'Ciboulette', 'Huile', 'Reblochon', 2, '0000-00-00'),
-                                                                                                 ('Salade', '1', 'M', 3, 2, 7, '/jpeg/salade.jpg', 'Tomate', 'Salade', 'Oignon', 'Poivron', 'Ail', 'Huile', 'Persil', 'Basilic', 'Ciboulette', 'Lait', 'Reblochon', 2, '0000-00-00');
+                                                                                                 ('Salade césar', '1', 'M', 3, 2, 7, '/jpeg/salade.jpg', 'Tomate', 'Salade', 'Oignon', 'Poivron', 'Ail', 'Huile', 'Persil', 'Basilic', 'Ciboulette', 'Lait', 'Reblochon', 2, '0000-00-00');
 
 
 --

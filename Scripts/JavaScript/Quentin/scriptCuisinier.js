@@ -44,15 +44,30 @@ function afficherCommandes(data) {
                 <p>Heure de mise à disposition : ${commande.temps}</p>
                 <p>Statut : ${commande.statut}</p>
                 <br>
+        `;
+
+        // Ajout des boutons en fonction du statut
+        if (commande.statut === "Acceptée") {
+            elementCommande += `
                 <button onclick="commencerCommande(${commande.id})">Commencer</button>
+            `;
+        } else {
+            elementCommande += `
                 <button onclick="terminerCommande(${commande.id})">Terminer</button>
-                <button onclick="afficherIngredients(${commande.id})">Voir les details</button>
+            `;
+        }
+
+        // Bouton pour afficher les détails
+        elementCommande += `
+                <button onclick="afficherIngredients(${commande.id, commande.OF})">Voir les détails</button>
                 <hr>
             </div>
         `;
+
         listeCommandes.append(elementCommande); // On ajoute l'élément de commande à la liste
     });
 }
+
 
 
 /*
@@ -129,24 +144,30 @@ function terminerCommande(idCommande) {
     Permet de mettre à jour les stocks d'ingrédients
 */
 function miseAJourIngredients(id) {
-    let commande = listeCommandes.commandes.find(commande => commande.id === id);   // On récupère la commande grâce à l'id
-    let quantiteCrepe = commande.nombre;    // On récupère la quantité de crêpe commandée
+    let commandes = listeCommandes.commandes
 
-    for (const [nom, [quantite, unite]] of Object.entries(commande.ingredients)) {
-        $.ajax({
-            type: "POST",
-            url: "../../../Scripts/PhP/Quentin/miseAJourStock.php",
-            data: { nomIngredient: nom, quantiteIngredient: quantite, quantiteCrepe: quantiteCrepe },   // On envoie les données nécéssaires pour l'update
-            success: function(response) {
-                console.log("Stock mis à jour avec succès !");
-                console.log("OK : " + quantite + " " +  unite + " " + nom);
-            },
-            error: function(xhr, status, error) {
-                console.log("Erreur lors de la mise à jour du stock ingrédient :", error);
-                console.log("NOP : " + quantite + " " +  unite + " " + nom);
+    commandes.forEach(commande => {
+        // On regarde si cela fait parti de la commande
+        if (commande.id === id) {
+            let quantiteCrepe = commande.nombre; // On récupère la quantité de crêpe commandée
+
+            for (const [nom, [quantite, unite]] of Object.entries(commande.ingredients)) {
+                $.ajax({
+                    type: "POST",
+                    url: "../../../Scripts/PhP/Quentin/miseAJourStock.php",
+                    data: { nomIngredient: nom, quantiteIngredient: quantite, quantiteCrepe: quantiteCrepe }, // On envoie les données nécéssaires pour l'update
+                    success: function(response) {
+                        console.log("Stock mis à jour avec succès !");
+                        console.log("OK : " + quantite + " " + unite + " " + nom);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Erreur lors de la mise à jour du stock ingrédient :", error);
+                        console.log("NOP : " + quantite + " " + unite + " " + nom);
+                    }
+                });
             }
-        });
-    }
+        }
+    });
 }
 
 
@@ -154,7 +175,7 @@ function miseAJourIngredients(id) {
     Permet d'afficher les détails des ingrédients d'une commande
 */
 function afficherIngredients(id) {
-    let commande = listeCommandes.commandes.find(commande => commande.id === id);   // On récupère la commande grâce à l'id
+    let commande = listeCommandes.commandes.find(commande => commande.OF === id);   // On récupère la commande grâce à l'id
 
     if (commande) {
         // On affiche avec une alert les ingrédients avec la quantité
