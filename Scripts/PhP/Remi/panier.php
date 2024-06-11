@@ -51,9 +51,7 @@ try {
 
         echo "<tr><td>Livraison</td><td>1</td><td>" . 5 . "€</td></tr>";
         echo "<tr><td>Total</td><td>$totalQuantity</td><td>" . $total+5 . "€</td></tr>";
-
-        echo "Le total est : " . $total;
-
+        echo '<br>';
         echo '</table>';
     } else {
         echo 'Votre panier est vide.';
@@ -63,7 +61,7 @@ try {
 }
 function annulerCommande() {
     $_SESSION['cart'] = array();
-    header('Location: ../../../HTML-CSS/index.html');
+    header('Location: ../../../HTML-CSS/Html/Commande_Remi/index.html');
     exit();
 }
 
