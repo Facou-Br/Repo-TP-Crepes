@@ -17,7 +17,7 @@ try {
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
 
     // Requête SQL pour insérer les données du fournisseur dans la table 'fournisseur'
-    $sql = "INSERT INTO `fournisseur` (`NomFourn`, `Adresse`, `CodePostal`, `Ville`, `Tel`) VALUES ('$nomFourn', '$adresse', '$cp', '$ville', '$tel');";
+    $sql = "INSERT INTO `fournisseur` (`NomFourn`, `Adresse`, `CodePostal`, `Ville`, `Tel`, `DateArchiv`) VALUES ('$nomFourn', '$adresse', '$cp', '$ville', '$tel', '0000-00-00');";
     // Exécute la requête SQL
     $connex->exec($sql);
     $connex->commit();
