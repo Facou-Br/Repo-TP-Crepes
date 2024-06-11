@@ -68,7 +68,6 @@ function annulerCommande() {
 if (isset($_POST['annulerCommande'])) {
     annulerCommande();
 }
-
 ?>
 <form method="post" action="validation.php">
     <label for="nom">Nom:</label><br>
