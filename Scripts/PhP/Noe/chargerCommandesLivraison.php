@@ -35,31 +35,10 @@
             $commandes_array[] = $commande;
         }
 
-        $commandes_array = array("commandes" => $commandes_array);
-        $jsonData = json_encode($commandes_array);
-        echo $jsonData;
-
-        //Prépare une requête sql pour le chargement de la commande
-        $rq2 = "SELECT *
-        FROM LIVREUR;";
-
-        $result = $connex->query($rq2);
-
-        $livreurs_array = array();
-
-        while ($ligne = $result->fetch(PDO::FETCH_ASSOC)) {
-            $livreur = array(
-                "id"                => $ligne["IdLiveur"],
-                "nom"         => $ligne["Nom"],
-                "prenom"               => $ligne["Prenom"],
-            );
-            $livreurs_array[] = $livreur;
-        }
-
         $connex = null;
 
-        $livreurs_array = array("livreurs" => $livreurs_array);
-        $jsonData = json_encode($livreurs_array);
+        $commandes_array = array("commandes" => $commandes_array);
+        $jsonData = json_encode($commandes_array);
         echo $jsonData;
 
     } catch (PDOException $e) {
