@@ -6,7 +6,7 @@ echo "<link rel='stylesheet' href='../../../HTML-CSS/style.css'>";
 echo "<link rel='stylesheet' href='../../../HTML-CSS/Css/StyleMenu.css'>";
 
 try {
-    $rq = "SELECT NomProd, 	PrixUHT, Image, IngBase1, IngBase2, IngBase3, IngBase4, IngBase5, IngOpt1, IngOpt2, IngOpt3, IngOpt4, IngOpt5, IngOpt6 FROM produit";
+    $rq = "SELECT NomProd, 	PrixUHT, Image, IngBase1, IngBase2, IngBase3, IngBase4, IngBase5 FROM produit";
     $result = $connex->query($rq);
 
     $counter = 0;
