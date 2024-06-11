@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $requete1 = "INSERT INTO commande (NomClient, TelClient, AdrClient, CP_Client, VilClient, Date, HeureDispo, TypeEmbal, A_Livrer, EtatCde, EtatLivraison, CoutLiv, TotalTTC, IdLivreur)
                             VALUES ('$nom', '$tel', '$adresse', '$cp', '$ville', '$date_actuelle', '$heure_actuelle', 'Sac', 1, 'Acceptée', 'preparation', $coutLiv, $totalTTC, NULL);";
         $pdo->exec($requete1);//creation de la commande
-        $pdo->commit();
 
         $requete2 = "SELECT NumCom FROM commande WHERE NomClient = '$nom' AND TelClient = '$tel' AND AdrClient = '$adresse' AND CP_Client = '$cp' AND VilClient = '$ville' AND Date = '$date_actuelle' AND  HeureDispo = '$heure_actuelle' AND TypeEmbal = 'Sac' AND A_Livrer = 1 AND EtatCde = 'Acceptée' AND EtatLivraison = 'preparation' AND CoutLiv = $coutLiv AND TotalTTC = $totalTTC;";
         $result = $pdo->query($requete2);       // on recup le num de commande pour le requete 7
@@ -60,24 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                     $requete7 = "INSERT INTO com_det (Num_OF, Quant, NumCom) VALUES ($Num_OF, $quantity, $numCom); ";
-                    $pdo->exec($requete5);              // associer la crepe a la commande
+                    $pdo->exec($requete7);              // associer la crepe a la commande
 
-
-                    echo $requete1;
-                    echo '<br><br>';
-                    echo $requete2;
-                    echo '<br><br>';
-                    echo $requete3;
-                    echo '<br><br>';
-                    echo $requete4;
-                    echo '<br><br>';
-                    echo $requete5;
-                    echo '<br><br>';
-                    echo '<br><br>';
-                    echo $requete6;
-                    echo '<br><br>';
-                    echo $requete7;
-                    echo '<br><br>';
 
 
                 }
@@ -85,9 +68,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } catch (PDOException $e) {
         echo 'Erreur : ' . $e->getMessage();
-        /*echo "<script>alert('Transaction annulée, veuillez réessayer.'); window.location.href='../../../HTML-CSS/Html/Commande_Remi/index.html';</script>";
-        exit();*/
+        echo "<script>alert('Transaction annulée, veuillez réessayer.'); window.location.href='../../../HTML-CSS/Html/Commande_Remi/index.html';</script>";
+        exit();
     }
-    /*echo "<script>alert('Votre commande a été passée avec succès.'); window.location.href='../../../HTML-CSS/Html/Commande_Remi/index.html';</script>";
-    exit();*/
+    echo "<script>alert('Votre commande a été passée avec succès.'); window.location.href='../../../HTML-CSS/Html/Commande_Remi/index.html';</script>";
+    exit();
 }
