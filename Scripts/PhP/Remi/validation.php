@@ -64,9 +64,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     } catch (PDOException $e) {
-        echo "<script>alert('Your order has been taken into account.'); window.location.href='../../../HTML-CSS/Html/Commande_Remi/index.html';</script>";
+        echo "<script>alert('Transaction annulée, veuillez réessayer.'); window.location.href='../../../HTML-CSS/Html/Commande_Remi/index.html';</script>";
         exit();
     }
-    echo "<script>alert('Your order has been taken into account.'); window.location.href='../../../HTML-CSS/Html/Commande_Remi/index.html';</script>";
+    echo "<script>alert('Votre commande a été passée avec succès.'); window.location.href='../../../HTML-CSS/Html/Commande_Remi/index.html';</script>";
     exit();
 }
