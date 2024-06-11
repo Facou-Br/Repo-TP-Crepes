@@ -19,6 +19,7 @@ try {
             <h3>" . $row['NomProd'] . "</h3> 
             <p class='prix'>" . $row['PrixUHT'] . "€</p>
         <p>Ingredients: <ul>
+        <div id='containerImg'>
         <img src='../../../HTML-CSS/Images/" . $row['Image'] . "' alt='" . $row['NomProd'] . "'>
         ";
 
@@ -30,6 +31,7 @@ try {
                 echo "<li>" . $row['IngOpt'.$i] . "</li>";
             }
         }
+        echo "</div>";
         echo "</ul></p>
             
             <div class='input-group'>
@@ -47,6 +49,12 @@ try {
         }
     }
 
+
+
+
+
+
+/*
     // si la derniere ligne a moims  de 3 div on en met une vide pour aligner les flexbox
     while ($counter % 3 != 0) {
         if ($counter %3 == 2) {
@@ -57,7 +65,7 @@ try {
 
 
 
-    }
+    }*/
     } catch (Exception $e) {
         echo 'Caught exception: ',  $e->getMessage(), "\n";
     }
