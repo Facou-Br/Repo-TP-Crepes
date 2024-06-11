@@ -29,4 +29,3 @@ $stocksJson = json_encode($result);
 
 // Renvoie le JSON
 echo $stocksJson;
-?>
