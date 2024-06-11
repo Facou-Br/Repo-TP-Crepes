@@ -10,6 +10,8 @@
 <body>
 <div class="wrapper">
     <header>
+        <input type="number" class="panier input" value="0" readonly >
+        <img class="panier" src="../../Images/png/panier.png">
         <h1>La Crêperie</h1>
         <nav>
             <table>
