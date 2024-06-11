@@ -1,8 +1,8 @@
 listeCommandes = null
 chargerCommandes()
 
-$(document).ready(function () {
-    afficherCommandes(listeCommandes)
+    $(document).ready(function () {
+        afficherCommandes(listeCommandes)
 })
 
 // Fonction pour charger les commandes
@@ -27,13 +27,7 @@ function afficherCommandes(data) {
     let listeCommandes = $("#commandes")
     listeCommandes.html("")
     
-    let livreurOptions = '<option value="#">Choisir un livreur</option>';
-    data.livreurs.forEach(livreur => {
-        livreurOptions += `<option value="${livreur.nom}">${livreur.nom}</option>`;
-    });
-    
     data.commandes.forEach(commande => {
-        data.livreurs.forEach(livreur => {
             if (commande.statutLivraison === "fin_preparation" || commande.statutLivraison === "en_livraison") {
                 let buttons = ''
                 if (commande.statutLivraison === 'fin_preparation') {
@@ -41,23 +35,17 @@ function afficherCommandes(data) {
                 } else if (commande.statutLivraison === 'en_livraison') {
                     buttons = `<button onclick="termineCommande(${commande.id})">Commande livrée</button>`
                 }
-                $.each(data, function (index, livreur) {
-                    $("#livreur-select").append(
-                        $("<option></option>").val(livreur["nom"]).text(livreur["nom"])
-                    )
-                })
                     let livreur = ''
                     if (commande.nomLivreur === null && commande.prenomLivreur === null) {
                         livreur = `<select id="livreur-select">
                                         <option value=#>Choisir un livreur</option>
-                                </select>`
+                                   </select>`
                     } else {
                         livreur = `${commande.nomLivreur} ${commande.prenomLivreur}`
                     }
                 let elementCommande = `
                     <div>
-                        <p>${commande["nomLivreur"]}</p>
-                        <h2>Nom : ${commande.nomClient}</h2>
+                        <h2>Nom du client : ${commande.nomClient}</h2>
                         <p>Nom du livreur : ${livreur} </p>
                         <p>Heure de mise à disposition : ${commande.temps}</p>
                         <p>Statut de livraison: ${commande.statutLivraison}</p>
@@ -73,7 +61,6 @@ function afficherCommandes(data) {
                 listeCommandes.append(elementCommande)
             }
         })
-    })
 }
 
 // Fonction pour mettre à jour le statut de la commande dans la base de données

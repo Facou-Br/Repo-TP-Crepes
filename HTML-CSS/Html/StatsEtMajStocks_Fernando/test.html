@@ -7,52 +7,6 @@
 <html>
   <head>
     <title>Displaying Text Directions With setPanel()</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script>
-      /**
-       * @license
-       * Copyright 2019 Google LLC. All Rights Reserved.
-       * SPDX-License-Identifier: Apache-2.0
-       */
-      function initMap() {
-        const directionsRenderer = new google.maps.DirectionsRenderer();
-        const directionsService = new google.maps.DirectionsService();
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 7,
-          center: { lat: 41.85, lng: -87.65 },
-          disableDefaultUI: true,
-        });
-
-        directionsRenderer.setMap(map);
-        directionsRenderer.setPanel(document.getElementById("sidebar"));
-
-        const control = document.getElementById("floating-panel");
-
-        map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
-        calculateAndDisplayRoute(directionsService, directionsRenderer);
-      }
-
-      function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-        const start = "l'Usinerie, 11 Rue Georges Maugey, 71100 Chalon-sur-Saône";
-        const end = "30 Quai Saint-Cosme, 71100 Chalon-sur-Saône";
-        const selectedMode = document.getElementById("mode").value;
-
-        directionsService
-          .route({
-            origin: start,
-            destination: end,
-            travelMode: google.maps.TravelMode[selectedMode],
-          })
-          .then((response) => {
-            directionsRenderer.setDirections(response);
-          })
-          .catch((e) =>
-            window.alert("Directions request failed due to " + status)
-          );
-      }
-
-      window.initMap = initMap;
-    </script>
     <style>
       /**
        * @license
@@ -130,6 +84,52 @@
         padding: 0.5rem;
       }
     </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script>
+      /**
+       * @license
+       * Copyright 2019 Google LLC. All Rights Reserved.
+       * SPDX-License-Identifier: Apache-2.0
+       */
+      function initMap() {
+        const directionsRenderer = new google.maps.DirectionsRenderer();
+        const directionsService = new google.maps.DirectionsService();
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 7,
+          center: { lat: 41.85, lng: -87.65 },
+          disableDefaultUI: true,
+        });
+
+        directionsRenderer.setMap(map);
+        directionsRenderer.setPanel(document.getElementById("sidebar"));
+
+        const control = document.getElementById("floating-panel");
+
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+        calculateAndDisplayRoute(directionsService, directionsRenderer);
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+        const start = "l'Usinerie, 11 Rue Georges Maugey, 71100 Chalon-sur-Saône";
+        const end = "30 Quai Saint-Cosme, 71100 Chalon-sur-Saône";
+        const selectedMode = document.getElementById("mode").value;
+
+        directionsService
+          .route({
+            origin: start,
+            destination: end,
+            travelMode: google.maps.TravelMode[selectedMode],
+          })
+          .then((response) => {
+            directionsRenderer.setDirections(response);
+          })
+          .catch((e) =>
+            window.alert("Directions request failed due to " + status)
+          );
+      }
+
+      window.initMap = initMap;
+    </script>
   </head>
   <body>
     <div id="floating-panel">
@@ -140,7 +140,7 @@
       <br />
       <strong>End:</strong>
       <select id="end">
-        <option value="30 Quai Saint-Cosme, 71100 Chalon-sur-Saône">La Sucrerie, France</option>
+        <option value="    data.commandes.forEach(commande => {${commande.adrClient}+${commande.cpClient}+${commande.vilClient}})">La Sucrerie, France</option>
       </select>
       <br />
       <b>Mode of Travel: </b>
