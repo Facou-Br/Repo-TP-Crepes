@@ -11,8 +11,7 @@
 <div class="wrapper">
     <header>
         <input type="number" class="panier input" value="0" readonly >
-        <a href="../../../Scripts/PhP/Remi/addToCart.php/" type="submit"><img class="panier" src="../../Images/png/panier.png"></a>
-
+        <?php echo "<a href='#' onclick='document.forms[0].submit();'><img class='panier' src='../../Images/png/panier.png'></a>"; ?>
         <h1>La Crêperie</h1>
         <nav>
             <table>
