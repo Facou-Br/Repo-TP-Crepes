@@ -85,7 +85,6 @@ button:hover {
 }
 
 .flex-container div {
-
     width: 33%;
 }
 
@@ -113,3 +112,9 @@ section p {
 #containerImg{
     width: 100%;
 }
+#boutonCart {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
