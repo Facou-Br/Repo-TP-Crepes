@@ -25,11 +25,12 @@ try {
     $requete2 = "SELECT NumCom FROM commande WHERE NomClient = '$nom' AND TelClient = '$tel' AND AdrClient = '$adresse' AND CP_Client = '$cp' AND VilClient = '$ville' AND Date = '$date_actuelle' AND  HeureDispo = '$heure_actuelle' AND TypeEmbal = 'Sac' AND A_Livrer = 1 AND EtatCde = 'Acceptée' AND EtatLivraison = 'preparation' AND CoutLiv = $coutLiv AND TotalTTC = $totalTTC;";
     $result = $pdo->query($requete2);
     $row = $result->fetch(PDO::FETCH_ASSOC);
-    $numCom = $row['NumCom']; // on recup le num de commande pour le requete 6
+    $numCom = $row['NumCom']; // on recup le num de commande pour le requete TODO MODIF LE CHIFFRE
+    echo "numCom : " . $numCom;
 
 
 
-    $requete3 = "SELECT MAX(IdProd) FROM detail;";
+    $requete3 = "SELECT IdProd FROM produit where IdPord ;";
     $result = $pdo->query($requete3);
     $row = $result->fetch(PDO::FETCH_ASSOC);
     $IdProd = $row['MAX(IdProd)']+1; // on recup le num de la derniere commande pour la requete 4
@@ -60,9 +61,9 @@ if (isset($_SESSION['cart'])) {
 
 
 } catch(PDOException $e) {
-    header("Location: ../../../HTML-CSS/Html/Commande_Remi/index.html");
+   /* header("Location: ../../../HTML-CSS/Html/Commande_Remi/index.html");*/
 
     die("ERROR: Could not able to execute the query. " . $e->getMessage());
 
 }}
-header("Location: ../../../HTML-CSS/Html/Commande_Remi/index.html");
+/*header("Location: ../../../HTML-CSS/Html/Commande_Remi/index.html");*/
