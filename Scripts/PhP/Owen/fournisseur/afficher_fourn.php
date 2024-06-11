@@ -30,4 +30,3 @@ $fournJson = json_encode($result);
 
 // Renvoie le JSON
 echo $fournJson;
-?>

@@ -27,40 +27,52 @@ function afficherCommandes(data) {
     let listeCommandes = $("#commandes")
     listeCommandes.html("")
     
+    let livreurOptions = '<option value="#">Choisir un livreur</option>';
+    data.livreurs.forEach(livreur => {
+        livreurOptions += `<option value="${livreur.nom}">${livreur.nom}</option>`;
+    });
+    
     data.commandes.forEach(commande => {
-        if (commande.statutLivraison === "fin_preparation" || commande.statutLivraison === "en_livraison") {
-            let buttons = ''
-            if (commande.statutLivraison === 'fin_preparation') {
-                buttons = `<button onclick="prendreCommande(${commande.id})">Prendre la commande</button>`
-            } else if (commande.statutLivraison === 'en_livraison') {
-                buttons = `<button onclick="termineCommande(${commande.id})">Commande livrée</button>`
+        data.livreurs.forEach(livreur => {
+            if (commande.statutLivraison === "fin_preparation" || commande.statutLivraison === "en_livraison") {
+                let buttons = ''
+                if (commande.statutLivraison === 'fin_preparation') {
+                    buttons = `<button onclick="prendreCommande(${commande.id})">Prendre la commande</button>`
+                } else if (commande.statutLivraison === 'en_livraison') {
+                    buttons = `<button onclick="termineCommande(${commande.id})">Commande livrée</button>`
+                }
+                $.each(data, function (index, livreur) {
+                    $("#livreur-select").append(
+                        $("<option></option>").val(livreur["nom"]).text(livreur["nom"])
+                    )
+                })
+                    let livreur = ''
+                    if (commande.nomLivreur === null && commande.prenomLivreur === null) {
+                        livreur = `<select id="livreur-select">
+                                        <option value=#>Choisir un livreur</option>
+                                </select>`
+                    } else {
+                        livreur = `${commande.nomLivreur} ${commande.prenomLivreur}`
+                    }
+                let elementCommande = `
+                    <div>
+                        <p>${commande["nomLivreur"]}</p>
+                        <h2>Nom : ${commande.nomClient}</h2>
+                        <p>Nom du livreur : ${livreur} </p>
+                        <p>Heure de mise à disposition : ${commande.temps}</p>
+                        <p>Statut de livraison: ${commande.statutLivraison}</p>
+                        <p>Téléphone : ${commande.tel}</p>
+                        <p>Adresse de la commande : </p><a href="https://www.google.fr/maps/search/${commande.adrClient}+${commande.cpClient}+${commande.vilClient}">
+                            ${commande.adrClient} ${commande.cpClient} ${commande.vilClient}
+                        </a>
+                        <br/><br/>
+                        ${buttons}
+                        <hr>
+                    </div>
+                `
+                listeCommandes.append(elementCommande)
             }
-            let livreur = ''
-            if (commande.nomLivreur === null && commande.prenomLivreur === null) {
-                livreur = "toto"
-                livreur = `<select id="livreur-select">
-                                <option value=#>Choisir un livreur</option>
-                           </select>`
-            } else {
-                livreur = `${commande.nomLivreur} ${commande.prenomLivreur}`
-            }
-            let elementCommande = `
-                <div>
-                    <h2>Nom : ${commande.nomClient}</h2>
-                    <p>Nom du livreur : ${livreur} </p>
-                    <p>Heure de mise à disposition : ${commande.temps}</p>
-                    <p>Statut de livraison: ${commande.statutLivraison}</p>
-                    <p>Téléphone : ${commande.tel}</p>
-                    <p>Adresse de la commande : </p><a href="https://www.google.fr/maps/search/${commande.adrClient}+${commande.cpClient}+${commande.vilClient}">
-                        ${commande.adrClient} ${commande.cpClient} ${commande.vilClient}
-                    </a>
-                    <br/><br/>
-                    ${buttons}
-                    <hr>
-                </div>
-            `
-            listeCommandes.append(elementCommande)
-        }
+        })
     })
 }
 
