@@ -1,59 +1,66 @@
+// Requête AJAX pour récupérer les fournisseurs
 $.ajax({
     url: "../../../Scripts/PhP/Owen/fournisseur/afficher_fourn.php",
     type: "POST",
     success: function (data) {
+        // Analyse les données JSON reçues
         data = JSON.parse(data);
-        console.log(data);
+        // Parcourt chaque élément des données
         $.each(data, function (index, fourn) {
-                $("#fournisseur-select").append(
-                    $("<option></option>").val(fourn["NomFourn"]).text(fourn["NomFourn"])
-                );
-            }
-        );
+            // Ajoute une option dans le select avec le nom des fournisseurs
+            $("#fournisseur-select").append(
+                $("<option></option>").val(fourn["NomFourn"]).text(fourn["NomFourn"])
+            );
+        });
     }
 });
 
+// Requête AJAX pour récupérer les stocks
 $.ajax({
     url: "../../../Scripts/PhP/Owen/stock/afficher_stock.php",
     type: "POST",
     success: function (data){
+        // Analyse les données JSON reçues
         data = JSON.parse(data);
+        // Parcourt chaque élément des données
         $.each(data, function (index, stocks) {
+            // Ajoute une option dans le select avec le nom des stocks
             $("#stocks-select").append(
                 $("<option></option>").val(stocks["NomIngred"]).text(stocks["NomIngred"])
             );
         });
-        $("#stocks-select").change(function() {
-            var selectedStocks = $(this).val();
-            var stocks = data.find(f => f.NomIngred === selectedStocks);
 
+        $("#stocks-select").change(function() {
+            // Récupère le stock sélectionné
+            let selectedStocks = $(this).val();
+            // Trouve les informations du stock sélectionné
+            let stocks = data.find(f => f.NomIngred === selectedStocks);
+
+            // Remplit les champs de saisie avec les informations du stock
             if (stocks) {
                 $("#stockReel").val(stocks.StockReel);
                 $("#prix").val(stocks.PrixUHT);
                 $("#fournisseur-select").val(stocks["NomFourn"]);
-
-
             }
         });
-         // closing brace and parenthesis for success function;
-    }, // closing brace and parenthesis for success function
-
+    },
     error: function () {
         alert("Erreur lors de la récupération des stocks.");
     }
 });
 
-
-
-
 $(document).ready(function(){
+    // Attache une fonction de clic au bouton avec l'ID 'modifier'
     $('#modifier').click(function(e){
         e.preventDefault();
-        var nomIngred = $('#stocks-select').val();
-        var nomFourn = $('#fournisseur-select').val();
-        var StockReel = $('#stockReel').val();
-        var prix = $('#prix').val();
 
+        // Récupère les valeurs des champs de saisie
+        let nomIngred = $('#stocks-select').val();
+        let nomFourn = $('#fournisseur-select').val();
+        let StockReel = $('#stockReel').val();
+        let prix = $('#prix').val();
+
+        // Effectue une requête AJAX pour modifier le stock
         $.ajax({
             type: 'POST',
             url: '../../../Scripts/PHP/Owen/stock/modifier_stock.php',
@@ -64,15 +71,14 @@ $(document).ready(function(){
                 prix: prix
             },
             success: function(response){
-                alert("Ingrédient modifié avec succès"); //Popup au lieu d'alerte
+                alert("Ingrédient modifié avec succès");
                 $("#resultat").append(response);
-                var ingredient = data.find(i => i.nom === selectedIngredient);
+                // Réinitialise les champs de saisie
+                $("#quantite").val("");
+                $("#prix").val("");
+                $("#fournisseur-select").val("Choisir un fournisseur");
+                $("#stocks-select").val("Choisir un élément");
 
-                if (ingredient) {
-                    $("#quantite").val("");
-                    $("#unite").val("");
-
-                }
             },
             fail: function () {
                 alert("Erreur");
