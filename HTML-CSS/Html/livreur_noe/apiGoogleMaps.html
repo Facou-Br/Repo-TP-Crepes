@@ -4,8 +4,13 @@
  Copyright 2019 Google LLC. All Rights Reserved.
  SPDX-License-Identifier: Apache-2.0
 -->
-<html>
+<html lang="fr">
   <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>Displaying Text Directions With setPanel()</title>
     <style>
       /**
@@ -85,12 +90,46 @@
       }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <strong>Start:</strong>
+      <select id="start" title="start">
+        <option
+          value="l'Usinerie, 11 Rue Georges Maugey, 71100 Chalon-sur-Saône"
+        >
+          Cnam Usinerie, France
+        </option>
+      </select>
+      <br />
+      <strong>End:</strong>
+      <select id="end" title="end">
+        <option value="">La Sucrerie, France</option>
+      </select>
+      <br />
+      <b>Mode of Travel: </b>
+      <select id="mode" title="Mode of Travel">
+        <option value="DRIVING">Driving</option>
+        <option value="WALKING">Walking</option>
+        <option value="BICYCLING">Bicycling</option>
+        <option value="TRANSIT">Transit</option>
+      </select>
+    </div>
+    <div id="container">
+      <div id="map"></div>
+      <div id="sidebar"></div>
+    </div>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR9AWpK5CIh7MVP5o-pPhxkeOXbmrnPaE&callback=initMap&v=weekly&solution_channel=GMP_CCS_textdirections_v1"
+      defer
+    ></script>
     <script>
       /**
        * @license
        * Copyright 2019 Google LLC. All Rights Reserved.
        * SPDX-License-Identifier: Apache-2.0
        */
+
       function initMap() {
         const directionsRenderer = new google.maps.DirectionsRenderer();
         const directionsService = new google.maps.DirectionsService();
@@ -107,10 +146,22 @@
 
         map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
         calculateAndDisplayRoute(directionsService, directionsRenderer);
+
+        const onChangeHandler = function () {
+          calculateAndDisplayRoute(directionsService, directionsRenderer);
+        };
+
+        document
+          .getElementById("end")
+          .addEventListener("change", onChangeHandler);
+        document
+          .getElementById("mode")
+          .addEventListener("change", onChangeHandler);
       }
 
       function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-        const start = "l'Usinerie, 11 Rue Georges Maugey, 71100 Chalon-sur-Saône";
+        const start =
+          "l'Usinerie, 11 Rue Georges Maugey, 71100 Chalon-sur-Saône";
         const end = "30 Quai Saint-Cosme, 71100 Chalon-sur-Saône";
         const selectedMode = document.getElementById("mode").value;
 
@@ -128,57 +179,7 @@
           );
       }
 
-      document.getElementById("end").addEventListener("change", onChangeHandler);
-      document.getElementById("mode").addEventListener("change", onChangeHandler);
-
-      const onChangeHandler = function () {
-        calculateAndDisplayRoute(directionsService, directionsRenderer);
-      };
-
       window.initMap = initMap;
     </script>
-  </head>
-  <body>
-    <div id="floating-panel">
-      <strong>Start:</strong>
-      <select id="start">
-        <option value="l'Usinerie, 11 Rue Georges Maugey, 71100 Chalon-sur-Saône">Cnam Usinerie, France</option>
-      </select>
-      <br />
-      <strong>End:</strong>
-      <select id="end">
-        <option value="    data.commandes.forEach(commande => {${commande.adrClient}+${commande.cpClient}+${commande.vilClient}})">La Sucrerie, France</option>
-      </select>
-      <br />
-      <b>Mode of Travel: </b>
-      <select id="mode">
-        <option value="DRIVING">Driving</option>
-        <option value="WALKING">Walking</option>
-        <option value="BICYCLING">Bicycling</option>
-        <option value="TRANSIT">Transit</option>
-      </select>
-    </div>
-    <div id="container">
-      <div id="map"></div>
-      <div id="sidebar"></div>
-    </div>
-    <div style="display: none">
-      <div id="floating-panel">
-        <strong>Start:</strong>
-        <select id="start">
-          <option value="l'Usinerie, 11 Rue Georges Maugey, 71100 Chalon-sur-Saône">Cnam Usinerie, France</option>
-        </select>
-        <br />
-        <strong>End:</strong>
-        <select id="end">
-          <option value="30 Quai Saint-Cosme, 71100 Chalon-sur-Saône">La Sucrerie, France</option>
-        </select>
-      </div>
-    </div>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR9AWpK5CIh7MVP5o-pPhxkeOXbmrnPaE&callback=initMap&v=weekly&solution_channel=GMP_CCS_textdirections_v1"
-      defer
-    ></script>
   </body>
 </html>
-    
