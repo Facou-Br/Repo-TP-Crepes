@@ -26,6 +26,5 @@ foreach ($ligne as $row) {
 
 // Encode le tableau en JSON
 $stocksJson = json_encode($result);
-
 // Renvoie le JSON
 echo $stocksJson;
