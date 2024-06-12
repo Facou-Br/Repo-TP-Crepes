@@ -10,7 +10,7 @@
         INNER JOIN DETAIL d ON co.Num_OF = d.Num_OF
         INNER JOIN PRODUIT p ON d.IdProd = p.IdProd
         LEFT JOIN LIVREUR l ON l.IdLivreur = cm.IdLivreur
-        WHERE cm.A_Livrer = 1 AND cm.EtatCde = 'Acceptée';";
+        WHERE cm.A_Livrer = 1 AND cm.EtatCde = 'Prête';";
 
         $result = $connex->query($rq);
 
