@@ -8,7 +8,7 @@
 $("select.fournisseurs").change(function () {
   $(".ingredients").empty();
   $.ajax({
-    url: "../../../../Scripts/PhP/Fernando/majStock/selectIngredients.php",
+    url: "/siteCrepes/Scripts/PhP/Fernando/majStock/selectIngredients.php",
     type: "GET",
     data: {
       fournisseurs: $("#fournisseurs").val(),
@@ -32,7 +32,7 @@ $("select.fournisseurs").change(function () {
       );
     },
     error: function () {
-      alert("Erreur lors de la récupération des fournisseurs.");
+      alert("Erreur lors de la récupération des Ingredients par rapport au fournisseur.");
     },
   });
 });

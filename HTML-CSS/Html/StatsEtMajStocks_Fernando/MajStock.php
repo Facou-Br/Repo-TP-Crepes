@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="/siteCrepes/HTML-CSS/style.css">
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <title>Mise à jour Stock</title>
 </head>
@@ -13,7 +13,7 @@
         <header>
             <h1>Mise à jour Stock</h1>
             <nav>
-                <a href="../">Retour</a>
+                <a href="/siteCrepes/HTML-CSS/Html/Gerant/index_gerant.html">Retour</a>
             </nav>
         </header>
 
@@ -28,7 +28,7 @@
 
                 <div id="ingredients" class="ingredients">
                 </div>
-                
+
             </form>
         </fieldset>
     </div>

@@ -5,7 +5,7 @@
  * @returns {void}
  */
 $.ajax({
-  url: "../../../Scripts/PhP/Fernando/majStock/selectFournisseurs.php",
+  url: "/siteCrepes/Scripts/PhP/Fernando/majStock/selectFournisseurs.php",
   type: "GET",
   datatype: "json",
   success: function (data) {

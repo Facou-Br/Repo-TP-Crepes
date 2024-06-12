@@ -21,6 +21,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <nav>
+        <a href="/siteCrepes/HTML-CSS/Html/Gerant/index_gerant.html">Retour</a>
+    </nav>
 </head>
 
 <body>
@@ -45,7 +48,7 @@
                 </select>
 
                 <div id="spaceChoixDate" class="spaceChoixDate">
-                    
+
                 </div>
             </form>
         </fieldset>
