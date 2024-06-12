@@ -12,7 +12,8 @@
         <header>
             <h1>Gestion des Recettes - Ajouter une recette</h1>
             <nav>
-                <a href="modif_recette.html">Modifier une recette</a>
+                <a href="../../../HTML-CSS/Html/Gerant/index.php">Accueil</a>
+                <a href="../../../HTML-CSS/Html/gerantRecette_noe/modif_recette.php">Modifier une recette</a>
             </nav>
         </header>
 

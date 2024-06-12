@@ -18,7 +18,7 @@ try {
     $connex->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
 
     // Requête SQL pour insérer les informations de l'ingrédient dans la table 'ingredient'
-    $sql = "INSERT INTO `ingredient` (NomIngred, Unite, SeuilStock, StockMin, StockReel, PrixUHT_Moyen) VALUES ('$nomIngred', '$categorie', $seuilStock, $stockMin, $stockReel, $prixUHTMoyen);";
+    $sql = "INSERT INTO `ingredient` (NomIngred, Unite, SeuilStock, StockMin, StockReel, PrixUHT_Moyen, DateArchiv) VALUES ('$nomIngred', '$categorie', $seuilStock, $stockMin, $stockReel, $prixUHTMoyen, 0000-00-00);";
     $connex->exec($sql);
 
     // Récupère l'ID de l'ingrédient nouvellement ajouté

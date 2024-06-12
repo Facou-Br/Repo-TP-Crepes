@@ -14,9 +14,9 @@
       <h1>Interface de stockage</h1>
       <nav>
         <a href="../../../HTML-CSS/Html/Gerant/index.php">Accueil</a>
-        <a href="gestion_fournisseurs.html">Fournisseurs</a>
-        <a href="ajouter_stock.html">Ajouter</a>
-        <a href="modifier_stocks.html">Modifier</a>
+        <a href="gestion_fournisseurs.php">Fournisseurs</a>
+        <a href="ajouter_stock.php">Ajouter</a>
+        <a href="modifier_stocks.php">Modifier</a>
 
       </nav>
     </header>

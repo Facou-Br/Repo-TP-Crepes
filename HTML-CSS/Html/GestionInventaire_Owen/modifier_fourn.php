@@ -13,7 +13,7 @@
     <header>
         <h1>Gestion des Fournisseurs</h1>
         <nav>
-            <a href="gestion_fournisseurs.html">Retour</a>
+            <a href="gestion_fournisseurs.php">Retour</a>
         </nav>
     </header>
     <div class="wrapper">

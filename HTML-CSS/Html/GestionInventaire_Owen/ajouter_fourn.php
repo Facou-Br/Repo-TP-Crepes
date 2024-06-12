@@ -17,7 +17,7 @@
     <header>
         <h1>Ajouter un fournisseur</h1>
         <nav>
-            <a href="gestion_fournisseurs.html">Retour</a>
+            <a href="gestion_fournisseurs.php">Retour</a>
         </nav>
     </header>
     <div id="form_fourn" class="form_fourn">
@@ -50,7 +50,7 @@
             <div class="bouton">
                 <button id="Ajouter" type="submit" value="Ajouter">Ajouter</button>
                 <button id="Annuler" type="reset" value="Annuler">Annuler</button>
-                <a href="gestion_fournisseurs.html"><button id="Retour" type="button" value="Retour">Retour</button></a>
+                <a href="gestion_fournisseurs.php"><button id="Retour" type="button" value="Retour">Retour</button></a>
             </div>
         </form>
     </div>

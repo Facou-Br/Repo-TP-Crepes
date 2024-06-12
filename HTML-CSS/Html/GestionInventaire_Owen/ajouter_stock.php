@@ -13,7 +13,7 @@
         <header>
             <h1>Ajouter un ingrédient</h1>
             <nav>
-                <a href="gestions_stocks.html">Retour</a>
+                <a href="gestions_stocks.php">Retour</a>
             </nav>
         </header>
         <form>

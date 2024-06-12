@@ -35,6 +35,7 @@ try {
     $connex->query($rq);
 
     echo "Le formulaire à été envoyé avec succès.";
+    header("Location: ../../../../HTML-CSS/Html/gerantRecette_noe/ajout_recette.php");
 } catch (PDOException $e) {
     print $e->getMessage();
 }
