@@ -7,14 +7,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adresse = $_POST['adresse'];
     $cp = $_POST['cp'];
     $ville = $_POST['ville'];
-    $heure_actuelle = $_POST['heure'];
+   $heure_actuelle = $_POST['heure'];
     $date_actuelle = $_POST['date'];
     $coutLiv = 5.00;
     $total = floatval($_POST['total']);
     $totalTTC = $total + $coutLiv;
+
+// Définir le fuseau horaire
+date_default_timezone_set('Europe/Paris');
+
+// Créer un nouvel objet DateTime
+$heure = new DateTime();
+
+// Créer un intervalle de 20 minutes
+$interval = new DateInterval('PT20M');
+
+// Ajouter l'intervalle à $heure
+$heure->add($interval);
+
+// Formater $heure pour l'affichage
+$heure_livraison = $heure->format('H:i');
     require_once '../../../BaseDeDonnees/codesConnexion.php';
     $pdo = BaseDeDonnees::connecterBDD('admin');
     try {
+        //ajout de la commande dans la base de données
         $requete1 = "INSERT INTO commande (NomClient, TelClient, AdrClient, CP_Client, VilClient, Date, HeureDispo, TypeEmbal, A_Livrer, EtatCde, EtatLivraison, CoutLiv, TotalTTC, IdLivreur)
                             VALUES ('$nom', '$tel', '$adresse', '$cp', '$ville', '$date_actuelle', '$heure_actuelle', 'Carton', 1, 'Acceptée', 'preparation', $coutLiv, $totalTTC, NULL);";
         $pdo->exec($requete1); //creation de la commande
@@ -68,6 +84,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>alert('Transaction annulée, veuillez réessayer.'); window.location.href='../../../HTML-CSS/Html/Commande_Remi/index.php';</script>";
         exit();
     }
-    echo "<script>alert('Votre commande a été passée avec succès.'); window.location.href='../../../HTML-CSS/Html/Commande_Remi/index.php';</script>";
+
+    $message = "Cher/Chère $nom, vous avez commandé des crepes, Elles vous serons livrées dans une boite isotherme à l'adresse suivante : $adresse vers $heure_livraison.";
+    $message = addslashes($message);
+    echo "<script>alert('$message'); window.location.href='../../../HTML-CSS/Html/Commande_Remi/index.php';</script>";
     exit();
 }
