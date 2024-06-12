@@ -17,9 +17,9 @@
             <h1>La Crêperie</h1>
             <nav>
                 <table>
-                    <th><a href="../../../HTML-CSS/Html/Commande_Remi/index.html">Accueil</a></th>
+                    <th><a href="../../../HTML-CSS/Html/Commande_Remi/index.php">Accueil</a></th>
                     <th><a href="#">Menu</a></th>
-                    <th><a href="../../../HTML-CSS/Html/Commande_Remi/contactUs.html">Contact</a></th>
+                    <th><a href="../../../HTML-CSS/Html/Commande_Remi/contactUs.php">Contact</a></th>
                 </table>
             </nav>
         </header>

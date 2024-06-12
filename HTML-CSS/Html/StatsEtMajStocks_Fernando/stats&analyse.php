@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <nav>
-        <a href="/siteCrepes/HTML-CSS/Html/Gerant/index_gerant.html">Retour</a>
+        <a href="/siteCrepes/HTML-CSS/Html./../../HTML-CSS/Html/Gerant/index.php">Retour</a>
     </nav>
 </head>
 
