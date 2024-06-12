@@ -42,11 +42,13 @@ $(".spaceChoixDate").on('change', 'input[type="month"],input[type="week"],input[
             let dateFin = new Date($(this).val());
             let moisDebut = dateDebut.getMonth();
             let moisFin = dateFin.getMonth();
-            let jourDebut = dateDebut.getDate();
-            let jourFin = dateFin.getDate();
+            let str = $("#debut").val();
+            let jourDebut = str.slice(-2);
+            str = $(this).val();
+            let jourFin = str.slice(-2);
 
-            console.log("Date jour de début : " + $("#debut").val());
-            console.log("Date jour de fin : " + dateFin);
+            console.log("Date jour de début : " + jourDebut);
+            console.log("Date jour de fin : " + jourFin);
 
             if ($("#ChoixTypeDate").val() === "annee") {
                 console.log(moisDebut);
