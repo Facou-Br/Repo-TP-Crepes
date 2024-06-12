@@ -9,8 +9,8 @@ $.ajax({
                 )
             })
         $("#recette-select").change(function() {
-            var selectedRecette = $(this).val()
-            var recette = data.find(r => r.NomProd === selectedRecette)
+            let selectedRecette = $(this).val()
+            let recette = data.find(r => r.NomProd === selectedRecette)
             if (recette) {
                 $("#NomProd").val(recette.NomProd)
                 $("#Taille").val(recette.Taille)
@@ -37,6 +37,6 @@ $.ajax({
         },
 
     error: function () {
-        alert("Erreur lors de la récupération des recettes."
+        alert("Erreur lors de la récupération des recettes.")
     }
 })
