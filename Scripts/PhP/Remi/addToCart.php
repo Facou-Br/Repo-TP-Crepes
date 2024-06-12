@@ -9,6 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['crepes'])) {
     }
 
     // Rediriger vers une page de confirmation ou une autre page
-    header('Location: panier.php');
+    header('Location: ../../../Scripts/PhP/Remi/panier.php');
     exit;
 }

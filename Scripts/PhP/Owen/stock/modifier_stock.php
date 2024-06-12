@@ -1,6 +1,6 @@
 <?php
 // Inclut le fichier contenant les codes de connexion à la base de données
-require_once '..\..\..\..\BaseDeDonnees\codesConnexion.php';
+require_once '../../../../BaseDeDonnees/codesConnexion.php';
 
 // Connecte à la base de données en utilisant les informations de connexion pour l'utilisateur 'admin'
 $connex = BaseDeDonnees::connecterBDD('admin');

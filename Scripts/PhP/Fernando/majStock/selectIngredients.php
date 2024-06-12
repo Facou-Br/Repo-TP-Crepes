@@ -1,7 +1,7 @@
 
 <?php
 // Connexion à la base de données
-require_once '..\..\..\..\BaseDeDonnees\codesConnexion.php';
+require_once '../../../../BaseDeDonnees/codesConnexion.php';
 $connexionPDO = BaseDeDonnees::connecterBDD('admin');
 // Fin connexion
 

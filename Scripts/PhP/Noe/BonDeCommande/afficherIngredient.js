@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var maxIngredients = 10;    // Nombre maximum d'ingrédients qu'on peut choisir
 
     function chargerIngredients(selectElement, fournisseur) {
@@ -8,17 +8,17 @@ $(document).ready(function() {
             url: "chargerIngredients.php",
             data: JSON.stringify({ fournisseur: fournisseur }),
             contentType: "application/json",
-            success: function(response) {
+            success: function (response) {
                 var ingredients = JSON.parse(response);
                 selectElement.empty();
                 selectElement.append('<option value="" disabled selected>Choisir un ingrédient</option>');
-                ingredients.forEach(function(ingredient) {
+                ingredients.forEach(function (ingredient) {
                     var option = $('<option></option>').attr('value', ingredient.NomIngred).text(ingredient.NomIngred);
                     selectElement.append(option);
                 });
                 mettreAJourOptionsIngredients();
             },
-            error: function(error) {
+            error: function (error) {
                 console.error("Erreur : ", error);
             }
         });
@@ -26,16 +26,16 @@ $(document).ready(function() {
 
     function mettreAJourOptionsIngredients() {
         var ingredientsSelectionnes = [];   // On stock les ingrédients sélectionnés
-        $('.ingredients').each(function() {
+        $('.ingredients').each(function () {
             var valeurSelectionnee = $(this).val(); // On récupère la valeur sélectionnée
             if (valeurSelectionnee) {
                 ingredientsSelectionnes.push(valeurSelectionnee);   // On ajoute l'ingrédients au tableau si pas déjà fait
             }
         });
 
-        $('.ingredients').each(function() {
+        $('.ingredients').each(function () {
             var selectActuel = $(this);
-            selectActuel.find('option').each(function() {
+            selectActuel.find('option').each(function () {
                 // On cache les options qui sont déjà sélectionnées
                 if (ingredientsSelectionnes.includes($(this).attr('value')) && $(this).attr('value') !== selectActuel.val()) {
                     $(this).hide();
@@ -47,20 +47,20 @@ $(document).ready(function() {
     }
 
     // Si le fournisseur change, alors on recharge les ingrédients
-    $('#fournisseur').on('change', function() {
+    $('#fournisseur').on('change', function () {
         var fournisseur = $(this).val();    // On récupère le fournisseur
-        $('.ingredients').each(function() {
+        $('.ingredients').each(function () {
             chargerIngredients($(this), fournisseur);   // On recharge et affiche les ingrédients en conséquent
         });
     });
 
     // Si un ingrédient change, alors on regarde s'il est pas déjà sélectionné
-    $(document).on('change', '.ingredients', function() {
+    $(document).on('change', '.ingredients', function () {
         mettreAJourOptionsIngredients();
     });
 
     // Ajout d'un ingrédient
-    $(document).on('click', '.btn-ajouter-ingredient', function() {
+    $(document).on('click', '.btn-ajouter-ingredient', function () {
         if ($('.ingredient').length < maxIngredients) { // On regarde si on atteint le nombre maximum d'ingrédients
             // On clone le groupe, puis on ajoute le select, l'input et le bouton supprimer pour le nouveau ingrédient
             var nouveauGroupeIngredient = $('.ingredient:first').clone();
@@ -76,7 +76,7 @@ $(document).ready(function() {
     });
 
     // Suppression d'un ingrédient
-    $(document).on('click', '.btn-supprimer-ingredient', function() {
+    $(document).on('click', '.btn-supprimer-ingredient', function () {
         $(this).closest('.ingredient').remove();    // On supprime l'ingrédient en question
         mettreAJourOptionsIngredients();    // On met à jour les ingrédients
     });

@@ -85,4 +85,3 @@ try {
     echo 'N° : ' . $e->getCode();
     die();
 }
-?>
