@@ -13,7 +13,7 @@
         <header>
             <h1>Mise à jour Stock</h1>
             <nav>
-                <a href="/siteCrepes/HTML-CSS/Html/Gerant/index_gerant.html">Retour</a>
+                <a href="/HTML-CSS/Html/Gerant/index_gerant.html">Retour</a>
             </nav>
         </header>
 
