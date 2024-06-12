@@ -9,12 +9,20 @@ function creerLignePoints(dateDebut, dateFin, jourDebut, jourFin, type) {
         }
     }
     else if (type === 'mois') {
-        for (let i = dateDebut; i <= dateFin; i++) {
+        if(dateDebut === dateFin){
             for (let j = jourDebut; j <= jourFin; j++) {
-                anneeLabel.push(j + "/" + nomsMois[i]);
+                anneeLabel.push(j + "/" + nomsMois[dateDebut]);
+            }
+        } else {
+            for (let i = dateDebut; i <= dateFin; i++) {
+                for (let j = jourDebut; j <= 30; j++) {
+                    anneeLabel.push(j + "/" + nomsMois[i]);
+                }
             }
         }
+        
     }
+    console.log(anneeLabel);
 
     const data = {
         labels: anneeLabel,
