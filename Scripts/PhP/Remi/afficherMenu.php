@@ -6,7 +6,7 @@ echo "<link rel='stylesheet' href='../../../HTML-CSS/style.css'>";
 echo "<link rel='stylesheet' href='../../../HTML-CSS/Css/StyleMenu.css'>";
 
 try {
-    $rq = "SELECT NomProd, 	PrixUHT, Image, IngBase1, IngBase2, IngBase3, IngBase4, IngBase5 FROM produit";
+    $rq = "SELECT NomProd, 	PrixUHT, Image, IngBase1, IngBase2, IngBase3, IngBase4, IngBase5 FROM produit WHERE active = 1";
     $result = $pdo->query($rq);
 
     $counter = 0;

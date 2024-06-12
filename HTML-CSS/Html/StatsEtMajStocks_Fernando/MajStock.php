@@ -13,7 +13,7 @@
         <header>
             <h1>Mise à jour Stock</h1>
             <nav>
-                <a href="/HTML-CSS/Html./../../HTML-CSS/Html/Gerant/index.php">Retour</a>
+                <a href="../../../HTML-CSS/Html/Gerant/index.php">Retour</a>
             </nav>
         </header>
 
