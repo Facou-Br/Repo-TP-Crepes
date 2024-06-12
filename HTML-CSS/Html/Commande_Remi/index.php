@@ -97,14 +97,14 @@
             <li>Reblochon</li>
           </ul>
           </p>
-
+        </div>
       </article>
 
 
     </main>
 
     <footer>
-      <a href="../../../HTML-CSS/contactUs.html">Contactez-nous</a>
+      <a href="contactUs.php">Contactez-nous</a>
       <p>&copy; 2024 La Crêperie. Tous droits réservés.</p>
     </footer>
   </div>
