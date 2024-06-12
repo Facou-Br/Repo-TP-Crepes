@@ -5,7 +5,7 @@
  * @returns {void}
  */
 $.ajax({
-    url: "../../../Scripts/PhP/Fernando/statsAnalyse/getProduits.php",
+    url: "/siteCrepes/Scripts/PhP/Fernando/statsAnalyse/getProduits.php",
     type: "GET",
     datatype: "json",
     success: function (data) {
@@ -18,6 +18,6 @@ $.ajax({
       });
     },
     error: function () {
-      alert("Erreur lors de la récupération des fournisseurs.");
+      alert("Erreur lors de la récupération des produits.");
     },
   });

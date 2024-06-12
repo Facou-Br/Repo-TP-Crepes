@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/siteCrepes/HTML-CSS/style.css">
     <style>
-        body {
+        #body {
             align-items: center;
             justify-content: center;
             display: flex;
@@ -26,7 +27,7 @@
     </nav>
 </head>
 
-<body>
+<div id="body">
 
     <div id="stats">
         <fieldset>
@@ -66,14 +67,15 @@
     <div>
         <canvas id="stackedBarChar"></canvas>
     </div>
-</body>
+</div id="body">
 
 <footer>
-    <script src=../../../../Scripts/JavaScript/Fernando/statsAnalyse/choixDate.js></script>
-    <script src=../../../../Scripts/JavaScript/Fernando/statsAnalyse/affichageProduits.js></script>
-    <script src=../../../../Scripts/JavaScript/Fernando/statsAnalyse/pie.js></script>
-    <script src=../../../../Scripts/JavaScript/Fernando/statsAnalyse/line.js></script>
-    <script src=../../../../Scripts/JavaScript/Fernando/statsAnalyse/stackedBar.js></script>
+
+    <script src=/siteCrepes/Scripts/JavaScript/Fernando/statsAnalyse/choixDate.js></script>
+    <script src=/siteCrepes/Scripts/JavaScript/Fernando/statsAnalyse/affichageProduits.js></script>
+    <script src=/siteCrepes/Scripts/JavaScript/Fernando/statsAnalyse/pie.js></script>
+    <script src=/siteCrepes/Scripts/JavaScript/Fernando/statsAnalyse/line.js></script>
+    <script src=/siteCrepes/Scripts/JavaScript/Fernando/statsAnalyse/stackedBar.js></script>
 </footer>
 
 </html>
