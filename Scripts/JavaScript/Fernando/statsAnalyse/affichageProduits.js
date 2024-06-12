@@ -5,7 +5,7 @@
  * @returns {void}
  */
 $.ajax({
-    url: "/siteCrepes/Scripts/PhP/Fernando/statsAnalyse/getProduits.php",
+    url: "/Scripts/PhP/Fernando/statsAnalyse/getProduits.php",
     type: "GET",
     datatype: "json",
     success: function (data) {

@@ -276,6 +276,19 @@ button:hover {
   padding: 8px;
 }
 
+/* Statisques Fernando */
+#bodyStatistiques {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+canvas {
+  width: 800px;
+  max-width: 600px;
+}
+
 /********** M E D I A  Q U E R Y **********/
 @media (max-width: 768px) {
   header {

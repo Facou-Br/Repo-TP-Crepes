@@ -8,7 +8,7 @@
 $("select.fournisseurs").change(function () {
   $(".ingredients").empty();
   $.ajax({
-    url: "/siteCrepes/Scripts/PhP/Fernando/majStock/selectIngredients.php",
+    url: "/Scripts/PhP/Fernando/majStock/selectIngredients.php",
     type: "GET",
     data: {
       fournisseurs: $("#fournisseurs").val(),

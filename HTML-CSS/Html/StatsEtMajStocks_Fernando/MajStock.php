@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/siteCrepes/HTML-CSS/style.css">
+    <link rel="stylesheet" href="/HTML-CSS/style.css">
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <title>Mise à jour Stock</title>
 </head>
