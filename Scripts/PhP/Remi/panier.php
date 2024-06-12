@@ -25,7 +25,7 @@ echo "<!DOCTYPE html>
 require_once '../../../BaseDeDonnees/codesConnexion.php';
 $connex = BaseDeDonnees::connecterBDD('admin');
 $total = 0;
-
+$livraison = 5;
 try {
   $totalCrepes = 0;
   foreach ($_SESSION['cart'] as $crepe => $quantity) {
@@ -33,7 +33,8 @@ try {
   }
   if (isset($_SESSION['cart']) && $totalCrepes > 0) {
     // Affichez le contenu de la session
-    echo '<h2>Votre panier :</h2>';
+      echo '<h2>Votre panier :</h2>';
+
     echo '<table id="tabCrepes">';
     echo '<tr><th>Crêpe</th><th>Quantité</th><th>Sous-total</th></tr>';
     $totalQuantity = 0; // Nombre total de crêpes
@@ -52,9 +53,13 @@ try {
         }
       }
     }
+      if ($totalQuantity > 2) {
+          echo '<h4>Livraison gratuite </h4>';
+          $livraison = 0;}
 
-    echo "<tr><td>Livraison</td><td>1</td><td>" . 5 . "€</td></tr>";
-    echo "<tr><td>Total</td><td>$totalQuantity</td><td>" . $total + 5 . "€</td></tr>";
+
+    echo "<tr><td>Livraison</td><td></td><td>" . $livraison . "€</td></tr>";
+    echo "<tr><td>Total</td><td>$totalQuantity</td><td>" . $total + $livraison . "€</td></tr>";
     echo '<br>';
     echo '</table>';
 
