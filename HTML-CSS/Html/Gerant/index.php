@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gérent</title>
+    <title>Gérant</title>
     <link rel="stylesheet" href="../../style.css" />
 </head>
 
