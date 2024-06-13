@@ -13,7 +13,8 @@
                 INNER JOIN PROD_INGR pi ON d.IdProd = pi.IdProd 
                 INNER JOIN INGREDIENT i ON pi.IdIngred = i.IdIngred 
                 WHERE cm.EtatCde = 'Acceptée' OR cm.EtatCde = 'En préparation' 
-                GROUP BY cm.NumCom, co.Num_OF, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4 ORDER BY `cm`.`NumCom` ASC";
+                GROUP BY cm.NumCom, co.Num_OF, co.Quant, cm.HeureDispo, cm.EtatCde, d.NomProd, d.IngBase1, d.IngBase2, d.IngBase3, d.IngBase4, d.IngOpt1, d.IngOpt2, d.IngOpt3, d.IngOpt4 
+                ORDER BY `cm`.`HeureDispo` ASC";
 
         $result = $connex->query($rq);
         $tabCommandes = array();

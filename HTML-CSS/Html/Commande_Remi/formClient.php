@@ -10,8 +10,8 @@
     <label for="ville">Ville:</label><br>
     <input type="text" id="ville" name="ville" required><br>
     <input type="hidden" id="total" name="total" value=$total>
-    <input type="hidden" id="date" name="date" value="<?php echo date('Y-m-d'); ?>">
-    <input type="hidden" id="heure" name="heure" value="<?php echo date('H:i:s'); ?>">
+    <input type="hidden" id="date" name="date" value="<?php date_default_timezone_set('Europe/Paris'); echo date('Y-m-d'); ?>">
+    <input type="hidden" id="heure" name="heure" value="<?php date_default_timezone_set('Europe/Paris'); echo date('H:i:s'); ?>">
     <button type="submit" name="valider">Valider</button>
 </form>
 <form method="post">
